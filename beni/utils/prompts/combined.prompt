@@ -1,0 +1,68 @@
+Analyze the provided text and linguistic data for input_language and produce a structured JSON object containing both a morphotactic grammar and a morphological dictionary.
+
+TARGET LANGUAGE METADATA:
+language_metadata
+
+{{notes}}
+
+EXISTING CONTEXT:
+{{context}}
+
+RAW TEXT TO ANALYZE:
+"""{{text}}"""
+
+GRAMMAR RULES (morphotactic patterns)
+
+- Each grammar entry is a single string following the DABA pattern syntax:
+  'pattern :target_pos: [ {{regex_or_affix}}:: ] | :source_pos: [ :base: :feature: ]'
+- Use {{A|B}} for allomorphs, <re>...</re> for complex regex, and reference macros as @macro@. Maintain the '::' delimiter exactly.
+- Cover the following pattern categories: propername, particles, verbal_inflection_past, verbal_inflection_present, nominal_inflection, possessive_suffixes, derivation, composition, reduplication.
+- Macro declarations, stage directives, and section headers may also appear as standalone strings in the grammar list (e.g. 'macro @cons@ [bcdfg...]', 'stage 0', 'add parallel parse propername').
+
+DICTIONARY RULES (MDF schema)
+
+- Each dictionary entry is a JSON object with MDF tag names as keys (no backslash) and string values.
+- Allowed keys (use only those that apply):
+full_tag_list
+- Morpheme syntax inside 'mm' and 'mmm' values: 'surface_form:POS_or_MorphTag:gloss'.
+- Morpheme tags must align with feature tags used in the grammar patterns.
+
+CRITICAL: ONLY ADD NEW INFORMATION
+- Do not duplicate existing dictionary entries (same lx + ps + gf + ms)
+- Do not duplicate existing grammar patterns
+- If an entry already exists, skip it
+- Mark uncertain additions with comments
+
+OUTPUT FORMAT
+
+Return ONLY a single valid JSON object, no markdown, no code fences, no commentary. The object must follow exactly this shape:
+
+{
+  "dictionary": [
+    {
+      "lx": "word",
+      "ps": "n",
+      "mm": "root:POS:gloss",
+      "gf": "gloss",
+      "xv": "example sentence",
+      "xf": "translation",
+      "va": "variant name"
+    }
+  ],
+  "grammar": [
+    "pattern :n: [ :v: :mrph:NMLZ ]",
+    "macro @cons@ <re>[bcdfghjklmnpqrstvwxyz]</re>",
+    "stage 0"
+  ],
+  "language": "input_language",
+  "notes": "Assumptions and uncertainties"
+}}
+
+CONSTRAINTS
+
+- Output must be a single JSON object parseable by 'json.loads'.
+- Do not include any field outside the allowed MDF tag list.
+- Do not invent grammar syntax beyond DABA conventions.
+- Ensure morpheme tags in dictionary 'mm' values are referenced by at least one grammar pattern.
+- Maintain consistency between grammar patterns and dictionary entries.
+- Include only new information not already present in the context.

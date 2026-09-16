@@ -1,0 +1,19 @@
+include LICENSE
+include README.md
+include pyproject.toml
+include configs/*.yaml
+recursive-include beni/core/hub/templates *
+recursive-include beni/utils/res *
+recursive-include beni/utils/prompts *
+recursive-include beni/data/samples *
+recursive-include beni/data/baselines *
+recursive-include beni/data/raw *
+include beni/data/test.json
+include beni/data/exp.yaml
+include docs/assets/*
+global-exclude *.old
+global-exclude *.backup
+global-exclude *Zone.Identifier
+global-exclude *.py[cod]
+global-exclude __pycache__
+global-exclude .DS_Store

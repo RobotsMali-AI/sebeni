@@ -1,0 +1,109 @@
+site_name: Sebeni
+site_description: Self-aware morphotactic generation toolkit for extremely low-resource languages
+site_url: https://seben.robotsmali.org/docs/
+repo_url: https://github.com/mlsftwrs/sebeni
+repo_name: mlsftwrs/sebeni
+edit_uri: ""
+copyright: Sebeni — write in Malian languages
+
+theme:
+  name: material
+  logo: assets/logo.png
+  favicon: assets/favicon.png
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.expand
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - toc.follow
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+extra:
+  homepage: https://seben.robotsmali.org
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [.]
+          options:
+            docstring_style: numpy
+            show_source: false
+            show_root_heading: true
+
+nav:
+  - Learn:
+      - Home: index.md
+      - Getting started: getting-started.md
+      - Experiments: experiments.md
+      - Use cases: use-cases.md
+  - How it works:
+      - SAMPG: sampg.md
+      - Architecture: architecture.md
+      - Languages: languages.md
+      - Distillation and DabaX: distillation.md
+      - Rewards and metrics: rewards.md
+      - Safety: safety.md
+  - Reference:
+      - CLI and config: cli.md
+      - Hyperparameters: hyperparams.md
+      - Wordfreq: wordfreq.md
+      - Hub: hub.md
+      - Contributing: contributing.md
+      - API:
+          - Overview: api/index.md
+          - SRL: api/srl.md
+          - Safety: api/safety.md
+          - Compute: api/compute.md
+          - CLI: api/cli.md
+          - Language: api/language.md
+          - Distiller / DabaX: api/morphotactic.md

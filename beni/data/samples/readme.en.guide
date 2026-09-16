@@ -1,0 +1,73 @@
+# General System Description
+The system is designed for deep morphological analysis of word forms (morphemic segmentation and morpheme-by-morpheme annotation). Each analyzed morpheme is assigned a two-level annotation: part-of-speech (POS) tags and standardized glosses (glosses in a meta-language).
+
+The system acts as a "factory" for morphological analyzers based on a dictionary and rules (specifically, structural word-form patterns). These patterns can utilize both literal strings and regular expressions (using the extended regex dialect found in the Python programming language).
+
+Object Model
+Gloss ::
+<form>:<pos_tags>:<gloss> [<morpheme_list>]
+
+<morpheme_list> :: Each morpheme in this list is also a gloss, which may contain its own list of morphemes, and so on. The list of morphemes may be empty.
+
+Example:
+sì.ra:n:reste.du.souper, [sì:v:passer.la.nuit, ra:mrph:IPFV.INTR]
+
+Pattern ::
+<selection_gloss> | <marking_gloss>
+
+<selection_gloss> :: A template gloss describing the conditions necessary to apply this rule (pattern) to a word form.
+
+<marking_gloss> :: A template gloss that merges with the word form data ("marking" the components of the word form with morphological information).
+
+The pattern allows for splitting the analyzed word form or morpheme into constituent morphemes. This is achieved using a special bracket notation in the <form> field of the corresponding gloss:
+
+{<expression>|<expression>...}
+
+<expression> :: A string or regular expression (<re>...</re>) characterizing the conditions for isolating a morpheme within the word form. The list of expressions can be of arbitrary length.
+
+Example:
+{|ma}:: -> means that a morpheme ending with the string 'ma' (e.g., 'balama') will be split into two morphemes: bala:: and ma::.
+
+In the marking gloss, each resulting morpheme must correspond to an individual marking morpheme.
+
+Example:
+pattern :n: [ {|ma}:: ] | :n: [ :n: :mrph:COM]
+Analysis example using this pattern:
+balama:: -> bala.ma:n: [ bala:n: ma:mrph:COM ]
+
+Formal Grammar Structure
+The formal grammar used by the system to build a morphological analyzer is a text file containing lists of patterns (morphological rules) and directives describing the order in which patterns are applied to a word form.
+
+The system imposes no restrictions on how rules are grouped into sections or the order of their application; the user is free to define these independently.
+
+Grammar Sections:
+Macro Definitions:
+macro <string> <replacement>
+Macros are simply replaced by the corresponding string throughout the grammar text to improve readability.
+
+Analysis Order:
+
+plan
+for token:
+stage <id> <add|apply> [ <lookup> | <parallel|sequential> <parse> <section_name> ]
+return if parsed
+Rule Sections:
+section <name>
+pattern <pattern>
+The number of sections is unlimited. Their names are chosen by the user and subsequently used when defining the word form analysis order.
+
+## Advantages and Disadvantages
+
+Advantages:
++ Flexibility: The logic of the grammatical analysis (grouping and order of rule application) is entirely defined by the user in the grammar file rather than being "hard-coded" into the parser. This allows the system to adapt to languages with diverse structures.
+
++ Regex Support: The use of regular expressions in patterns provides extensive word-form analysis capabilities without requiring the study of proprietary tools.
+
++ Pattern-Based Rules: These allow for the description of specialized rules for any number of productive morphological models, increasing recognition accuracy.
+
+Limitations:
+- Rigidity: In the current implementation, the system does not allow for building complex conditional chains of rules ("if this worked, try that; if that fails, apply this to the result"). Rules are applied iteratively to the entire list of analysis results.
+
+- Regular Grammar Constraints: While regular expressions can describe many contexts, they cannot describe all contextual conditions. Consequently, some rules may become unnecessarily complex or impossible to implement within the system.
+
+- Specificity Issues: Pattern-based rules are less suited for non-specific models, particularly compounding (word-building), where criteria for splitting a word form cannot be formulated as string-based constraints on components. Compromises in these cases require either an extensive expansion of the rule list or abandoning non-specific models in favor of more specific ones, which can decrease recognition accuracy.

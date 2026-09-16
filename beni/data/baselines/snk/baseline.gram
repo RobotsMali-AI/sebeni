@@ -1,0 +1,149 @@
+# Soninke (SNK) morphotactic patterns
+# macro definitions
+macro   @v@             <re>[aoeiuãẽĩõũ]</re>
+macro   @nasal-v@       <re>[ãẽĩõũ]</re>
+macro   @nonnasal-v@    <re>[aoeiu]</re>
+macro   @cons@          <re>[bcdfghjklmŋprstwxz]</re>
+macro   @snk-cons@      [bcdfghjklmŋprstwxz]
+macro   @syl@           [^aoeiuãẽĩõũ]*(?P<V>[aoeiuãẽĩõũ])(?P=V)?
+
+# processing instructions
+plan
+for token:
+stage 0 add parallel parse inflection
+stage 0 add parallel parse common_derivation
+stage 0 apply lookup
+return if parsed
+stage 1 add sequential parse n_v_derivation
+stage 1 add parallel parse n_derivation
+stage 1 add parallel parse v_vq_derivation
+stage 1 add parallel parse vq_derivation
+stage 1 add parallel parse num_derivation
+stage 1 apply lookup
+return if parsed
+stage 2 add parallel parse reduplication
+stage 2 apply lookup
+return if parsed
+stage 3 add parallel decompose pos_composition
+return if parsed
+stage 4 apply firstmatch parse nonSNK
+return if parsed
+
+#for sentence
+section inflection
+# nominal inflection
+# Plural markers: -n, -xen, -u, -wi, -y (e.g., depiten, jamaanen, karen, tinanye)
+pattern :n/adj/prn/n.prop/num: [ {|n}:: ] | :n/adj/prn/n.prop/num: [:n/adj/prn/n.prop/num: :mrph:PL]
+pattern :n/adj/prn/n.prop/num: [ {|xen}:: ] | :n/adj/prn/n.prop/num: [:n/adj/prn/n.prop/num: :mrph:PL]
+pattern :n/adj/prn/n.prop/num: [ {|u}:: ] | :n/adj/prn/n.prop/num: [:n/adj/prn/n.prop/num: :mrph:PL]
+pattern :n/adj/prn/n.prop/num: [ {|wi}:: ] | :n/adj/prn/n.prop/num: [:n/adj/prn/n.prop/num: :mrph:PL]
+pattern :n/adj/prn/n.prop/num: [ {|y}:: ] | :n/adj/prn/n.prop/num: [:n/adj/prn/n.prop/num: :mrph:PL]
+
+# Definite article / Adjectival / Relative suffix: -n (e.g., sariyan, gollen, xaranŋun, sugandinden)
+pattern :n/adj/v/ptcp: [ {|n}:: ] | :n/adj/v/ptcp: [:n/adj/v/ptcp: :mrph:DEF]
+
+# derivative forms we need to consider even if we have them in dictionary
+section common_derivation
+# Abstract: -ya, -ma, -ndi (e.g., yoorindan -> yoorin, faasandi -> faasan)
+pattern :n/adj/v: [ {|ya}:: ] | :n: [:n/adj/v: :mrph:ABSTR]
+pattern :n/adj/v: [ {|ma}:: ] | :n: [:n/adj/v: :mrph:ABSTR]
+pattern :n/adj/v: [ {|ndi}:: ] | :n: [:n/adj/v: :mrph:ABSTR]
+# Augmentative: -ba
+pattern :n/adj: [ {|ba}:: ] | :n/adj: [:n/adj: :mrph:AUGM]
+# Diminutive: -kayna
+pattern :n/adj: [ {|kayna}:: ] | :n/adj: [:n/adj: :mrph:DIM]
+
+# common nominal/verbal derivation (locatives/relational)
+section n_v_derivation
+# Locative/Relational clitics: -ra, -xa, -k
+pattern :n/n.prop: [ {|ra}:: ] | :n/n.prop: [:n/n.prop: :mrph:LOC]
+pattern :n/n.prop: [ {|xa}:: ] | :n/n.prop: [:n/n.prop: :mrph:LOC]
+pattern :n/n.prop: [ {|k}:: ] | :n/n.prop: [:n/n.prop: :mrph:GEN]
+
+# nominal derivation
+section n_derivation
+# Agent: -xaane, -gala, -xe (e.g., hantumxaane)
+pattern :n: [ {|xaane}:: ] | :n: [ :v/n: :mrph:AG]
+pattern :n: [ {|gala}:: ] | :n: [ :v/n: :mrph:AG]
+pattern :n: [ {|xe}:: ] | :n: [ :v/n: :mrph:AG]
+# Privative: -ma
+pattern :adj/n: [ {|ma}:: ] | :adj/n: [ :n: :mrph:PRIV]
+
+# verbal/vq derivation
+section v_vq_derivation
+# Causative: -ndi, -in, -an
+pattern :v: [ {|ndi}:: ] | :v: [ :v: :mrph:CAUS]
+pattern :v: [ {|in}:: ] | :v: [ :v: :mrph:CAUS]
+pattern :v: [ {|an}:: ] | :v: [ :v: :mrph:INTR]
+# Nominalizer: -n, -xi
+pattern :n: [ {|n}:: ] | :n: [ :v: :mrph:NMLZ]
+pattern :n: [ {|xi}:: ] | :n: [ :v: :mrph:NMLZ]
+
+# vq derivation
+section vq_derivation
+pattern :vq: [ {|ya}:: ] | :n/v: [ :vq: :mrph:DEQU]
+pattern :adj: [ {|man}:: ] | :adj: [ :vq: :mrph:ADJ]
+
+# numeral derivation
+section num_derivation
+pattern :num: [ {|n}:: ] | :num: [ :num: :mrph:ORD]
+
+## reduplication
+section reduplication
+pattern :v: [ {<re>(?P<stem>.+)</re>|<re>(?P=stem)</re>}:: ] | :v: [ :v: :v: ]
+pattern :adj: [ {<re>(?P<stem>.+)</re>|<re>(?P=stem)</re>}:: ] | :adj: [ :adj: :adj: ]
+pattern :num: [ {<re>(?P<stem>.+)</re>|<re>(?P=stem)</re>}:: ] | :num: [ :num: :num: ]
+pattern :v: [ {<re>(?P<stem>.+)</re>|-|<re>(?P=stem)</re>}:: ] | :v: [ :v: :: :v: ]
+pattern :adj: [ {<re>(?P<stem>.+)</re>|-|<re>(?P=stem)</re>}:: ] | :adj: [ :adj: :: :adj: ]
+pattern :num: [ {<re>(?P<stem>.+)</re>|-|<re>(?P=stem)</re>}:: ] | :num: [ :num: :: :num: ]
+
+## composition
+# general part-of-speech composition patterns
+section pos_composition
+
+# two-words composites
+# n.prop + n = n   ex: Mali jamaanen
+pattern :n: [ :n.prop: :n: ] | :n: [ :n.prop: :n: ]
+# v/n + n = n   ex: hantumxaane, jamaanen yinmanken
+pattern :n: [ :n/v: :n: ] | :n: [ :n/v: :n: ]
+# n + v = n/v
+pattern :n/v: [ :n: :v: ] | :n/v: [ :n: :v: ]
+# n + adj/num = n
+pattern :n: [ :n: :adj/num: ] | :n: [ :n: :adj/num: ]
+# dtm + v = n
+pattern :n: [ :dtm: :v: ] | :n: [ :dtm: :v: ]
+# pp + n = n
+pattern :n: [ :pp: :n: ] | :n: [ :pp: :n: ]
+
+# three-words composites
+# n + adj/pp/num + n = n
+pattern :n: [ :n: :adj/pp/num: :n: ] | :n: [ :n: :adj/pp/num: :n: ]
+# dtm/n + v + n = n
+pattern :n: [ :dtm/n: :v: :n: ] | :n: [ :dtm/n: :v: :n: ]
+# n + pp + v = n/v
+pattern :n/v: [ :n: :pp: :v: ] | :n/v: [ :n: :pp: :v: ]
+# n+n+n = n
+pattern :n: [ :n: :n: :n: ] | :n: [ :n: :n: :n: ]
+
+# v+mrph+n  ex: sariyanun saaxanman
+pattern :n: [ :v: ndi:mrph: :n: ] | :n: [ :v: :mrph:CAUS :n: ]
+pattern :n: [ :v: an:mrph: :n: ] | :n: [ :v: :mrph:INTR :n: ]
+
+# v+mrph+v
+pattern :v: [ :v: ndi:mrph: :v: ] | :v: [ :v: :mrph:CAUS :v: ]
+
+# four-words composites
+# n + pp + n + n = n
+pattern :n: [ :n: :pp: :n: :n: ] | :n: [ :n: :pp: :n: :n: ]
+# n + pp + adj + n = n
+pattern :n: [ :n: :pp: :adj: :n: ] | :n: [ :n: :pp: :adj: :n: ]
+# n+v+v+n
+pattern :n: [ :n: :v: :v: :n: ] | :n: [ :n: :v: :v: :n: ]
+
+# orthographically unlikely to be soninke words
+# for NEW orthography, with no tones marked
+section nonSNK
+# forms with symbols out of soninke alphabet
+pattern <re>.*[vqçäëïüâêîôûéùàøðþ].*</re>:: | ::EMPR
+# two different vowels in sequence (no diphthongs in standard Soninke)
+pattern <re>.*(?P<v>[aoeiuãẽĩõũ])(?!(?P=v))(?=[aoeiuãẽĩõũ]).*</re>:: | ::EMPR

@@ -1,0 +1,88 @@
+Sphinx Documentation Header
+Code snippet
+.. daba documentation master file, created by
+   sphinx-quickstart on Tue Dec  6 14:09:37 2011.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to daba's documentation!
+================================
+
+Contents:
+
+.. toctree::
+   :maxdepth: 2
+
+   grammar
+
+Indices and tables
+==================
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+Translation of meta.readme.txt
+Metadata Editor
+Metadata Editor: A program designed to add metadata to text documents required for corpus inclusion. The metadata is added in a standardized format suitable for subsequent machine processing and indexing. The source files are plain text (.txt), and the text with metadata is saved as .html files.
+
+Installation
+Windows (NT, XP, etc.)
+Before using the editor on the Windows platform (NT, XP, etc.), you must install:
+
+Python Programming Language:
+Download the installer from the link below and install it using the default settings.
+http://www.python.org/ftp/python/2.7/python-2.7.msi
+
+wxWidgets GUI Library (with Python bindings):
+Download the installer from the link below and install it using the default settings.
+http://downloads.sourceforge.net/wxpython/wxPython2.8-win32-unicode-2.8.11.0-py27.exe
+
+The Metadata Editor itself:
+Unpack the program archive to any convenient location.
+
+Launching
+The program directory contains the following files:
+
+meta.py: The metadata editor (executable file).
+
+meta.xml: Configuration of required metadata fields: fields, their types, standard value lists, and default values (XML format).
+
+README.txt: This manual.
+
+To launch the editor, simply double-click on meta.py.
+
+Adding Metadata
+Follow these steps to add metadata to a text file:
+
+1. Open the target text file:
+
+Select the menu File -> Open.
+
+Select the desired file and open it.
+
+The file will open in the left half of the window in "Read-Only" mode. (This prevents the editor from accidentally damaging the text, as the metadata editor does not perform file integrity checks).
+
+Note: If the column containing the open file is too narrow, try maximizing the window to full screen.
+
+2. Fill in the data fields:
+Sequentially fill in all necessary data fields across all tabs in the right panel of the window. If a field is not applicable to the material, leave it blank or at its default value.
+
+Note: In the current implementation, the program cannot verify the correctness or completeness of the entered metadata; therefore, the responsibility for filling in all required fields lies entirely with the editor. Do not rush! Although you can return to any metadata section and change a selected value at any time, it is recommended to fill in all fields sequentially.
+
+3. Save the file:
+When all necessary fields are filled, save the file with the included metadata:
+
+Select the menu File -> Save As.
+
+Choose a name for the metadata file (the .html extension will be added automatically upon saving).
+
+Note: In most cases, it is recommended not to change the default filename provided; simply click "OK" in the "Save As" dialog without modifications. In this case, the metadata file will be located in the same directory as the source file, sharing the same name but with a different extension.
+
+Before saving, a pop-up window should appear listing the metadata fields and the selected values to be added to the resulting file. (This window is intended to help the editor double-check the accuracy and completeness of the fields. It can be disabled if it interferes with your workflow).
+
+4. Repeat:
+You may now open the next file and repeat the procedure (steps 1–3).
+
+Important: You do NOT need to close the currently open file to move on to the next one.
+
+Pro Tip: If you are editing multiple files in sequence, note that the metadata values selected/filled for the previous file are NOT reset when the next file is opened. This is convenient when saving a series of files that share significant common metadata (e.g., texts from the same source). However, it is vital to ensure that no "leftover" data from the previous document remains in the metadata for the new text.

@@ -1,0 +1,60 @@
+---
+language:
+{% for code in languages %}
+  - {{ code }}
+{% endfor %}
+base_model: {{ base_model }}
+library_name: transformers
+tags:
+  - sebeni
+  - morphotactic
+  - grpo
+  - {{ algorithm }}
+  - {{ group_code or language or "elrl" }}
+license: {{ license }}
+---
+
+# {{ model_name }}
+
+Self-aware morphotactic generation model trained with [Sebeni](https://seben.robotsmali.org)
+(Algorithm 1: Φ / τ / LLM_Ref Distiller, then a line-13 alignment plugin).
+
+**Intended use.** Extremely low-resource Manding (and related) morphological
+generation, including **multilingual** runs (one language identity per sentence).
+This is **not** a general-purpose chatbot.
+
+**Limitations.** Completions must be valid JSON with a `tokens` list. A completion
+whose JSON `lang` does not match **that row** scores 0 on R_lang. Format-invalid
+batches cannot update θ. Grammar/dictionary checkpoints are **per language** and
+move only when Φ′ > Φ (after the scratch first-create parse gate).
+
+## Training recipe
+
+- **Algorithm (line 13):** `{{ algorithm }}`
+- **Base model:** `{{ base_model }}`
+- **Languages / groups:** `{{ language }}` / `{{ group_code }}` (Maninka group is **MKU**, not MLQ)
+- **τ (Phi threshold):** {{ tau }}
+- **Last Φ:** {{ phi }}
+- **Baseline checkpoint:** `{{ checkpoint_id }}`
+- **Hyperparams:** see config snapshot (lr, batch, LoRA, β, generations)
+- **Reward weights:** format={{ format_weight }}, morph={{ morph_weight }}, rule={{ rule_weight }}, lang={{ lang_weight }}
+- **Safety gates that fired:** {{ gates_fired }}
+
+```yaml
+{{ config_snapshot }}
+```
+
+## Evaluation
+
+| Metric | Value |
+| --- | --- |
+| Phi | {{ phi }} |
+| MER | {{ mer }} |
+| MCS | {{ mcs }} |
+| Format validity | {{ format_validity }} |
+| R_lang | {{ r_lang }} |
+
+## Citation
+
+Sebeni — write in Malian languages. Package docs: <https://mlsftwrs.github.io/sebeni/> ·
+project home: <https://seben.robotsmali.org>

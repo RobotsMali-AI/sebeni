@@ -1,0 +1,464 @@
+\_sh v3.0  400  MDF 4.0
+
+\lang mku
+\name seben-maninka
+\ver 0.0.1
+
+
+
+
+\lx ˊa
+\ph /a/
+\ps pron
+\gf lui, elle, ça (forme non emphatique)
+\gvf lui, elle, ça
+\ge him, her, it (non-emphatic form)
+\gve him, her, it
+\xv A fútà-tà.
+\xe Il est arrivé.
+\xf He arrived.
+\sy
+\an
+\dt 01/Feb/2026
+\lx aamíina
+\ph /aːmíːna/
+\ps interj
+\gf ainsi soit-il
+\gvf ainsi soit-il
+\ge amen, so be it
+\gve amen, so be it
+\xv Amíina!
+\xe Ainsi soit-il!
+\xf Amen!
+\sy
+\an
+\dt 01/Feb/2026
+\lx abáríka
+\ph /abáríkà/
+\ps interj
+\gf merci
+\gvf merci
+\ge thank you
+\gve thank you
+\xv Abáríka, í ye ŋ́ buuñaa, Ála maa díndiŋ ye í buuñaa.
+\xe Merci, tu m’as honoré, Dieu fasse qu’un enfant t’honore.
+\xf Thank you, you honored me, may God bless a child for you.
+\sy
+\an
+\dt 01/Feb/2026
+\lx Alaˊ
+\ph /ala/
+\ps n
+\gf Dieu
+\gvf Dieu
+\ge God
+\gve God
+\xv Ála maa a kéla alifaabatudíŋo ti.
+\xe Que Dieu en fasse un enfant qui recherche les conseils de ses aînés.
+\xf May God make him a child who seeks the advice of his elders.
+\sy
+\an
+\dt 01/Feb/2026
+\lx álahadi
+\ph /álahàdi/
+\ps n
+\vl
+\ve
+\fa
+\lat
+\gf dimanche
+\gvf dimanche
+\ge Sunday
+\gve Sunday
+\sm Jour de la semaine.
+\ms 1
+\xv Bíi álahadi-lum-báa ma, waasálaamu.
+\xe En ce dimanche, je vous salue.
+\xf On this Sunday, I greet you.
+\sy
+\an
+\dt 01/Feb/2026
+\lx álamaani
+\ph /álamaːni/
+\ps v
+\vl tr
+\ve
+\fa
+\lat
+\gf donner une amende
+\gvf donner une amende
+\ge to fine
+\gve to fine
+\sm Infliger une pénalité financière.
+\ms 1
+\xv I ye álámáanoo laa ŋ́ kaŋ.
+\xe Ils m’ont donné une amende.
+\xf They gave me a fine.
+\sy
+\an
+\dt 01/Feb/2026
+\lx álimaami
+\ph /álimaːmi/
+\ps n
+\vl
+\ve
+\fa
+\lat
+\gf imam
+\gvf imam
+\ge imam
+\gve imam
+\sm Chef religieux musulman.
+\ms 1
+\xv Alimáamoo be káŋkúláaroo la.
+\xe L’imam est en train de faire une annonce.
+\xf The imam is making an announcement.
+\sy
+\an
+\dt 01/Feb/2026
+\lx álu
+\ph /álu/
+\ps pron
+\gf vous (forme non emphatique)
+\gvf vous
+\ge you (plural, non-emphatic)
+\gve you
+\xv Álu ŋ só god-óo la !
+\xe Donnez-moi de l’argent !
+\xf Give me money!
+\sy
+\an
+\dt 01/Feb/2026
+\lx alúŋ
+\ph /alúŋ/
+\ps pron
+\gf pronom inclusif
+\gvf nous (inclusif)
+\ge inclusive pronoun
+\gve us (inclusive)
+\sm Pronom de la première personne du pluriel qui inclut l'interlocuteur, utilisé dans les constructions impératives inclusives.
+\ms 1
+\xv Alúŋ ŋe taɣa !
+\xe Partons !
+\xf Let's go!
+\sy
+\an
+\dt 01/Feb/2026
+\lx ambáa
+\ph /ambáː/
+\ps interj
+\gf réponse des hommes à une salutation
+\gvf bonjour (réponse)
+\ge men's reply to a greeting
+\gve hello (reply)
+\sm Réponse traditionnelle utilisée par les hommes après une salutation.
+\ms 1
+\xv A: I niŋ baara! B: Ambáa!
+\xe A: Bonjour! B: Bonjour!
+\xf A: Hello! B: Hello!
+\sy
+\an
+\dt 01/Feb/2026
+\lx ánnabii
+\ph /ánnàbiː/
+\ps n
+\gf prophète
+\gvf prophète
+\ge prophet
+\gve prophet
+\sm Personne qui transmet un message divin.
+\ms 1
+\xv Annabii Musa mu Ala la kiilaa ti.
+\xe Le prophète Moïse est l'envoyé de Dieu.
+\xf The prophet Moses is God's messenger.
+\sy
+\an
+\dt 01/Feb/2026
+\lx ansíi
+\ph /ansíː/
+\ps interj
+\gf réponse des femmes à une salutation
+\gvf bonjour (réponse)
+\ge women's reply to a greeting
+\gve hello (reply)
+\sm Réponse traditionnelle utilisée par les femmes après une salutation.
+\ms 1
+\xv A: I niŋ baara! B: Ansíi!
+\xe A: Bonjour! B: Bonjour!
+\xf A: Hello! B: Hello!
+\sy
+\an
+\dt 01/Feb/2026
+\lx áraba
+\ph /áràba/
+\ps n
+\gf mercredi
+\gvf mercredi
+\ge Wednesday
+\gve Wednesday
+\sm Jour de la semaine.
+\ms 1
+\xv Lúumoo ka ké jaŋ arába wó arába.
+\xe Il y a marché ici tous les mercredis.
+\xf There is a market here every Wednesday.
+\sy
+\an
+\dt 01/Feb/2026
+\lx árjanna
+\ph /árʤànna/
+\ps n
+\gf paradis
+\gvf paradis
+\ge paradise
+\gve paradise
+\sm Lieu de bonheur éternel dans les religions.
+\ms 1
+\xv Ala ye moɣo kendemaa lu bula arjanna to.
+\xe Dieu met les bonnes personnes au paradis.
+\xf God puts good people in paradise.
+\sy
+\an
+\dt 01/Feb/2026
+\lx árkamisa
+\ph /árkàmisa/
+\ps n
+\gf jeudi
+\gvf jeudi
+\ge Thursday
+\gve Thursday
+\sm Jour de la semaine.
+\ms 1
+\xv Tiba mee ke árkamisa-lúŋ-o.
+\xe On ne couvre pas les cases le jeudi.
+\xf Houses are not roofed on Thursday.
+\sy
+\an
+\dt 01/Feb/2026
+\lx áte
+\ph /áte/
+\ps pron
+\gf lui, elle (forme emphatique)
+\gvf lui, elle
+\ge him, her (emphatic form)
+\gve him, her
+\xv Áte mu Yéraa lée ti.
+\xe Je suis Yéra.
+\xf I am Yéra.
+\sy
+\an
+\dt 01/Feb/2026
+\lx áwa
+\ph /áwa/
+\ps interj
+\gf d’accord !
+\gvf d'accord !
+\ge okay!
+\gve okay!
+\sm Exclamation marquant l'accord ou l'acceptation.
+\ms 1
+\xv Áwa, á kǔw-o be téŋ née.
+\xe Donc, c’est comme ça que ça se passe.
+\xf So, that's how it happens.
+\sy
+\an
+\dt 01/Feb/2026
+\lx ayí
+\ph /ayí/
+\ps interj
+\gf non
+\gvf non
+\ge no
+\gve no
+\sm Mot utilisé pour exprimer la négation.
+\ms 1
+\xv A: I be taɣa-la baa? B: Ayí, ŋ te taɣa-la.
+\xe A: Tu vas partir? B: Non, je ne partirai pas.
+\xf A: Are you leaving? B: No, I am not leaving.
+\sy
+\an
+\dt 01/Feb/2026
+\lx baˊ
+\ph /baː/
+\ps n
+\gf maman
+\gvf maman
+\ge mom, mother
+\gve mom, mother
+\sm Terme affectueux pour désigner la mère.
+\ms 1
+\xv Ŋ bá maŋ náa nóo jáŋ.
+\xe Ma mère n’a pas pu venir ici.
+\xf My mother could not come here.
+\sy
+\an
+\dt 01/Feb/2026
+\lx báa
+\ph /báː/
+\ps n
+\gf chèvre
+\gvf chèvre
+\ge goat
+\gve goat
+\sm Animal domestique ruminant, élevé pour sa viande et son lait.
+\ms 1
+\xv Baa la konotodiyáa lée ye a bút-ǒo búla kooma.
+\xe C’est la générosité de la chèvre qui lui a mis la vulve vers l’arrière.
+\xf It is the generosity of the goat that put its vulva to the back.
+\sy
+\an
+\dt 01/Feb/2026
+\lx baa
+\ph /bàː/
+\ps n
+\gf fleuve, estuaire
+\gvf fleuve, estuaire
+\ge river, estuary
+\gve river, estuary
+\sm Cours d'eau important se jetant dans la mer.
+\ms 1
+\xv Báa fáatá le.
+\xe La marée est haute.
+\xf The tide is high.
+\sy
+\an
+\dt 01/Feb/2026
+\lx baa
+\ph /baː/
+\ps part
+\gf est-ce que ? (particule interrogative)
+\gvf est-ce que ?
+\ge is it that? (interrogative particle)
+\gve is it that?
+\sm Particule placée en fin de phrase pour former une question totale.
+\ms 1
+\xv I-te lée ye ñíŋ kin-óo tabí baa ?
+\xe Est-ce que c’est toi qui a préparé ce plat ?
+\xf Is it you who prepared this dish?
+\sy
+\an
+\dt 01/Feb/2026
+\lx -baa
+\ph /-baː/
+\ps suff
+\mm -baa
+\gf grand, très, beaucoup (suffixe augmentatif)
+\gvf grand, très, beaucoup
+\ge big, very, much (augmentative suffix)
+\gve big, very, much
+\sm Suffixe utilisé pour indiquer une grande taille, une grande quantité ou une intensité élevée.
+\ms 1
+\xv Tíya-báa lée sóto.
+\xe Il a récolté beaucoup d’arachide.
+\xf He harvested a lot of groundnuts.
+\sy
+\an
+\dt 01/Feb/2026
+\lx baabaˊ
+\ph /baːbaː/
+\ps n
+\gf papa
+\gvf papa
+\ge dad, father
+\gve dad, father
+\sm Terme affectueux pour désigner le père.
+\ms 1
+\xv Ŋ baabá be balúu-riŋ née.
+\xe Mon père est en vie.
+\xf My father is alive.
+\sy
+\an
+\dt 01/Feb/2026
+\lx baaboloŋ
+\ph /baːbòloŋ/
+\ps n
+\gf bas-fond
+\gvf bas-fond
+\ge low-lying area
+\gve low-lying area
+\sm Zone de terrain basse et humide, souvent inondable.
+\ms 1
+\xv Baaboloŋ to, jii be siyaa.
+\xe Dans le bas-fond, il y a beaucoup d'eau.
+\xf In the low-lying area, there is a lot of water.
+\sy
+\an
+\dt 01/Feb/2026
+\lx baabulu
+\ph /baːbùlu/
+\ps n
+\gf affluent
+\gvf affluent
+\ge tributary
+\gve tributary
+\sm Cours d'eau qui se jette dans un autre plus grand.
+\ms 1
+\xv Baabulu be dun baa to.
+\xe L'affluent se jette dans le fleuve.
+\xf The tributary flows into the river.
+\sy
+\an
+\dt 01/Feb/2026
+\lx baadaa
+\ph /baːdaː/
+\ps n
+\gf bord du fleuve
+\gvf bord du fleuve
+\ge riverbank
+\gve riverbank
+\sm Zone de terre le long d'un fleuve.
+\ms 1
+\xv Kúlúŋolu be báadaa to.
+\xe Les bateaux sont au bord du fleuve.
+\xf The boats are at the river's edge.
+\sy
+\an
+\dt 01/Feb/2026
+\lx baadee
+\ph /baːdeː/
+\ps v
+\vl tr
+\ve
+\fa
+\lat
+\gf enterrer
+\gvf enterrer
+\ge to bury
+\gve to bury
+\sm Mettre un corps ou un objet sous terre.
+\ms 1
+\xv I máŋ furêe báadee fóloo.
+\xe Ils n’ont pas encore enterré le cadavre.
+\xf They have not yet buried the corpse.
+\sy
+\an
+\dt 01/Feb/2026
+\lx baadiŋ
+\ph /baːdiŋ/
+\ps n
+\gf parent
+\gvf parent
+\ge relative
+\gve relative
+\sm Membre de la famille.
+\ms 1
+\xv Ŋ baadíŋ-o lée mu ñíŋ ti.
+\xe C’est quelqu’un de ma famille.
+\xf This is someone from my family.
+\sy
+\an
+\dt 01/Feb/2026
+\lx baadiŋyaa
+\ph /baːdiŋjaː/
+\ps n
+\gf parenté
+\gvf parenté
+\ge kinship
+\gve kinship
+\sm Lien de famille entre individus.
+\ms 1
+\xv Baadiŋ-yáa sáŋ-táa měe je.
+\xe La parenté ne s’achète pas.
+\xf Kinship cannot be bought.
+\sy
+\an
+\dt 01/Feb/2026

@@ -1,0 +1,127 @@
+# Mamara - morphotactic patterns
+
+# macro definitions
+macro   @vow@            [aeiouɛɔãɛ̃ɔ̃ãĩũ]
+macro   @cons@           [bcfghjklmnɲŋprsʃtvwzyʒ]
+macro   @nasal@          [m|n|ɲ|ŋ]
+macro   @prenasal@       (mb|nd|ŋg|nj|nz)
+macro   @syl@            [^aeiouɛɔ]*?(?P<V>[aeiouɛɔ])(?P=V)?([^aeiouɛɔ]+(?=([^aeiouɛɔ]|$)))?
+
+# processing instructions
+plan
+for token:
+stage 0 add parallel parse noun_inflection
+stage 0 add parallel parse verb_inflection
+stage 0 apply lookup
+return if parsed
+stage 1 add sequential parse verbal_derivation
+stage 1 add parallel parse nominal_derivation
+stage 1 apply lookup
+return if parsed
+stage 2 add parallel parse reduplication
+stage 2 apply lookup
+return if parsed
+stage 3 add parallel decompose pos_composition
+return if parsed
+stage 4 apply firstmatch parse loanwords
+return if parsed
+
+# --- NOUN INFLECTION (Noun Plurals & Class Suffixes) ---
+section noun_inflection
+
+# Plural Nominal Markers (-uu, -ii, -ee, -aa, -yɛ, -ee, -mɛ)
+pattern :n: [ {|uu}:: ] | :n: [ :n: :mrph:PL ]
+pattern :n: [ {|ii}:: ] | :n: [ :n: :mrph:PL.ALT ]
+pattern :n: [ {|ee}:: ] | :n: [ :n: :mrph:PL.HUM ]
+pattern :n: [ {|aa}:: ] | :n: [ :n: :mrph:PL.INAN ]
+pattern :n: [ {|yɛ}:: ] | :n: [ :n: :mrph:PL.DIM ]
+pattern :n: [ {|mɛ}:: ] | :n: [ :n: :mrph:MASS.LIQ ]
+pattern :n: [ {|ŋaa}:: ] | :n: [ :n: :mrph:PL.INDEF ]
+
+# Singular Nominal Markers & Class Determiners (-oo, -ga, -ge, -li, -ri, -we, -ye)
+pattern :n: [ {|oo}:: ] | :n: [ :n: :mrph:SG ]
+pattern :n: [ {|ga}:: ] | :n: [ :n: :mrph:SG.CL ]
+pattern :n: [ {|ge}:: ] | :n: [ :n: :mrph:SG.CL.ALT ]
+pattern :n: [ {|li}:: ] | :n: [ :n: :mrph:SG.INAN ]
+pattern :n: [ {|ri}:: ] | :n: [ :n: :mrph:SG.DET ]
+pattern :n: [ {|we}:: ] | :n: [ :n: :mrph:SG.HUM ]
+pattern :n: [ {|ye}:: ] | :n: [ :n: :mrph:SG.NEUT ]
+
+# --- VERBAL INFLECTION (Aspect, Mood, & Tense Markers) ---
+section verb_inflection
+
+# Perfective, Imperfective, & Aspect Suffixes
+pattern :v: [ {|a}:: ] | :v: [ :v: :mrph:PFV ]
+pattern :v: [ {|i}:: ] | :v: [ :v: :mrph:PFV.ALT ]
+pattern :v: [ {|ni}:: ] | :v: [ :v: :mrph:IPFV ]
+pattern :v: [ {|ge}:: ] | :v: [ :v: :mrph:IPFV.ALT ]
+pattern :v: [ {|ba}:: ] | :v: [ :v: :mrph:FUT ]
+pattern :v: [ {|da}:: ] | :v: [ :v: :mrph:HAB ]
+pattern :v: [ {|ri}:: ] | :v: [ :v: :mrph:STAT ]
+
+# Imperative & Negative Mood Markers
+pattern :v: [ {|i}:: ] | :v: [ :v: :mrph:IMP ]
+pattern :v: [ {|mɛ}:: ] | :v: [ :v: :mrph:NEG ]
+pattern :v: [ {|wa}:: ] | :v: [ :v: :mrph:NEG.PFV ]
+pattern :v: [ {|ya}:: ] | :v: [ :v: :mrph:NEG.IPFV ]
+
+# --- VERBAL DERIVATION (Derivational Extensions) ---
+section verbal_derivation
+
+# Causative, Intransitive/Passive, & Directional Suffixes
+pattern :v: [ {|gi}:: ] | :v: [ :v: :mrph:CAUS ]
+pattern :v: [ {|ri}:: ] | :v: [ :v: :mrph:CAUS.ALT ]
+pattern :v: [ {|li}:: ] | :v: [ :v: :mrph:INTR ]
+pattern :v: [ {|ŋi}:: ] | :v: [ :v: :mrph:PASS ]
+pattern :v: [ {|gɔ}:: ] | :v: [ :v: :mrph:DIR.IN ]
+pattern :v: [ {|ra}:: ] | :v: [ :v: :mrph:DIR.OUT ]
+
+# Participial Derivations
+pattern :v: [ {|ŋɛ}:: ] | :ptcp: [ :v: :mrph:PTCP.PFV ]
+pattern :v: [ {|baa}:: ] | :ptcp: [ :v: :mrph:PTCP.NEG ]
+
+# --- NOMINAL DERIVATION (Agentive, Nominalizer & Abstract Suffixes) ---
+section nominal_derivation
+
+# Agentive, Nominalizer, & Locative Suffixes
+pattern :n: [ {|vɔɔ}:: ] | :n: [ :v: :mrph:AG.SG ]
+pattern :n: [ {|fɛɛ}:: ] | :n: [ :v: :mrph:AG.PL ]
+pattern :n: [ {|pye}:: ] | :n: [ :v: :mrph:NMLZ ]
+pattern :n: [ {|gana}:: ] | :n: [ :v: :mrph:NMLZ.MANNER ]
+pattern :n: [ {|duun}:: ] | :n: [ :v: :mrph:NMLZ.TIME ]
+pattern :n: [ {|xuu}:: ] | :n: [ :v: :mrph:LOC.PLACE ]
+pattern :n: [ {|shizhaa}:: ] | :n: [ :n: :mrph:REFR ]
+
+# Abstract & Diminutive Suffixes
+pattern :n: [ {|rɛ}:: ] | :n: [ :n: :mrph:ABSTR ]
+pattern :n: [ {|bo}:: ] | :n: [ :n: :mrph:DIM.SG ]
+pattern :n: [ {|biile}:: ] | :n: [ :n: :mrph:DIM.PL ]
+
+# --- REDUPLICATION ---
+section reduplication
+
+pattern :v: [ {<re>(?P<stem>.+)</re>|<re>(?P=stem)</re>}:: ] | :v: [ :v: :v: ]
+pattern :adj: [ {<re>(?P<stem>.+)</re>|<re>(?P=stem)</re>}:: ] | :adj: [ :adj: :adj: ]
+pattern :v: [ {<re>(?P<stem>.+)</re>|-|<re>(?P=stem)</re>}:: ] | :v: [ :v: :: :v: ]
+pattern :n: [ {<re>(?P<stem>.+)</re>|-|<re>(?P=stem)</re>}:: ] | :n: [ :n: :: :n: ]
+pattern :adv: [ {<re>(?P<stem>.+)</re>|-|<re>(?P=stem)</re>}:: ] | :adv: [ :adv: :: :adv: ]
+
+# --- POS COMPOSITION (Noun-Noun, Verb-Noun Compounding) ---
+section pos_composition
+
+# Two-word composites
+pattern :n: [ :n: :n: ] | :n: [ :n: :n: ]
+pattern :n: [ :n: :adj: ] | :n: [ :n: :adj: ]
+pattern :n: [ :v: :n: ] | :n: [ :v: :n: ]
+pattern :n: [ :n: :v: ] | :n: [ :n: :v: ]
+
+# Three-word composites
+pattern :n: [ :n: :n: :n: ] | :n: [ :n: :n: :n: ]
+pattern :n: [ :n: :v: :n: ] | :n: [ :n: :v: :n: ]
+
+# --- LOANWORDS / NON-MAMARA FILTER (STAGE 6 = EMPR / LOANWORDS) ---
+section loanwords
+
+# Filter non-Mamara orthographic sequences, invalid consonants, or loanword patterns (French/Arabic borrowings)
+pattern <re>.*[qxvQXV].*</re>:: | ::EMPR
+pattern <re>.*[aeiouɛɔ]{3,}.*</re>:: | ::EMPR

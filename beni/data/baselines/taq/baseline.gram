@@ -1,0 +1,157 @@
+# Tamasheq (TAQ) morphotactic patterns
+# macro definitions
+macro   @v@             <re>[aeiouəăĕĭŏŭ]</re>
+macro   @cons@          <re>[bcdfghjklmnpqrstvwxyzḍḥṣṭẓŋšžč]</re>
+macro   @taq-cons@      [bcdfghjklmnpqrstvwxyzḍḥṣṭẓŋšžč]
+macro   @syl@           [^aeiouəăĕĭŏŭ]*(?P<V>[aeiouəăĕĭŏŭ])(?P=V)?
+
+# processing instructions
+plan
+for token:
+stage 0 add parallel parse inflection
+stage 0 add parallel parse common_derivation
+stage 0 apply lookup
+return if parsed
+stage 1 add sequential parse n_v_derivation
+stage 1 add parallel parse n_derivation
+stage 1 add parallel parse v_vq_derivation
+stage 1 add parallel parse vq_derivation
+stage 1 add parallel parse num_derivation
+stage 1 apply lookup
+return if parsed
+stage 2 add parallel parse reduplication
+stage 2 apply lookup
+return if parsed
+stage 3 add parallel decompose pos_composition
+return if parsed
+stage 4 apply firstmatch parse nonTAQ
+return if parsed
+
+#for sentence
+section inflection
+# nominal inflection
+# Gender/Number prefixes
+pattern :n/adj: [ {tă|}:: ] | :n/adj: [:n/adj: :mrph:F.SG]
+pattern :n/adj: [ {ti|}:: ] | :n/adj: [:n/adj: :mrph:F.PL]
+pattern :n/adj: [ {i|}:: ] | :n/adj: [:n/adj: :mrph:M.PL]
+
+# Possessive / Pronominal suffixes
+pattern :n/adj/prn: [ {|năwăn}:: ] | :n/adj/prn: [:n/adj/prn: :mrph:POSS.1PL]
+pattern :n/adj/prn: [ {|năsăn}:: ] | :n/adj/prn: [:n/adj/prn: :mrph:POSS.3MPL]
+pattern :n/adj/prn: [ {|năsnăt}:: ] | :n/adj/prn: [:n/adj/prn: :mrph:POSS.3FPL]
+pattern :n/adj/prn: [ {|năɣ}:: ] | :n/adj/prn: [:n/adj/prn: :mrph:POSS.1PL]
+pattern :n/adj/prn: [ {|wăn}:: ] | :n/adj/prn: [:n/adj/prn: :mrph:POSS.2MPL]
+pattern :n/adj/prn: [ {|măt}:: ] | :n/adj/prn: [:n/adj/prn: :mrph:POSS.2FPL]
+pattern :n/adj/prn: [ {|s}:: ] | :n/adj/prn: [:n/adj/prn: :mrph:POSS.3MSG]
+pattern :n/adj/prn: [ {|t}:: ] | :n/adj/prn: [:n/adj/prn: :mrph:POSS.3FSG]
+pattern :n/adj/prn: [ {|k}:: ] | :n/adj/prn: [:n/adj/prn: :mrph:POSS.2MSG]
+pattern :n/adj/prn: [ {|m}:: ] | :n/adj/prn: [:n/adj/prn: :mrph:POSS.2FSG]
+
+# Genitive linker / Construct state
+pattern :n/n.prop: [ {n|}:: ] | :n/n.prop: [:n/n.prop: :mrph:GEN]
+
+# verbal inflection
+# Subject prefixes
+pattern :v: [ {nă|}:: ] | :v: [ :v: :mrph:SUBJ.1PL]
+pattern :v: [ {d|}:: ] | :v: [ :v: :mrph:SUBJ.3PL]
+
+# derivative forms we need to consider even if we have them in dictionary
+section common_derivation
+# Abstract / Verbal noun prefix
+pattern :n: [ {ă|}:: ] | :n: [ :v: :mrph:VN]
+pattern :n: [ {ă|}:: ] | :n: [ :n: :mrph:ABSTR]
+
+# Causative
+pattern :v: [ {ss|}:: ] | :v: [ :v: :mrph:CAUS]
+pattern :v: [ {s|}:: ] | :v: [ :v: :mrph:CAUS]
+
+# Passive / Middle
+pattern :v: [ {tt|}:: ] | :v: [ :v: :mrph:PASS]
+
+# common nominal/verbal derivation (locatives/relational)
+section n_v_derivation
+# Postpositions
+pattern :n/n.prop: [ {fălla|}:: ] | :n/n.prop: [:n/n.prop: :mrph:LOC]
+pattern :n/n.prop: [ {jer|}:: ] | :n/n.prop: [:n/n.prop: :mrph:INTER]
+pattern :n/n.prop: [ {s|}:: ] | :n/n.prop: [:n/n.prop: :mrph:ALL]
+pattern :n/n.prop: [ {ar|}:: ] | :n/n.prop: [:n/n.prop: :mrph:TERM]
+
+# nominal derivation
+section n_derivation
+# Feminine suffix
+pattern :n/adj: [ {|t}:: ] | :n/adj: [:n/adj: :mrph:F]
+# Plural suffixes
+pattern :n/adj: [ {|ăn}:: ] | :n/adj: [:n/adj: :mrph:PL]
+pattern :n/adj: [ {|en}:: ] | :n/adj: [:n/adj: :mrph:PL]
+
+# verbal/vq derivation
+section v_vq_derivation
+# Directional / Ventive
+pattern :v: [ {dd|}:: ] | :v: [ :v: :mrph:CISL]
+# Negation
+pattern :v: [ {wăr|}:: ] | :v: [ :v: :mrph:NEG]
+
+# vq derivation
+section vq_derivation
+pattern :vq: [ {|ya}:: ] | :n/v: [ :vq: :mrph:DEQU]
+pattern :adj: [ {|man}:: ] | :adj: [ :vq: :mrph:ADJ]
+
+# numeral derivation
+section num_derivation
+pattern :num: [ {|ăn}:: ] | :num: [ :num: :mrph:ORD]
+
+## reduplication
+section reduplication
+pattern :v: [ {<re>(?P<stem>.+)</re>|<re>(?P=stem)</re>}:: ] | :v: [ :v: :v: ]
+pattern :adj: [ {<re>(?P<stem>.+)</re>|<re>(?P=stem)</re>}:: ] | :adj: [ :adj: :adj: ]
+pattern :num: [ {<re>(?P<stem>.+)</re>|<re>(?P=stem)</re>}:: ] | :num: [ :num: :num: ]
+pattern :v: [ {<re>(?P<stem>.+)</re>|-|<re>(?P=stem)</re>}:: ] | :v: [ :v: :: :v: ]
+pattern :adj: [ {<re>(?P<stem>.+)</re>|-|<re>(?P=stem)</re>}:: ] | :adj: [ :adj: :: :adj: ]
+pattern :num: [ {<re>(?P<stem>.+)</re>|-|<re>(?P=stem)</re>}:: ] | :num: [ :num: :: :num: ]
+
+## composition
+# general part-of-speech composition patterns
+section pos_composition
+
+# two-words composites
+# n.prop + n = n   ex: Mali ganda
+pattern :n: [ :n.prop: :n: ] | :n: [ :n.prop: :n: ]
+# v/n + n = n   ex: taggaẓt n-ăkall
+pattern :n: [ :n/v: :n: ] | :n: [ :n/v: :n: ]
+# n + v = n/v
+pattern :n/v: [ :n: :v: ] | :n/v: [ :n: :v: ]
+# n + adj/num = n
+pattern :n: [ :n: :adj/num: ] | :n: [ :n: :adj/num: ]
+# dtm + v = n
+pattern :n: [ :dtm: :v: ] | :n: [ :dtm: :v: ]
+# pp + n = n
+pattern :n: [ :pp: :n: ] | :n: [ :pp: :n: ]
+
+# three-words composites
+# n + adj/pp/num + n = n
+pattern :n: [ :n: :adj/pp/num: :n: ] | :n: [ :n: :adj/pp/num: :n: ]
+# dtm/n + v + n = n
+pattern :n: [ :dtm/n: :v: :n: ] | :n: [ :dtm/n: :v: :n: ]
+# n + pp + v = n/v
+pattern :n/v: [ :n: :pp: :v: ] | :n/v: [ :n: :pp: :v: ]
+# n+n+n = n
+pattern :n: [ :n: :n: :n: ] | :n: [ :n: :n: :n: ]
+
+# v+mrph+n
+pattern :n: [ :v: n:mrph: :n: ] | :n: [ :v: :mrph:GEN :n: ]
+
+# four-words composites
+# n + pp + n + n = n
+pattern :n: [ :n: :pp: :n: :n: ] | :n: [ :n: :pp: :n: :n: ]
+# n + pp + adj + n = n
+pattern :n: [ :n: :pp: :adj: :n: ] | :n: [ :n: :pp: :adj: :n: ]
+# n+v+v+n
+pattern :n: [ :n: :v: :v: :n: ] | :n: [ :n: :v: :v: :n: ]
+
+# orthographically unlikely to be tamasheq words
+# for NEW orthography, with no tones marked
+section nonTAQ
+# forms with symbols out of tamasheq alphabet
+pattern <re>.*[àâäéèêëïîôöùûüÿçœæ].*</re>:: | ::EMPR
+# two different vowels in sequence (no diphthongs in standard Tamasheq)
+pattern <re>.*(?P<v>[aeiouəăĕĭŏŭ])(?!(?P=v))(?=[aeiouəăĕĭŏŭ]).*</re>:: | ::EMPR

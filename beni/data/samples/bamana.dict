@@ -1,0 +1,234 @@
+\_sh v3.0  400  MDF 4.0
+
+\lang bam
+\name bamadaba
+\ver 0.5.4
+
+\lx à
+\ms 1
+\ps pers
+\gf 3SG
+\gvf 3SG
+\smf (il ; elle ; le ; la ; lui ; en ; y ; son ; sa ; ses)
+\xv à y'á d'á mà
+\xf il le lui a donné ; elle la lui donna ...
+\xv à bá dòn
+\xf c'est sa mère (la mère de lui, d'elle)
+\xv à tá tɛ́
+\xf ce n'est pas le sien ..., la sienne ... (ce n'est pas sa propriété)
+\ms 2
+\gvf ceci
+\smf (sens démonstratif annonçant ce qui suit :)
+\xv í ń'á fɔ́
+\xf tu dirais ceci, par exemple ...
+\xv ò y'á sɔ̀rɔ
+\xf cela a obtenu ceci : ..., alors ...
+\ms 3
+\gvf se
+\smf (sens réfléchi)
+\xv à y'á sìgi = à y'í sìgi
+\xf il s'est assis, elle s'est assise
+\dt 26/Sep/2006
+
+\lx á 
+\ps intj
+\gf ah!
+\gvf ah!
+\ms 1
+\smf (surprise : ah !)
+\ms 2
+\smf (réticence : ah ! [très bref])
+\dt 03/oct./2006
+
+\lx á'
+\ve á
+\ps pers
+\gf 2PL
+\gvf 2PL
+\dt 28/Jun/2020
+
+\lx à dɔ́ lá
+\ve à dɔ́ rɔ́
+\ve à dɔ́ rá
+\di (bk,bn)
+\ps intj
+\gf peut-être
+\ms 1
+\gvf peut-être
+\ms 2
+\gvf parfois
+\dt 31/May/2022
+
+\lx áà
+\ps intj
+\gf ah!
+\gvf ah!
+\gvf oh!
+\rem du 81 +  jos
+\dt 07/Aug/2017
+
+\lx ábada
+\va hábada
+\ps n
+\gf éternité
+\gvf éternité
+\xv ábada káma
+\xf pour l'éternité,  pour toujours
+\dt 30/Jun/2020
+
+\lx ábada
+\va hábada
+\bw Ar. abadan
+\ps adv
+\ms 1
+\gf jamais
+\gvf jamais
+\smf (phrase négative)
+\xv kàn'ó kɛ́ ábada !
+\xf ne fais jamais cela !
+\ms 2
+\gvf toujours
+\gvf à jamais
+\smf (phrase positive)
+\xv ò yé  í tɛ̀nɛ yé ábada !
+\xf c'est ton interdit pour toujours !
+\dt 30/Jun/2020
+
+\lx àbarika
+\ve àbarka
+\bw Ar. tabaraka : Dieu soit loué !
+\ps intj
+\gf merci
+\gvf merci
+\xv bàba, àbarika !
+\xf Papa, merci !
+\xv àbarika  Ála yé !
+\xf merci à Dieu !
+\xv àbarika !
+\xf baisse le prix ! (au cours d'un marchandage, quand la somme paraît trop élevée)
+\dt 28/Jun/2020
+
+\lx ádɛrɛsi
+\ps n
+\gf adresse
+\gvf adresse
+\dt 01/May/2017
+
+\lx adw
+\mm àní:conj:ainsi.que
+\mm dɔ́:prn:certain
+\mm wɛ́rɛ:dtm:autre
+\mm w:mrph:PL
+\ps adv
+\gf etc.
+\gvf etc 
+\smf (abréviation de àní dɔ́ wɛrɛw)
+\dt 07/Feb/2016
+
+\lx àháàn
+\ps intj
+\gf vraiment?
+\gvf vraiment?
+\smf (interjection d'étonnement)
+\dt 31/May/2022
+
+\lx ákademi
+\ps n
+\gf académie
+\gvf académie
+\dt 03/Nov/2019
+
+\lx ákara
+\di (-bn,bk)
+\ps n
+\gf beignet.de.haricot
+\gvf beignet de haricot
+\dt 03/Apr/2016
+
+\lx Ála
+\ve Álawu
+\ve Álahu
+\bw Ar. allah 'Dieu'
+\ps n
+\ms 1
+\gf Dieu
+\gvf Dieu
+\sy Ngála
+\xv Ála k' ì dɛ̀mɛ !
+\xf Que Dieu t'aide !
+\xv ní  Ála sɔ̀nna...
+\xf Si Dieu le veut ...
+\xv Ála dén !
+\xf (en cas de malheur)
+\xv Ála sàgo, á sàgo !
+\xf Je m'en remets à Dieu et à vous ! ("volonté de Dieu, volonté de vous"..., paroles de conclusion dans les palabres l'intervenant s'en remet à l'auditoire)
+\xv ń bɛ́  Ála mìnɛ
+\xf je m'en remets à Dieu (dans une épreuve, une injustice)
+\xv Ála ní...
+\xf indique la grandeur, l'excellence de qqch.
+\xv Ála ní  tìɲɛ
+\xf authentique, vrai de vrai ... (m. à m. : Dieu et vérité)
+\xv nìn yé jàmanaden Ála ní  tìɲɛ yé
+\xf celui-ci est un vrai fils du pays
+\xv Ála ní  à cɛ̀ɲa kósɔn...
+\xf à cause de sa grande beauté ...
+\xv Ála kósɔn ;  Ála káma
+\xf pour (l'amour de) Dieu
+\xv ní  Ála fàrala ń kàn
+\xf si Dieu m'aide ... (si Dieu s'ajoute à moi)
+\ms 2
+\gvf ciel
+\xv Ála fìnna
+\xf le ciel s'est noirci
+\ms 3
+\gvf pluie
+\xv Ála nàna
+\xf la pluie est venue, il a plu
+\dt 28/Jun/2020
+
+\lx álabana
+\mm Ála:n:Dieu
+\mm bàna:n:maladie
+\ps n
+\gf maladie.inexpliquée
+\gvf maladie inexpliquée
+\dt 16/Aug/2006
+
+\lx álabato
+\mm Ála:n:Dieu
+\mm bàto:n:adoration
+\ps n
+\gf prière.communautaire
+\gvf prière communautaire
+\gvf adoration de Dieu
+\dt 26/Sep/2006
+
+\lx áladaba
+\mm Ála:n:Dieu
+\mm dá:n:plaie
+\mm ba:mrph:AUGM
+\ps n
+\gf grain.de.beauté
+\gvf grain de beauté
+\gvf naevus
+\smf (tache hypo ou hyperchromique stable, congénitale)
+\dt 03/Apr/2016
+
+\lx áladeli
+\mm Ála:n:Dieu
+\mm déli:n:prière
+\ps n
+\gf prière
+\gvf prière
+\dt 26/Sep/2006
+
+\lx álafàrańkàn
+\mm Ála:n:Dieu
+\mm fàra:v:ajouter
+\mm ń:pers:1SG
+\mm kàn:pp:sur
+\ps n
+\gf providence
+\gvf providence
+\smf (aide providentielle, chance dans une entreprise)
+\dt 26/Sep/2006

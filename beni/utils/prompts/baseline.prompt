@@ -1,0 +1,31 @@
+Create baseline linguistic resources for input_language.
+
+{{examples}}
+
+{{notes}}
+
+TASK: Generate a complete starter set of grammar patterns and dictionary entries.
+
+Grammar should include:
+1. Macro definitions for common phonological patterns
+2. Processing plan with appropriate stages
+3. Sections for: inflection, participles, common_derivation, n_derivation, v_vq_derivation, n_v_derivation, vq_derivation, num_derivation, reduplication, pos_composition, nonbamana (or equivalent loanword filter)
+4. Patterns reflecting actual morphotactics
+
+Dictionary should include:
+100-200 core entries covering:
+- Common nouns, verbs, adjectives, adverbs
+- Pronouns, person markers, postpositions
+- Common morphemes, interjections, particles
+- Tone marking where known
+- Dot-notation glosses
+
+Mark uncertain patterns/entries with # TENTATIVE or \rem TENTATIVE
+
+OUTPUT JSON:
+{
+  "dictionary": [{"lx": "", "ps": "", "mm": "", "gf": "", "xv": "", "xf": ""}],
+  "grammar": ["pattern ...", "macro ..."],
+  "language": "input_language",
+  "notes": "Assumptions made"
+}

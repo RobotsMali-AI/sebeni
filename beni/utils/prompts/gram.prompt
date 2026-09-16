@@ -1,0 +1,54 @@
+You are an expert computational linguist and morphologist specializing in rule-based morphological parsing and finite-state grammar design. Your task is to generate a complete morphotactic parsing grammar file for {input_language} that strictly follows the format, syntax, and architectural conventions of the provided reference file.
+
+INPUT SPECIFICATIONS:
+- Target Language: {input_language}
+
+- Morphological Typology: [e.g., agglutinative, fusional, polysynthetic, isolating]
+- Core POS Tag Inventory: [e.g., :n:, :v:, :adj:, :adv:, :num:, :n.prop:, :ptcp:, :vq:, :dtm:, :pp:, :prn:, :pm:, :pers:]
+- Morphological Feature Tags (:mrph:*): [e.g., :mrph:PL, :mrph:SG, :mrph:PFV, :mrph:PROG, :mrph:OPT, :mrph:CAUS, :mrph:PASS, :mrph:LOC, :mrph:INS, :mrph:DIM, :mrph:AUGM, :mrph:ABSTR, :mrph:AG.OCC, :mrph:NMLZ, etc.]
+- Phonological/Syllable Constraints: [e.g., CV(C) structure, vowel harmony rules, nasal assimilation, tone sandhi, consonant mutation, syllable-final restrictions]
+- Major Inflectional Paradigms: [list suffixes/prefixes/circumfixes with conditioning environments]
+- Key Derivational Patterns: [e.g., agentive, locative, abstract, diminutive/augmentative, nominalization, causative]
+- Composition & Reduplication: [full/partial reduplication rules, noun-noun, verb-noun compounds, linking morphemes]
+- Proper Name & Loanword Detection: [orthographic, phonotactic, or diacritic markers for non-native words]
+
+OUTPUT REQUIREMENTS:
+1. HEADER: Start with `# [Language] morphotactic patterns\n# version [YYYY.MM.DD]`
+2. MACRO DEFINITIONS: Use `macro @name@ <re>...</re>` or `macro @name@ [char-class]` to define:
+   - Syllable templates (`@syl@`, `@nasal-syl@`, `@nonnasal-v@`, etc.)
+   - Consonant/vowel classes
+   - Phonological conditioning environments (nasalization, harmony, glide insertion, tone placement)
+   - Proper name regex
+3. PROCESSING PLAN: Use a staged architecture (`stage 0` to `stage N`) with:
+   - `add parallel parse [section]` for simultaneous rule application
+   - `apply lookup` for dictionary fallback
+   - `return if parsed` to short-circuit after successful matches
+   - Order rules by frequency/likelihood and resolve high-ambiguity affixes early
+4. PATTERN SYNTAX (STRICT):
+   - Format: `pattern :source_tags: [ {affix|regex|@macro@}:: ] | :target_tags: [ :source: :mrph:FEATURE ...]`
+   - Use `{A|B}` for allomorphs
+   - Use `<re>...</re>` for complex regex
+   - Reference macros as `@macro@`
+   - Maintain the `::` delimiter exactly
+   - Support multi-POS tags (`:n/adj/ptcp:`) and intermediate tags (`ka:pp:`, `lá:mrph:CAUS`, `yɛ̀rɛ̂:dtm:même`, etc.)
+5. SECTIONS: Organize rules logically, mirroring the reference:
+   - `inflection_*` (verbal TAM, nominal number/case/definiteness)
+   - `prefixes` / `circumfixes` / `suffixes`
+   - `participles_*` (resultative, potential, privative, agentive, conversive)
+   - `derivations` (diminutive/augmentative, abstract, locative, nominalizer, agentive)
+   - `specialcompo*` (multi-morpheme templates, incorporated nouns, compound skeletons)
+   - `reduplication` (full/partial, with/without hyphens, duplicate/triplicate)
+   - `pos_composition*` (2–4 word compounds with linking particles/postpositions)
+   - `propername` & `non[language]` (orthographic/phonotactic foreign-word filters)
+6. COMMENTS: Add concise linguistic notes, ordering rationale, ambiguity warnings, and known edge cases using `#`.
+7. STRICT FORMAT: Output ONLY the grammar file. No markdown, no explanations, no preamble, no trailing text. Preserve exact whitespace, indentation, and delimiter placement.
+
+CRITICAL CONSTRAINTS:
+- Do NOT invent new syntax. Adhere strictly to the reference DSL.
+- Ensure stage ordering prevents rule collisions; use `return if parsed` appropriately.
+- Adapt macros and regex to the target language's actual phonotactics and morphological behavior.
+- Handle allomorphy and phonologically conditioned variants explicitly.
+- Use consistent tag naming and intermediate gloss formatting (`tag:mrph:FEATURE` or `gloss:tag:translation`).
+- Include fallback `apply lookup` and early returns in every stage as in the reference.
+
+Generate the complete grammar file now. Limit your response to the grammar file only.

@@ -1,0 +1,7805 @@
+\_sh v3.0  400  MDF 4.0
+
+\lang mey
+\name seben-hassaniya
+\ver 0.0.1
+
+\lx jumḥūriyya
+\ph ʒumhuːrijja
+\va ǧumhūriyya
+\mm jumḥūr-iyya
+\ps n.f.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf république
+\gvf république
+\ge republic
+\gve republic
+\sm Forme de gouvernement où le pouvoir est exercé par des représentants élus.
+\ms 1
+\xv jumḥūriyya māli
+\xe république du mali
+\xf republic of mali
+\sy dawla
+\an sulṭana
+\dt 01/Feb/2026
+
+\lx šaˁb
+\ph ʃaʕb
+\va šaˁab
+\mm šaˁb
+\ps n.m.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf peuple
+\gvf peuple
+\ge people
+\gve people
+\sm Groupe humain constituant une communauté politique.
+\ms 1
+\xv šaˁb wāḥid
+\xe un seul peuple
+\xf one people
+\sy mwaaṭiniin
+\an fard
+\dt 01/Feb/2026
+
+\lx wāḥid
+\ph waːħid
+\va wāḥad
+\mm wāḥid
+\ps adj.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf un
+\gvf un
+\ge one
+\gve one
+\sm Nombre cardinal désignant l'unité.
+\ms 1
+\xv šaˁb wāḥid
+\xe un peuple unique
+\xf one single people
+\sy fard
+\an yaasir
+\dt 01/Feb/2026
+
+\lx niyya
+\ph nijja
+\va niye
+\mm niyya
+\ps n.f.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf intention
+\gvf intention
+\ge intention
+\gve intention
+\sm Dessein délibéré d'accomplir quelque chose.
+\ms 1
+\xv niyye wāḥida
+\xe une seule intention
+\xf one intention
+\sy qasd
+\an fawḍa
+\dt 01/Feb/2026
+
+\lx ˁaqīda
+\ph ʕaqiːda
+\va ˁagīda
+\mm ˁaqīd-a
+\ps n.f.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf foi
+\gvf foi
+\ge faith
+\gve faith
+\sm Système de croyances religieuses ou philosophiques.
+\ms 1
+\xv ˁaqīda wāḥida
+\xe une seule foi
+\xf one faith
+\sy diin
+\an kufr
+\dt 01/Feb/2026
+
+\lx mašrūˁ
+\ph maʃruːʕ
+\va mašrū
+\mm ma-šrūˁ
+\ps n.m.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf projet
+\gvf projet
+\ge draft
+\gve draft
+\sm Travail préparatoire ou plan d'une loi.
+\ms 1
+\xv mašrūˁ dustūr
+\xe projet de constitution
+\xf draft constitution
+\sy xutta
+\an nihaaya
+\dt 01/Feb/2026
+
+\lx dustūr
+\ph dustuːr
+\va 
+\mm dustūr
+\ps n.m.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf constitution
+\gvf constitution
+\ge constitution
+\gve constitution
+\sm Loi fondamentale d'un État.
+\ms 1
+\xv dustūr əl-māli
+\xe la constitution du mali
+\xf the mali constitution
+\sy qaanuun
+\an fawḍa
+\dt 01/Feb/2026
+
+\lx ǧedwal
+\ph ʒedwal
+\va jedwal
+\mm ǧedwal
+\ps n.m.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf tableau
+\gvf tableau
+\ge table
+\gve table
+\sm Liste organisée d'informations ou de matières.
+\ms 1
+\xv jedwal əlmwaadə
+\xe table des matières
+\xf table of contents
+\sy qaa-ima
+\an 
+\dt 01/Feb/2026
+
+\lx mādda
+\ph maːdda
+\va maada
+\mm mādd-a
+\ps n.f.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf article
+\gvf article
+\ge article
+\gve article
+\sm Division distincte d'un texte législatif.
+\ms 1
+\xv mādda wāḥida
+\xe article premier
+\xf article one
+\sy vaṣl
+\an 
+\dt 01/Feb/2026
+
+\lx dībāǧa
+\ph diːbaːʒa
+\va dibaaja
+\mm dībāǧ-a
+\ps n.f.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf préambule
+\gvf préambule
+\ge preamble
+\gve preamble
+\sm Introduction exposant les motifs d'un texte.
+\ms 1
+\xv dībāǧa əd-dustūr
+\xe préambule de la constitution
+\xf preamble of the constitution
+\sy muqaddima
+\an xaatima
+\dt 01/Feb/2026
+
+\lx ˁunwān
+\ph ʕunwaːn
+\va ɣunwaan
+\mm ˁunwān
+\ps n.m.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf titre
+\gvf titre
+\ge title
+\gve title
+\sm Nom donné à un chapitre ou une section.
+\ms 1
+\xv ˁunwān lowal
+\xe titre premier
+\xf title one
+\sy mādda
+\an 
+\dt 01/Feb/2026
+
+\lx ḥaqq
+\ph ħaqq
+\va hag
+\mm ḥaqq
+\ps n.m.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf droit
+\gvf droit
+\ge right
+\gve right
+\sm Prérogative légale ou morale.
+\ms 1
+\xv əl-ḥuquug
+\xe les droits
+\xf the rights
+\sy xidma
+\an baaṭil
+\dt 01/Feb/2026
+
+\lx wāǧib
+\ph waːʒib
+\va waajbat
+\mm wāǧib
+\ps n.m.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf devoir
+\gvf devoir
+\ge duty
+\gve duty
+\sm Obligation légale ou morale.
+\ms 1
+\xv əl-wāajibaat
+\xe les devoirs
+\xf the duties
+\sy lizaam
+\an ḥaqq
+\dt 01/Feb/2026
+
+\lx faṣl
+\ph fasˤl
+\va vaṣl
+\mm faṣl
+\ps n.m.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf section
+\gvf section
+\ge section
+\gve section
+\sm Division d'un texte ou d'un chapitre.
+\ms 1
+\xv vaṣl lowal
+\xe section première
+\xf section one
+\sy ˁunwān
+\an 
+\dt 01/Feb/2026
+
+\lx luwwal
+\ph luwwal
+\va lowal
+\mm luwwal
+\ps adj.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf premier
+\gvf premier
+\ge first
+\gve first
+\sm Qui précède tous les autres dans le temps ou l'ordre.
+\ms 1
+\xv vaṣl lowal
+\xe premier chapitre
+\xf first chapter
+\sy awwal
+\an itaali
+\dt 01/Feb/2026
+
+\lx ḥurriyya
+\ph ħurrijja
+\va huriya
+\mm ḥurr-iyya
+\ps n.f.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf liberté
+\gvf liberté
+\ge freedom
+\gve freedom
+\sm État de celui qui n'est pas soumis à une contrainte.
+\ms 1
+\xv əl-ḥurriyya
+\xe la liberté
+\xf the freedom
+\sy istiqlal
+\an ˁubudiyya
+\dt 01/Feb/2026
+
+\lx dawla
+\ph dawla
+\va dowla
+\mm dawla
+\ps n.f.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf état
+\gvf état
+\ge state
+\gve state
+\sm Organisation politique souveraine.
+\ms 1
+\xv dawla wo siyāda
+\xe état et souveraineté
+\xf state and sovereignty
+\sy jumḥūriyya
+\an 
+\dt 01/Feb/2026
+
+\lx siyāda
+\ph sijaːda
+\va siyaada
+\mm siyād-a
+\ps n.f.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf souveraineté
+\gvf souveraineté
+\ge sovereignty
+\gve sovereignty
+\sm Pouvoir suprême reconnu à l'État.
+\ms 1
+\xv siyaada woṭoniyya
+\xe souveraineté nationale
+\xf national sovereignty
+\sy ḥukm
+\an istiˁmaar
+\dt 01/Feb/2026
+
+\lx sulṭa
+\ph sultˤa
+\va sulta
+\mm sulṭ-a
+\ps n.f.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf pouvoir
+\gvf pouvoir
+\ge power
+\gve power
+\sm Autorité légale d'agir ou de commander.
+\ms 1
+\xv sulṭa tanfīḏiyya
+\xe pouvoir exécutif
+\xf executive power
+\sy ḥukm
+\an 
+\dt 01/Feb/2026
+
+\lx tanfīḏiyya
+\ph tanfiːðijja
+\va tanviʑiya
+\mm tanfīḏ-iyya
+\ps adj.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf exécutif
+\gvf exécutif
+\ge executive
+\gve executive
+\sm Relatif à la mise en œuvre des lois.
+\ms 1
+\xv sulṭa tanfīḏiyya
+\xe le pouvoir exécutif
+\xf the executive power
+\sy 
+\an tašrīˁiyya
+\dt 01/Feb/2026
+
+\lx ra-īs
+\ph raʔiːs
+\va ra-is
+\mm ra-īs
+\ps n.m.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf président
+\gvf président
+\ge president
+\gve president
+\sm Chef d'un État ou d'une institution.
+\ms 1
+\xv ra-īs əl-jumḥūriyya
+\xe président de la république
+\xf president of the republic
+\sy mudiir
+\an 
+\dt 01/Feb/2026
+
+\lx ḥukūma
+\ph ħukuːma
+\va hukuuma
+\mm ḥukūm-a
+\ps n.f.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf gouvernement
+\gvf gouvernement
+\ge government
+\gve government
+\sm Organe chargé de la direction d'un État.
+\ms 1
+\xv əl-ḥukūma
+\xe le gouvernement
+\xf the government
+\sy sulṭa
+\an 
+\dt 01/Feb/2026
+
+\lx idāra
+\ph idaːra
+\va idaara
+\mm idār-a
+\ps n.f.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf administration
+\gvf administration
+\ge administration
+\gve administration
+\sm Ensemble des services chargés de l'intérêt public.
+\ms 1
+\xv idāra əd-dawla
+\xe administration de l'état
+\xf state administration
+\sy maktab
+\an 
+\dt 01/Feb/2026
+
+\lx mustaqilla
+\ph mustaqilla
+\va mustaqila
+\mm mustaqill-a
+\ps adj.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf indépendant
+\gvf indépendant
+\ge independent
+\gve independent
+\sm Qui ne dépend d'aucune autre autorité.
+\ms 1
+\xv sulṭa mustaqilla
+\xe autorité indépendante
+\xf independent authority
+\sy hura
+\an taabiˁa
+\dt 01/Feb/2026
+
+\lx quwwa
+\ph quwwa
+\va quwaat
+\mm quwwa
+\ps n.f.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf force
+\gvf force
+\ge force
+\gve force
+\sm Puissance physique ou militaire.
+\ms 1
+\xv quwaat əl-musallaḥa
+\xe les forces armées
+\xf the armed forces
+\sy sulṭa
+\an ðuˁf
+\dt 01/Feb/2026
+
+\lx musallaḥa
+\ph musallaħa
+\va musalaha
+\mm musallaḥ-a
+\ps adj.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf armé
+\gvf armé
+\ge armed
+\gve armed
+\sm Équipé d'armes pour le combat.
+\ms 1
+\xv quwaat əl-musallaḥa
+\xe forces armées
+\xf armed forces
+\sy 
+\an silmiyya
+\dt 01/Feb/2026
+
+\lx amn
+\ph amn
+\va ămn
+\mm amn
+\ps n.m.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf sécurité
+\gvf sécurité
+\ge security
+\gve security
+\sm État de protection contre les dangers.
+\ms 1
+\xv quwaat əl-amn
+\xe forces de sécurité
+\xf security forces
+\sy himaaya
+\an xatar
+\dt 01/Feb/2026
+
+\lx tašrīˁiyya
+\ph taʃriːʕijja
+\va tašriiyye
+\mm tašrīˁ-iyya
+\ps adj.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf législatif
+\gvf législatif
+\ge legislative
+\gve legislative
+\sm Relatif à l'élaboration des lois.
+\ms 1
+\xv sulṭa tašrīˁiyya
+\xe pouvoir législatif
+\xf legislative power
+\sy 
+\an tanfīḏiyya
+\dt 01/Feb/2026
+
+\lx ḥukm
+\ph ħukm
+\va hukum
+\mm ḥukm
+\ps n.m.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf disposition
+\gvf disposition
+\ge provision
+\gve provision
+\sm Règle ou décision contenue dans une loi.
+\ms 1
+\xv ahkaam ˁāmm
+\xe dispositions générales
+\xf general provisions
+\sy mādda
+\an 
+\dt 01/Feb/2026
+
+\lx ˁāmm
+\ph ʕaːmm
+\va ɣaam
+\mm ˁāmm
+\ps adj.
+\vl 
+\ve 
+\fa 
+\lat 
+\gf général
+\gvf général
+\ge general
+\gve general
+\sm Qui s'applique à tout un ensemble.
+\ms 1
+\xv ahkaam ˁāmm
+\xe dispositions générales
+\xf general provisions
+\sy yaasir
+\an xaaṣ
+\dt 01/Feb/2026
+
+\lx ɣaam
+\ph /ʁaːm/
+\ps adj
+\gf général
+\gvf général
+\ge general
+\gve general
+\xv ahkaam ɣaam
+\xe dispositions générales
+\xf general provisions
+\sy cmuumi
+\an xaaṣ
+\dt 01/Feb/2026
+
+\lx šagl
+\ph /ʃaɡl/
+\ps n
+\gf travail
+\gvf travail
+\ge work
+\gve work
+\xv šagl əlbarleman
+\xe travail du parlement
+\xf work of the parliament
+\sy xidma
+\an raaha
+\dt 01/Feb/2026
+
+\lx barleman
+\ph /barlamaːn/
+\ps n
+\gf parlement
+\gvf parlement
+\ge parliament
+\gve parliament
+\xv šagl əlbarleman
+\xe fonctionnement du parlement
+\xf operation of parliament
+\sy majlis
+\an -
+\dt 01/Feb/2026
+
+\lx majaal
+\ph /madʒaːl/
+\ps n
+\gf domaine
+\gvf domaine
+\ge domain
+\gve domain
+\xv majaal šariɣa
+\xe domaine de la loi
+\xf domain of the law
+\sy mantiqa
+\an -
+\dt 01/Feb/2026
+
+\lx anẓima
+\ph /anðˤima/
+\ps n
+\gf systèmes
+\gvf règlements
+\ge systems
+\gve regulations
+\xv majaal šariɣa wo anẓima
+\xe domaine de la loi et des règlements
+\xf domain of law and regulations
+\sy qawaacid
+\an -
+\dt 01/Feb/2026
+
+\lx ɣalaaqaat
+\ph /ʁalaːqaːt/
+\ps n
+\gf relations
+\gvf rapports
+\ge relations
+\gve relationships
+\xv ɣalaaqaat beyn sulta
+\xe relations entre les pouvoirs
+\xf relations between powers
+\sy rawabit
+\an -
+\dt 01/Feb/2026
+
+\lx beyn
+\ph /bejn/
+\ps prep
+\gf entre
+\gvf entre
+\ge between
+\gve between
+\xv ɣalaaqaat beyn sulta
+\xe relations entre les pouvoirs
+\xf relations between powers
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx qaḍaa’iyya
+\ph /qadˤaːʔijja/
+\ps adj
+\gf judiciaire
+\gvf judiciaire
+\ge judicial
+\gve judicial
+\xv sulta qaḍaa’iyya
+\xe pouvoir judiciaire
+\xf judicial power
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx mahkama
+\ph /mahkama/
+\ps n
+\gf tribunal
+\gvf cour
+\ge court
+\gve tribunal
+\xv mahkama dustuuriya
+\xe cour constitutionnelle
+\xf constitutional court
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ɣuliye
+\ph /ʁulija/
+\ps adj
+\gf suprême
+\gvf haute
+\ge supreme
+\gve high
+\xv mahkama ɣuliye
+\xe cour suprême
+\xf supreme court
+\sy acla
+\an sufliya
+\dt 01/Feb/2026
+
+\lx diiwaan
+\ph /diːwaːn/
+\ps n
+\gf bureau
+\gvf chambre
+\ge office
+\gve chamber
+\xv diiwaan hisaabaat
+\xe cour des comptes
+\xf court of accounts
+\sy maktab
+\an -
+\dt 01/Feb/2026
+
+\lx hisaabaat
+\ph /hisaːbaːt/
+\ps n
+\gf comptes
+\gvf calculs
+\ge accounts
+\gve calculations
+\xv mahkama diiwaan hisaabaat
+\xe tribunal de la cour des comptes
+\xf court of accounts tribunal
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx majlis
+\ph /madʒlis/
+\ps n
+\gf conseil
+\gvf assemblée
+\ge council
+\gve assembly
+\xv majlis iqtiṣaadi
+\xe conseil économique
+\xf economic council
+\sy jamciya
+\an -
+\dt 01/Feb/2026
+
+\lx iqtiṣaadi
+\ph /iqtisˤaːdi/
+\ps adj
+\gf économique
+\gvf économique
+\ge economic
+\gve economic
+\xv majlis iqtiṣaadi
+\xe conseil économique
+\xf economic council
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ijtimaaɣi
+\ph /idʒtimaːʁi/
+\ps adj
+\gf social
+\gvf social
+\ge social
+\gve social
+\xv majlis ijtimaaɣi
+\xe conseil social
+\xf social council
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx bii’i
+\ph /biːʔi/
+\ps adj
+\gf environnemental
+\gvf écologique
+\ge environmental
+\gve ecological
+\xv majlis bii’i
+\xe conseil environnemental
+\xf environmental council
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ʂaqaafi
+\ph /θaqaːfi/
+\ps adj
+\gf culturel
+\gvf culturel
+\ge cultural
+\gve cultural
+\xv majlis ʂaqaafi
+\xe conseil culturel
+\xf cultural council
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx tanẓiim
+\ph /tanðiːm/
+\ps n
+\gf organisation
+\gvf aménagement
+\ge organization
+\gve arrangement
+\xv tanẓiim ɣaraaḍi
+\xe aménagement du territoire
+\xf territorial organization
+\sy tartiib
+\an fawḍa
+\dt 01/Feb/2026
+
+\lx ɣaraaḍi
+\ph /ʁaraːdˤi/
+\ps adj
+\gf territorial
+\gvf foncier
+\ge territorial
+\gve land-based
+\xv tanẓiim ɣaraaḍi
+\xe aménagement territorial
+\xf territorial organization
+\sy turaabi
+\an -
+\dt 01/Feb/2026
+
+\lx šarɣiiya
+\ph /ʃarʁijja/
+\ps n
+\gf légitimité
+\gvf légalité
+\ge legitimacy
+\gve legality
+\xv sultaat wo šarɣiiya
+\xe autorités et légitimité
+\xf authorities and legitimacy
+\sy qanuuniya
+\an -
+\dt 01/Feb/2026
+
+\lx taqlidiyya
+\ph /taqliːdijja/
+\ps adj
+\gf traditionnel
+\gvf coutumier
+\ge traditional
+\gve customary
+\xv šarɣiiya taqlidiyya
+\xe légitimité traditionnelle
+\xf traditional legitimacy
+\sy -
+\an jdiid
+\dt 01/Feb/2026
+
+\lx wuhda
+\ph /wuhda/
+\ps n
+\gf unité
+\gvf union
+\ge unity
+\gve union
+\xv wuhda ifriqiyya
+\xe unité africaine
+\xf african unity
+\sy ittihad
+\an tafriqa
+\dt 01/Feb/2026
+
+\lx ifriqiyya
+\ph /ifriːqijja/
+\ps adj
+\gf africain
+\gvf africaine
+\ge african
+\gve african
+\xv wuhda ifriqiyya
+\xe unité africaine
+\xf african unity
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx muɣahaadaat
+\ph /muʁaːhadaːt/
+\ps n
+\gf traités
+\gvf conventions
+\ge treaties
+\gve conventions
+\xv muɣahaadaat wo tifaaqiyaat
+\xe traités et accords
+\xf treaties and agreements
+\sy ittifaqat
+\an -
+\dt 01/Feb/2026
+
+\lx tifaaqiyaat
+\ph /tifaqijjaːt/
+\ps n
+\gf accords
+\gvf conventions
+\ge agreements
+\gve conventions
+\xv muɣahaadaat wo tifaaqiyaat
+\xe traités et accords
+\xf treaties and agreements
+\sy muɣahaadaat
+\an -
+\dt 01/Feb/2026
+
+\lx dowliyya
+\ph /dawlijja/
+\ps adj
+\gf international
+\gvf mondial
+\ge international
+\gve global
+\xv tifaaqiyaat dowliyya
+\xe accords internationaux
+\xf international agreements
+\sy caalami
+\an watani
+\dt 01/Feb/2026
+
+\lx muraajaɣ
+\ph /muraːdʒaʁ/
+\ps n
+\gf révision
+\gvf examen
+\ge revision
+\gve review
+\xv muraajaɣ əldustuur
+\xe révision de la constitution
+\xf revision of the constitution
+\sy taɣyiir
+\an -
+\dt 01/Feb/2026
+
+\lx xaaṣ
+\ph /xaːsˤ/
+\ps adj
+\gf spécial
+\gvf particulier
+\ge special
+\gve particular
+\xv ahkaam xaaṣ
+\xe dispositions particulières
+\xf special provisions
+\sy -
+\an ɣaam
+\dt 01/Feb/2026
+
+\lx intiqaaliyya
+\ph /intiqaːlijja/
+\ps adj
+\gf transitoire
+\gvf de transition
+\ge transitional
+\gve transition
+\xv ahkaam intiqaaliyya
+\xe dispositions transitoires
+\xf transitional provisions
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx frag
+\ph /fraɡ/
+\ps n
+\gf fin
+\gvf conclusion
+\ge end
+\gve conclusion
+\xv ahkaam frag
+\xe dispositions finales
+\xf final provisions
+\sy nihaaya
+\an bidaaya
+\dt 01/Feb/2026
+
+\lx tarrig
+\ph /tarriɡ/
+\ps n
+\gf richesse
+\gvf richesse
+\ge richness
+\gve richness
+\sm Abondance ou diversité de ressources ou de culture.
+\ms 1
+\xv Tarrig bitnowihe saqafi
+\xe Richesse de sa diversité culturelle
+\xf Richness of its cultural diversity
+\sy ɣina
+\an fagr
+\dt 01/Feb/2026
+
+\lx tanawwuʁ
+\ph /tanawwuʁ/
+\ps n
+\gf diversité
+\gvf diversité
+\ge diversity
+\gve diversity
+\sm État de ce qui est varié, multiple.
+\ms 1
+\xv Tarrig bitnowihe saqafi
+\xe Richesse de sa diversité culturelle
+\xf Richness of its cultural diversity
+\sy tarrig
+\an -
+\dt 01/Feb/2026
+
+\lx luɡawi
+\ph /luɡawi/
+\ps adj
+\gf linguistique
+\gvf linguistique
+\ge linguistic
+\gve linguistic
+\sm Relatif à la langue ou au langage.
+\ms 1
+\xv bitnowihe saqafi wo lugawi
+\xe sa diversité culturelle et linguistique
+\xf its cultural and linguistic diversity
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx diːniji
+\ph /diːniji/
+\ps adj
+\gf religieux
+\gvf religieux
+\ge religious
+\gve religious
+\sm Relatif à la religion ou aux croyances.
+\ms 1
+\xv bitnowihe saqafi wo lugawi wo diniyi
+\xe sa diversité culturelle, linguistique et religieuse
+\xf its cultural, linguistic and religious diversity
+\sy -
+\an laa'iki
+\dt 01/Feb/2026
+
+\lx faxr
+\ph /faxr/
+\ps n
+\gf fierté
+\gvf fierté
+\ge pride
+\gve pride
+\sm Sentiment de dignité ou de satisfaction.
+\ms 1
+\xv Naftaxir bitarixhe
+\xe Nous sommes fiers de son histoire
+\xf We are proud of its history
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx taːriːx
+\ph /taːriːx/
+\ps n
+\gf histoire
+\gvf histoire
+\ge history
+\gve history
+\sm Récit des événements passés d'une nation.
+\ms 1
+\xv Naftaxir bitarixhe ǝlfi
+\xe Nous sommes fiers de son histoire millénaire
+\xf We are proud of its thousand-year history
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx slaf
+\ph /slaf/
+\ps n
+\gf ancêtres
+\gvf ancêtres
+\ge ancestors
+\gve ancestors
+\sm Ceux dont on descend, les prédécesseurs.
+\ms 1
+\xv wo slafihe
+\xe et ses ancêtres
+\xf and its ancestors
+\sy -
+\an xlaf
+\dt 01/Feb/2026
+
+\lx waris
+\ph /waris/
+\ps v
+\gf hériter
+\gvf hériter
+\ge inherit
+\gve inherit
+\sm Recevoir par voie de succession.
+\ms 1
+\xv Warisat ambraṭuuriyatǝ
+\xe Elle a hérité des empires
+\xf It inherited the empires
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ambratˤuːrijja
+\ph /ambratˤuːrijja/
+\ps n
+\gf empire
+\gvf empire
+\ge empire
+\gve empire
+\sm Vaste État dirigé par une autorité centrale.
+\ms 1
+\xv Warisat ambraṭuuriyatǝ
+\xe Elle a hérité des empires
+\xf It inherited the empires
+\sy dowla
+\an -
+\dt 01/Feb/2026
+
+\lx mamlaka
+\ph /mamlaka/
+\ps n
+\gf royaume
+\gvf royaume
+\ge kingdom
+\gve kingdom
+\sm État ou pays gouverné par un roi.
+\ms 1
+\xv ambraṭuuriyatǝ wo mamalik
+\xe des empires et des royaumes
+\xf empires and kingdoms
+\sy ambraṭuuriyat
+\an -
+\dt 01/Feb/2026
+
+\lx kbiːr
+\ph /kbiːr/
+\ps adj
+\gf grand
+\gvf grand
+\ge big
+\gve great
+\sm De taille ou d'importance considérable.
+\ms 1
+\xv mamalik kebira
+\xe de grands royaumes
+\xf great kingdoms
+\sy -
+\an sqiir
+\dt 01/Feb/2026
+
+\lx bna
+\ph /bna/
+\ps v
+\gf bâtir
+\gvf bâtir
+\ge build
+\gve build
+\sm Construire ou fonder quelque chose.
+\ms 1
+\xv buniye ϫala qiyem
+\xe bâti sur des valeurs
+\xf built on values
+\sy -
+\an hdem
+\dt 01/Feb/2026
+
+\lx qijam
+\ph /qijam/
+\ps n
+\gf valeurs
+\gvf valeurs
+\ge values
+\gve values
+\sm Principes moraux ou sociaux d'un groupe.
+\ms 1
+\xv buniye ϫala qiyem ijtimaϫiye
+\xe bâti sur des valeurs sociales
+\xf built on social values
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx daːxili
+\ph /daːxili/
+\ps adj
+\gf interne
+\gvf interne
+\ge internal
+\gve domestic
+\sm Qui se trouve à l'intérieur d'un pays ou groupe.
+\ms 1
+\xv saqafiye daaxiliye
+\xe culturelles internes
+\xf internal cultural [values]
+\sy -
+\an xaariji
+\dt 01/Feb/2026
+
+\lx ɡibal
+\ph /ɡibal/
+\ps n
+\gf côté
+\gvf part
+\ge side
+\gve part
+\sm Provenance ou direction d'une action.
+\ms 1
+\xv min gibal ǝl-ham
+\xe de la part de l'ambition
+\xf from the side of concern
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx hamm
+\ph /hamm/
+\ps n
+\gf ambition
+\gvf souci
+\ge concern
+\gve ambition
+\sm Préoccupation majeure ou désir de réussir.
+\ms 1
+\xv min gibal ǝl-ham ijyaali
+\xe du souci des générations
+\xf from the concern of generations
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx dʒiːl
+\ph /dʒiːl/
+\ps n
+\gf génération
+\gvf génération
+\ge generation
+\gve generation
+\sm Ensemble des personnes nées à la même époque.
+\ms 1
+\xv min gibal ǝl-ham ijyaali
+\xe du souci des générations
+\xf from the concern of generations
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx haːli
+\ph /haːli/
+\ps adj
+\gf actuel
+\gvf présent
+\ge current
+\gve present
+\sm Qui appartient au temps présent.
+\ms 1
+\xv ijyaali ǝlhaliye
+\xe les générations actuelles
+\xf the current generations
+\sy -
+\an maadi
+\dt 01/Feb/2026
+
+\lx mustaɡbal
+\ph /mustaɡbal/
+\ps n
+\gf futur
+\gvf avenir
+\ge future
+\gve future
+\sm Temps qui vient après le présent.
+\ms 1
+\xv haliye wo ǝlmustagbal
+\xe actuelles et futures
+\xf current and future
+\sy -
+\an maadi
+\dt 01/Feb/2026
+
+\lx muxlisˤ
+\ph /muxlisˤ/
+\ps adj
+\gf loyal
+\gvf sincère
+\ge loyal
+\gve sincere
+\sm Qui agit avec dévouement et honnêteté.
+\ms 1
+\xv Muxlisun li misl
+\xe Loyaux envers l'idéal
+\xf Loyal to the ideal
+\sy -
+\an xaayin
+\dt 01/Feb/2026
+
+\lx miθl
+\ph /miθl/
+\ps n
+\gf idéal
+\gvf exemple
+\ge ideal
+\gve example
+\sm Modèle de perfection ou référence.
+\ms 1
+\xv Muxlisun li misl šuhada’i
+\xe Loyaux envers l'idéal des martyrs
+\xf Loyal to the ideal of the martyrs
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ʃahiːd
+\ph /ʃahiːd/
+\ps n
+\gf martyr
+\gvf martyr
+\ge martyr
+\gve martyr
+\sm Personne qui meurt pour une cause ou la patrie.
+\ms 1
+\xv šuhada’i listiϫmar
+\xe les martyrs du colonialisme
+\xf the martyrs of colonialism
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx istiʕmaːr
+\ph /istiʕmaːr/
+\ps n
+\gf colonialisme
+\gvf colonisation
+\ge colonialism
+\gve colonization
+\sm Occupation et exploitation d'un territoire étranger.
+\ms 1
+\xv šuhada’i listiϫmar
+\xe les martyrs du colonialisme
+\xf the martyrs of colonialism
+\sy -
+\an istiqlal
+\dt 01/Feb/2026
+
+\lx ab
+\ph /ab/
+\ps n
+\gf père
+\gvf père
+\ge father
+\gve father
+\sm Parent masculin.
+\ms 1
+\xv aabaa listiqlal
+\xe les pères de l'indépendance
+\xf the fathers of independence
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx killu
+\ph /killu/
+\ps det
+\gf tout
+\gvf chaque
+\ge all
+\gve every
+\sm Désigne l'intégralité d'un ensemble.
+\ms 1
+\xv wo killu illi ilga
+\xe et tous ceux qui ont trouvé
+\xf and all those who found
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx illi
+\ph /illi/
+\ps pro
+\gf qui
+\gvf que
+\ge who
+\gve which
+\sm Pronom relatif invariable.
+\ms 1
+\xv wo killu illi ilga
+\xe et tous ceux qui ont trouvé
+\xf and all those who found
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx lɡa
+\ph /lɡa/
+\ps v
+\gf trouver
+\gvf rencontrer
+\ge find
+\gve meet
+\sm Découvrir ou se retrouver dans une situation.
+\ms 1
+\xv wo killu illi ilga vi sahat
+\xe et tous ceux qui sont tombés sur le champ
+\xf and all those who fell in the field
+\sy jbar
+\an wdar
+\dt 01/Feb/2026
+
+\lx saːha
+\ph /saːha/
+\ps n
+\gf champ
+\gvf place
+\ge field
+\gve arena
+\sm Espace ouvert destiné à une activité précise.
+\ms 1
+\xv vi sahat šaraf
+\xe au champ d'honneur
+\xf in the field of honor
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx suquːtˤ
+\ph /suquːtˤ/
+\ps n
+\gf chute
+\gvf mort
+\ge fall
+\gve death
+\sm Action de tomber ou de périr au combat.
+\ms 1
+\xv vi sahat suqut
+\xe au champ de la mort (chute)
+\xf in the field of the fall
+\sy mowt
+\an -
+\dt 01/Feb/2026
+
+\lx ʃaraf
+\ph /ʃaraf/
+\ps n
+\gf honneur
+\gvf honneur
+\ge honor
+\gve honor
+\sm Dignité morale et respect de soi.
+\ms 1
+\xv vi sahat šaraf
+\xe au champ d'honneur
+\xf in the field of honor
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx difaːʕ
+\ph /difaːʕ/
+\ps n
+\gf défense
+\gvf défense
+\ge defense
+\gve defense
+\sm Action de protéger contre une attaque ou un danger.
+\ms 1
+\xv lidifa’ϫ ϫan ǝlwoṭan
+\xe pour la défense de la patrie
+\xf for the defense of the homeland
+\sy himaya
+\an hujum
+\dt 01/Feb/2026
+
+\lx watˤan
+\ph /watˤan/
+\ps n
+\gf patrie
+\gvf pays
+\ge homeland
+\gve country
+\sm Pays où l'on est né ou auquel on appartient comme citoyen.
+\ms 1
+\xv lidifa’ϫ ϫan ǝlwoṭan
+\xe pour la défense de la patrie
+\xf for the defense of the homeland
+\sy bilaad
+\an -
+\dt 01/Feb/2026
+
+\lx ðˤuhuːr
+\ph /ðˤuhuːr/
+\ps n
+\gf apparition
+\gvf émergence
+\ge appearance
+\gve emergence
+\sm Fait de devenir visible ou de se manifester.
+\ms 1
+\xv wo ẓuḥur siyaada šeriϫa
+\xe et l'émergence d'une souveraineté légale
+\xf and the emergence of legal sovereignty
+\sy -
+\an ixtifaa'
+\dt 01/Feb/2026
+
+\lx dimuːqraːtˤijja
+\ph /dimuːqraːtˤijja/
+\ps n
+\gf démocratie
+\gvf démocratie
+\ge democracy
+\gve democracy
+\sm Système politique dans lequel le peuple exerce la souveraineté.
+\ms 1
+\xv dimuqraṭiyya ǝlyasiriya
+\xe la démocratie pluraliste
+\xf pluralistic democracy
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx jasiːr
+\ph /jasiːr/
+\ps adj
+\gf facile
+\gvf pluraliste
+\ge easy
+\gve pluralistic
+\sm Qui se fait sans effort ou qui est abondant/multiple.
+\ms 1
+\xv dimuqraṭiyya ǝlyasiriya
+\xe la démocratie pluraliste
+\xf pluralistic democracy
+\sy -
+\an waacir
+\dt 01/Feb/2026
+
+\lx raʃiːd
+\ph /raʃiːd/
+\ps adj
+\gf sage
+\gvf bon
+\ge wise
+\gve good
+\sm Qui est doué de raison ou bien dirigé.
+\ms 1
+\xv ǝlḥukum rašid
+\xe la bonne gouvernance
+\xf good governance
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ʃuːf
+\ph /ʃuːf/
+\ps v
+\gf voir
+\gvf considérer
+\ge see
+\gve consider
+\sm Percevoir par la vue ou examiner une situation.
+\ms 1
+\xv Šuv ila yaasir tawaatir
+\xe Considérant la fréquence élevée
+\xf Considering the high frequency
+\sy xarras
+\an -
+\dt 01/Feb/2026
+
+\lx tawaːtur
+\ph /tawaːtur/
+\ps n
+\gf fréquence
+\gvf succession
+\ge frequency
+\gve succession
+\sm Répétition d'un événement dans le temps.
+\ms 1
+\xv yaasir tawaatir ẓaman
+\xe la fréquence élevée des époques
+\xf the high frequency of eras
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx zaman
+\ph /zaman/
+\ps n
+\gf temps
+\gvf époque
+\ge time
+\gve era
+\sm Durée dans laquelle s'inscrivent les événements.
+\ms 1
+\xv tawaatir ẓaman lyaasiriye
+\xe la succession des époques passées
+\xf the succession of past eras
+\sy waqt
+\an -
+\dt 01/Feb/2026
+
+\lx abʕaːd
+\ph /abʕaːd/
+\ps n
+\gf dimensions
+\gvf distances
+\ge dimensions
+\gve distances
+\sm Mesures ou aspects d'une réalité complexe.
+\ms 1
+\xv lyaasiriye libϫaad
+\xe les multiples dimensions
+\xf the multiple dimensions
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx hasˤar
+\ph /hasˤar/
+\ps v
+\gf restreindre
+\gvf affecter
+\ge restrict
+\gve affect
+\sm Limiter ou avoir un impact négatif sur quelque chose.
+\ms 1
+\xv illi tihasir ϫala dowla
+\xe qui affectent l'État
+\xf that affect the State
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx mujtamaʕ
+\ph /mujtamaʕ/
+\ps n
+\gf société
+\gvf communauté
+\ge society
+\gve community
+\sm Groupe humain organisé partageant une culture.
+\ms 1
+\xv tihasir ϫala dowla wo lmujtamaϫ
+\xe affectent l'État et la société
+\xf affect the State and society
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx fasaːd
+\ph /fasaːd/
+\ps n
+\gf corruption
+\gvf dépravation
+\ge corruption
+\gve depravity
+\sm Détournement de pouvoir ou de fonds à des fins privées.
+\ms 1
+\xv Šuv ila lfasaad
+\xe Considérant la corruption
+\xf Considering corruption
+\sy -
+\an istiqaama
+\dt 01/Feb/2026
+
+\lx iθraːʔ
+\ph /iθraːʔ/
+\ps n
+\gf enrichissement
+\gvf fortune
+\ge enrichment
+\gve wealth
+\sm Action de devenir riche ou d'augmenter ses biens.
+\ms 1
+\xv ǝl-israa’i maahu ǝlmašruϫ
+\xe l'enrichissement illicite
+\xf illicit enrichment
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx dˤarr
+\ph /dˤarr/
+\ps v
+\gf nuire
+\gvf porter atteinte
+\ge harm
+\gve damage
+\sm Causer un préjudice ou un mal.
+\ms 1
+\xv yiḍur bijuḥud ǝttanmiya
+\xe nuit aux efforts de développement
+\xf harms development efforts
+\sy -
+\an nfac
+\dt 01/Feb/2026
+
+\lx dʒuhuːd
+\ph /dʒuhuːd/
+\ps n
+\gf efforts
+\gvf peines
+\ge efforts
+\gve labors
+\sm Mobilisation de forces pour atteindre un but.
+\ms 1
+\xv yiḍur bijuḥud ǝttanmiya
+\xe nuit aux efforts de développement
+\xf harms development efforts
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx tanmija
+\ph /tanmija/
+\ps n
+\gf développement
+\gvf croissance
+\ge development
+\gve growth
+\sm Action de faire progresser ou d'améliorer.
+\ms 1
+\xv bijuḥud ǝttanmiya vil bilaad
+\xe aux efforts de développement dans le pays
+\xf to development efforts in the country
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx bilaːd
+\ph /bilaːd/
+\ps n
+\gf pays
+\gvf territoire
+\ge country
+\gve land
+\sm Territoire d'une nation ou d'un peuple.
+\ms 1
+\xv vil bilaad
+\xe dans le pays
+\xf in the country
+\sy watan
+\an -
+\dt 01/Feb/2026
+
+\lx iqtinaːʕ
+\ph /iqtinaːʕ/
+\ps n
+\gf conviction
+\gvf certitude
+\ge conviction
+\gve certainty
+\sm Fait d'être persuadé de la vérité d'une idée.
+\ms 1
+\xv wo iqtinaaϫan minǝ
+\xe et convaincus que
+\xf and convinced that
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx dˤaruːra
+\ph /dˤaruːra/
+\ps n
+\gf nécessité
+\gvf besoin
+\ge necessity
+\gve need
+\sm Caractère de ce qui est indispensable.
+\ms 1
+\xv biḍoruura taϫziz lϫayš
+\xe par la nécessité de renforcer la vie
+\xf by the necessity of reinforcing life
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx taʕziːz
+\ph /taʕziːz/
+\ps n
+\gf renforcement
+\gvf consolidation
+\ge reinforcement
+\gve consolidation
+\sm Action de rendre plus fort ou plus solide.
+\ms 1
+\xv taϫziz lϫayš maϫan
+\xe renforcer le vivre-ensemble
+\xf reinforcing living together
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ʕajʃ
+\ph /ʕajʃ/
+\ps n
+\gf vie
+\gvf existence
+\ge life
+\gve living
+\sm Fait de vivre ou manière de subsister.
+\ms 1
+\xv taϫziz lϫayš maϫan
+\xe renforcer le vivre-ensemble
+\xf reinforcing living together
+\sy hayaat
+\an mowt
+\dt 01/Feb/2026
+
+\lx musˤaːlaha
+\ph /musˤaːlaha/
+\ps n
+\gf réconciliation
+\gvf paix
+\ge reconciliation
+\gve peace-making
+\sm Rétablissement de l'entente entre des parties.
+\ms 1
+\xv lmuṣoolaha ǝlwoṭaniyya
+\xe la réconciliation nationale
+\xf national reconciliation
+\sy -
+\an fitna
+\dt 01/Feb/2026
+
+\lx ihtiraːm
+\ph /ihtiraːm/
+\ps n
+\gf respect
+\gvf considération
+\ge respect
+\gve consideration
+\sm Sentiment de considération envers quelqu'un ou quelque chose.
+\ms 1
+\xv maϫ ihtiraam alḥiwaayaat
+\xe avec le respect des identités
+\xf with respect for identities
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx hˤimaːja
+\ph /hˤimaːja/
+\ps n
+\gf protection
+\gvf défense
+\ge protection
+\gve defense
+\sm Action de mettre à l'abri d'un danger.
+\ms 1
+\xv himaayat əlbii’a
+\xe la protection de l'environnement
+\xf protection of the environment
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx dˤimaːn
+\ph /dˤimaːn/
+\ps n
+\gf garantie
+\gvf assurance
+\ge guarantee
+\gve assurance
+\sm Engagement à assurer l'exécution d'une obligation.
+\ms 1
+\xv Hariṣa ɤla ḍimaan
+\xe Soucieux de garantir
+\xf Anxious to guarantee
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx amn
+\ph /amn/
+\ps n
+\gf sécurité
+\gvf paix
+\ge security
+\gve safety
+\sm État de ce qui est protégé contre les risques.
+\ms 1
+\xv difaɤi wo ămni
+\xe défense et sécurité
+\xf defense and security
+\sy -
+\an xowf
+\dt 01/Feb/2026
+
+\lx wudʒuːd
+\ph /wudʒuːd/
+\ps n
+\gf existence
+\gvf présence
+\ge existence
+\gve presence
+\sm Fait d'être, de se trouver quelque part.
+\ms 1
+\xv beyn wujuud dowla
+\xe entre l'existence de l'État
+\xf between the existence of the State
+\sy -
+\an cadam
+\dt 01/Feb/2026
+
+\lx ʕazm
+\ph /ʕazm/
+\ps n
+\gf détermination
+\gvf volonté
+\ge determination
+\gve resolve
+\sm Ferme volonté d'aboutir à une décision.
+\ms 1
+\xv gad ɤuʕdat ăzm
+\xe a pris la résolution
+\xf has taken the resolve
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx tatˤwiːr
+\ph /tatˤwiːr/
+\ps n
+\gf développement
+\gvf amélioration
+\ge development
+\gve improvement
+\sm Action de faire évoluer vers un état supérieur.
+\ms 1
+\xv ɤla taṭwir turaʂ
+\xe pour le développement du patrimoine
+\xf for the development of heritage
+\sy tanmiya
+\an -
+\dt 01/Feb/2026
+
+\lx turaːθ
+\ph /turaːθ/
+\ps n
+\gf patrimoine
+\gvf patrimoine
+\ge heritage
+\gve heritage
+\sm Ensemble des biens hérités du passé et des traditions.
+\ms 1
+\xv taṭwir turaʂ ʂaqafi
+\xe développement du patrimoine culturel
+\xf development of cultural heritage
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx maːdi
+\ph /maːdi/
+\ps adj
+\gf matériel
+\gvf matériel
+\ge material
+\gve material
+\sm Qui a une réalité physique ou tangible.
+\ms 1
+\xv turaʂ ʂaqafi wo əlmadi
+\xe patrimoine culturel et matériel
+\xf cultural and material heritage
+\sy -
+\an macnawi
+\dt 01/Feb/2026
+
+\lx hifˤaːðˤ
+\ph /hifˤaːðˤ/
+\ps n
+\gf préservation
+\gvf préservation
+\ge preservation
+\gve preservation
+\sm Action de maintenir en bon état ou de protéger.
+\ms 1
+\xv əlhifaaẓ ɤla əlmawaarid
+\xe la préservation des ressources
+\xf the preservation of resources
+\sy himaya
+\an ihmaal
+\dt 01/Feb/2026
+
+\lx mawaːrid
+\ph /mawaːrid/
+\ps n
+\gf ressources
+\gvf ressources
+\ge resources
+\gve resources
+\sm Moyens naturels ou financiers dont dispose un pays.
+\ms 1
+\xv əlhifaaẓ ɤla əlmawaarid ṭaiɤiyya
+\xe la préservation des ressources naturelles
+\xf the preservation of natural resources
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx tˤabiːʕi
+\ph /tˤabiːʕi/
+\ps adj
+\gf naturel
+\gvf naturel
+\ge natural
+\gve natural
+\sm Qui appartient à la nature, non transformé par l'homme.
+\ms 1
+\xv əlmawaarid ṭaiɤiyya
+\xe les ressources naturelles
+\xf natural resources
+\sy -
+\an sˤinaaci
+\dt 01/Feb/2026
+
+\lx wilaja
+\ph /wilaja/
+\ps n
+\gf État
+\gvf État
+\ge State
+\gve State
+\sm Entité politique souveraine ou subdivision administrative.
+\ms 1
+\xv mawaarid ṭaiɤiyya li Wilaya
+\xe ressources naturelles pour l'État
+\xf natural resources for the State
+\sy dowla
+\an -
+\dt 01/Feb/2026
+
+\lx muqbil
+\ph /muqbil/
+\ps adj
+\gf futur
+\gvf futur
+\ge future
+\gve future
+\sm Qui est à venir, prochain.
+\ms 1
+\xv li ăjyaan zark wo əlmuʕbila
+\xe pour les générations présentes et futures
+\xf for current and future generations
+\sy -
+\an maadi
+\dt 01/Feb/2026
+
+\lx riʕaːja
+\ph /riʕaːja/
+\ps n
+\gf protection
+\gvf protection
+\ge care
+\gve protection
+\sm Action de veiller sur le bien-être de quelqu'un.
+\ms 1
+\xv taṭwir riɤaaya ijtimaɤiya
+\xe développer la protection sociale
+\xf developing social protection
+\sy himaya
+\an -
+\dt 01/Feb/2026
+
+\lx indʒaːz
+\ph /indʒaːz/
+\ps n
+\gf réalisation
+\gvf réalisation
+\ge achievement
+\gve achievement
+\sm Action d'accomplir ou de mener à bien un projet.
+\ms 1
+\xv taṭwir linjazaatə dimqraṭiyya
+\xe développer les réalisations démocratiques
+\xf developing democratic achievements
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx θawra
+\ph /θawra/
+\ps n
+\gf révolution
+\gvf révolution
+\ge revolution
+\gve revolution
+\sm Changement brusque et violent dans la structure politique.
+\ms 1
+\xv liʂawra 26 mars 1991
+\xe de la révolution du 26 mars 1991
+\xf of the revolution of March 26, 1991
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx tarwiːdʒ
+\ph /tarwiːdʒ/
+\ps n
+\gf promotion
+\gvf promotion
+\ge promotion
+\gve promotion
+\sm Action de mettre en avant ou de favoriser.
+\ms 1
+\xv tarwij limiʂil rujuɤ
+\xe promotion pour le retour
+\xf promotion for the return
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx rujuːʕ
+\ph /rujuːʕ/
+\ps n
+\gf retour
+\gvf retour
+\ge return
+\gve return
+\sm Action de revenir à un état ou un lieu antérieur.
+\ms 1
+\xv rujuɤ əlbiniye
+\xe le retour de la structure
+\xf the return of the structure
+\sy -
+\an ðahaab
+\dt 01/Feb/2026
+
+\lx binja
+\ph /binja/
+\ps n
+\gf structure
+\gvf structure
+\ge structure
+\gve structure
+\sm Manière dont un ensemble est organisé.
+\ms 1
+\xv rujuɤ əlbiniye
+\xe le retour de la structure
+\xf the return of the structure
+\sy tanziim
+\an -
+\dt 01/Feb/2026
+
+\lx silm
+\ph /silm/
+\ps n
+\gf paix
+\gvf paix
+\ge peace
+\gve peace
+\sm Absence de guerre ou de conflit.
+\ms 1
+\xv silmi əl’araadi
+\xe la paix des territoires
+\xf the peace of the territories
+\sy -
+\an harb
+\dt 01/Feb/2026
+
+\lx ardˤ
+\ph /ardˤ/
+\ps n
+\gf terre
+\gvf territoire
+\ge land
+\gve territory
+\sm Surface solide de la planète ou domaine géographique.
+\ms 1
+\xv silmi əl’araadi
+\xe la paix des territoires
+\xf the peace of the territories
+\sy bilaad
+\an -
+\dt 01/Feb/2026
+
+\lx tamsiːq
+\ph /tamsiːq/
+\ps n
+\gf attachement
+\gvf attachement
+\ge attachment
+\gve attachment
+\sm Lien fort ou engagement envers une forme ou idée.
+\ms 1
+\xv tamsiq bišaqli əljemḥuriyye
+\xe attachement à la forme républicaine
+\xf attachment to the republican form
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ʃakl
+\ph /ʃakl/
+\ph /ʃaqli/
+\ps n
+\gf forme
+\gvf forme
+\ge form
+\gve form
+\sm Apparence extérieure ou structure d'un régime.
+\ms 1
+\xv bišaqli əljemḥuriyye
+\xe sous la forme républicaine
+\xf in the republican form
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx laːʔikijja
+\ph /laːʔikijja/
+\ps n
+\gf laïcité
+\gvf laïcité
+\ge secularism
+\gve secularism
+\sm Principe de séparation de la société civile et de la religion.
+\ms 1
+\xv laa’ikiyye dowla
+\xe la laïcité de l'État
+\xf the secularism of the State
+\sy -
+\an diniya
+\dt 01/Feb/2026
+
+\lx ittixaːð
+\ph /ittixaːð/
+\ps n
+\gf adoption
+\gvf prise
+\ge adoption
+\gve taking
+\sm Action de prendre une mesure ou une décision.
+\ms 1
+\xv bitixaz kemil šiʕaal
+\xe par l'adoption de tout le slogan
+\xf by the adoption of the entire slogan
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ʃicˤaːr
+\ph /ʃicˤaːr/
+\ps n
+\gf slogan
+\gvf devise
+\ge slogan
+\gve motto
+\sm Formule concise exprimant un but ou un idéal.
+\ms 1
+\xv bitixaz kemil šiʕaal
+\xe par l'adoption de tout le slogan
+\xf by the adoption of the entire slogan
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx waːdʒib
+\ph /waːdʒib/
+\ps n
+\gf devoir
+\gvf obligation
+\ge duty
+\gve obligation
+\sm Ce que l'on est tenu de faire par la loi ou la morale.
+\ms 1
+\xv wajib limuharaba əl fasaad
+\xe devoir de lutter contre la corruption
+\xf duty to fight corruption
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx muhˤaːraba
+\ph /muhˤaːraba/
+\ps n
+\gf lutte
+\gvf combat
+\ge fight
+\gve struggle
+\sm Action de s'opposer vigoureusement à quelque chose.
+\ms 1
+\xv wajib limuharaba əl fasaad
+\xe devoir de lutter contre la corruption
+\xf duty to fight corruption
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx nawʕijja
+\ph /nawʕijja/
+\ps n
+\gf qualité
+\gvf qualité
+\ge quality
+\gve quality
+\sm Manière d'être, bonne ou mauvaise, de quelque chose.
+\ms 1
+\xv zeyna nawɤiyye əlhayaat
+\xe bonne qualité de la vie
+\xf good quality of life
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx hˤajaːt
+\ph /hˤajaːt/
+\ps n
+\gf vie
+\gvf vie
+\ge life
+\gve life
+\sm État d'activité des êtres organisés.
+\ms 1
+\xv zeyna nawɤiyye əlhayaat
+\xe bonne qualité de la vie
+\xf good quality of life
+\sy ʕajʃ
+\an mowt
+\dt 01/Feb/2026
+
+\lx miːθaːq
+\ph /miːθaːq/
+\ps n
+\gf charte
+\gvf pacte
+\ge charter
+\gve covenant
+\sm Acte solennel établissant des droits ou des principes.
+\ms 1
+\xv əlmiʂaq əl-afreqiyye
+\xe la charte africaine
+\xf the african charter
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx tˤufajl
+\ph /tˤufajl/
+\ps n
+\gf enfant
+\gvf enfance
+\ge child
+\gve childhood
+\sm Jeune être humain.
+\ms 1
+\xv huquuq li ɤalayaat wo ṭufeylaat
+\xe droits des femmes et des enfants
+\xf rights of women and children
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx rawaːɡidʒ
+\ph /rawaːɡidʒ/
+\ps n
+\gf pratiques
+\gvf liens
+\ge practices
+\gve ties
+\sm Manières d'agir ou relations habituelles.
+\ms 1
+\xv rawaagij mulli ɤabudiyye
+\xe pratiques d'esclavage
+\xf practices of slavery
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ʕabudijja
+\ph /ʕabudijja/
+\ps n
+\gf esclavage
+\gvf servitude
+\ge slavery
+\gve servitude
+\sm État d'une personne privée de liberté.
+\ms 1
+\xv rawaagij mulli ɤabudiyye
+\xe pratiques d'esclavage
+\xf practices of slavery
+\sy -
+\an hurriya
+\dt 01/Feb/2026
+
+\lx iqliːmi
+\ph /iqliːmi/
+\ps adj
+\gf régional
+\gvf régional
+\ge regional
+\gve regional
+\sm Relatif à une région ou un territoire spécifique.
+\ms 1
+\xv muɤaḥadaat maahu iqlimiyye
+\xe traités régionaux
+\xf regional treaties
+\sy -
+\an dowli
+\dt 01/Feb/2026
+
+\lx ʕunv
+\ph /ʕunv/
+\ps n
+\gf violence
+\gvf force
+\ge violence
+\gve force
+\sm Utilisation de la force physique ou morale.
+\ms 1
+\xv bimuhaaraba keemil b aškeel ɤunv
+\xe en luttant contre toutes les formes de violence
+\xf by fighting all forms of violence
+\sy -
+\an silm
+\dt 01/Feb/2026
+
+\lx tahqiiq
+\ph /tahqiːq/
+\ps n
+\mm tahqiiq
+\vl -
+\ve -
+\fa -
+\lat -
+\gf réalisation
+\gvf réalisation
+\ge realization
+\gve achievement
+\sm Action d'accomplir ou de mener à bien un projet ou une unité.
+\ms 1
+\xv tahqiiq əlwuhda afreqiyye
+\xe réalisation de l'unité africaine
+\xf realization of African unity
+\sy indjazaat
+\an -
+\dt 01/Feb/2026
+
+\lx taɤaawun
+\ph /taʁaːwun/
+\ps n
+\mm taɤaawun
+\vl -
+\ve -
+\fa -
+\lat -
+\gf coopération
+\gvf coopération
+\ge cooperation
+\gve cooperation
+\sm Action de travailler ensemble pour un but commun.
+\ms 1
+\xv taṭwir silm wottaɤaawun
+\xe développer la paix et la coopération
+\xf developing peace and cooperation
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx taswiyye
+\ph /taswijja/
+\ps n
+\mm taswiyye
+\vl -
+\ve -
+\fa -
+\lat -
+\gf règlement
+\gvf règlement
+\ge settlement
+\gve resolution
+\sm Action de résoudre un conflit ou un différend de manière pacifique.
+\ms 1
+\xv taswiyye silmiyye lil xilaafaat
+\xe règlement pacifique des différends
+\xf peaceful settlement of disputes
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx xilaafaat
+\ph /xilaːfaːt/
+\ps n
+\mm xilaafaat
+\vl -
+\ve -
+\fa -
+\lat -
+\gf différends
+\gvf conflits
+\ge disputes
+\gve conflicts
+\sm Désaccords ou contestations entre plusieurs parties.
+\ms 1
+\xv taswiyye silmiyye lil xilaafaat
+\xe règlement pacifique des différends
+\xf peaceful settlement of disputes
+\sy nizaacaat
+\an ittifaqat
+\dt 01/Feb/2026
+
+\lx duwal
+\ph /duwal/
+\ps n
+\mm duwal
+\vl -
+\ve -
+\fa -
+\lat -
+\gf États
+\gvf pays
+\ge States
+\gve countries
+\sm Pluriel de pays ou entités politiques souveraines.
+\ms 1
+\xv beyn duwal
+\xe entre les États
+\xf between States
+\sy wilayaat
+\an -
+\dt 01/Feb/2026
+
+\lx ɤadaala
+\ph /ʁadaːla/
+\ps n
+\mm ɤadaala
+\vl -
+\ve -
+\fa -
+\lat -
+\gf justice
+\gvf justice
+\ge justice
+\gve justice
+\sm Principe moral d'équité et de respect du droit.
+\ms 1
+\xv ihtiraam al-ɤadaala
+\xe respect de la justice
+\xf respect for justice
+\sy -
+\an ẓulm
+\dt 01/Feb/2026
+
+\lx musaawaat
+\ph /musaːwaːt/
+\ps n
+\mm musaawaat
+\vl -
+\ve -
+\fa -
+\lat -
+\gf égalité
+\gvf égalité
+\ge equality
+\gve equality
+\sm État de ce qui est égal en droits ou en valeur.
+\ms 1
+\xv musaawaat wo huriyya
+\xe égalité et liberté
+\xf equality and freedom
+\sy -
+\an temyiiz
+\dt 01/Feb/2026
+
+\lx huriyya
+\ph /hurijja/
+\ps n
+\mm huriyya
+\vl -
+\ve -
+\fa -
+\lat -
+\gf liberté
+\gvf liberté
+\ge freedom
+\gve liberty
+\sm État d'une personne qui n'est pas soumise à une autorité arbitraire.
+\ms 1
+\xv musaawaat wo huriyya
+\xe égalité et liberté
+\xf equality and freedom
+\sy -
+\an ʕabudiyya
+\dt 01/Feb/2026
+
+\lx šuɤuub
+\ph /ʃuʁuːb/
+\ps n
+\mm šuɤuub
+\vl -
+\ve -
+\fa -
+\lat -
+\gf peuples
+\gvf nations
+\ge peoples
+\gve nations
+\sm Ensemble de personnes formant une communauté culturelle ou politique.
+\ms 1
+\xv siyyaada šuɤuub
+\xe souveraineté des peuples
+\xf sovereignty of peoples
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx xlag
+\ph /xlaɡ/
+\ps v
+\mm xlag
+\vl -
+\ve -
+\fa -
+\lat -
+\gf naître
+\gvf être créé
+\ge to be born
+\gve to be created
+\sm Venir au monde ou commencer à exister.
+\ms 1
+\xv Yixlag killu əlMaliyyiin
+\xe Tous les Maliens naissent
+\xf All Malians are born
+\sy -
+\an mowt
+\dt 01/Feb/2026
+
+\lx ẓall
+\ph /ðˤall/
+\ps v
+\mm ẓall
+\vl -
+\ve -
+\fa -
+\lat -
+\gf rester
+\gvf demeurer
+\ge to remain
+\gve to stay
+\sm Continuer d'être dans un certain état.
+\ms 1
+\xv wo yiẓiluun ahraar
+\xe et demeurent libres
+\xf and remain free
+\sy bga
+\an -
+\dt 01/Feb/2026
+
+\lx hurr
+\ph /hurr/
+\ps adj
+\mm hurr
+\vl -
+\ve -
+\fa -
+\lat -
+\gf libre
+\gvf libre
+\ge free
+\gve free
+\sm Qui jouit de sa liberté personnelle.
+\ms 1
+\xv yiẓiluun ahraar
+\xe demeurent libres
+\xf remain free
+\sy -
+\an abud
+\dt 01/Feb/2026
+
+\lx mutasaawi
+\ph /mutasaːwi/
+\ps adj
+\mm mutasaawi
+\vl -
+\ve -
+\fa -
+\lat -
+\gf égal
+\gvf égal
+\ge equal
+\gve equal
+\sm Qui a la même importance ou les mêmes droits.
+\ms 1
+\xv mutasaawiin vil huquug
+\xe égaux en droits
+\xf equal in rights
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx hazar
+\ph /hazar/
+\ps v
+\mm hazar
+\vl -
+\ve -
+\fa -
+\lat -
+\gf interdire
+\gvf prohiber
+\ge to forbid
+\gve to prohibit
+\sm Déclarer qu'une chose ne doit pas être faite.
+\ms 1
+\xv yihazir eyi temyiiz
+\xe interdit toute discrimination
+\xf forbids any discrimination
+\sy manac
+\an smah
+\dt 01/Feb/2026
+
+\lx temyiiz
+\ph /tamjiːz/
+\ps n
+\mm temyiiz
+\vl -
+\ve -
+\fa -
+\lat -
+\gf discrimination
+\gvf distinction
+\ge discrimination
+\gve distinction
+\sm Action de séparer ou de traiter différemment un groupe.
+\ms 1
+\xv yihazir eyi temyiiz
+\xe interdit toute discrimination
+\xf forbids any discrimination
+\sy -
+\an musaawaat
+\dt 01/Feb/2026
+
+\lx asaas
+\ph /asaːs/
+\ps n
+\mm asaas
+\vl -
+\ve -
+\fa -
+\lat -
+\gf base
+\gvf fondement
+\ge basis
+\gve foundation
+\sm Ce sur quoi repose une idée, un droit ou une structure.
+\ms 1
+\xv ɤalaa asaas aṣli
+\xe sur la base de l'origine
+\xf on the basis of origin
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx aṣli
+\ph /asˤli/
+\ps adj
+\mm aṣli
+\vl -
+\ve -
+\fa -
+\lat -
+\gf originel
+\gvf d'origine
+\ge original
+\gve of origin
+\sm Qui concerne le point de départ ou la naissance.
+\ms 1
+\xv asaas aṣli ijtimaaɤiyye
+\xe base d'origine sociale
+\xf basis of social origin
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx manṭiga
+\ph /mantˤiɡa/
+\ps n
+\mm manṭiga
+\vl -
+\ve -
+\fa -
+\lat -
+\gf région
+\gvf zone
+\ge region
+\gve area
+\sm Espace géographique déterminé.
+\ms 1
+\xv u əlmanṭiga
+\xe ou la région
+\xf or the region
+\sy iqlim
+\an -
+\dt 01/Feb/2026
+
+\lx lown
+\ph /lown/
+\ps n
+\mm lown
+\vl -
+\ve -
+\fa -
+\lat -
+\gf couleur
+\gvf couleur
+\ge color
+\gve colour
+\sm Aspect coloré de la peau ou d'un objet.
+\ms 1
+\xv u lown u luga
+\xe ou la couleur ou la langue
+\xf or color or language
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx luga
+\ph /luɡa/
+\ps n
+\mm luga
+\vl -
+\ve -
+\fa -
+\lat -
+\gf langue
+\gvf langage
+\ge language
+\gve tongue
+\sm Système de signes vocaux propre à une communauté.
+\ms 1
+\xv u lown u luga
+\xe ou la couleur ou la langue
+\xf or color or language
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ɤirg
+\ph /ʁirɡ/
+\ps n
+\mm ɤirg
+\vl -
+\ve -
+\fa -
+\lat -
+\gf race
+\gvf ethnie
+\ge race
+\gve ethnicity
+\sm Groupe humain caractérisé par des traits communs.
+\ms 1
+\xv u ɤirg u jins
+\xe ou la race ou le sexe
+\xf or race or sex
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx jins
+\ph /dʒins/
+\ps n
+\mm jins
+\vl -
+\ve -
+\fa -
+\lat -
+\gf sexe
+\gvf genre
+\ge sex
+\gve gender
+\sm Distinction biologique entre mâle et femelle.
+\ms 1
+\xv u ɤirg u jins
+\xe ou la race ou le sexe
+\xf or race or sex
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx diin
+\ph /diːn/
+\ps n
+\mm diin
+\vl -
+\ve -
+\fa -
+\lat -
+\gf religion
+\gvf foi
+\ge religion
+\gve faith
+\sm Système de croyances et de pratiques religieuses.
+\ms 1
+\xv u diin u raayi
+\xe ou la religion ou l'opinion
+\xf or religion or opinion
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx raayi
+\ph /raːji/
+\ps n
+\mm raayi
+\vl -
+\ve -
+\fa -
+\lat -
+\gf opinion
+\gvf avis
+\ge opinion
+\gve view
+\sm Manière de penser ou jugement personnel.
+\ms 1
+\xv u diin u raayi siyaasiyə
+\xe ou la religion ou l'opinion politique
+\xf or religion or political opinion
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx muqadas
+\ph /muqaddas/
+\ps adj
+\mm muqadas
+\vl -
+\ve -
+\fa -
+\lat -
+\gf sacré
+\gvf saint
+\ge sacred
+\gve holy
+\sm Qui a un caractère religieux ou inviolable.
+\ms 1
+\xv muqadas wo maṣun
+\xe sacré et inviolable
+\xf sacred and inviolable
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx maṣun
+\ph /masˤuːn/
+\ps adj
+\mm maṣun
+\vl -
+\ve -
+\fa -
+\lat -
+\gf inviolable
+\gvf protégé
+\ge inviolable
+\gve protected
+\sm Qui doit être préservé de toute atteinte.
+\ms 1
+\xv muqadas wo maṣun
+\xe sacré et inviolable
+\xf sacred and inviolable
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx fard
+\ph /fard/
+\ps n
+\mm fard
+\vl -
+\ve -
+\fa -
+\lat -
+\gf individu
+\gvf personne
+\ge individual
+\gve person
+\sm Un être humain considéré isolément.
+\ms 1
+\xv Li killu fard əlhag
+\xe Pour chaque individu le droit
+\xf For every individual the right
+\sy raagij
+\an jamaaca
+\dt 01/Feb/2026
+
+\lx amni
+\ph /amni/
+\ps adj
+\mm amni
+\vl -
+\ve -
+\fa -
+\lat -
+\gf sécuritaire
+\gvf de sécurité
+\ge security
+\gve safety
+\sm Relatif à la protection et à la sûreté.
+\ms 1
+\xv amni wo silm šaxsiye
+\xe sécurité et paix personnelle
+\xf security and personal peace
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx qafal
+\ph /qafal/
+\ps v
+\mm qafal
+\vl -
+\ve -
+\fa -
+\lat -
+\gf garantir
+\gvf assurer
+\ge to guarantee
+\gve to ensure
+\sm Prendre l'engagement de protéger ou d'assurer.
+\ms 1
+\xv Taqfil dowla himaya
+\xe L'État garantit la protection
+\xf The State guarantees protection
+\sy dman
+\an -
+\dt 01/Feb/2026
+
+\lx tijaara
+\ph /tidʒaːra/
+\ps n
+\mm tijaara
+\vl -
+\ve -
+\fa -
+\lat -
+\gf commerce
+\gvf trafic
+\ge trade
+\gve traffic
+\sm Activité d'achat et de vente de marchandises ou d'êtres.
+\ms 1
+\xv tijaara bilbašar
+\xe traite des êtres humains
+\xf human trafficking
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx bašar
+\ph /baʃar/
+\ps n
+\mm bašar
+\vl -
+\ve -
+\fa -
+\lat -
+\gf êtres humains
+\gvf humanité
+\ge humans
+\gve mankind
+\sm Ensemble des êtres humains considérés comme espèce.
+\ms 1
+\xv tijaara bilbašar
+\xe traite des êtres humains
+\xf human trafficking
+\sy naas
+\an -
+\dt 01/Feb/2026
+
+\lx jiraa-in
+\ph /dʒiraːʔin/
+\ps n
+\mm jiraa-in
+\vl -
+\ve -
+\fa -
+\lat -
+\gf crimes
+\gvf délits
+\ge crimes
+\gve offenses
+\sm Actes illégaux graves punis par la loi.
+\ms 1
+\xv jiraa-in mumaaʂala
+\xe crimes similaires
+\xf similar crimes
+\sy jaraa'im
+\an -
+\dt 01/Feb/2026
+
+\lx mumaaʂala
+\ph /mumaːθala/
+\ps adj
+\mm mumaaʂala
+\vl -
+\ve -
+\fa -
+\lat -
+\gf similaire
+\gvf semblable
+\ge similar
+\gve alike
+\sm Qui présente des traits communs avec un autre objet ou acte.
+\ms 1
+\xv jiraa-in mumaaʂala
+\xe crimes similaires
+\xf similar crimes
+\sy kif-kif
+\an muxtalif
+\dt 01/Feb/2026
+
+\lx inxiraaṭ
+\ph /inxiraːtˤ/
+\ps n
+\mm inxiraaṭ
+\vl -
+\ve -
+\fa -
+\lat -
+\gf adhésion
+\gvf implication
+\ge involvement
+\gve joining
+\sm Fait de s'engager ou de participer à un groupe.
+\ms 1
+\xv inxiraaṭ vi jamaaɤaat
+\xe adhésion à des groupes
+\xf joining groups
+\sy mišaaraka
+\an -
+\dt 01/Feb/2026
+
+\lx jamaaɤaat
+\ph /dʒamaːʁaːt/
+\ps n
+\mm jamaa-aat
+\vl -
+\ve -
+\fa -
+\lat -
+\gf groupes
+\gvf organisations
+\ge groups
+\gve communities
+\sm Ensembles de personnes réunies pour un but précis.
+\ms 1
+\xv jamaaɤaat mutaṭariva
+\xe groupes extrémistes
+\xf extremist groups
+\sy firga
+\an fard
+\dt 01/Feb/2026
+
+\lx mutaṭariva
+\ph /mutatˤarriv/
+\ps adj
+\mm mutaṭariv-a
+\vl -
+\ve -
+\fa -
+\lat -
+\gf extrémiste
+\gvf radical
+\ge extremist
+\gve radical
+\sm Qui adopte des positions ou des actions radicales.
+\ms 1
+\xv jamaaɤaat mutaṭariva
+\xe groupes extrémistes
+\xf extremist groups
+\sy -
+\an muctadil
+\dt 01/Feb/2026
+
+\lx ɤaniiva
+\ph /ʁaniːva/
+\ps adj
+\mm ɤaniiv-a
+\vl -
+\ve -
+\fa -
+\lat -
+\gf violent
+\gvf brutal
+\ge violent
+\gve forceful
+\sm Qui utilise la force physique ou la brutalité.
+\ms 1
+\xv jamaaɤaat mutaṭariva ɤaniiva
+\xe groupes extrémistes violents
+\xf violent extremist groups
+\sy -
+\an silmi
+\dt 01/Feb/2026
+
+\lx ixḍaaɤi
+\ph /ixdˤaːʁ/
+\ps n
+\mm ixḍaaɤ
+\vl -
+\ve -
+\fa -
+\lat -
+\gf soumission
+\gvf assujettissement
+\ge subjecting
+\gve submission
+\sm Action de forcer quelqu'un à subir une autorité ou un traitement.
+\ms 1
+\xv Ma yimkin ixḍaaɤi had
+\xe On ne peut soumettre personne
+\xf No one can be subjected
+\sy -
+\an hurriya
+\dt 01/Feb/2026
+
+\lx had
+\ph /hadd/
+\ps n
+\mm had
+\vl -
+\ve -
+\fa -
+\lat -
+\gf quelqu'un
+\gvf personne
+\ge someone
+\gve anyone
+\sm Désigne un individu non spécifié.
+\ms 1
+\xv ixḍaaɤi had litaɤaziib
+\xe soumettre quelqu'un à la torture
+\xf subjecting someone to torture
+\sy raagij
+\an -
+\dt 01/Feb/2026
+
+\lx taɤaziib
+\ph /taʁðiːb/
+\ps n
+\mm taɤaziib
+\vl -
+\ve -
+\fa -
+\lat -
+\gf torture
+\gvf supplice
+\ge torture
+\gve torment
+\sm Infliction de souffrances physiques ou mentales.
+\ms 1
+\xv ixḍaaɤi had litaɤaziib
+\xe soumettre quelqu'un à la torture
+\xf subjecting someone to torture
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx muɤamala
+\ph /muʁaːmala/
+\ps n
+\mm muɤamala
+\vl -
+\ve -
+\fa -
+\lat -
+\gf traitement
+\gvf conduite
+\ge treatment
+\gve dealing
+\sm Manière d'agir envers quelqu'un.
+\ms 1
+\xv muɤamala insaaniye
+\xe traitement humain
+\xf humane treatment
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx insaaniye
+\ph /insaːnijja/
+\ps adj
+\mm insaan-iye
+\vl -
+\ve -
+\fa -
+\lat -
+\gf humain
+\gvf humanitaire
+\ge human
+\gve humane
+\sm Qui est propre à l'homme ou respectueux de la dignité humaine.
+\ms 1
+\xv muɤamala insaaniye
+\xe traitement humain
+\xf humane treatment
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx qisaasiya
+\ph /qisaːsˤijja/
+\ps adj
+\mm qisaas-iya
+\vl -
+\ve -
+\fa -
+\lat -
+\gf cruel
+\gvf punitif
+\ge cruel
+\gve punitive
+\sm Qui inflige une peine sévère ou brutale.
+\ms 1
+\xv muɤamala qisaasiya
+\xe traitement cruel
+\xf cruel treatment
+\sy -
+\an raḥiim
+\dt 01/Feb/2026
+
+\lx maḥiina
+\ph /mahiːna/
+\ps adj
+\mm maḥiin-a
+\vl -
+\ve -
+\fa -
+\lat -
+\gf dégradant
+\gvf humiliant
+\ge degrading
+\gve humiliating
+\sm Qui porte atteinte à la dignité ou à l'honneur.
+\ms 1
+\xv muɤamala maḥiina
+\xe traitement dégradant
+\xf degrading treatment
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx wokil
+\ph /wakiːl/
+\ps n
+\mm wokil
+\vl -
+\ve -
+\fa -
+\lat -
+\gf agent
+\gvf représentant
+\ge agent
+\gve representative
+\sm Personne agissant pour le compte d'une autorité ou d'un État.
+\ms 1
+\xv ey wokil liwilaaya
+\xe tout agent de l'État
+\xf any state agent
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx muzalib
+\ph /muðalib/
+\ps adj
+\mm muzalib
+\vl -
+\ve -
+\fa -
+\lat -
+\gf coupable
+\gvf responsable
+\ge guilty
+\gve liable
+\sm Qui a commis une faute ou un crime.
+\ms 1
+\xv muzalib bi-irtiqaab
+\xe coupable d'avoir commis
+\xf guilty of committing
+\sy -
+\an bari'
+\dt 01/Feb/2026
+
+\lx irtiqaab
+\ph /irtiqaːb/
+\ps n
+\mm irtiqaab
+\vl -
+\ve -
+\fa -
+\lat -
+\gf commission
+\gvf perpétration
+\ge committing
+\gve perpetration
+\sm Action de commettre un acte répréhensible.
+\ms 1
+\xv muzalib bi-irtiqaab miʂl hay afɤaal
+\xe coupable d'avoir commis de tels actes
+\xf guilty of committing such acts
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx binaaye
+\ph /binaːja/
+\ps n
+\mm binaaye
+\vl -
+\ve -
+\fa -
+\lat -
+\gf base
+\gvf fondement
+\ge basis
+\gve foundation
+\sm Ce sur quoi repose une décision ou une action.
+\ms 1
+\xv binaaye ɤalaa taɤliimaat
+\xe sur la base d'instructions
+\xf based on instructions
+\sy asaas
+\an -
+\dt 01/Feb/2026
+
+\lx taɤliimaat
+\ph /taʁliːmaːt/
+\ps n
+\mm taɤliimaat
+\vl -
+\ve -
+\fa -
+\lat -
+\gf instructions
+\gvf ordres
+\ge instructions
+\gve directions
+\sm Directives données par une autorité supérieure.
+\ms 1
+\xv binaaye ɤalaa taɤliimaat
+\xe sur la base d'instructions
+\xf based on instructions
+\sy awaamir
+\an -
+\dt 01/Feb/2026
+
+\lx sayiɤaaʕib
+\ph /sajuʁaːqib/
+\ps v
+\mm sa-yi-ɤaaʕib
+\vl -
+\ve -
+\fa -
+\lat -
+\gf sera puni
+\gvf châtiera
+\ge will be punished
+\gve will penalize
+\sm Subir une sanction légale pour un acte commis.
+\ms 1
+\xv sayiɤaaʕib wivgan lišariiɤa
+\xe sera puni selon la loi
+\xf will be punished according to the law
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx wivgan
+\ph /wivqan/
+\ps prep
+\mm wivgan
+\vl -
+\ve -
+\fa -
+\lat -
+\gf selon
+\gvf conformément
+\ge according to
+\gve in accordance with
+\sm En suivant les règles ou les principes établis.
+\ms 1
+\xv sayiɤaaʕib wivgan lišariiɤa
+\xe sera puni selon la loi
+\xf will be punished according to the law
+\sy ḥasba
+\an -
+\dt 01/Feb/2026
+
+\lx nafyi
+\ph /nafji/
+\ps n
+\mm nafyi
+\vl -
+\ve -
+\fa -
+\lat -
+\gf exil
+\gvf bannissement
+\ge exile
+\gve banishment
+\sm Action de forcer quelqu'un à quitter son pays.
+\ms 1
+\xv wajib had ɤala nafyi
+\xe forcer quelqu'un à l'exil
+\xf forcing someone into exile
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx raaʕij
+\ph /raːʕidʒ/
+\ps n
+\mm raaʕij
+\vl -
+\ve -
+\fa -
+\lat -
+\gf homme
+\gvf personne
+\ge man
+\gve person
+\sm Terme désignant un individu masculin ou une personne.
+\ms 1
+\xv Yimkin li eyi raaʕij
+\xe Il est possible pour tout homme
+\xf It is possible for any man
+\sy raagij
+\an mara
+\dt 01/Feb/2026
+
+\lx ijṭiḥaad
+\ph /idʒtˤihaːd/
+\ps n
+\mm ijṭiḥaad
+\vl -
+\ve -
+\fa -
+\lat -
+\gf persécution
+\gvf oppression
+\ge persecution
+\gve oppression
+\sm Traitement injuste et cruel envers un individu ou un groupe.
+\ms 1
+\xv yitɤaraḍ li-ijṭiḥaad
+\xe exposé à la persécution
+\xf exposed to persecution
+\sy ẓulm
+\an -
+\dt 01/Feb/2026
+
+\lx muɤtaqid
+\ph /muʁtaqid/
+\ps n
+\mm muɤtaqid
+\vl -
+\ve -
+\fa -
+\lat -
+\gf croyance
+\gvf conviction
+\ge belief
+\gve creed
+\sm Ce que l'on croit être vrai, notamment en politique ou religion.
+\ms 1
+\xv bisabab muɤtaqid siyaasiyya
+\xe en raison de convictions politiques
+\xf because of political beliefs
+\sy diin
+\an -
+\dt 01/Feb/2026
+
+\lx lujuu-ɤi
+\ph /ludʒuːʔi/
+\ps adj
+\mm lujuu-ɤi
+\vl -
+\ve -
+\fa -
+\lat -
+\gf de réfugié
+\gvf d'asile
+\ge refugee
+\gve asylum-related
+\sm Relatif au statut de personne cherchant protection.
+\ms 1
+\xv hag lujuu-ɤi
+\xe droit d'asile
+\xf right of asylum
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx tadbir
+\ph /tadbiːr/
+\ps n
+\mm tadbir
+\vl -
+\ve -
+\fa -
+\lat -
+\gf mesure
+\gvf disposition
+\ge measure
+\gve arrangement
+\sm Action ou moyen mis en œuvre pour obtenir un résultat.
+\ms 1
+\xv yirfad litadbir
+\xe soumis à une mesure
+\xf subjected to a measure
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx hirman
+\ph /hirmaːn/
+\ps n
+\mm hirman
+\vl -
+\ve -
+\fa -
+\lat -
+\gf privation
+\gvf manque
+\ge deprivation
+\gve lack
+\sm Action de retirer ou de refuser un droit ou un bien.
+\ms 1
+\xv hirman min al hurriyya
+\xe privation de liberté
+\xf deprivation of liberty
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx yafhasu
+\ph /jafhasˤ/
+\ps v
+\mm ya-fhasˤ-u
+\vl -
+\ve -
+\fa -
+\lat -
+\gf examiner
+\gvf ausculter
+\ge to examine
+\gve to check
+\sm Faire l'examen médical ou technique de quelqu'un.
+\ms 1
+\xv yafhasu ṭobib
+\xe un médecin l'examine
+\xf a doctor examines him
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ṭobib
+\ph /tˤabiːb/
+\ps n
+\mm ṭobib
+\vl -
+\ve -
+\fa -
+\lat -
+\gf médecin
+\gvf docteur
+\ge doctor
+\gve physician
+\sm Personne habilitée à pratiquer la médecine.
+\ms 1
+\xv yafhasu ṭobib min ixtiyaari
+\xe un médecin de son choix l'examine
+\xf a doctor of his choice examines him
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx muhaakama
+\ph /muhaːkama/
+\ps n
+\mm muhaakama
+\vl -
+\ve -
+\fa -
+\lat -
+\gf procès
+\gvf jugement
+\ge trial
+\gve prosecution
+\sm Action de juger une personne devant un tribunal.
+\ms 1
+\xv Li killu insan hag vi muhaakama ɤadila
+\xe Chaque personne a droit à un procès équitable
+\xf Every person has the right to a fair trial
+\sy qadaa
+\an -
+\dt 01/Feb/2026
+
+\lx ɤadila
+\ph /ʕadila/
+\ps adj
+\mm ɤadila
+\vl -
+\ve -
+\fa -
+\lat -
+\gf juste
+\gvf équitable
+\ge fair
+\gve just
+\sm Qui respecte l'équité et le droit.
+\ms 1
+\xv muhaakama ɤadila
+\xe un procès équitable
+\xf a fair trial
+\sy mustaqiima
+\an dhaalima
+\dt 01/Feb/2026
+
+\lx iṣdar
+\ph /isˤdaːr/
+\ps n
+\mm iṣdar
+\vl -
+\ve -
+\fa -
+\lat -
+\gf émission
+\gvf prononcé
+\ge issuance
+\gve delivery
+\sm Action de rendre public un acte ou un jugement.
+\ms 1
+\xv wo iṣdar hukum
+\xe et le prononcé du jugement
+\xf and the issuance of judgment
+\sy tansiir
+\an -
+\dt 01/Feb/2026
+
+\lx fatra
+\ph /fatra/
+\ps n
+\mm fatra
+\vl -
+\ve -
+\fa -
+\lat -
+\gf période
+\gvf intervalle
+\ge period
+\gve interval
+\sm Espace de temps déterminé.
+\ms 1
+\xv xilal fatra zamaniyya
+\xe durant une période de temps
+\xf during a period of time
+\sy muda
+\an -
+\dt 01/Feb/2026
+
+\lx zamaniyya
+\ph /zamanijja/
+\ps adj
+\mm zamaniyya
+\vl -
+\ve -
+\fa -
+\lat -
+\gf temporel
+\gvf de temps
+\ge temporal
+\gve time-based
+\sm Relatif au temps ou à la durée.
+\ms 1
+\xv fatra zamaniyya maɤguula
+\xe une période de temps raisonnable
+\xf a reasonable period of time
+\sy waqtiya
+\an -
+\dt 01/Feb/2026
+
+\lx maɤguula
+\ph /maʕɡuːla/
+\ps adj
+\mm maɤguula
+\vl -
+\ve -
+\fa -
+\lat -
+\gf raisonnable
+\gvf sensé
+\ge reasonable
+\gve sensible
+\sm Qui est conforme à la raison ou à la logique.
+\ms 1
+\xv fatra zamaniyya maɤguula
+\xe une période de temps raisonnable
+\xf a reasonable period of time
+\sy mantiqiya
+\an -
+\dt 01/Feb/2026
+
+\lx istiɤaana
+\ph /istiʁaːna/
+\ps n
+\mm istiɤaana
+\vl -
+\ve -
+\fa -
+\lat -
+\gf recours
+\gvf assistance
+\ge assistance
+\gve aid
+\sm Action de demander de l'aide ou un soutien.
+\ms 1
+\xv əlhag vi istiɤaana bi muhaam
+\xe le droit à l'assistance d'un avocat
+\xf the right to the assistance of a lawyer
+\sy musaacada
+\an -
+\dt 01/Feb/2026
+
+\lx muhaam
+\ph /muhaːm/
+\ps n
+\mm muhaam
+\vl -
+\ve -
+\fa -
+\lat -
+\gf avocat
+\gvf défenseur
+\ge lawyer
+\gve attorney
+\sm Personne dont la profession est de défendre en justice.
+\ms 1
+\xv istiɤaana bi muhaam
+\xe assistance d'un avocat
+\xf assistance of a lawyer
+\sy difaac
+\an -
+\dt 01/Feb/2026
+
+\lx makful
+\ph /makfuːl/
+\ps adj
+\mm makful
+\vl -
+\ve -
+\fa -
+\lat -
+\gf garanti
+\gvf assuré
+\ge guaranteed
+\gve secured
+\sm Qui est protégé ou assuré par la loi.
+\ms 1
+\xv makful munz tahqiig
+\xe garanti dès l'enquête
+\xf guaranteed from the investigation
+\sy madmuun
+\an -
+\dt 01/Feb/2026
+
+\lx munz
+\ph /munð/
+\ps prep
+\mm munz
+\vl -
+\ve -
+\fa -
+\lat -
+\gf depuis
+\gvf dès
+\ge since
+\gve from
+\sm Indique le point de départ dans le temps.
+\ms 1
+\xv makful munz tahqiig
+\xe garanti dès l'enquête
+\xf guaranteed from the investigation
+\sy min
+\an -
+\dt 01/Feb/2026
+
+\lx mutaḥamin
+\ph /mutahamin/
+\ps n
+\mm mutaḥamin
+\vl -
+\ve -
+\fa -
+\lat -
+\gf accusé
+\gvf prévenu
+\ge accused
+\gve defendant
+\sm Personne soupçonnée d'avoir commis une infraction.
+\ms 1
+\xv Yiɤtabar keemil mutaḥamin abriyaa-i
+\xe Tous les accusés sont considérés innocents
+\xf All accused are considered innocent
+\sy mutaham
+\an -
+\dt 01/Feb/2026
+
+\lx abriyaa-i
+\ph /abrijaːʔ/
+\ps adj
+\mm abriyaa-i
+\vl -
+\ve -
+\fa -
+\lat -
+\gf innocent
+\gvf pur
+\ge innocent
+\gve guiltless
+\sm Qui n'est pas coupable d'un crime ou d'une faute.
+\ms 1
+\xv mutaḥamin abriyaa-i
+\xe des accusés innocents
+\xf innocent accused
+\sy -
+\an muznib
+\dt 01/Feb/2026
+
+\lx tisabit
+\ph /tusabit/
+\ps v
+\mm tu-sabit
+\vl -
+\ve -
+\fa -
+\lat -
+\gf prouver
+\gvf établir
+\ge to prove
+\gve to establish
+\sm Démontrer la vérité ou la réalité de quelque chose.
+\ms 1
+\xv tisabit idaanathum
+\xe prouver leur culpabilité
+\xf prove their guilt
+\sy tbarhin
+\an -
+\dt 01/Feb/2026
+
+\lx idaana
+\ph /idaːna/
+\ps n
+\mm idaana
+\vl -
+\ve -
+\fa -
+\lat -
+\gf condamnation
+\gvf culpabilité
+\ge conviction
+\gve condemnation
+\sm Fait d'être déclaré coupable par un tribunal.
+\ms 1
+\xv tisabit idaanathum
+\xe prouver leur culpabilité
+\xf prove their guilt
+\sy -
+\an bara'a
+\dt 01/Feb/2026
+
+\lx muxtaṣa
+\ph /muxtasˤsˤa/
+\ps adj
+\mm muxtaṣa
+\vl -
+\ve -
+\fa -
+\lat -
+\gf compétent
+\gvf spécialisé
+\ge competent
+\gve specialized
+\sm Qui a la capacité légale ou technique d'agir.
+\ms 1
+\xv mahkama muxtaṣa
+\xe tribunal compétent
+\xf competent court
+\sy mu'ahala
+\an -
+\dt 01/Feb/2026
+
+\lx miqaadaat
+\ph /miqaːdaːt/
+\ps n
+\mm miqaadaat
+\vl -
+\ve -
+\fa -
+\lat -
+\gf poursuites
+\gvf procès
+\ge prosecution
+\gve legal action
+\sm Action d'engager une procédure judiciaire contre quelqu'un.
+\ms 1
+\xv Ma yimkin miqaadaat killu raagij
+\xe On ne peut poursuivre personne
+\xf No one can be prosecuted
+\sy muhaakama
+\an -
+\dt 01/Feb/2026
+
+\lx towgiv
+\ph /tawɡiːv/
+\ps n
+\mm towgiv
+\vl -
+\ve -
+\fa -
+\lat -
+\gf arrestation
+\gvf interpellation
+\ge arrest
+\gve detention
+\sm Action de priver quelqu'un de sa liberté par autorité.
+\ms 1
+\xv u towgiv u towjiih
+\xe et l'arrestation et la notification
+\xf and the arrest and the directing
+\sy ihtijaaz
+\an -
+\dt 01/Feb/2026
+
+\lx towjiih
+\ph /tawdʒiːh/
+\ps n
+\mm towjiih
+\vl -
+\ve -
+\fa -
+\lat -
+\gf orientation
+\gvf notification
+\ge directing
+\gve bringing
+\sm Action de diriger ou de notifier un acte.
+\ms 1
+\xv u towjiih it-ham
+\xe et la notification de l'accusation
+\xf and the bringing of the charge
+\sy iršaad
+\an -
+\dt 01/Feb/2026
+
+\lx it-ham
+\ph /it-haːm/
+\ps n
+\mm it-ham
+\vl -
+\ve -
+\fa -
+\lat -
+\gf accusation
+\gvf charge
+\ge accusation
+\gve charge
+\sm Imputation d'une faute ou d'un crime à quelqu'un.
+\ms 1
+\xv u towjiih it-ham
+\xe et la notification de l'accusation
+\xf and the bringing of the charge
+\sy tuhma
+\an -
+\dt 01/Feb/2026
+
+\lx saabig
+\ph /saːbiɡ/
+\ps adj
+\mm saabig
+\vl -
+\ve -
+\fa -
+\lat -
+\gf précédent
+\gvf antérieur
+\ge previous
+\gve prior
+\sm Qui a eu lieu avant le moment présent ou un acte.
+\ms 1
+\xv saabig afɤaal əlmansuuba
+\xe antérieur aux actes imputés
+\xf prior to the imputed acts
+\sy -
+\an laahiq
+\dt 01/Feb/2026
+
+\lx mansuuba
+\ph /mansuːba/
+\ps adj
+\mm mansuuba
+\vl -
+\ve -
+\fa -
+\lat -
+\gf attribué
+\gvf imputé
+\ge attributed
+\gve imputed
+\sm Qui est mis sur le compte de quelqu'un.
+\ms 1
+\xv afɤaal əlmansuuba ileyhi
+\xe les actes qui lui sont imputés
+\xf the acts imputed to him
+\sy mu'araxa
+\an -
+\dt 01/Feb/2026
+
+\lx yizaʑir
+\ph /jizaːdʒir/
+\ps v
+\mm yi-zaʑir
+\vl -
+\ve -
+\fa -
+\lat -
+\gf interdire
+\gvf prohiber
+\ge to forbid
+\gve to prohibit
+\sm Déclarer illégal ou empêcher par la loi.
+\ms 1
+\xv Killu ma la yizaʑir šariiɤa
+\xe Tout ce que la loi n'interdit pas
+\xf Everything that the law does not forbid
+\sy yimnac
+\an -
+\dt 01/Feb/2026
+
+\lx manɤu
+\ph /manʕu/
+\ps n
+\mm manɤu
+\vl -
+\ve -
+\fa -
+\lat -
+\gf interdiction
+\gvf empêchement
+\ge prevention
+\gve prohibition
+\sm Action d'empêcher ou de défendre quelque chose.
+\ms 1
+\xv maa yimkin manɤu
+\xe ne peut être interdit
+\xf cannot be prohibited
+\sy tawaquf
+\an -
+\dt 01/Feb/2026
+
+\lx viɤl
+\ph /fiʕl/
+\ps n
+\mm viɤl
+\vl -
+\ve -
+\fa -
+\lat -
+\gf acte
+\gvf action
+\ge act
+\gve action
+\sm Ce qui est fait par un individu.
+\ms 1
+\xv wojib had ɤala viɤl
+\xe obliger quelqu'un à un acte
+\xf forcing someone to an act
+\sy camal
+\an -
+\dt 01/Feb/2026
+
+\lx yiɤmur
+\ph /jaʔmur/
+\ps v
+\mm yi-ɤmur
+\vl -
+\ve -
+\fa -
+\lat -
+\gf ordonner
+\gvf commander
+\ge to order
+\gve to command
+\sm Donner un ordre ou une instruction impérative.
+\ms 1
+\xv maa la yiɤmur bih
+\xe ce qu'elle n'ordonne pas
+\xf what it does not command
+\sy yicallam
+\an -
+\dt 01/Feb/2026
+
+\lx taxayam
+\ph /taxajam/
+\ps n
+\mm taxayam
+\vl -
+\ve -
+\fa -
+\lat -
+\gf mariage
+\gvf noce
+\ge marriage
+\gve wedding
+\sm Union légale entre deux personnes.
+\ms 1
+\xv Taxayam wo əl-usra
+\xe Le mariage et la famille
+\xf Marriage and the family
+\sy zwaaj
+\an -
+\dt 01/Feb/2026
+
+\lx usra
+\ph /usra/
+\ps n
+\mm usra
+\vl -
+\ve -
+\fa -
+\lat -
+\gf famille
+\gvf foyer
+\ge family
+\gve household
+\sm Groupe de personnes liées par le sang ou le mariage.
+\ms 1
+\xv Taxayam wo əl-usra
+\xe Le mariage et la famille
+\xf Marriage and the family
+\sy cahila
+\an -
+\dt 01/Feb/2026
+
+\lx ithad
+\ph /ittihaːd/
+\ps n
+\mm ithad
+\vl -
+\ve -
+\fa -
+\lat -
+\gf union
+\gvf alliance
+\ge union
+\gve alliance
+\sm Fait d'être uni ou lié par un contrat.
+\ms 1
+\xv Taxayam hiye ithad
+\xe Le mariage est une union
+\xf Marriage is a union
+\sy ittifaaq
+\an -
+\dt 01/Feb/2026
+
+\lx imraă
+\ph /imraʔa/
+\ps n
+\mm imraă
+\vl -
+\ve -
+\fa -
+\lat -
+\gf femme
+\gvf épouse
+\ge woman
+\gve wife
+\sm Être humain de sexe féminin.
+\ms 1
+\xv beyn raajil wo limraă
+\xe entre l'homme et la femme
+\xf between man and woman
+\sy zawja
+\an raajil
+\dt 01/Feb/2026
+
+\lx tadrib
+\ph /tadriːb/
+\ps n
+\mm tadrib
+\vl -
+\ve -
+\fa -
+\lat -
+\gf formation
+\gvf entraînement
+\ge training
+\gve coaching
+\sm Action de former ou d'instruire quelqu'un.
+\ms 1
+\xv Taɤlim wo tadrib
+\xe Éducation et formation
+\xf Education and training
+\sy takwiin
+\an -
+\dt 01/Feb/2026
+
+\lx šaʕal
+\ph /ʃaʕal/
+\mm šaʕal
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf emploi
+\gvf travail
+\ge employment
+\gve work
+\sm Activité professionnelle rémunérée ou occupation.
+\ms 1
+\xv Taɤlim wo tadrib wo šaʕal
+\xe Éducation, formation et emploi
+\xf Education, training and employment
+\sy šagl
+\an raaha
+\dt 01/Feb/2026
+
+\lx sakan
+\ph /sakan/
+\mm sakan
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf logement
+\gvf habitat
+\ge housing
+\gve dwelling
+\sm Lieu où l'on habite ou action de se loger.
+\ms 1
+\xv wa sakan wo tarfi
+\xe et le logement et les loisirs
+\xf and housing and leisure
+\sy maskan
+\an -
+\dt 01/Feb/2026
+
+\lx tarfi
+\ph /tarfiː/
+\mm tarfi
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf loisir
+\gvf récréation
+\ge leisure
+\gve recreation
+\sm Activité de détente ou de divertissement.
+\ms 1
+\xv wa sakan wo tarfi
+\xe et le logement et les loisirs
+\xf and housing and leisure
+\sy raaha
+\an šagl
+\dt 01/Feb/2026
+
+\lx ṣiha
+\ph /sˤihha/
+\mm ṣiha
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf santé
+\gvf hygiène
+\ge health
+\gve wellness
+\sm État de bon fonctionnement de l'organisme.
+\ms 1
+\xv wo ṣiha wo himaaya
+\xe et la santé et la protection
+\xf and health and protection
+\sy -
+\an marḍ
+\dt 01/Feb/2026
+
+\lx ăyš
+\ph /ʕajʃ/
+\mm ăyš
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf subsistance
+\gvf vie
+\ge subsistence
+\gve living
+\sm Moyens nécessaires pour vivre ou mode de vie.
+\ms 1
+\xv wol ăyš wo xaalig
+\xe et la subsistance et l'existence
+\xf and subsistence and existence
+\sy hayaat
+\an mowt
+\dt 01/Feb/2026
+
+\lx xaalig
+\ph /xaːliɡ/
+\mm xaalig
+\ps adj
+\vl -
+\ve -
+\fa -
+\lat -
+\gf existant
+\gvf présent
+\ge existing
+\gve available
+\sm Qui est disponible ou qui a une existence réelle.
+\ms 1
+\xv wo xaalig ɤala lmeă
+\xe et l'accès à l'eau
+\xf and access to water
+\sy mawjuud
+\an cadam
+\dt 01/Feb/2026
+
+\lx meă
+\ph /maːʔ/
+\mm meă
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf eau
+\gvf eau
+\ge water
+\gve water
+\sm Liquide transparent indispensable à la vie.
+\ms 1
+\xv xaalig ɤala lmeă
+\xe accès à l'eau
+\xf access to water
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx muɤtariv
+\ph /muʕtarif/
+\mm muɤtariv
+\ps adj
+\vl -
+\ve -
+\fa -
+\lat -
+\gf reconnu
+\gvf admis
+\ge recognized
+\gve acknowledged
+\sm Qui est accepté ou validé par une autorité.
+\ms 1
+\xv huquuq muɤtariv bihe
+\xe droits reconnus
+\xf recognized rights
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx mwaaṭin
+\ph /muwaːtˤin/
+\mm mwaaṭin
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf citoyen
+\gvf ressortissant
+\ge citizen
+\gve national
+\sm Personne membre d'un État avec des droits et devoirs.
+\ms 1
+\xv Likillu mwaaṭin haq
+\xe Pour chaque citoyen le droit
+\xf For every citizen the right
+\sy -
+\an ajnabi
+\dt 01/Feb/2026
+
+\lx ilzami
+\ph /ilzaːmi/
+\mm ilzami
+\ps adj
+\vl -
+\ve -
+\fa -
+\lat -
+\gf obligatoire
+\gvf impératif
+\ge compulsory
+\gve mandatory
+\sm Qui est imposé par la loi ou une règle.
+\ms 1
+\xv Taɤlim ɤam ilzami
+\xe Enseignement public obligatoire
+\xf Compulsory public education
+\sy wajib
+\an ixtiyaari
+\dt 01/Feb/2026
+
+\lx majaani
+\ph /madʒaːni/
+\mm majaani
+\ps adj
+\vl -
+\ve -
+\fa -
+\lat -
+\gf gratuit
+\gvf gracieux
+\ge free
+\gve gratuitous
+\sm Qui ne nécessite pas de paiement financier.
+\ms 1
+\xv wo majaani wo laa-ɤiki
+\xe et gratuit et laïc
+\xf and free and secular
+\sy -
+\an bi-fadhdha
+\dt 01/Feb/2026
+
+\lx laa-ɤiki
+\ph /laːʔiki/
+\mm laa-ɤiki
+\ps adj
+\vl -
+\ve -
+\fa -
+\lat -
+\gf laïc
+\gvf séculier
+\ge secular
+\gve non-religious
+\sm Qui est indépendant des organisations religieuses.
+\ms 1
+\xv wo majaani wo laa-ɤiki
+\xe et gratuit et laïc
+\xf and free and secular
+\sy -
+\an diini
+\dt 01/Feb/2026
+
+\lx yimaris
+\ph /jumaːris/
+\mm yimaris
+\ps v
+\vl -
+\ve -
+\fa -
+\lat -
+\gf pratiquer
+\gvf exercer
+\ge to practice
+\gve to exercise
+\sm Mettre en action un droit ou une activité.
+\ms 1
+\xv wo yimaris wivqan
+\xe et s'exerce conformément
+\xf and is exercised in accordance
+\sy yicaddal
+\an -
+\dt 01/Feb/2026
+
+\lx šuruuṭ
+\ph /ʃuruːtˤ/
+\mm šuruuṭ
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf conditions
+\gvf modalités
+\ge conditions
+\gve terms
+\sm Clauses ou circonstances nécessaires à un acte.
+\ms 1
+\xv wivqan lišuruuṭ
+\xe conformément aux conditions
+\xf in accordance with the conditions
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx yihadid
+\ph /juhaddid/
+\mm yihadid
+\ps v
+\vl -
+\ve -
+\fa -
+\lat -
+\gf définir
+\gvf déterminer
+\ge to define
+\gve to determine
+\sm Fixer avec précision les limites ou les règles.
+\ms 1
+\xv illi yihadid he əšariyya
+\xe que la loi détermine
+\xf that the law determines
+\sy yisabit
+\an -
+\dt 01/Feb/2026
+
+\lx imtiḥaq
+\ph /imtihaːq/
+\mm imtiḥaq
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf respect
+\gvf inviolabilité
+\ge respect
+\gve inviolability
+\sm Fait de ne pas porter atteinte à un droit ou un lieu.
+\ms 1
+\xv Ma yimkin imtiḥaq hirmat
+\xe On ne peut porter atteinte à l'inviolabilité
+\xf The sanctity cannot be violated
+\sy ihtiraam
+\an intihaak
+\dt 01/Feb/2026
+
+\lx hirmat
+\ph /hurmat/
+\mm hirmat
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf sainteté
+\gvf intimité
+\ge sanctity
+\gve privacy
+\sm Caractère sacré ou privé d'un lieu ou d'une vie.
+\ms 1
+\xv hirmat əlmaskan
+\xe l'inviolabilité du domicile
+\xf the sanctity of the home
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx maskan
+\ph /maskan/
+\mm maskan
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf domicile
+\gvf demeure
+\ge dwelling
+\gve home
+\sm Lieu où une personne réside habituellement.
+\ms 1
+\xv hirmat əlmaskan
+\xe l'inviolabilité du domicile
+\xf the sanctity of the home
+\sy daːr
+\an -
+\dt 01/Feb/2026
+
+\lx milk
+\ph /milk/
+\mm milk
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf propriété
+\gvf possession
+\ge property
+\gve ownership
+\sm Chose possédée ou fait de posséder.
+\ms 1
+\xv wo milk əlxas
+\xe et la propriété privée
+\xf and private property
+\sy milkiyya
+\an -
+\dt 01/Feb/2026
+
+\lx ɤa-iliyya
+\ph /ʕaːʔilijja/
+\mm ɤa-iliyya
+\ps adj
+\vl -
+\ve -
+\fa -
+\lat -
+\gf familial
+\gvf de famille
+\ge familial
+\gve family
+\sm Relatif à la famille ou au foyer.
+\ms 1
+\xv wol ɤa-iliyya
+\xe et familiale
+\xf and familial
+\sy usriya
+\an -
+\dt 01/Feb/2026
+
+\lx bayaanaat
+\ph /bajaːnaːt/
+\mm bayaanaat
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf données
+\gvf informations
+\ge data
+\gve information
+\sm Ensemble d'informations numériques ou textuelles.
+\ms 1
+\xv wo bayaanaat šaxṣiyya
+\xe et les données personnelles
+\xf and personal data
+\sy maclumaat
+\an -
+\dt 01/Feb/2026
+
+\lx šaxṣiyya
+\ph /ʃaxsˤijja/
+\mm šaxṣiyya
+\ps adj
+\vl -
+\ve -
+\fa -
+\lat -
+\gf personnel
+\gvf privé
+\ge personal
+\gve private
+\sm Qui appartient en propre à un individu.
+\ms 1
+\xv wo bayaanaat šaxṣiyya
+\xe et les données personnelles
+\xf and personal data
+\sy -
+\an cmuumi
+\dt 01/Feb/2026
+
+\lx siriyya
+\ph /sirrijja/
+\mm siriyya
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf secret
+\gvf confidentialité
+\ge secrecy
+\gve confidentiality
+\sm Caractère de ce qui doit rester caché ou privé.
+\ms 1
+\xv wo siriyya əlmuraasilaat
+\xe et le secret des correspondances
+\xf and the secrecy of correspondence
+\sy -
+\an calaniya
+\dt 01/Feb/2026
+
+\lx muraasilaat
+\ph /muraːsilaːt/
+\mm muraasilaat
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf correspondances
+\gvf courriers
+\ge correspondence
+\gve communications
+\sm Échange de lettres ou de messages.
+\ms 1
+\xv wo siriyya əlmuraasilaat
+\xe et le secret des correspondances
+\xf and the secrecy of correspondence
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ixtiṣaasat
+\ph /ixtisˤaːsˤaːt/
+\mm ixtiṣaasat
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf spécialités
+\gvf affaires privées
+\ge specialties
+\gve private affairs
+\sm Domaines réservés ou compétences spécifiques.
+\ms 1
+\xv wol-ixtiṣaasat
+\xe et les affaires privées
+\xf and private affairs
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx intihakihe
+\ph /intihaːkiha/
+\mm intihakihe
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf violation
+\gvf atteinte
+\ge violation
+\gve breach
+\sm Action de transgresser une règle ou un droit.
+\ms 1
+\xv Ma yimkin intihakihe
+\xe On ne peut y porter atteinte
+\xf It cannot be violated
+\sy -
+\an imtiḥaq
+\dt 01/Feb/2026
+
+\lx manguula
+\ph /manquːla/
+\mm manguula
+\ps adj
+\vl -
+\ve -
+\fa -
+\lat -
+\gf énoncé
+\gvf stipulé
+\ge stated
+\gve transferred
+\sm Qui est rapporté ou écrit dans un texte légal.
+\ms 1
+\xv əlmanguula ɤaleyhe
+\xe stipulées à ce sujet
+\xf stated therein
+\sy manṣuuṣ
+\an -
+\dt 01/Feb/2026
+
+\lx milkiyya
+\ph /milkijja/
+\mm milkiyya
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf propriété
+\gvf droit de propriété
+\ge ownership
+\gve property right
+\sm Droit d'user et de disposer d'une chose.
+\ms 1
+\xv Hag milkiyya makfuula
+\xe Le droit de propriété est garanti
+\xf The right of ownership is guaranteed
+\sy milk
+\an -
+\dt 01/Feb/2026
+
+\lx asbaab
+\ph /asbaːb/
+\mm asbaab
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf raisons
+\gvf motifs
+\ge reasons
+\gve grounds
+\sm Faits qui expliquent ou justifient une action.
+\ms 1
+\xv illa asbaab tetaɤalag
+\xe sauf pour des motifs liés
+\xf except for reasons related
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx tetaɤalag
+\ph /tataʕallaɡ/
+\mm tetaɤalag
+\ps v
+\vl -
+\ve -
+\fa -
+\lat -
+\gf concerner
+\gvf se rapporter
+\ge to concern
+\gve to relate
+\sm Avoir un rapport direct avec quelque chose.
+\ms 1
+\xv tetaɤalag bilmanfaɤa
+\xe se rapporte à l'utilité
+\xf relates to the utility
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx manfaɤa
+\ph /manfaʕa/
+\va manfaca
+\mm manfaɤa
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf utilité
+\gvf utilité
+\ge utility
+\gve utility
+\sm Avantage ou profit retiré de quelque chose pour la collectivité.
+\ms 1
+\xv asbaab tetaɤalag bilmanfaɤa aama
+\xe motifs liés à l'utilité publique
+\xf reasons related to public utility
+\sy nfac
+\an darr
+\dt 01/Feb/2026
+
+\lx aama
+\ph /ʕaːma/
+\va caama
+\mm aama
+\ps adj
+\vl -
+\ve -
+\fa -
+\lat -
+\gf publique
+\gvf publique
+\ge public
+\gve public
+\sm Qui concerne l'ensemble de la population ou l'État.
+\ms 1
+\xv bilmanfaɤa aama
+\xe d'utilité publique
+\xf of public utility
+\sy cmuumi
+\an xaaṣ
+\dt 01/Feb/2026
+
+\lx mugaabil
+\ph /muqaːbil/
+\va muqaabil
+\mm mugaabil
+\ps prep
+\vl -
+\ve -
+\fa -
+\lat -
+\gf contre
+\gvf en échange de
+\ge against
+\gve in exchange for
+\sm En contrepartie d'une action ou d'un bien.
+\ms 1
+\xv mugaabil taɤawiid ɤaadil
+\xe contre une juste indemnisation
+\xf in exchange for fair compensation
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx taɤawiid
+\ph /taʕwiːdˤ/
+\va tacwiid
+\mm taɤawiid
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf indemnisation
+\gvf compensation
+\ge compensation
+\gve compensation
+\sm Somme versée pour réparer un préjudice ou une expropriation.
+\ms 1
+\xv mugaabil taɤawiid ɤaadil
+\xe contre une juste indemnisation
+\xf in exchange for fair compensation
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx vigra
+\ph /fikra/
+\va fikra
+\mm vigra
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf pensée
+\gvf idée
+\ge thought
+\gve idea
+\sm Activité de l'esprit ou concept intellectuel.
+\ms 1
+\xv hurriyya əlvigra
+\xe liberté de pensée
+\xf freedom of thought
+\sy raayi
+\an -
+\dt 01/Feb/2026
+
+\lx wijdan
+\ph /widʒdaːn/
+\va wijdaan
+\mm wijdan
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf conscience
+\gvf sentiment intérieur
+\ge conscience
+\gve conscience
+\sm Sens moral intérieur qui guide les actions.
+\ms 1
+\xv hurriyya əlvigra wo wijdan
+\xe liberté de pensée et de conscience
+\xf freedom of thought and conscience
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ibaada
+\ph /ʕibaːda/
+\va cibaada
+\mm ibaada
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf culte
+\gvf adoration
+\ge worship
+\gve worship
+\sm Pratique des rites d'une religion.
+\ms 1
+\xv hurriyya əlvigra wo wijdan wo diin wo ibaada
+\xe liberté de pensée, de conscience, de religion et de culte
+\xf freedom of thought, conscience, religion and worship
+\sy diin
+\an -
+\dt 01/Feb/2026
+
+\lx raɤayi
+\ph /raʔji/
+\va ra'yi
+\mm raɤayi
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf opinion
+\gvf avis
+\ge opinion
+\gve view
+\sm Jugement personnel porté sur un sujet.
+\ms 1
+\xv ibaada wo raɤayi wo klam
+\xe culte, opinion et parole
+\xf worship, opinion and speech
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx klam
+\ph /klaːm/
+\va kalaam
+\mm klam
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf parole
+\gvf discours
+\ge speech
+\gve word
+\sm Expression orale de la pensée.
+\ms 1
+\xv ibaada wo raɤayi wo klam
+\xe culte, opinion et parole
+\xf worship, opinion and speech
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ṣahaafa
+\ph /sˤahaːfa/
+\va sahaafa
+\mm ṣahaafa
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf presse
+\gvf journalisme
+\ge press
+\gve journalism
+\sm Ensemble des journaux et des médias d'information.
+\ms 1
+\xv Huriya ṣahaafa
+\xe Liberté de la presse
+\xf Freedom of the press
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx wuṣul
+\ph /wusˤuːl/
+\va wusuul
+\mm wuṣul
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf accès
+\gvf arrivée
+\ge access
+\gve arrival
+\sm Fait de pouvoir atteindre un lieu ou une information.
+\ms 1
+\xv hag vi əlwuṣul ila maɤlumaat
+\xe droit d'accès aux informations
+\xf right of access to information
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx maɤlumaat
+\ph /maʕlumaːt/
+\va maclumaat
+\mm maɤlumaat
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf informations
+\gvf renseignements
+\ge information
+\gve data
+\sm Ensemble de connaissances sur un sujet donné.
+\ms 1
+\xv hag vi əlwuṣul ila maɤlumaat
+\xe droit d'accès aux informations
+\xf right of access to information
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx maḍmuuna
+\ph /madˤmuːna/
+\va madmuuna
+\mm maḍmuuna
+\ps adj
+\vl -
+\ve -
+\fa -
+\lat -
+\gf garantie
+\gvf assurée
+\ge guaranteed
+\gve insured
+\sm Qui est protégé par une assurance ou une loi.
+\ms 1
+\xv muɤtarav bihe wo maḍmuuna
+\xe reconnue et garantie
+\xf recognized and guaranteed
+\sy makfuula
+\an -
+\dt 01/Feb/2026
+
+\lx fanni
+\ph /fanni/
+\va fanni
+\mm fanni
+\ps adj
+\vl -
+\ve -
+\fa -
+\lat -
+\gf artistique
+\gvf technique
+\ge artistic
+\gve technical
+\sm Relatif aux arts ou à une technique spécifique.
+\ms 1
+\xv Huriya axbaar fanni
+\xe Liberté de création artistique
+\xf Freedom of artistic creation
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx giyaas
+\ph /qijaːs/
+\va qiyaas
+\mm giyaas
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf aller
+\gvf départ
+\ge going
+\gve departure
+\sm Action de se déplacer d'un point à un autre.
+\ms 1
+\xv hurriyya giyaas wol iyaab
+\xe liberté d'aller et venir
+\xf freedom of movement
+\sy ðahaab
+\an iyaab
+\dt 01/Feb/2026
+
+\lx iyaab
+\ph /ijaːb/
+\va iyaab
+\mm iyaab
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf retour
+\gvf venue
+\ge return
+\gve coming
+\sm Action de revenir au point de départ.
+\ms 1
+\xv hurriyya giyaas wol iyaab
+\xe liberté d'aller et venir
+\xf freedom of movement
+\sy rujuɤ
+\an giyaas
+\dt 01/Feb/2026
+
+\lx ixtiyar
+\ph /ixtijaːr/
+\va ixtiyaar
+\mm ixtiyar
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf choix
+\gvf option
+\ge choice
+\gve option
+\sm Action de choisir entre plusieurs possibilités.
+\ms 1
+\xv hurriyya ixtiyar balad igaama
+\xe liberté de choix du lieu de résidence
+\xf freedom of choice of place of residence
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx igaama
+\ph /iqaːma/
+\va iqaama
+\mm igaama
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf résidence
+\gvf séjour
+\ge residence
+\gve stay
+\sm Fait de demeurer dans un lieu déterminé.
+\ms 1
+\xv hurriyya ixtiyar balad igaama
+\xe liberté de choix du lieu de résidence
+\xf freedom of choice of place of residence
+\sy sakan
+\an -
+\dt 01/Feb/2026
+
+\lx taɤdiil
+\ph /taʕdiːl/
+\va tacdiil
+\mm taɤdiil
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf création
+\gvf constitution
+\ge creation
+\gve formation
+\sm Action de former ou de mettre en place une organisation.
+\ms 1
+\xv hurriyya taɤdiil jemɤiyaat
+\xe liberté de créer des associations
+\xf freedom to form associations
+\sy tanẓiim
+\an -
+\dt 01/Feb/2026
+
+\lx jemɤiyaat
+\ph /dʒamʕijjaːt/
+\va jamciyaat
+\mm jemɤiyaat
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf associations
+\gvf groupements
+\ge associations
+\gve societies
+\sm Groupements de personnes volontaires pour un but commun.
+\ms 1
+\xv hurriyya taɤdiil jemɤiyaat
+\xe liberté de créer des associations
+\xf freedom to form associations
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx tajemaɤ
+\ph /tadʒammuʕ/
+\va tajammuc
+\mm tajemaɤ
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf rassemblement
+\gvf réunion
+\ge assembly
+\gve gathering
+\sm Action de se réunir en un même lieu.
+\ms 1
+\xv wo tajemaɤ, wo taẓaahar
+\xe et le rassemblement, et la manifestation
+\xf and assembly, and demonstration
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx taẓaahar
+\ph /taðˤaːhur/
+\va tahaahur
+\mm taẓaahar
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf manifestation
+\gvf défilé
+\ge demonstration
+\gve protest
+\sm Action publique de groupe pour exprimer une opinion.
+\ms 1
+\xv wo tajemaɤ, wo taẓaahar
+\xe et le rassemblement, et la manifestation
+\xf and assembly, and demonstration
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx raaha
+\ph /raːha/
+\va raaha
+\mm raaha
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf repos
+\gvf détente
+\ge rest
+\gve leisure
+\sm État de cessation de travail ou d'effort.
+\ms 1
+\xv Hag vi šagal wo raaha
+\xe Droit au travail et au repos
+\xf Right to work and rest
+\sy -
+\an šagl
+\dt 01/Feb/2026
+
+\lx mutsaawiɤ
+\ph /mutasaːwi/
+\va mutasaawi
+\mm mutsaawiɤ
+\ps adj
+\vl -
+\ve -
+\fa -
+\lat -
+\gf égal
+\gvf équitable
+\ge equal
+\gve equitable
+\sm Qui est le même pour tous sans distinction.
+\ms 1
+\xv wo mutsaawiɤ likillu
+\xe et égal pour tous
+\xf and equal for all
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx istisnaa-iyyya
+\ph /istisˤnaːʔijja/
+\va istisnaa'iyya
+\mm istisnaa-iyyya
+\ps adj
+\vl -
+\ve -
+\fa -
+\lat -
+\gf exceptionnel
+\gvf extraordinaire
+\ge exceptional
+\gve extraordinary
+\sm Qui sort de la règle commune ou de l'ordinaire.
+\ms 1
+\xv haala ḍir xidma istisnaa-iyyya
+\xe cas de service exceptionnel
+\xf case of exceptional service
+\sy -
+\an ɣaadi
+\dt 01/Feb/2026
+
+\lx maslaha
+\ph /masˤlaha/
+\va maslaha
+\mm maslaha
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf intérêt
+\gvf utilité
+\ge interest
+\gve benefit
+\sm Ce qui importe ou est avantageux pour quelqu'un ou le public.
+\ms 1
+\xv lilmaslaha ɤaama
+\xe pour l'intérêt général
+\xf for the general interest
+\sy manfaɤa
+\an -
+\dt 01/Feb/2026
+
+\lx naqaabaat
+\ph /naqaːbaːt/
+\va naqaabaat
+\mm naqaabaat
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf syndicats
+\gvf unions
+\ge unions
+\gve syndicates
+\sm Organisations de défense des intérêts professionnels.
+\ms 1
+\xv Tumaaris naqaabaat ɤummaliiyye
+\xe Les syndicats de travailleurs exercent
+\xf Labor unions exercise
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ɤummaliiyye
+\ph /ʕummalijja/
+\va cummaliiyye
+\mm ɤummaliiyye
+\ps adj
+\vl -
+\ve -
+\fa -
+\lat -
+\gf ouvrier
+\gvf de travailleurs
+\ge labor
+\gve workers'
+\sm Relatif aux ouvriers ou aux travailleurs.
+\ms 1
+\xv naqaabaat ɤummaliiyye
+\xe syndicats ouvriers
+\xf labor unions
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx anšiṭat
+\ph /anʃitˤat/
+\va anshitat
+\mm anšiṭat
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf activités
+\gvf actions
+\ge activities
+\gve actions
+\sm Ensemble des travaux ou occupations d'un groupe.
+\ms 1
+\xv ɤanšiṭat-he bila qeyd
+\xe leurs activités sans restriction
+\xf their activities without restriction
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx qeyd
+\ph /qajd/
+\va qeyd
+\mm qeyd
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf restriction
+\gvf limite
+\ge restriction
+\gve constraint
+\sm Ce qui limite la liberté d'action.
+\ms 1
+\xv bila qeyd maahu tilka
+\xe sans restriction autre que celles
+\xf without restriction other than those
+\sy -
+\an hurriya
+\dt 01/Feb/2026
+
+\lx iḍraab
+\ph /idˤraːb/
+\ps n
+\gf grève
+\gvf grève
+\ge strike
+\gve strike
+\sm Cessation volontaire et collective du travail par des salariés.
+\ms 1
+\xv Hag iḍraab makfuul
+\xe Le droit de grève est garanti
+\xf The right to strike is guaranteed
+\sy -
+\an šagl
+\dt 01/Feb/2026
+
+\lx iṭaar
+\ph /itˤaːr/
+\ps n
+\gf cadre
+\gvf cadre
+\ge framework
+\gve framework
+\sm Limite ou contexte dans lequel s'inscrit une action ou une loi.
+\ms 1
+\xv Tumaaris vi iṭaar šariɤaat
+\xe S'exercent dans le cadre des lois
+\xf Exercised within the framework of laws
+\sy majaal
+\an -
+\dt 01/Feb/2026
+
+\lx maɤmuul
+\ph /maʁmuːl/
+\ps adj
+\gf en vigueur
+\gvf applicable
+\ge in force
+\gve applicable
+\sm Qui est actuellement appliqué ou valide juridiquement.
+\ms 1
+\xv ănẓima maɤmuul bihe
+\xe règlements en vigueur
+\xf regulations in force
+\sy naafið
+\an baatˤil
+\dt 01/Feb/2026
+
+\lx mustadaama
+\ph /mustadaːma/
+\ps adj
+\gf durable
+\gvf pérenne
+\ge sustainable
+\gve lasting
+\sm Qui peut être maintenu sur le long terme, notamment pour l'environnement.
+\ms 1
+\xv bi-ă ṣihiyya wo mustadaama
+\xe environnement sain et durable
+\xf healthy and sustainable environment
+\sy -
+\an muwaqata
+\dt 01/Feb/2026
+
+\lx turaab
+\ph /turaːb/
+\ps n
+\gf territoire
+\gvf sol
+\ge territory
+\gve soil
+\sm Étendue de terre dépendant d'un État ou d'une juridiction.
+\ms 1
+\xv ɤala turaab maliyye
+\xe sur le territoire malien
+\xf on Malian territory
+\sy ardˤ
+\an -
+\dt 01/Feb/2026
+
+\lx zuruuf
+\ph /ðˤuruːf/
+\ps n
+\gf circonstances
+\gvf conditions
+\ge circumstances
+\gve conditions
+\sm État de choses ou événements qui accompagnent une situation.
+\ms 1
+\xv vi killu zuruuf
+\xe en toutes circonstances
+\xf in all circumstances
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx hašdi
+\ph /haʃdi/
+\ps n
+\gf mobilisation
+\gvf rassemblement
+\ge mobilization
+\gve gathering
+\sm Action de réunir des forces ou des citoyens pour la défense.
+\ms 1
+\xv Yimkin hašdi killu əlmwaatiniin
+\xe On peut mobiliser tous les citoyens
+\xf All citizens can be mobilized
+\sy tajmac
+\an -
+\dt 01/Feb/2026
+
+\lx tablog
+\ph /tabluʁ/
+\ps v
+\gf atteindre
+\gvf arriver à
+\ge to reach
+\gve to attain
+\sm Arriver à un certain point, notamment un âge ou une limite.
+\ms 1
+\xv illi hum tablog qădru 18 sane
+\xe ceux qui atteignent l'âge de 18 ans
+\xf those who reach the age of 18
+\sy lhaq
+\an -
+\dt 01/Feb/2026
+
+\lx qădru
+\ph /qadru/
+\ps n
+\gf âge
+\gvf montant
+\ge age
+\gve amount
+\sm Mesure de temps ou de quantité relative à une personne ou chose.
+\ms 1
+\xv tablog qădru 18 sane
+\xe atteindre l'âge de 18 ans
+\xf reaching the age of 18
+\sy umr
+\an -
+\dt 01/Feb/2026
+
+\lx sane
+\ph /sana/
+\ps n
+\gf année
+\gvf an
+\ge year
+\gve year
+\sm Durée de douze mois correspondant à la révolution de la Terre.
+\ms 1
+\xv qădru 18 sane
+\xe l'âge de 18 ans
+\xf the age of 18 years
+\sy caam
+\an -
+\dt 01/Feb/2026
+
+\lx jinban
+\ph /dʒinban/
+\ps adv
+\gf côte à côte
+\gvf ensemble
+\ge side by side
+\gve together
+\sm De manière jointe ou parallèle à une autre entité.
+\ms 1
+\xv jinban ila jinbbi
+\xe côte à côte
+\xf side by side
+\sy ma-can
+\an -
+\dt 01/Feb/2026
+
+\lx quwaat
+\ph /quwaːt/
+\ps n
+\gf forces
+\gvf troupes
+\ge forces
+\gve troops
+\sm Ensemble organisé de militaires ou d'agents de sécurité.
+\ms 1
+\xv maɤa quwaat əlmusaha
+\xe avec les forces armées
+\xf with the armed forces
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx musalaha
+\ph /musallaha/
+\ps adj
+\gf armé
+\gvf militaire
+\ge armed
+\gve military
+\sm Qui est pourvu d'armes ou relatif à l'armée.
+\ms 1
+\xv quwaat əlmusaha
+\xe forces armées
+\xf armed forces
+\sy askari
+\an -
+\dt 01/Feb/2026
+
+\lx xaariʂa
+\ph /xaːrisˤa/
+\ps adj
+\gf extraordinaire
+\gvf exceptionnelle
+\ge extraordinary
+\gve exceptional
+\sm Qui sort de l'ordre habituel ou qui est hors du commun.
+\ms 1
+\xv Vi haala huqu xaariʂa
+\xe En cas de circonstances exceptionnelles
+\xf In case of extraordinary circumstances
+\sy istisnaa-iyyya
+\an ɣaadi
+\dt 01/Feb/2026
+
+\lx awn
+\ph /ʕawn/
+\ps n
+\gf aide
+\gvf secours
+\ge aid
+\gve help
+\sm Action de prêter assistance à quelqu'un dans le besoin.
+\ms 1
+\xv tagdiim awn musaaɤada
+\xe fournir aide et assistance
+\xf providing aid and assistance
+\sy musaacada
+\an -
+\dt 01/Feb/2026
+
+\lx musaaɤada
+\ph /musaːʕada/
+\ps n
+\gf assistance
+\gvf appui
+\ge assistance
+\gve support
+\sm Fait d'aider quelqu'un dans une tâche ou une difficulté.
+\ms 1
+\xv tagdiim awn musaaɤada
+\xe fournir aide et assistance
+\xf providing aid and assistance
+\sy awn
+\an -
+\dt 01/Feb/2026
+
+\lx madaniyyye
+\ph /madanijja/
+\ps adj
+\gf civil
+\gvf civique
+\ge civil
+\gve civic
+\sm Relatif aux citoyens ou à la vie en société non militaire.
+\ms 1
+\xv waajibaat hum əlmadaniyyye
+\xe leurs devoirs civiques
+\xf their civic duties
+\sy -
+\an askari
+\dt 01/Feb/2026
+
+\lx wivaa’i
+\ph /wifaːʔi/
+\ps n
+\gf accomplissement
+\gvf exécution
+\ge fulfillment
+\gve discharge
+\sm Action de s'acquitter d'une obligation ou d'une dette.
+\ms 1
+\xv wivaa’i biwaajibaatihum
+\xe accomplissement de leurs devoirs
+\xf fulfillment of their duties
+\sy -
+\an ihmaal
+\dt 01/Feb/2026
+
+\lx maaliyya
+\ph /maːlijja/
+\ps adj
+\gf financier
+\gvf fiscal
+\ge financial
+\gve fiscal
+\sm Relatif à l'argent, aux finances ou aux impôts.
+\ms 1
+\xv waajibaatihum əlmaaliyya
+\xe leurs obligations financières
+\xf their financial obligations
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ṣaalih
+\ph /sˤaːliħ/
+\ps n
+\gf intérêt
+\gvf bien
+\ge interest
+\gve good
+\sm Ce qui est avantageux ou bénéfique pour la collectivité.
+\ms 1
+\xv min sabab ṣaalih ɤam
+\xe pour cause d'intérêt général
+\xf for the sake of general interest
+\sy maslaha
+\an darr
+\dt 01/Feb/2026
+
+\lx muḥima
+\ph /muhimma/
+\ps n
+\gf mission
+\gvf tâche
+\ge mission
+\gve task
+\sm Charge donnée à quelqu'un pour accomplir un but précis.
+\ms 1
+\xv bi muḥima ɤaama
+\xe d'une mission publique
+\xf of a public mission
+\sy camal
+\an -
+\dt 01/Feb/2026
+
+\lx mas-uul
+\ph /masʔuːl/
+\ps adj
+\gf responsable
+\gvf chargé
+\ge responsible
+\gve accountable
+\sm Qui doit répondre de ses actes ou d'une fonction.
+\ms 1
+\xv mas-uul ɤan waẓiifa
+\xe responsable d'une fonction
+\xf responsible for a function
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx waẓiifa
+\ph /waðiːfa/
+\ps n
+\gf fonction
+\gvf emploi
+\ge function
+\gve office
+\sm Charge ou emploi occupé dans l'administration.
+\ms 1
+\xv mas-uul ɤan waẓiifa ɤaama
+\xe responsable d'une fonction publique
+\xf responsible for a public office
+\sy šaʕal
+\an -
+\dt 01/Feb/2026
+
+\lx xidma
+\ph /xidma/
+\ps n
+\gf service
+\gvf prestation
+\ge service
+\gve duty
+\sm Action de servir l'État ou le public.
+\ms 1
+\xv muḥima xidma ɤaama
+\xe mission de service public
+\xf public service mission
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ḍomir
+\ph /dˤamiːr/
+\ps n
+\gf conscience
+\gvf intégrité
+\ge conscience
+\gve integrity
+\sm Sens moral qui guide le comportement professionnel.
+\ms 1
+\xv yiḍirhe bi ḍomir
+\xe l'exerce avec conscience
+\xf performs it with conscience
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx wulaa-i
+\ph /walaːʔi/
+\ps n
+\gf loyauté
+\gvf dévouement
+\ge loyalty
+\gve devotion
+\sm Attachement fidèle à ses devoirs ou à sa patrie.
+\ms 1
+\xv bi ḍomir wo wulaa-i
+\xe avec conscience et loyauté
+\xf with conscience and loyalty
+\sy -
+\an xiyaana
+\dt 01/Feb/2026
+
+\lx istiqaama
+\ph /istiqaːma/
+\ps n
+\gf intégrité
+\gvf droiture
+\ge integrity
+\gve uprightness
+\sm Qualité d'une personne honnête et incorruptible.
+\ms 1
+\xv wo wulaa-i wo istiqaama
+\xe et loyauté et intégrité
+\xf and loyalty and integrity
+\sy -
+\an fasaad
+\dt 01/Feb/2026
+
+\lx muwahada
+\ph /muwahhada/
+\ps adj
+\gf unifiée
+\gvf indivisible
+\ge unified
+\gve indivisible
+\sm Qui forme un tout unique et cohérent.
+\ms 1
+\xv mulli siyaada wo muwahada
+\xe souveraine et unifiée
+\xf sovereign and unified
+\sy -
+\an muqasama
+\dt 01/Feb/2026
+
+\lx gaabila
+\ph /qaːbila/
+\ps adj
+\gf susceptible
+\gvf divisible
+\ge capable
+\gve divisible
+\sm Qui peut subir une action ou être partagé.
+\ms 1
+\xv maahu gaabila litagassem
+\xe n'est pas divisible
+\xf is not divisible
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx tagassem
+\ph /taqaːsum/
+\ps n
+\gf division
+\gvf partage
+\ge division
+\gve splitting
+\sm Action de séparer en plusieurs parties.
+\ms 1
+\xv maahu gaabila litagassem
+\xe n'est pas divisible
+\xf is not divisible
+\sy tafriqa
+\an wuhda
+\dt 01/Feb/2026
+
+\lx mabda-ă
+\ph /mabdaʔ/
+\ps n
+\gf principe
+\gvf principe
+\ge principle
+\gve principle
+\sm Règle fondamentale de conduite ou base d'un système.
+\ms 1
+\xv Mabda-ăhe huwe hukm Šaɤb
+\xe Son principe est le gouvernement du Peuple
+\xf Its principle is the government of the People
+\sy asaas
+\an -
+\dt 01/Feb/2026
+
+\lx ɣaṣima
+\ph /ʁasˤiːma/
+\ps n
+\gf capitale
+\gvf capitale
+\ge capital
+\gve capital city
+\sm Ville principale d'un État, siège du gouvernement.
+\ms 1
+\xv ɣaṣima Jumhuriyya Mali hiye Bamako
+\xe La capitale de la République du Mali est Bamako
+\xf The capital of the Republic of Mali is Bamako
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx balad
+\ph /balad/
+\ps n
+\gf pays
+\gvf ville
+\ge country
+\gve town
+\sm Territoire d'une nation ou agglomération urbaine.
+\ms 1
+\xv ila eyi balad aaxar
+\xe vers n'importe quelle autre ville
+\xf to any other town
+\sy bilaad
+\an -
+\dt 01/Feb/2026
+
+\lx šiɣaar
+\ph /ʃiʁaːr/
+\ps n
+\gf emblème
+\gvf symbole
+\ge emblem
+\gve symbol
+\sm Signe représentatif d'une nation ou d'une institution.
+\ms 1
+\xv Šiɣaar lwoṭoni huwe ɣalam
+\xe L'emblème national est le drapeau
+\xf The national emblem is the flag
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ɣalam
+\ph /ʕalam/
+\ps n
+\gf drapeau
+\gvf pavillon
+\ge flag
+\gve banner
+\sm Pièce d'étoffe attachée à une hampe servant de signe de ralliement.
+\ms 1
+\xv ɣalam bi əlwaan ʂalaaʂa
+\xe un drapeau aux trois couleurs
+\xf a flag with three colors
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ălwaan
+\ph /alwaːn/
+\ps n
+\gf couleurs
+\gvf teintes
+\ge colors
+\gve hues
+\sm Pluriel de couleur, sensation visuelle produite par la lumière.
+\ms 1
+\xv ɣalam bi əlwaan ʂalaaʂa
+\xe un drapeau aux trois couleurs
+\xf a flag with three colors
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ʂalaaʂa
+\ph /θalaːθa/
+\ps num
+\gf trois
+\gvf trois
+\ge three
+\gve three
+\sm Nombre entier suivant deux et précédant quatre.
+\ms 1
+\xv bi ʂalaaʂa šaraa-iṭ
+\xe avec trois bandes
+\xf with three stripes
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx mukawana
+\ph /mukawwana/
+\ps adj
+\gf composé
+\gvf constitué
+\ge composed
+\gve constituted
+\sm Formé de plusieurs éléments réunis.
+\ms 1
+\xv mukawana bi ʂalaaʂa šaraa-iṭ
+\xe composé de trois bandes
+\xf composed of three stripes
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx šaraa-iṭ
+\ph /ʃaraːʔitˤ/
+\ps n
+\gf bandes
+\gvf rayures
+\ge stripes
+\gve bands
+\sm Morceaux longs et étroits d'une surface ou d'un tissu.
+\ms 1
+\xv bi ʂalaaʂa šaraa-iṭ ɤamudiyya
+\xe avec trois bandes verticales
+\xf with three vertical stripes
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ɣamudiyya
+\ph /ʕamuːdijja/
+\ps adj
+\gf vertical
+\gvf d'aplomb
+\ge vertical
+\gve upright
+\sm Qui est perpendiculaire à l'horizon.
+\ms 1
+\xv šaraa-iṭ ɤamudiyya
+\xe bandes verticales
+\xf vertical stripes
+\sy -
+\an ufuqi
+\dt 01/Feb/2026
+
+\lx xuwar
+\ph /xuwar/
+\ps n
+\gf vert
+\gvf couleur verte
+\ge green
+\gve green color
+\sm Couleur de l'herbe et des feuilles des arbres.
+\ms 1
+\xv mutsaawiyya bil xuwar
+\xe égales en vert
+\xf equal in green
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx zaḥab
+\ph /ðahab/
+\ps n
+\gf or
+\gvf jaune
+\ge gold
+\gve yellow
+\sm Métal précieux ou couleur jaune brillante.
+\ms 1
+\xv wo zaḥab wol xumar
+\xe et l'or et le rouge
+\xf and gold and red
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx xumar
+\ph /xumar/
+\ps n
+\gf rouge
+\gvf couleur rouge
+\ge red
+\gve red color
+\sm Couleur du sang ou du feu.
+\ms 1
+\xv wo zaḥab wol xumar
+\xe et l'or et le rouge
+\xf and gold and red
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx niyye
+\ph /nijja/
+\ps n
+\gf foi
+\gvf intention
+\ge faith
+\gve intention
+\sm Croyance religieuse ou volonté d'agir.
+\ms 1
+\xv Niyye wahid
+\xe Une seule foi
+\xf One faith
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ɣaqiida
+\ph /ʕaqiːda/
+\ps n
+\gf credo
+\gvf engagement
+\ge creed
+\gve commitment
+\sm Ensemble des principes d'une croyance ou d'une doctrine.
+\ms 1
+\xv ɤaqiida wahida
+\xe un seul engagement
+\xf one commitment
+\sy diin
+\an -
+\dt 01/Feb/2026
+
+\lx ginaaya
+\ph /ɡinaːja/
+\ps n
+\gf hymne
+\gvf chant
+\ge anthem
+\gve song
+\sm Chant solennel en l'honneur d'une patrie.
+\ms 1
+\xv Ginaaya woṭoni hiye Mali
+\xe L'hymne national est le Mali
+\xf The national anthem is Mali
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx xaatim
+\ph /xaːtim/
+\ps n
+\gf sceau
+\gvf cachet
+\ge seal
+\gve stamp
+\sm Marque officielle servant à authentifier un acte.
+\ms 1
+\xv xaatim əLjumhuriyya
+\xe le sceau de la République
+\xf the seal of the Republic
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ṭuruq
+\ph /tˤuruq/
+\ps n
+\gf méthodes
+\gvf voies
+\ge methods
+\gve ways
+\sm Manières de procéder ou chemins à suivre.
+\ms 1
+\xv yihadid šuruuṭ wo ṭuruq
+\xe détermine les conditions et les méthodes
+\xf determines the conditions and methods
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx yiɤaqib
+\ph /juʕaːqib/
+\ps v
+\gf punir
+\gvf sanctionner
+\ge to punish
+\gve to penalize
+\sm Infliger une peine à l'auteur d'une faute.
+\ms 1
+\xv Šariɤa yiɤaqib ɤala killu
+\xe La loi punit tout
+\xf The law punishes all
+\sy -
+\an smah
+\dt 01/Feb/2026
+
+\lx tadnis
+\ph /tadniːs/
+\ps n
+\gf profanation
+\gvf souillure
+\ge desecration
+\gve defilement
+\sm Action de traiter sans respect une chose sacrée ou nationale.
+\ms 1
+\xv eyi tadnis lisivaat
+\xe toute profanation des attributs
+\xf any desecration of the attributes
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx sivaat
+\ph /sˤifaːt/
+\ps n
+\gf attributs
+\gvf caractères
+\ge attributes
+\gve characteristics
+\sm Qualités ou signes distinctifs d'une entité.
+\ms 1
+\xv tadnis lisivaat əljumḥuuriyye
+\xe profanation des attributs de la république
+\xf desecration of the attributes of the republic
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx rasmiiyye
+\ph /rasmijja/
+\ps adj
+\gf officiel
+\gvf formel
+\ge official
+\gve formal
+\sm Qui émane d'une autorité reconnue.
+\ms 1
+\xv lugaat rasmiiyye
+\xe langues officielles
+\xf official languages
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ɤuḍwiyye
+\ph /ʕudˤwijja/
+\ps adj
+\gf organique
+\gvf structurel
+\ge organic
+\gve structural
+\sm Relatif à l'organisation fondamentale d'un État.
+\ms 1
+\xv Šariɤa ɤuḍwiyye yihadid
+\xe Une loi organique détermine
+\xf An organic law determines
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx faransiyya
+\ph /faransijja/
+\ps adj
+\gf français
+\gvf française
+\ge French
+\gve French
+\sm Relatif à la France ou à sa langue.
+\ms 1
+\xv Luga faransiyya hiya luga šagal
+\xe La langue française est la langue de travail
+\xf The French language is the working language
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx saani
+\ph /θaːni/
+\ps adj
+\gf autre
+\gvf second
+\ge other
+\gve second
+\sm Qui suit le premier ou qui est différent.
+\ms 1
+\xv eyi luga saani
+\xe toute autre langue
+\xf any other language
+\sy aaxar
+\an awwal
+\dt 01/Feb/2026
+
+\lx tuɤariḍ
+\ph /tuʕaːridˤ/
+\ps v
+\gf s'opposer
+\gvf contredire
+\ge to oppose
+\gve to contradict
+\sm Être en désaccord ou faire obstacle à quelque chose.
+\ms 1
+\xv Laa-ikiyya laa tuɤariḍ əddiin
+\xe La laïcité ne s'oppose pas à la religion
+\xf Secularism does not oppose religion
+\sy -
+\an muwaafaga
+\dt 01/Feb/2026
+
+\lx tasaamah
+\ph /tasaːmuh/
+\ps n
+\gf tolérance
+\gvf indulgence
+\ge tolerance
+\gve indulgence
+\sm Respect de la liberté d'autrui en matière d'opinions.
+\ms 1
+\xv ɤala ăsaas tasaamah
+\xe sur la base de la tolérance
+\xf on the basis of tolerance
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx taqwiya
+\ph /taqwijja/
+\ps n
+\gf renforcement
+\gvf consolidation
+\ge strengthening
+\gve reinforcement
+\sm Action de rendre plus fort ou plus solide.
+\ms 1
+\xv taṭwiir wo taqwiya
+\xe développement et renforcement
+\xf development and strengthening
+\sy taʕziːz
+\an -
+\dt 01/Feb/2026
+
+\lx tawanasə
+\ph /tawaːnus/
+\ps n
+\gf convivialité
+\gvf fraternité
+\ge conviviality
+\gve fellowship
+\sm Caractère chaleureux des relations entre les membres d'un groupe.
+\ms 1
+\xv tasaamah wo tawanasə
+\xe tolérance et convivialité
+\xf tolerance and conviviality
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx tavaḥam
+\ph /tafaːhum/
+\ps n
+\gf compréhension
+\gvf entente
+\ge understanding
+\gve agreement
+\sm Fait de se comprendre mutuellement.
+\ms 1
+\xv wo tavaḥam əlmutbaadila
+\xe et compréhension mutuelle
+\xf and mutual understanding
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx mutbaadila
+\ph /mutabaːdila/
+\va -
+\mm mutbaadila
+\ps adj
+\vl -
+\ve -
+\fa -
+\lat -
+\gf mutuelle
+\gvf mutuelle
+\ge mutual
+\gve mutual
+\sm Qui s'exerce d'une personne à une autre de façon réciproque.
+\ms 1
+\xv tavaḥam əlmutbaadila
+\xe compréhension mutuelle
+\xf mutual understanding
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx adiyaan
+\ph /adjaːn/
+\va -
+\mm adiyaan
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf religions
+\gvf religions
+\ge religions
+\gve religions
+\sm Pluriel de religion ; systèmes de croyances.
+\ms 1
+\xv ihtiraam keemil adiyaan
+\xe respect total des religions
+\xf full respect for religions
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx mumaarasa
+\ph /mumaːrasa/
+\va -
+\mm mumaarasa
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf pratique
+\gvf exercice
+\ge practice
+\gve exercise
+\sm Action de mettre en œuvre un droit ou une activité.
+\ms 1
+\xv hurriyya mumaarasa ibaada
+\xe liberté d'exercice du culte
+\xf freedom of the practice of worship
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx taḍaami
+\ph /tadˤaːmun/
+\va -
+\mm taḍaami
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf solidarité
+\gvf solidarité
+\ge solidarity
+\gve solidarity
+\sm Lien moral qui oblige des personnes à s'entraider.
+\ms 1
+\xv mabaadiɤ taḍaami
+\xe principes de solidarité
+\xf principles of solidarity
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx indimaaj
+\ph /indimaːdʒ/
+\va -
+\mm indimaaj
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf intégration
+\gvf insertion
+\ge integration
+\gve inclusion
+\sm Fait de s'incorporer à un ensemble social.
+\ms 1
+\xv ɤadaala wo himaaya wo indimaaj
+\xe justice, protection et intégration
+\xf justice, protection and integration
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx yistaršid
+\ph /jistarʃid/
+\va -
+\mm yi-staršid
+\ps v
+\vl -
+\ve -
+\fa -
+\lat -
+\gf guidé
+\gvf orienté
+\ge guided
+\gve directed
+\sm Être conduit ou influencé par des principes.
+\ms 1
+\xv Šagl ɤaam yistaršid bi mabaadii
+\xe Le service public est guidé par des principes
+\xf Public service is guided by principles
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx xiyaaraat
+\ph /xijaːraːt/
+\va -
+\mm xiyaaraat
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf choix
+\gvf options
+\ge choices
+\gve options
+\sm Pluriel de choix ; préférences exprimées par un peuple.
+\ms 1
+\xv xiyaaraat šaɤab siyaadiiya
+\xe choix souverains du peuple
+\xf sovereign choices of the people
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ṭaaɤila
+\ph /tˤaːʁila/
+\va -
+\mm ṭaaɤila
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf peine
+\gvf sanction
+\ge penalty
+\gve punishment
+\sm Conséquence légale ou châtiment pour une infraction.
+\ms 1
+\xv tahta ṭaaɤila əl-ɤuquubaat
+\xe sous peine de sanctions
+\xf under penalty of sanctions
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ixtilaas
+\ph /ixtilaːs/
+\va -
+\mm ixtilaas
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf détournement
+\gvf malversation
+\ge embezzlement
+\gve misappropriation
+\sm Action de voler des fonds publics ou privés confiés.
+\ms 1
+\xv ixtilaas mawaarid ɤaama
+\xe détournement de ressources publiques
+\xf embezzlement of public resources
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx mumtalakaat
+\ph /mumtalakaːt/
+\va -
+\mm mumtalakaat
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf biens
+\gvf avoirs
+\ge assets
+\gve property
+\sm Ensemble des possessions d'une personne ou d'un État.
+\ms 1
+\xv mawaarid ɤaama u mumtalakaat
+\xe ressources publiques et biens
+\xf public resources and assets
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx mahsuubiyye
+\ph /mahsuːbijja/
+\va -
+\mm mahsuubiyye
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf népotisme
+\gvf favoritisme
+\ge nepotism
+\gve favoritism
+\sm Faveur accordée à des proches ou à la famille.
+\ms 1
+\xv ɤan ṭoriig əlmahsuubiyye
+\xe par voie de népotisme
+\xf through nepotism
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx istiglaal
+\ph /istiɡlaːl/
+\va -
+\mm istiglaal
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf exploitation
+\gvf abus
+\ge exploitation
+\gve abuse
+\sm Action de tirer profit de façon abusive d'une situation.
+\ms 1
+\xv ixtilaas u istiglaal u nuvuuz
+\xe détournement, exploitation et influence
+\xf embezzlement, exploitation and influence
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx nuvuuz
+\ph /nufuːð/
+\va -
+\mm nuvuuz
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf influence
+\gvf autorité
+\ge influence
+\gve clout
+\sm Pouvoir d'agir sur les autres ou sur les décisions.
+\ms 1
+\xv istiglaal u nuvuuz
+\xe abus d'influence
+\xf abuse of influence
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx wasaa-il
+\ph /wasaːʔil/
+\va -
+\mm wasaa-il
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf moyens
+\gvf outils
+\ge means
+\gve methods
+\sm Ensemble des éléments servant à atteindre un but.
+\ms 1
+\xv maahu ʑalika min wasaa-il
+\xe autres moyens similaires
+\xf other such means
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx muɤasasaat
+\ph /muʔassasaːt/
+\va -
+\mm muɤasasaat
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf institutions
+\gvf organismes
+\ge institutions
+\gve organizations
+\sm Structures fondamentales de l'organisation d'un État.
+\ms 1
+\xv Muɤasasaat əljumḥuriyya
+\xe Les institutions de la République
+\xf The institutions of the Republic
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx mumaʂilin
+\ph /mumaθθiliːn/
+\va -
+\mm mumaʂilin
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf représentants
+\gvf délégués
+\ge representatives
+\gve delegates
+\sm Personnes agissant au nom d'un groupe ou du peuple.
+\ms 1
+\xv min xilaal mumaʂilin muntaxibiin
+\xe par l'intermédiaire de représentants élus
+\xf through elected representatives
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx muntaxibiin
+\ph /muntaxabiːn/
+\va -
+\mm muntaxibiin
+\ps adj
+\vl -
+\ve -
+\fa -
+\lat -
+\gf élus
+\gvf choisis
+\ge elected
+\gve chosen
+\sm Qui ont été désignés par un vote.
+\ms 1
+\xv mumaʂilin muntaxibiin
+\xe représentants élus
+\xf elected representatives
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ixtiraaɤ
+\ph /ixtiraːʕ/
+\va -
+\mm ixtiraaɤ
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf suffrage
+\gvf vote
+\ge suffrage
+\gve voting
+\sm Droit et acte de voter pour une élection.
+\ms 1
+\xv bi ixtiraaɤi ɤam
+\xe au suffrage universel
+\xf by universal suffrage
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx mubaašara
+\ph /mubaːʃara/
+\va -
+\mm mubaašara
+\ps adj
+\vl -
+\ve -
+\fa -
+\lat -
+\gf direct
+\gvf immédiat
+\ge direct
+\gve immediate
+\sm Qui se fait sans intermédiaire.
+\ms 1
+\xv mubaašara u maahu mubaašara
+\xe direct ou indirect
+\xf direct or indirect
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx istiftaa-i
+\ph /istiftaːʔi/
+\va -
+\mm istiftaa-i
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf référendum
+\gvf plébiscite
+\ge referendum
+\gve plebiscite
+\sm Consultation directe du peuple sur une question législative.
+\ms 1
+\xv ɤan ṭariiq istiftaa-i
+\xe par voie de référendum
+\xf by way of referendum
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx sirri
+\ph /sirri/
+\va -
+\mm sirri
+\ps adj
+\vl -
+\ve -
+\fa -
+\lat -
+\gf secret
+\gvf confidentiel
+\ge secret
+\gve confidential
+\sm Qui doit rester caché ou non public.
+\ms 1
+\xv mutasaawi wo sirri
+\xe égal et secret
+\xf equal and secret
+\sy -
+\an calani
+\dt 01/Feb/2026
+
+\lx naxibuun
+\ph /naːxibuːn/
+\ps n
+\mm naxibuun
+\vl -
+\ve -
+\fa -
+\lat -
+\gf électeurs
+\gvf votants
+\ge voters
+\gve electors
+\sm Personnes ayant le droit de participer à un vote.
+\ms 1
+\xv Naxibuun, bimuujib šuruut
+\xe Les électeurs, selon les conditions
+\xf The voters, according to the conditions
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx sinni
+\ph /sinni/
+\va -
+\mm sinni
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf âge
+\gvf ancienneté
+\ge age
+\gve seniority
+\sm Durée de vie écoulée depuis la naissance.
+\ms 1
+\xv vi sinni ixtiraaɤi
+\xe à l'âge électoral
+\xf at the voting age
+\sy umr
+\an -
+\dt 01/Feb/2026
+
+\lx ahzaab
+\ph /ahzaːb/
+\va -
+\mm ahzaab
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf partis
+\gvf factions
+\ge parties
+\gve political groups
+\sm Organisations politiques concourant à l'expression du suffrage.
+\ms 1
+\xv Ahzaab siyaasiyya
+\xe Partis politiques
+\xf Political parties
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx tašqiil
+\ph /taʃkiːl/
+\va -
+\mm tašqiil
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf formation
+\gvf constitution
+\ge formation
+\gve creation
+\sm Action de donner une forme ou d'organiser un groupe.
+\ms 1
+\xv Yitim tašqiiluhum
+\xe Leur formation est assurée
+\xf Their formation is carried out
+\sy tanẓiim
+\an -
+\dt 01/Feb/2026
+
+\lx muraaqaba
+\ph /muraːqaba/
+\va -
+\mm muraaqaba
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf contrôle
+\gvf surveillance
+\ge oversight
+\gve monitoring
+\sm Action de vérifier ou de surveiller la régularité d'un acte.
+\ms 1
+\xv muḥima muraaqaba mwaaṭini
+\xe mission de contrôle citoyen
+\xf citizen oversight mission
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx turaabil
+\ph /turaːb/
+\va -
+\mm turaabil
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf territoire
+\gvf sol
+\ge territory
+\gve soil
+\sm Étendue de terre soumise à une autorité.
+\ms 1
+\xv ɤala keemil turaabil woṭoni
+\xe sur l'ensemble du territoire national
+\xf over the entire national territory
+\sy ardˤ
+\an -
+\dt 01/Feb/2026
+
+\lx tunaʑil
+\ph /tanuːzul/
+\va -
+\mm tunaʑil
+\ps v
+\vl -
+\ve -
+\fa -
+\lat -
+\gf renoncer
+\gvf céder
+\ge to renounce
+\gve to relinquish
+\sm Abandonner volontairement un droit ou une partie de territoire.
+\ms 1
+\xv laa tunaʑil ɤan ey
+\xe ne renonce à aucun
+\xf does not renounce any
+\sy -
+\an tamsiq
+\dt 01/Feb/2026
+
+\lx jariima
+\ph /dʒariːma/
+\va -
+\mm jariima
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf crime
+\gvf délit
+\ge crime
+\gve felony
+\sm Acte gravement répréhensible puni par la loi.
+\ms 1
+\xv jariima ḍida ămn dowla
+\xe crime contre la sécurité de l'État
+\xf crime against state security
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ʂarwaat
+\ph /θarwaːt/
+\va -
+\mm ʂarwaat
+\ps n
+\vl -
+\ve -
+\fa -
+\lat -
+\gf richesses
+\gvf ressources
+\ge wealth
+\gve riches
+\sm Ensemble des biens et ressources naturelles d'un pays.
+\ms 1
+\xv siyaadiya ɤala ʂarwaat
+\xe souveraineté sur les richesses
+\xf sovereignty over wealth
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx haaris
+\ph /haːris/
+\ps n
+\gf gardien
+\gvf gardien
+\ge guardian
+\gve guardian
+\sm Personne qui a la garde, la surveillance de quelque chose.
+\ms 1
+\xv Ra-is əljumḥuriya huwe haaris Dustuur
+\xe Le Président de la République est le gardien de la Constitution
+\xf The President of the Republic is the guardian of the Constitution
+\sy muhaafidˤ
+\an -
+\dt 01/Feb/2026
+
+\lx yijasid
+\ph /judʒassid/
+\ps v
+\gf incarner
+\gvf incarner
+\ge embody
+\gve embody
+\sm Donner une forme concrète à une idée ou une valeur.
+\ms 1
+\xv Yijasid wuhda woṭoniya
+\xe Il incarne l'unité nationale
+\xf He embodies national unity
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx ḍoomin
+\ph /dˤaːmin/
+\ps n
+\gf garant
+\gvf garant
+\ge guarantor
+\gve guarantor
+\sm Personne qui répond de l'exécution d'un engagement.
+\ms 1
+\xv Huwe ḍoomin istiqlaal woṭoni
+\xe Il est le garant de l'indépendance nationale
+\xf He is the guarantor of national independence
+\sy kafiil
+\an -
+\dt 01/Feb/2026
+
+\lx istiqlaal
+\ph /istiqlaːl/
+\ps n
+\gf indépendance
+\gvf indépendance
+\ge independence
+\gve independence
+\sm État d'un pays qui n'est pas soumis à une autorité étrangère.
+\ms 1
+\xv ḍoomin istiqlaal woṭoni
+\xe garant de l'indépendance nationale
+\xf guarantor of national independence
+\sy -
+\an istiqlal
+\dt 01/Feb/2026
+
+\lx istimraariya
+\ph /istimraːrijja/
+\ps n
+\gf continuité
+\gvf continuité
+\ge continuity
+\gve continuity
+\sm Caractère de ce qui se poursuit sans interruption.
+\ms 1
+\xv yiḍman istimraariya Dowla
+\xe garantit la continuité de l'État
+\xf guarantees the continuity of the State
+\sy -
+\an inqitˤaːʕ
+\dt 01/Feb/2026
+
+\lx siyaasa
+\ph /sijaːsa/
+\ps n
+\gf politique
+\gvf politique
+\ge policy
+\gve politics
+\sm Art de gouverner un État ou ensemble de mesures prises.
+\ms 1
+\xv Ra-is Jumḥuriya yihadid siyaasa
+\xe Le Président de la République définit la politique
+\xf The President of the Republic defines the policy
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx yintaxab
+\ph /juntaxab/
+\ps v
+\gf être élu
+\gvf être élu
+\ge to be elected
+\gve to be elected
+\sm Être choisi par le vote des électeurs.
+\ms 1
+\xv Ra-is Jumḥuriya yintaxab
+\xe Le Président de la République est élu
+\xf The President of the Republic is elected
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx sanawaat
+\ph /sanawaːt/
+\ps n
+\gf années
+\gvf années
+\ge years
+\gve years
+\sm Pluriel de année (sane).
+\ms 1
+\xv limudda xamsa sanawaat
+\xe pour une durée de cinq ans
+\xf for a period of five years
+\sy acwaam
+\an -
+\dt 01/Feb/2026
+
+\lx bas
+\ph /bass/
+\ps adv
+\gf seulement
+\gvf seulement
+\ge only
+\gve just
+\sm Indique une restriction ou une limite unique.
+\ms 1
+\xv marra waahid bas
+\xe une seule fois seulement
+\xf only one time
+\sy faqatˤ
+\an -
+\dt 01/Feb/2026
+
+\lx murašah
+\ph /muraʃʃah/
+\ps n
+\gf candidat
+\gvf candidat
+\ge candidate
+\gve candidate
+\sm Personne qui postule à un mandat ou une fonction.
+\ms 1
+\xv ey murašah liman ṣab
+\xe tout candidat au poste
+\xf any candidate for the post
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx manṣab
+\ph /mansˤab/
+\ps n
+\gf poste
+\gvf fonction
+\ge post
+\gve position
+\sm Charge ou emploi officiel dans une organisation.
+\ms 1
+\xv murašah liman ṣab Ra-is
+\xe candidat au poste de Président
+\xf candidate for the post of President
+\sy waẓiifa
+\an -
+\dt 01/Feb/2026
+
+\lx jinsiya
+\ph /dʒinsijja/
+\ps n
+\gf nationalité
+\gvf nationalité
+\ge nationality
+\gve nationality
+\sm Lien juridique qui unit une personne à un État.
+\ms 1
+\xv min aṣli Mali əljinsiya
+\xe de nationalité malienne d'origine
+\xf of Malian nationality by origin
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx xulq
+\ph /xulq/
+\ps n
+\gf moralité
+\gvf mœurs
+\ge morals
+\gve character
+\sm Ensemble des principes de conduite et de caractère.
+\ms 1
+\xv xulq zeyn wo nuzaaha
+\xe bonne moralité et intégrité
+\xf good morals and integrity
+\sy axlaaq
+\an -
+\dt 01/Feb/2026
+
+\lx nuzaaha
+\ph /nuzaːha/
+\ps n
+\gf intégrité
+\gvf probité
+\ge integrity
+\gve honesty
+\sm Qualité d'une personne honnête et désintéressée.
+\ms 1
+\xv xulq zeyn wo nuzaaha
+\xe bonne moralité et intégrité
+\xf good morals and integrity
+\sy istiqaama
+\an fasaad
+\dt 01/Feb/2026
+
+\lx umr
+\ph /ʕumr/
+\ps n
+\gf âge
+\gvf âge
+\ge age
+\gve age
+\sm Temps écoulé depuis la naissance d'un être.
+\ms 1
+\xv la yiqila umruhu
+\xe que son âge ne soit pas inférieur
+\xf that his age is not less
+\sy sinni
+\an -
+\dt 01/Feb/2026
+
+\lx qaadiran
+\ph /qaːdiran/
+\ps adj
+\gf capable
+\gvf apte
+\ge capable
+\gve able
+\sm Qui a la force ou la compétence nécessaire.
+\ms 1
+\xv wo ɤan yikun qaadiran
+\xe et d'être capable
+\xf and to be capable
+\sy -
+\an caajiz
+\dt 01/Feb/2026
+
+\lx yom
+\ph /jawm/
+\ps n
+\gf jour
+\gvf journée
+\ge day
+\gve day
+\sm Durée de 24 heures ou période de lumière.
+\ms 1
+\xv sitiina yoman
+\xe soixante jours
+\xf sixty days
+\sy nhaar
+\an leyl
+\dt 01/Feb/2026
+
+\lx ăqal
+\ph /aqall/
+\ps adj
+\gf minimum
+\gvf moins
+\ge minimum
+\gve least
+\sm La plus petite quantité ou valeur possible.
+\ms 1
+\xv ɤalal ăqal
+\xe au moins
+\xf at least
+\sy -
+\an akʂar
+\dt 01/Feb/2026
+
+\lx akʂar
+\ph /akθar/
+\ps adj
+\gf maximum
+\gvf plus
+\ge maximum
+\gve most
+\sm La plus grande quantité ou valeur possible.
+\ms 1
+\xv ɤala akʂar
+\xe au plus
+\xf at most
+\sy -
+\an ăqal
+\dt 01/Feb/2026
+
+\lx aglabiya
+\ph /aʁlabijja/
+\ps n
+\gf majorité
+\gvf majorité
+\ge majority
+\gve majority
+\sm Le plus grand nombre de voix ou de personnes.
+\ms 1
+\xv bil aglabiya əlmuṭlaqa
+\xe à la majorité absolue
+\xf by absolute majority
+\sy -
+\an aqaliya
+\dt 01/Feb/2026
+
+\lx muṭlaqa
+\ph /mutˤlaqa/
+\ps adj
+\gf absolue
+\gvf totale
+\ge absolute
+\gve total
+\sm Qui ne comporte aucune restriction ou condition.
+\ms 1
+\xv bil aglabiya əlmuṭlaqa
+\xe à la majorité absolue
+\xf by absolute majority
+\sy -
+\an muqayada
+\dt 01/Feb/2026
+
+\lx ăṣwaat
+\ph /asˤwaːt/
+\ps n
+\gf voix
+\gvf suffrages
+\ge voices
+\gve votes
+\sm Expression d'un choix lors d'un vote.
+\ms 1
+\xv li ɤadad ăṣwaat
+\xe pour le nombre de voix
+\xf for the number of votes
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx nataa-ij
+\ph /nataːʔidʒ/
+\ps n
+\gf résultats
+\gvf issues
+\ge results
+\gve outcomes
+\sm Ce qui résulte d'une action ou d'un vote.
+\ms 1
+\xv nataa-ij dowr ulaa
+\xe résultats du premier tour
+\xf results of the first round
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx maata
+\ph /maːta/
+\ps v
+\gf mourir
+\gvf décéder
+\ge to die
+\gve to pass away
+\sm Cesser de vivre.
+\ms 1
+\xv Iʑa maata ahd murašahiin
+\xe Si l'un des candidats meurt
+\xf If one of the candidates dies
+\sy -
+\an haya
+\dt 01/Feb/2026
+
+\lx ta-ăjiim
+\ph /taʔdʒiːm/
+\ps n
+\gf report
+\gvf ajournement
+\ge postponement
+\gve adjournment
+\sm Action de remettre à une date ultérieure.
+\ms 1
+\xv ta-ăjiim intixaabaat
+\xe le report des élections
+\xf the postponement of elections
+\sy ta-ăjil
+\an -
+\dt 01/Feb/2026
+
+\lx maftuuha
+\ph /maftuːha/
+\ps adj
+\gf ouverte
+\gvf accessible
+\ge open
+\gve accessible
+\sm Qui n'est pas fermé ou qui permet l'accès.
+\ms 1
+\xv Dowra ʂaaniya maftuuha
+\xe Second tour ouvert
+\xf Second round open
+\sy -
+\an mugalaqa
+\dt 01/Feb/2026
+
+\lx mowt
+\ph /mawt/
+\ps n
+\gf mort
+\gvf décès
+\ge death
+\gve decease
+\sm Fin de la vie d'un être vivant.
+\ms 1
+\xv Vi halat mowt
+\xe En cas de décès
+\xf In case of death
+\sy -
+\an hayaat
+\dt 01/Feb/2026
+
+\lx insihaaq
+\ph /insihaːq/
+\ps n
+\gf désistement
+\gvf retrait
+\ge withdrawal
+\gve stepping down
+\sm Action de renoncer à une candidature ou un droit.
+\ms 1
+\xv u insihaaq u ɤabudiya
+\xe ou désistement ou empêchement
+\xf or withdrawal or impediment
+\sy -
+\an -
+\dt 01/Feb/2026
+
+\lx tartiib
+\ph /tartiːb/
+\ps n
+\gf ordre
+\gvf classement
+\ge order
+\gve ranking
+\sm Disposition méthodique d'éléments ou de personnes.
+\ms 1
+\xv hasba tartiib ăṣwaat
+\xe selon l'ordre des voix
+\xf according to the order of votes
+\sy tanẓiim
+\an fawḍa
+\dt 01/Feb/2026
+
+\lx ta-ăjil
+\ph /taʔdʒiːl/
+\ps n
+\gf délai
+\gvf report
+\ge delay
+\gve postponement
+\sm Temps accordé pour faire quelque chose ou report de date.
+\ms 1
+\xv dun ăn yitjaawaz hay ta-ăjil
+\xe sans que ce report ne dépasse
+\xf without this postponement exceeding
+\sy ta-ăjiim
+\an -
+\dt 01/Feb/2026

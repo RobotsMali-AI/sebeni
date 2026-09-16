@@ -1,0 +1,575 @@
+import os
+import re
+import json
+from dataclasses import dataclass
+from pathlib import Path
+import logging
+import tempfile
+from typing import Iterable, List, Optional, Union, Dict, Any
+from beni.utils import config as cfg
+from beni.utils.hf_lang import get_language_metadata as lg
+from beni.core.language import Language
+from beni.core.morphotactic.distil.providers import create_provider
+from beni.core.compute.metrics import MorphologyScorer
+
+REF_SAMPLES_DIR = cfg.DATA_DIR / "samples"
+LANG_BASELINE = cfg.DATA_DIR / "baselines"
+SCRATCH_MARKER = "sebeni-scratch-bootstrap"
+
+logger = logging.getLogger(__name__)
+
+
+@dataclass
+class DistillProposal:
+    """Candidate {G, D} from Distiller, scored but not yet written."""
+
+    gram_text: str
+    dict_text: str
+    phi: float
+    phi_prime: float
+    parseable: bool
+    first_create: bool
+    language_ok: bool = True
+    mer: Optional[float] = None
+
+
+class Distiller(object):
+    """SAMPG Distiller: checkpoints, scratch bootstrap, promote."""
+
+    def __init__(
+        self,
+        lang_code: str,
+        provider: str = "google",
+        model: str = "gemma-4-26b-a4b-it",
+        api_key: str = cfg.GOOGLE_API,
+        working_dir: Union[None, str] = None,
+        vertex: bool = False,
+    ):
+        """Initialize Distiller for a language/group code.
+
+        Parameters
+        ----------
+        lang_code : str
+            ISO or Sebeni group code. Maninka ``mku`` aliases to packaged ``mlq/``.
+        working_dir : str, optional
+            Root workdir. Baselines live under ``{root}/data/baselines/{group}/``.
+        """
+        identity = Language.from_code(lang_code)
+        self.lang = identity.group_code
+        self.language = identity
+        self.language_meta = self._valid_language(lang_code)
+        self.provider_name = provider
+        key = api_key or cfg.provider_api_key(provider)
+        extra = {"language": self.lang}
+        if str(provider).lower() in {"google", "gemini"}:
+            extra["vertex"] = vertex
+        self.provider = create_provider(provider, api_key=key, model=model, **extra)
+        if str(provider).lower() in {"google", "gemini"} and hasattr(self.provider, "set_vertex"):
+            self.provider.set_vertex(vertex)
+
+        packaged = cfg.resolve_packaged_baseline_dir(self.lang)
+        self.lang_baseline = Path(packaged) if packaged else None
+        self.sample_dir = REF_SAMPLES_DIR
+        root = Path(working_dir) if working_dir else cfg.get_workdir().root
+        self.working_root = Path(root)
+        self.baselines_dir = self.working_root / "data" / "baselines" / self.lang
+        latest = self.__get_latest_ckpt()
+        self.gram_path = latest["gram"] or (self.baselines_dir / "baseline.gram")
+        self.dict_path = latest["dict"] or (self.baselines_dir / "baseline.dict")
+        self.gram_delta = None
+        self.dict_delta = None
+        self.bootstrapped = False
+
+    def handle_baselines(self):
+        """Copy packaged baselines or write scratch stubs under the workdir."""
+        self.baselines_dir.mkdir(parents=True, exist_ok=True)
+        gram_dest = self.baselines_dir / "baseline.gram"
+        dict_dest = self.baselines_dir / "baseline.dict"
+
+        if self.lang_baseline and self.lang_baseline.exists():
+            for name in ("baseline.gram", "baseline.dict"):
+                src = self.lang_baseline / name
+                if src.exists() and not (self.baselines_dir / name).exists():
+                    cfg.copy_file_if_exists(self.lang_baseline, self.baselines_dir, name)
+            self.bootstrapped = False
+        elif not gram_dest.exists() or not dict_dest.exists():
+            gram_dest.write_text(cfg.scratch_gram(), encoding="utf-8")
+            dict_dest.write_text(cfg.scratch_dict(self.lang), encoding="utf-8")
+            self.bootstrapped = True
+            logger.info("Wrote scratch baselines for '%s' under %s", self.lang, self.baselines_dir)
+
+        latest = self.__get_latest_ckpt()
+        self.gram_path = latest["gram"] or gram_dest
+        self.dict_path = latest["dict"] or dict_dest
+        return self.baselines_dir
+        
+    def _valid_language(self, code: str) -> Union[bool, Dict]:
+        """ Validate language code """
+        lang = cfg.get_language_metadata(code)
+
+        if(not lang):
+            lang = cfg.get_language_iso(code)
+            if( not lang):
+                # TODO: Change to normal Logging
+                raise Exception(
+                    f"Language code '{code}' is not a iso_639_3 standard code. "
+                    "Manually edit language metadata to include your language with self define 3-char code."
+                )
+            msg = f"Language '{code}' is not Standard Sebeni 'code', it will be treated as '{lang['name']}'"
+            # warnings.warn(msg, UserWarning, stacklevel=1, source="Distiller._valid_language")
+            logger.warning(msg)
+            lang = lg(code)
+        return lang
+
+    def distill_state(self, baseline_dir: Union[str, Path]=None):
+        baseline_dir = self.handle_baselines() if not baseline_dir else baseline_dir
+        return self.__get_latest_ckpt()
+
+    def is_scratch(self) -> bool:
+        """True when the current grammar is a scratch bootstrap stub."""
+        path = Path(self.gram_path) if self.gram_path else self.baselines_dir / "baseline.gram"
+        if not path.exists():
+            return True
+        try:
+            return SCRATCH_MARKER in path.read_text(encoding="utf-8")[:400]
+        except OSError:
+            return True
+
+    def is_first_create(self) -> bool:
+        """True until a versioned ``baseline_vN`` checkpoint exists."""
+        latest = self.__get_latest_ckpt()
+        gram = latest.get("gram")
+        if gram is None:
+            return True
+        return "_v" not in Path(gram).stem
+
+    def checkpoint_id(self) -> str:
+        latest = self.__get_latest_ckpt()
+        gram = latest.get("gram")
+        if gram is None:
+            return "none"
+        return Path(gram).stem
+
+    def prompt_mode(self) -> str:
+        return "bootstrap" if self.is_scratch() else "delta"
+
+    def _load_dabax(self, gram, ldict):
+        from beni.core.morphotactic.dabax import DabaX
+
+        runtime = cfg.get_workdir().runtime
+        return DabaX(self.lang, gram=gram, ldict=ldict, process=True, runtime_dir=runtime)
+
+    def phi_on_texts(self, texts: Iterable[str], gram=None, ldict=None) -> float:
+        """Corpus Φ on ``texts`` with the given (or current) gram/dict."""
+        gram = gram or self.gram_path
+        ldict = ldict or self.dict_path
+        texts = [t for t in texts if t]
+        if not texts:
+            return 0.0
+        try:
+            dx = self._load_dabax(gram, ldict)
+        except Exception as exc:
+            logger.warning("DabaX failed to load G,D (%s); Φ=0", exc)
+            return 0.0
+        sentences = []
+        for text in texts:
+            try:
+                sentences.extend(dx.loader(text) or [])
+            except Exception as exc:
+                logger.debug("DabaX.loader failed: %s", exc)
+        if not sentences:
+            return 0.0
+        return float(MorphologyScorer().phi_corpus(sentences)["avg"])
+
+    def files_parseable(self, gram, ldict, sample: str = "a") -> bool:
+        """First-create / candidate gate: DabaX can load the files."""
+        try:
+            dx = self._load_dabax(gram, ldict)
+            dx.loader(sample)
+            return True
+        except Exception as exc:
+            logger.warning("Candidate gram/dict not parseable: %s", exc)
+            return False
+
+    def get_sys_instruction(self, language_meta: Dict, gram_path: Path, dict_path: Path) -> str:
+        """Generate system instruction for the distillation process."""
+        from beni.core.morphotactic.distil import DistilSysPrompt
+
+        samples = self.default_samples()
+        mode = self.prompt_mode()
+        return DistilSysPrompt(
+            language=json.dumps(language_meta, indent=2, ensure_ascii=False),
+            samples=samples,
+            current_gram=gram_path.read_text(encoding="utf-8") if Path(gram_path).exists() else "",
+            current_dict=dict_path.read_text(encoding="utf-8") if Path(dict_path).exists() else "",
+            mode=mode,
+        ).prompt()
+
+    def _as_output(self, response: Any):
+        from beni.core.morphotactic.distil import DistilOutput
+
+        if isinstance(response, DistilOutput):
+            return response
+        if isinstance(response, dict):
+            try:
+                return DistilOutput.model_validate(response)
+            except Exception:
+                return DistilOutput(
+                    sebeni_gram=str(response.get("sebeni_gram", "")),
+                    sebeni_dict=str(response.get("sebeni_dict", "")),
+                )
+        return None
+
+    def propose(self, texts: Union[str, List[str]], indicator: bool = False) -> Optional[DistillProposal]:
+        """Produce candidate G, D and score Φ vs Φ′ without writing."""
+        from beni.core.morphotactic.distil import DistilUserPrompt
+
+        if isinstance(texts, list):
+            text = "\n".join(texts)
+            batch = texts
+        else:
+            text = texts
+            batch = [texts]
+        self.handle_baselines()
+        state = self.__get_latest_ckpt()
+        self.gram_path = state["gram"] if state["gram"] else self.gram_path
+        self.dict_path = state["dict"] if state["dict"] else self.dict_path
+        first_create = self.is_first_create()
+        bootstrap = self.is_scratch()
+
+        sys_prompt = self.get_sys_instruction(
+            language_meta=self.language_meta, gram_path=self.gram_path, dict_path=self.dict_path
+        )
+        cap = getattr(getattr(self.provider, "capability", None), "value", None)
+        if not getattr(self.provider, "cache", None) and cap in {"both", "cache"}:
+            self.provider.create_cache(contents=sys_prompt)
+
+        prompt = DistilUserPrompt(text, self.gram_delta, self.dict_delta).prompt()
+        response = self.provider.generate(prompt=prompt, sys_instruct=sys_prompt, indicator=indicator)
+        output = self._as_output(response)
+        if output is None:
+            logger.warning("Distiller: empty provider response")
+            return None
+
+        gram_delta = output.sebeni_gram or ""
+        dict_delta = output.sebeni_dict or ""
+        current_gram = Path(self.gram_path)
+        current_dict = Path(self.dict_path)
+
+        if bootstrap or self.prompt_mode() == "bootstrap":
+            adjusted_gram = gram_delta if gram_delta.strip() else current_gram.read_text(encoding="utf-8")
+            adjusted_dict = dict_delta if dict_delta.strip() else current_dict.read_text(encoding="utf-8")
+        else:
+            adjusted_gram = self.apply_gram_deltas(current_gram, gram_delta) if gram_delta else current_gram.read_text(encoding="utf-8")
+            adjusted_dict = self.apply_dict_deltas(current_dict, dict_delta) if dict_delta else current_dict.read_text(encoding="utf-8")
+
+        phi = self.phi_on_texts(batch, gram=current_gram, ldict=current_dict)
+        temp_gram = temp_dict = None
+        try:
+            with tempfile.NamedTemporaryFile(delete=False, suffix=".gram", mode="w", encoding="utf-8") as gf:
+                gf.write(adjusted_gram)
+                temp_gram = Path(gf.name)
+            with tempfile.NamedTemporaryFile(delete=False, suffix=".dict", mode="w", encoding="utf-8") as df:
+                df.write(adjusted_dict)
+                temp_dict = Path(df.name)
+            parseable = self.files_parseable(temp_gram, temp_dict, sample=batch[0] if batch else "a")
+            phi_prime = self.phi_on_texts(batch, gram=temp_gram, ldict=temp_dict) if parseable else 0.0
+        finally:
+            if temp_gram and temp_gram.exists():
+                temp_gram.unlink()
+            if temp_dict and temp_dict.exists():
+                temp_dict.unlink()
+
+        return DistillProposal(
+            gram_text=adjusted_gram,
+            dict_text=adjusted_dict,
+            phi=phi,
+            phi_prime=phi_prime,
+            parseable=parseable,
+            first_create=first_create or bootstrap,
+            language_ok=True,
+        )
+
+    def write_checkpoint(self, gram_text: str, dict_text: str):
+        """Write ``baseline_vN`` after SafetyGovernor has allowed the promote."""
+        return self.update_baselines_with_deltas(gram_text, dict_text)
+
+    def run_distillation(self, text: str, indicator=False):
+        """Run Distiller and promote iff SAMPG / SafetyGovernor allow it."""
+        from beni.core.safety.governor import SafetyGovernor
+
+        proposal = self.propose(text if isinstance(text, list) else [text], indicator=indicator)
+        if proposal is None:
+            return None, None
+        governor = SafetyGovernor()
+        decision = governor.allow_promote(
+            proposal.phi,
+            proposal.phi_prime,
+            parseable=proposal.parseable,
+            first_create=proposal.first_create,
+            language_ok=proposal.language_ok,
+        )
+        if not decision.allowed:
+            logger.info("Distiller: promote refused (%s)", decision.reason)
+            return None, None
+        return self.write_checkpoint(proposal.gram_text, proposal.dict_text)
+
+    def run_batch_distillation(self, texts: list, indicator=False):
+        """Run distillation on a batch of texts."""
+        texts = "\n".join(texts) if isinstance(texts, list) else texts
+        result = self.run_distillation(texts, indicator=indicator)
+        return result
+
+    def update_baselines_with_deltas(self, gram_delta: str, dict_delta: str):
+        """ Update the baselines with the provided grammar and dictionary deltas. """
+        g_w = False 
+        d_w = False
+
+        new_ckpt_num = self.__next_ckpt()
+        new_gram_path = self.baselines_dir / f"baseline_v{new_ckpt_num}.gram"
+        new_dict_path = self.baselines_dir / f"baseline_v{new_ckpt_num}.dict"
+
+        new_gram_path.write_text(gram_delta, encoding="utf-8")
+        if(new_gram_path.exists()):
+            g_w = True
+            print(f"Updated grammar baseline to {new_gram_path}")
+        
+        new_dict_path.write_text(dict_delta, encoding="utf-8")
+        if(new_dict_path.exists()):
+            d_w = True
+            print(f"Updated dictionary baseline to {new_dict_path}")
+
+        if(g_w and d_w):
+            logger.info(f"Updated grammar and dictionary baselines to {new_gram_path} and {new_dict_path}")
+            self.gram_path = new_gram_path
+            self.dict_path = new_dict_path
+
+            return new_gram_path, new_dict_path
+
+        return None, None
+
+    def __get_latest_ckpt(self) -> Union[str, Path]:
+        """ Get the latest checkpoint file """
+        state = {'gram': None, 'dict': None}
+
+        highest = 0
+        latest_path = ""
+
+        suffixes = ['.gram', '.dict']
+        baseline = "baseline"
+
+        if(self.baselines_dir.exists()):
+            for f in self.baselines_dir.iterdir():
+                if(f.suffix in suffixes):
+                    ckpt_ext = f.suffix.strip('.')
+                    parts = str(f).split("_v")
+                    if(len(parts) >  1):
+                        try:
+                            num = int(parts[1].replace(f.suffix, ""))
+                            if(num >= highest):
+                                highest = num
+                                state[ckpt_ext] = f
+                                continue
+                        except ValueError:
+                            continue
+                    else:
+                        if(f.stem == baseline and not highest):
+                            state[ckpt_ext] = f
+        else:    
+            print("Blank Baselines: LLM only Parsing")
+        
+        return state
+
+    def __next_ckpt(self):
+        """ Get the version count of next ckpt  """
+        latest = self.__get_latest_ckpt()
+        gram = latest['gram']
+        ldict = latest['dict']
+
+        if(not self.baselines_dir.exists()):
+            return 1
+
+        if(not gram or not ldict):
+            return 1
+
+        gparts = gram.stem.split("_v")
+        dparts = ldict.stem.split("_v")
+
+        if(len(gparts) > 1 and len(dparts) > 1):
+            try:
+                gnum = int(gparts[1])
+                dnum = int(dparts[1])
+
+                if(gnum != dnum):
+                    # TODO: Logging module
+                    print(f"Warning: Checkpoint version mismatch: {gram} vs {ldict}")
+
+                return max(gnum, dnum) + 1
+            except ValueError:
+                return 1
+        else:
+            return 1
+
+    def pp(self):
+        print(self.__next_ckpt())
+
+
+    def default_samples(self):
+        """ Load samples and reference files to guide LLM response """
+        samples = {}
+
+        if(self.sample_dir.exists()):
+            for f in os.listdir(self.sample_dir):
+                if(f.endswith('.gram') or f.endswith('.dict') or f.endswith('.guide')):
+                    samples[f] = open(self.sample_dir/f, "r").read()
+
+        return samples
+
+    def apply_deltas(self, text, distilled_output, current_gram, current_dict):
+        """ Apply the deltas to the current grammar (Path) and dictionary (Path). """
+        gram_delta = distilled_output.sebeni_gram
+        dict_delta = distilled_output.sebeni_dict
+        # Initial Morphology State
+        dx = DabaX(self.lang, gram=current_gram, ldict=current_dict) # Initial State
+        sent = dx.loader(text) 
+        ms = MorphologyScorer()
+
+        adjusted_gram = self.apply_gram_deltas(current_gram, gram_delta) if gram_delta else current_gram.read_text(encoding="utf-8")
+        adjusted_dict = self.apply_dict_deltas(current_dict, dict_delta) if dict_delta else current_dict.read_text(encoding="utf-8")
+
+        temp_gram = None
+        temp_dict = None
+
+        try:
+            with tempfile.NamedTemporaryFile(delete=False, suffix=".gram", mode='w', encoding='utf-8') as temp_gram_file:
+                temp_gram_file.write(adjusted_gram)
+                temp_gram = Path(temp_gram_file.name)
+
+            with tempfile.NamedTemporaryFile(delete=False, suffix=".dict", mode='w', encoding='utf-8') as temp_dict_file:
+                temp_dict_file.write(adjusted_dict)
+                temp_dict = Path(temp_dict_file.name)
+
+            dx_prime = DabaX(self.lang, gram=temp_gram, ldict=temp_dict) # Derivative State of DabaX for Validation
+            sent_prime = dx_prime.loader(text)
+
+            state1 = round(ms.phi(sent[0]), 3)
+            state2 = round(ms.phi(sent_prime[0]), 3)
+
+            if(state1 > state2):
+                logger.warning(f"Warning: Distillation resulted in lower morphological score: {state1} -> {state2}")
+                return current_gram.read_text(encoding="utf-8"), current_dict.read_text(encoding="utf-8"), state1 > state2
+            
+            elif state1 == state2:
+                logger.info(f"Distillation resulted in unchanged morphological score: {state1} -> {state2}")
+                return current_gram.read_text(encoding="utf-8"), current_dict.read_text(encoding="utf-8"), state1 == state2
+
+            else:
+                print(f"Distillation improved morphological score: {state1} -> {state2}")
+                logger.info(f"Distillation improved morphological score: {state1} -> {state2}")
+                return adjusted_gram, adjusted_dict, state1 < state2
+
+        except Exception as e:
+            logger.error(f"Error with current pattern. Reverting back to old State {e}")
+            return current_gram, current_dict
+
+        finally:
+            if temp_gram and temp_gram.exists():
+                temp_gram.unlink()
+            if temp_dict and temp_dict.exists():
+                temp_dict.unlink()
+
+    #FIXME: Revise the code [Seb].... This method and the subsequent delta fn are LLM adjusted version not revised
+    @staticmethod
+    def _build_flexible_pattern(target: str) -> str:
+        """
+        Builds a regex pattern that matches the target at the start of a line,
+        allowing for flexible whitespace to handle LLM space normalization.
+        """
+        escaped = re.escape(target)
+        flexible = re.sub(r'\\\s|\s', r'\\s+', escaped)
+        return r'^' + flexible + r'[^\r\n]*(?:\r?\n(?=\s+)[^\r\n]*)*'
+
+    @staticmethod
+    def apply_gram_deltas(current_gram: str, delta_text: str) -> str:
+        """
+        Applies ADD, REPLACE, and DELETE tags to the grammar state.
+        Specifically handles Bamana/Bozo patterns containing ']' characters 
+        and macros with aligned whitespace.
+        """
+        current_gram = current_gram.read_text(encoding="utf-8")
+        if not delta_text.strip():
+            return current_gram
+
+        actions = re.split(r'(^\[(?:ADD|REPLACE|DELETE)[^\n]*\]$)', delta_text, flags=re.MULTILINE)
+        updated_gram = current_gram
+
+        for i in range(1, len(actions), 2):
+            tag = actions[i].strip()
+            content = actions[i+1].strip() if i+1 < len(actions) else ""
+
+            if tag.startswith("[DELETE:"):
+                target = tag.replace("[DELETE:", "", 1).rsplit("]", 1)[0].strip()
+                pattern = Distiller._build_flexible_pattern(target)
+                updated_gram = re.sub(pattern, "", updated_gram, flags=re.MULTILINE)
+
+            elif tag.startswith("[REPLACE:"):
+                target = tag.replace("[REPLACE:", "", 1).rsplit("]", 1)[0].strip()
+                pattern = Distiller._build_flexible_pattern(target)
+                
+                if re.search(pattern, updated_gram, flags=re.MULTILINE):
+                    # CRITICAL FIX: Use lambda to prevent re.sub from parsing 
+                    # backslashes in 'content' as escape sequences.
+                    updated_gram = re.sub(pattern, lambda m: content, updated_gram, flags=re.MULTILINE)
+                else:
+                    separator = "\n" if updated_gram else ""
+                    updated_gram += f"{separator}{content}"
+
+            elif tag == "[ADD]":
+                separator = "\n" if updated_gram else ""
+                updated_gram += f"{separator}{content}"
+
+        updated_gram = re.sub(r'\n{3,}', '\n\n', updated_gram).strip()
+        return updated_gram + "\n" if updated_gram else ""
+
+    @staticmethod
+    def apply_dict_deltas(current_dict: str, delta_text: str) -> str:
+        """
+        Applies ADD, REPLACE, and DELETE tags to the dictionary state.
+        Matches from the target \\lx line until the next \\lx or end of file.
+        """
+        current_dict = current_dict.read_text(encoding="utf-8")
+        if not delta_text.strip():
+            return current_dict
+
+        actions = re.split(r'(^\[(?:ADD|REPLACE|DELETE)[^\n]*\]$)', delta_text, flags=re.MULTILINE)
+        updated_dict = current_dict
+
+        for i in range(1, len(actions), 2):
+            tag = actions[i].strip()
+            content = actions[i+1].strip() if i+1 < len(actions) else ""
+
+            if tag.startswith("[DELETE:"):
+                target = tag.replace("[DELETE:", "", 1).rsplit("]", 1)[0].strip()
+                escaped_target = re.escape(target)
+                flexible_target = re.sub(r'\\\s|\s', r'\\s+', escaped_target)
+                pattern = r'^' + flexible_target + r'.*?(?=^\s*\\lx |\Z)'
+                updated_dict = re.sub(pattern, "", updated_dict, flags=re.DOTALL | re.MULTILINE)
+
+            elif tag.startswith("[REPLACE:"):
+                target = tag.replace("[REPLACE:", "", 1).rsplit("]", 1)[0].strip()
+                escaped_target = re.escape(target)
+                flexible_target = re.sub(r'\\\s|\s', r'\\s+', escaped_target)
+                pattern = r'^' + flexible_target + r'.*?(?=^\s*\\lx |\Z)'
+                
+                if re.search(pattern, updated_dict, flags=re.DOTALL | re.MULTILINE):
+                    # CRITICAL FIX: Use lambda to prevent re.sub from parsing 
+                    # backslashes in 'content' as escape sequences.
+                    updated_dict = re.sub(pattern, lambda m: content, updated_dict, flags=re.DOTALL | re.MULTILINE)
+                else:
+                    updated_dict += f"\n\n{content}"
+
+            elif tag == "[ADD]":
+                updated_dict += f"\n\n{content}"
+
+        updated_dict = re.sub(r'\n{3,}', '\n\n', updated_dict).strip()
+        return updated_dict + "\n" if updated_dict else ""

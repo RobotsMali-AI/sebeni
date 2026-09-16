@@ -1,0 +1,446 @@
+{
+  "metadata": {
+    "source": "HuggingFace Public",
+    "fields": ["Language", "Variant", "Code", "Dataset Count", "Model Count"]
+  },
+  "languages": [
+    {
+      "language": "Bambara",
+      "variants": [
+        {
+          "variant": "Bamanankan",
+          "code": "bm",
+          "datasets": 158,
+          "models": 523
+        },
+        { "variant": "Bambara", "code": "bam", "datasets": 66, "models": 56 },
+        { "variant": "Jula", "code": "dyu", "datasets": 75, "models": 261 }
+      ],
+      "group_name": "Bamana",
+      "group_code": "bam",
+      "family": "Niger-Congo",
+      "subfamily": "Mande",
+      "region": "West Africa",
+      "writing systems": ["Latin", "N'Ko"]
+    },
+    {
+      "language": "Bomu",
+      "variants": [
+        { "variant": "Bomu", "code": "bmq", "datasets": 14, "models": 79 }
+      ],
+      "group_name": "Bwamu",
+      "group_code": "bmq",
+      "family": "Niger-Congo",
+      "subfamily": "Atlantic-Congo",
+      "region": "West Africa",
+      "writing systems": ["Latin"]
+    },
+    {
+      "language": "Bozo",
+      "variants": [
+        { "variant": "Tiéyaxo", "code": "boz", "datasets": 12, "models": 4 },
+        { "variant": "Jenaama", "code": "bze", "datasets": 12, "models": 4 },
+        { "variant": "Kɛlɛngaxo", "code": "bzx", "datasets": 6, "models": 3 },
+        { "variant": "Tiemacèwè", "code": "boo", "datasets": 5, "models": 4 }
+      ],
+      "group_name": "Boso",
+      "group_code": "boz",
+      "family": "Niger-Congo",
+      "subfamily": "Mande",
+      "region": "West Africa",
+      "writing systems": ["Latin"]
+    },
+    {
+      "language": "Dogon",
+      "variants": [
+        { "variant": "Toro So", "code": "dts", "datasets": 20, "models": 15 },
+        { "variant": "Jamsay", "code": "djm", "datasets": 13, "models": 4 },
+        { "variant": "Tomo Kan", "code": "dtm", "datasets": 9, "models": 4 },
+        {
+          "variant": "Ampari",
+          "code": "aqd",
+          "datasets": null,
+          "models": null
+        },
+        {
+          "variant": "Ana Tinga",
+          "code": "dti",
+          "datasets": null,
+          "models": null
+        },
+        {
+          "variant": "Bankan Tey",
+          "code": "dbw",
+          "datasets": null,
+          "models": null
+        },
+        {
+          "variant": "Ben Tey",
+          "code": "dbt",
+          "datasets": null,
+          "models": null
+        },
+        {
+          "variant": "Bondum Dom",
+          "code": "dbu",
+          "datasets": null,
+          "models": null
+        },
+        {
+          "variant": "Bunoge",
+          "code": "dgb",
+          "datasets": null,
+          "models": null
+        },
+        {
+          "variant": "Dogul Dom",
+          "code": "dbg",
+          "datasets": null,
+          "models": null
+        },
+        {
+          "variant": "Donno So",
+          "code": "dds",
+          "datasets": null,
+          "models": null
+        },
+        { "variant": "Mombo", "code": "dmb", "datasets": null, "models": null },
+        {
+          "variant": "Nanga Dama",
+          "code": "nzz",
+          "datasets": null,
+          "models": null
+        },
+        {
+          "variant": "Tebul Ure",
+          "code": "dtu",
+          "datasets": null,
+          "models": null
+        },
+        {
+          "variant": "Tiranige Diga",
+          "code": "tde",
+          "datasets": null,
+          "models": null
+        },
+        {
+          "variant": "Togo Kan",
+          "code": "dtk",
+          "datasets": null,
+          "models": null
+        },
+        {
+          "variant": "Tommo So",
+          "code": "dto",
+          "datasets": null,
+          "models": null
+        },
+        {
+          "variant": "Toro Tegu",
+          "code": "dtt",
+          "datasets": null,
+          "models": null
+        },
+        {
+          "variant": "Yanda Dom",
+          "code": "dym",
+          "datasets": null,
+          "models": null
+        }
+      ],
+      "group_name": "Dogon",
+      "group_code": "dtm",
+      "family": "Niger-Congo",
+      "subfamily": "Atlantic-Congo",
+      "region": "West Africa",
+      "writing systems": ["Latin"]
+    },
+    {
+      "language": "Fula",
+      "variants": [
+        {
+          "variant": "Fula Fulfulde",
+          "code": "ff",
+          "datasets": 84,
+          "models": 331
+        },
+        {
+          "variant": "Nigerian Fulfulde",
+          "code": "fuv",
+          "datasets": 60,
+          "models": 171
+        },
+        { "variant": "Fulah", "code": "ful", "datasets": 49, "models": 13 },
+        {
+          "variant": "Western Niger Fulfulde",
+          "code": "fuh",
+          "datasets": 30,
+          "models": 74
+        },
+        {
+          "variant": "Maasina Fulfulde",
+          "code": "ffm",
+          "datasets": 28,
+          "models": 149
+        },
+        {
+          "variant": "Borgu Fulfulde",
+          "code": "fue",
+          "datasets": 24,
+          "models": 74
+        },
+        {
+          "variant": "Adamawa Fulfulde",
+          "code": "fub",
+          "datasets": 22,
+          "models": 74
+        },
+        {
+          "variant": "Central-Eastern Niger Fulfulde",
+          "code": "fuq",
+          "datasets": 14,
+          "models": 74
+        },
+        {
+          "variant": "Bagirmi Fulfulde",
+          "code": "fui",
+          "datasets": 4,
+          "models": 59
+        },
+        { "variant": "Pular", "code": "fuf", "datasets": 35, "models": 81 },
+        { "variant": "Pulaar", "code": "fuc", "datasets": 22, "models": 65 }
+      ],
+      "group_name": "Fula-Wolof",
+      "group_code": "ful",
+      "family": "Niger-Congo",
+      "subfamily": "Atlantic-Congo",
+      "region": "Central-West Africa",
+      "writing systems": ["Latin", "Ajami", "Adlam"]
+    },
+    {
+      "language": "Hassaniyya",
+      "variants": [
+        { "variant": "Hassaniyya", "code": "mey", "datasets": 13, "models": 74 }
+      ],
+      "group_name": "Arabic",
+      "group_code": "mey",
+      "family": "Afro-Asiatic",
+      "subfamily": "Semitic",
+      "region": "Northwest Africa",
+      "writing systems": ["Arabe"]
+    },
+    {
+      "language": "Maninka",
+      "variants": [
+        {
+          "variant": "Sankara Maninka",
+          "code": "msc",
+          "datasets": 21,
+          "models": 15
+        },
+        {
+          "variant": "Western Maninkakan",
+          "code": "mlq",
+          "datasets": 10,
+          "models": 64
+        },
+        {
+          "variant": "Eastern Maninkakan",
+          "code": "emk",
+          "datasets": 7,
+          "models": 4
+        },
+        {
+          "variant": "Konyanka Maninka",
+          "code": "mku",
+          "datasets": 5,
+          "models": 4
+        },
+        {
+          "variant": "Kita Maninkakan",
+          "code": "mwk",
+          "datasets": null,
+          "models": null
+        }
+      ],
+      "group_name": "Manding",
+      "group_code": "mku",
+      "family": "Niger-Congo",
+      "subfamily": "Mande",
+      "region": "West Africa",
+      "writing systems": ["Latin", "N'Ko", "Ajami"]
+    },
+    {
+      "language": "Khassonke (Xaasongaxango)",
+      "variants": [
+        {
+          "variant": "Khassonke (Xaasongaxango)",
+          "code": "kao",
+          "datasets": 12,
+          "models": 19
+        }
+      ],
+      "group_name": "Manding-West",
+      "group_code": "kao",
+      "family": "Niger-Congo",
+      "subfamily": "Mande",
+      "region": "West Africa",
+      "writing systems": ["Latin"]
+    },
+    {
+      "language": "Mamara",
+      "variants": [
+        {
+          "variant": "Mamara Senoufo",
+          "code": "myk",
+          "datasets": 30,
+          "models": 21
+        }
+      ],
+      "group_name": "Suppire-Mamara",
+      "group_code": "myk",
+      "family": "Niger-Congo",
+      "subfamily": "Atlantic-Congo",
+      "region": "West Africa",
+      "writing systems": ["Latin"]
+    },
+    {
+      "language": "Senoufo",
+      "variants": [
+        {
+          "variant": "Supyire Senoufo",
+          "code": "spp",
+          "datasets": 23,
+          "models": 89
+        },
+        {
+          "variant": "Djimini Senoufo",
+          "code": "dyi",
+          "datasets": 15,
+          "models": 20
+        },
+        {
+          "variant": "Sìcìté Senoufo",
+          "code": "sep",
+          "datasets": 6,
+          "models": 4
+        },
+        {
+          "variant": "Senara Senoufo",
+          "code": "seq",
+          "datasets": null,
+          "models": null
+        },
+        {
+          "variant": "Syenara Senoufo",
+          "code": "shz",
+          "datasets": null,
+          "models": null
+        },
+        {
+          "variant": "Nanerigé Sénoufo",
+          "code": "sen",
+          "datasets": 6,
+          "models": 5
+        },
+        {
+          "variant": "Tagwana Senoufo",
+          "code": "tgw",
+          "datasets": 7,
+          "models": 4
+        },
+        {
+          "variant": "Palaka Senoufo",
+          "code": "plr",
+          "datasets": 7,
+          "models": 3
+        },
+        {
+          "variant": "Nyarafolo Senoufo",
+          "code": "sev",
+          "datasets": 7,
+          "models": 3
+        },
+        {
+          "variant": "Cebaara Senoufo",
+          "code": "sef",
+          "datasets": 9,
+          "models": 4
+        },
+        {
+          "variant": "Mamara Senoufo",
+          "code": "myk",
+          "datasets": 30,
+          "models": 21
+        },
+        {
+          "variant": "Shempire Senoufo",
+          "code": "seb",
+          "datasets": null,
+          "models": null
+        }
+      ],
+      "group_name": "Senufo",
+      "group_code": "spp",
+      "family": "Niger-Congo",
+      "subfamily": "Atlantic-Congo",
+      "region": "West Africa",
+      "writing systems": ["Latin"]
+    },
+    {
+      "language": "Songhay",
+      "variants": [
+        {
+          "variant": "Koyra Chiini Songhay",
+          "code": "khq",
+          "datasets": 9,
+          "models": 6
+        },
+        {
+          "variant": "Koyraboro Senni Songhai",
+          "code": "ses",
+          "datasets": 24,
+          "models": 26
+        },
+        {
+          "variant": "Humburi Senni Songhay",
+          "code": "hmb",
+          "datasets": 6,
+          "models": 4
+        }
+      ],
+      "group_name": "Southern",
+      "group_code": "ses",
+      "family": "Nilo-Saharan",
+      "subfamily": "Songhai",
+      "region": "West Africa",
+      "writing systems": ["Latin", "Ajami"]
+    },
+    {
+      "language": "Soninke",
+      "variants": [
+        { "variant": "Soninke", "code": "snk", "datasets": 27, "models": 64 }
+      ],
+      "group_name": "Soninke",
+      "group_code": "snk",
+      "family": "Niger-Congo",
+      "subfamily": "Mande",
+      "region": "West Africa",
+      "writing systems": ["Latin", "Ajami"]
+    },
+    {
+      "language": "Tamasheq",
+      "variants": [
+        { "variant": "Tamasheq", "code": "taq", "datasets": 61, "models": 139 },
+        { "variant": "Tamashek", "code": "tmh", "datasets": 7, "models": 12 }
+      ],
+
+      "group_name": "Southern",
+      "group_code": "taq",
+      "family": "Afro-Asiatic",
+      "subfamily": "Berber",
+      "region": "West Africa",
+      "writing systems": ["Latin", "Tifinagh", "Arabe"]
+    }
+  ]
+}

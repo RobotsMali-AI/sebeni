@@ -1,0 +1,182 @@
+# Sebeni: self-aware morphotactic generation for extremely low-resource languages
+
+<p align="center">
+  <img src="logo_rm.jpeg" alt="RobotsMali" width="220"/>
+</p>
+
+[![docs](https://img.shields.io/badge/docs-seben.robotsmali.org-indigo)](https://seben.robotsmali.org/docs)
+[![site](https://img.shields.io/badge/home-seben.robotsmali.org-blue)](https://seben.robotsmali.org)
+[![hub](https://img.shields.io/badge/hub-mlsftwrs-yellow)](https://huggingface.co/mlsftwrs)
+[![github](https://img.shields.io/badge/code-mlsftwrs/sebeni-black)](https://github.com/mlsftwrs/sebeni)
+
+Sebeni is a morphotactic post-training toolkit for Manding and related
+extremely low-resource languages. Training runs **SAMPG**: a dataset of
+**(text, language)** rows is scored with a **grammar G** and **dictionary D**;
+if Φ is below τ the Distiller proposes a better G and D; then the shared
+policy θ is updated (GRPO by default, DPO/APO as policy-update plugins).
+
+```bash
+pip install "sebeni[train,distil] @ git+https://github.com/mlsftwrs/sebeni.git"
+sebeni --help
+```
+
+- Docs: [seben.robotsmali.org/docs](https://seben.robotsmali.org/docs)
+- Project home: [seben.robotsmali.org](https://seben.robotsmali.org)
+- Hub org: [huggingface.co/mlsftwrs](https://huggingface.co/mlsftwrs)
+
+## Install
+
+Python ≥ 3.10. The default extra does **not** install wxPython.
+
+```bash
+pip install "sebeni[train,distil] @ git+https://github.com/mlsftwrs/sebeni.git"
+```
+
+From a clone: `pip install -e ".[train,distil,dev]"`.
+
+| Extra | Contents |
+| --- | --- |
+| (default) | CLI, YAML, DabaX, metrics, safety, `daba>=0.9.5` |
+| `[train]` | torch, transformers, trl, peft, datasets, accelerate, trackio |
+| `[wandb]` | wandb (`trainer.report_to: wandb`) |
+| `[distil]` | google-genai, openai, groq, together |
+| `[docs]` | MkDocs Material + mkdocstrings |
+| `[dev]` | pytest, ruff |
+| `[gui]` | wxPython (upstream Daba gparser only; not required) |
+
+Set a Distiller key as needed: `GOOGLE_API_KEY`, `OPENAI_API_KEY`, `GROQ_API_KEY`,
+or `TOGETHER_API_KEY`. Hub push uses `HF_TOKEN` or `huggingface-cli login`.
+
+## Quick start
+
+**Packaged data** (no jsonl to write):
+
+```bash
+# edit configs/exp.yaml: model, hyperparams, report_to
+sebeni exp -c configs/exp.yaml -w ./runs/exp-001
+```
+
+`sebeni exp` always trains on packaged `beni/data/raw/*` and evaluates
+`beni/data/test.json`. Details: [Experiments](https://seben.robotsmali.org/docs/experiments/).
+
+**Your own jsonl:**
+
+```bash
+sebeni init --lang bam --lang mku -w ./runs/manding-001
+# point data.source at jsonl/csv with text + lang
+sebeni train -c ./runs/manding-001/config.yaml --lr 1e-5 --max-steps 50
+sebeni eval  -c ./runs/manding-001/config.yaml
+sebeni generate -c ./runs/manding-001/config.yaml --prompt "Aw ka kɛnɛ wa?" --lang bam
+sebeni wordfreq -c ./runs/manding-001/config.yaml
+```
+
+`init` writes `config.yaml` plus `data/`, `models/`, `runs/`, `exp/`, `runtime/`.
+Repeat `--lang` (or `bam,mku`) for multilingual runs. Trainer / LoRA knobs are
+YAML keys under `model:` / `trainer:` / `dpo:` / `apo:` and CLI flags on
+`sebeni train` (`--lr`, `--batch-size`, `--lora-r`, `--beta`, …). Full tables:
+[Hyperparameters](https://seben.robotsmali.org/docs/hyperparams/).
+
+Examples: [`configs/exp.yaml`](configs/exp.yaml),
+[`configs/grpo_bam.yaml`](configs/grpo_bam.yaml),
+[`configs/grpo_multilang.yaml`](configs/grpo_multilang.yaml),
+[`configs/dpo_bam.yaml`](configs/dpo_bam.yaml),
+[`configs/apo_bam.yaml`](configs/apo_bam.yaml).
+
+## Dataset: text and language
+
+Every element is one sentence plus its language identity — not a grammar, not
+a dictionary:
+
+```json
+{"text": "aw ka ne labato.", "lang": "bam"}
+{"text": "i ni ce", "lang": "mku"}
+```
+
+| Field | Meaning |
+| --- | --- |
+| `text` | Surface sentence (the string DabaX parses and the policy conditions on) |
+| `lang` | ISO or Sebeni group code for **this** row (`language` is accepted as an alias) |
+
+Load from JSONL/CSV/TXT, a directory, a list of paths, or a Hugging Face dataset
+id (`data.source` in YAML). Unlabeled rows fall back to `data.default_lang`.
+A mixed-language file is normal: one language per row. Completions must not mix
+languages **inside** a single JSON object (`R_lang`). G and D are files
+(`baseline.gram` / `baseline.dict`), not columns.
+
+Maninka group code is **MKU** (not MLQ). Completions use JSON `tokens`.
+
+## How training works
+
+SAMPG, in short:
+
+1. Distill G, D (HITL optional; scratch bootstrap if no packaged baseline).
+2. For each batch, group by language and score Φ with DabaX.
+3. If Φ < τ, Distiller proposes \(G_{cand}, D_{cand}\); promote iff Φ′ > Φ.
+4. Sample completions; score \(R_{morph}\) / \(R_{format}\) / \(R_{rule}\) / \(R_{lang}\).
+5. Update θ with GRPO, or DPO / APO as a plugin.
+
+One policy θ; `(G_ℓ, D_ℓ)` per language. Φ is computed **on a batch of texts**
+with those files. Threshold τ defaults to **0.5**. Full narrative:
+[SAMPG](https://seben.robotsmali.org/docs/sampg/).
+
+## CLI
+
+```
+sebeni init      --lang bam --lang mku -w ./runs/manding-001
+sebeni exp       -c configs/exp.yaml -w ./runs/exp-001
+sebeni train     -c config.yaml [--lr 1e-5] [--lora-r 32] [--max-steps 100]
+sebeni distill   -c config.yaml
+sebeni eval      -c config.yaml
+sebeni wordfreq  -c config.yaml
+sebeni generate  -c config.yaml --prompt "..." --lang bam
+sebeni push      -c config.yaml --repo-id mlsftwrs/<model>
+```
+
+Working directory, later wins if set: `~/.sebeni` → `SEBENI_HOME` /
+`SEBENI_WORKING_DIR` → YAML `working_dir:` → CLI `-w`.
+
+| Artifact | Path |
+| --- | --- |
+| G, D checkpoints | `{working_dir}/data/baselines/{lang}/baseline.gram` `.dict` and `baseline_vN` |
+| Policy + tokenizer | `{working_dir}/models/` |
+| Hub card + snapshot | `{working_dir}/models/README.md`, `safety_snapshot.json` |
+| Eval / wordfreq | `{working_dir}/exp/eval.json`, `{working_dir}/exp/wordfreq/` |
+| mparser runtime | `{working_dir}/runtime/` |
+
+If packaged `beni/data/baselines/{lang}/` is missing, Distiller writes Daba-compatible
+stubs and uses **bootstrap** prompts. First promote is a parseable-file gate;
+later checkpoints require Φ′ > Φ.
+
+## Safety / Hub
+
+`SafetyGovernor` is consulted on every G/D promote, policy update, and Hub
+export:
+
+- Completions must be valid JSON with `tokens`; format-invalid batches cannot update θ
+- `R_lang` vs **that row**'s group code
+- Promote G, D only when Φ′ > Φ (after the scratch parse gate)
+- Uncertainty U and KL-to-ref (`beta`) down-weight noisy rewards
+- **No Hub push** without a model card and `safety_snapshot.json` (Φ, τ, checkpoint id)
+
+Push checklist and org transfer: [Hub](https://seben.robotsmali.org/docs/hub/).
+
+## Parser
+
+DabaX uses CLI `daba.mparser` only (`DictLoader`, `GrammarLoader`, `Tokenizer`,
+`Processor`). Parser credit: [maslinych/daba](https://github.com/maslinych/daba)
+(GPLv2+). Do not vendor GPL sources into this MIT tree. A CLI-only fork under
+[mlsftwrs](https://github.com/mlsftwrs) is the intended long-term pin.
+
+## Tests
+
+```bash
+pytest tests
+```
+
+## License
+
+MIT (this tree). Daba remains GPLv2+.
+
+Sebeni — write in Malian languages.
+[seben.robotsmali.org](https://seben.robotsmali.org) ·
+[seben.robotsmali.org/docs](https://seben.robotsmali.org/docs)

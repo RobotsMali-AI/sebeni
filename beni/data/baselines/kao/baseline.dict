@@ -1,0 +1,1470 @@
+\_sh v3.0 400 MDF 4.0
+
+\lang kao
+\name seben-khasonke
+\ver 0.0.1
+
+\lx xaasongaxanno
+\ph /xaːsɔŋgaxanːɔ/
+\ps n
+\gf alphabet khassonké
+\gvf alphabet khassonké
+\ge Khassonke alphabet
+\gve Khassonke alphabet
+\sm L'ensemble des lettres utilisées pour écrire la langue khassonké.
+\ms 1
+\xv L'alphabet khassonké compte vingt-cinq lettres (safedinnolu) dont cinq (5) voyelles (dafaninŋolu) et vingt (20) consonnes (dafatalu. Ce sont a b c d e f g h i j k l m n ɲ ŋ o p r s t u w x y.
+\xe L'alphabet khassonké compte vingt-cinq lettres (safedinnolu) dont cinq (5) voyelles (dafaninŋolu) et vingt (20) consonnes (dafatalu. Ce sont a b c d e f g h i j k l m n ɲ ŋ o p r s t u w x y.
+\xf The Khassonke alphabet has twenty-five letters (safedinnolu) including five (5) vowels (dafaninŋolu) and twenty (20) consonants (dafatalu. They are a b c d e f g h i j k l m n ɲ ŋ o p r s t u w x y.
+\sy 
+\an 
+\dt 01/Feb/2026
+
+\lx dafaninŋolu
+\ph /dafaninŋɔlu/
+\ps n
+\gf voyelles
+\gvf voyelles
+\ge vowels
+\gve vowels
+\sm Les sons de la parole produits sans obstruction significative du flux d'air dans le conduit vocal.
+\ms 1
+\xv Les voyelles (dafaninŋolu) a e i o u.
+\xe Les voyelles (dafaninŋolu) a e i o u.
+\xf The vowels (dafaninŋolu) a e i o u.
+\sy 
+\an dafatalu
+\dt 01/Feb/2026
+
+\lx dafatalu
+\ph /dafatalu/
+\ps n
+\gf consonnes
+\gvf consonnes
+\ge consonants
+\gve consonants
+\sm Les sons de la parole produits avec une obstruction partielle ou complète du flux d'air dans le conduit vocal.
+\ms 1
+\xv Les consonnes (dafatalu) b c d f g h j k l m n ɲ ŋ p r s t w x y.
+\xe Les consonnes (dafatalu) b c d f g h j k l m n ɲ ŋ p r s t w x y.
+\xf The consonants (dafatalu) b c d f g h j k l m n ɲ ŋ p r s t w x y.
+\sy 
+\an dafaninŋolu
+\dt 01/Feb/2026
+
+\lx toxo
+\ph /tɔxɔ/
+\ps n
+\gf nom
+\gvf nom
+\ge noun
+\gve noun
+\sm Mot désignant une personne, un lieu, une chose, une idée ou un concept.
+\ms 1
+\xv En khassonké, nous distinguons deux types de noms Le nom propre (toxo beto) et Le nom commun (fuurubatoxo).
+\xe En khassonké, nous distinguons deux types de noms Le nom propre (toxo beto) et Le nom commun (fuurubatoxo).
+\xf In Khassonke, we distinguish two types of nouns Proper nouns (toxo beto) and Common nouns (fuurubatoxo).
+\sy 
+\an 
+\dt 01/Feb/2026
+
+\lx musu
+\ph /musu/
+\ps n
+\gf femme
+\gvf femme
+\ge woman
+\gve woman
+\sm Être humain adulte de sexe féminin.
+\ms 1
+\xv Musu (une femme) + o → muso (la femme).
+\xe Musu (une femme) + o → muso (la femme).
+\xf Musu (a woman) + o → muso (the woman).
+\sy 
+\an xe
+\dt 01/Feb/2026
+
+\lx kini
+\ph /kini/
+\ps n
+\gf repas
+\gvf repas
+\ge meal
+\gve meal
+\sm Ensemble des aliments consommés à un moment donné de la journée.
+\ms 1
+\xv Kini (un repas) + o → kino (le repas).
+\xe Kini (un repas) + o → kino (le repas).
+\xf Kini (a meal) + o → kino (the meal).
+\sy domoli
+\an 
+\dt 01/Feb/2026
+
+\lx ji
+\ph /dʒi/
+\ps n
+\gf eau
+\gvf eau
+\ge water
+\gve water
+\sm Liquide transparent, inodore, insipide et incolore, essentiel à la vie.
+\ms 1
+\xv Ji (eau) = jiyo (l'eau).
+\xe Ji (eau) = jiyo (l'eau).
+\xf Ji (water) = jiyo (the water).
+\sy 
+\an 
+\dt 01/Feb/2026
+
+\lx lu
+\ph /lu/
+\ps n
+\gf maison
+\gvf maison
+\ge house
+\gve house
+\sm Bâtiment servant d'habitation.
+\ms 1
+\xv Lu (maison) = luwo (la maison).
+\xe Lu (maison) = luwo (la maison).
+\xf Lu (house) = luwo (the house).
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx luntan
+\ph /lũtan/
+\ps n
+\gf étranger
+\gvf étranger
+\ge stranger
+\gve stranger
+\sm Personne qui n'appartient pas à la communauté ou au pays.
+\ms 1
+\xv Luntan (étranger) = luntanno (l'étranger).
+\xe Luntan (étranger) = luntanno (l'étranger).
+\xf Luntan (stranger) = luntanno (the stranger).
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx bulu
+\ph /bulu/
+\ps n
+\gf main ; possession ; responsabilité ; cause
+\gvf main ; possession ; responsabilité ; cause
+\ge hand ; possession ; responsibility ; cause
+\gve hand ; possession ; responsibility ; cause
+\sm Partie terminale du membre supérieur, servant à la préhension. Peut aussi indiquer la possession, la responsabilité ou la cause.
+\ms 1
+\xv Muro be faato bulu. Xalisi nte n bulu. Nte man sinnoxo suusuwo bulu.
+\xe Le fou a un couteau. Je n'ai pas d'argent. Moi je n'ai pas dormi à cause des moustiques.
+\xf The madman has a knife. I don't have money. I didn't sleep because of mosquitoes.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx fata
+\ph /fata/
+\ps n
+\gf peau
+\gvf peau
+\ge skin
+\gve skin
+\sm Enveloppe externe du corps humain ou animal.
+\ms 1
+\xv Fatafin (noir) de fata (peau) et fin (noir).
+\xe Fatafin (noir) de fata (peau) et fin (noir).
+\xf Fatafin (black) from fata (skin) and fin (black).
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx fin
+\ph /fĩn/
+\ps adj
+\gf noir
+\gvf noir
+\ge black
+\gve black
+\sm Couleur la plus sombre, absence de lumière.
+\ms 1
+\xv Fatafin (noir) de fata (peau) et fin (noir). Kurafi x'a sinnŋolu lafin mikku.
+\xe Fatafin (noir) de fata (peau) et fin (noir). Kourafin a très bien noirci ses pieds.
+\xf Fatafin (black) from fata (skin) and fin (black). Kourafin blackened his feet very well.
+\sy 
+\an lewu
+\dt 01/Feb/2026
+\lx sigi
+\ph /sigi/
+\ps v
+\gf s'asseoir ; établir
+\gvf s'asseoir ; établir
+\ge to sit ; to establish
+\gve to sit ; to establish
+\sm Prendre place en position assise. Peut aussi signifier fonder ou mettre en place.
+\ms 1
+\xv nasigi (destin) ou (prévoir) de ɲa (devant) et sigi (asseoir). N xa n sigi ba?
+\xe nasigi (destin) ou (prévoir) de ɲa (devant) et sigi (asseoir). Pourrai-je m'asseoir ?
+\xf nasigi (destiny) or (to foresee) from ɲa (front) and sigi (to sit). Can I sit down?
+\sy 
+\an wuli
+\dt 01/Feb/2026
+\lx si
+\ph /si/
+\ps v ; conj
+\gf passer la nuit ; si (conditionnel)
+\gvf passer la nuit ; si (conditionnel)
+\ge to spend the night ; if (conditional)
+\gve to spend the night ; if (conditional)
+\sm Demeurer pendant la nuit. Utilisé comme conjonction pour introduire une condition.
+\ms 1
+\xv Sinbata (le fait de passer la nuit) de si (passer la nuit) ń (moi) et bata (chez). Nin n tun x'a lon n me na « si jesavais, je ne serais pas venu ».
+\xe Sinbata (le fait de passer la nuit) de si (passer la nuit) ń (moi) et bata (chez). Si je savais, je ne serais pas venu.
+\xf Sinbata (the act of spending the night) from si (to spend the night) ń (me) and bata (at). If I had known, I would not have come.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx baaro
+\ph /baːrɔ/
+\ps n
+\gf travail
+\gvf travail
+\ge work
+\gve work
+\sm Activité physique ou intellectuelle visant à produire quelque chose ou à atteindre un objectif.
+\ms 1
+\xv Alan xa baaro damuta. Baara me ke no tili fula xono.
+\xe Commençons le travail. Ce travail ne peut pas se faire en deux jours.
+\xf Let's start the work. This work cannot be done in two days.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx san
+\ph /sãn/
+\ps n
+\gf année ; oncle
+\gvf année ; oncle
+\ge year ; uncle
+\gve year ; uncle
+\sm Période de douze mois. Frère du père ou de la mère.
+\ms 1
+\xv San wo san xarafandin kilin be dila fatama ma. Musa xa no san a barin nen.
+\xe Chaque année on donne une fille au crocodile. Moussa a acheté du mil pour son oncle.
+\xf Every year a girl is given to the crocodile. Moussa bought millet for his uncle.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx taxa
+\ph /taxa/
+\ps v
+\gf partir ; aller
+\gvf partir ; aller
+\ge to leave ; to go
+\gve to leave ; to go
+\sm Se déplacer d'un lieu à l'autre.
+\ms 1
+\xv Musa taxata (Moussa est parti). Alan xa taxa.
+\xe Moussa est parti. Allons-y.
+\xf Moussa left. Let's go.
+\sy 
+\an na
+\dt 01/Feb/2026
+\lx man
+\ph /mãn/
+\ps neg
+\gf ne...pas (négatif)
+\gvf ne...pas (négatif)
+\ge not
+\gve not
+\sm Particule utilisée pour former la négation d'un verbe ou d'une phrase.
+\ms 1
+\xv Koli man na (Koli n'est pas venu). Wo man xan xa ke.
+\xe Koli n'est pas venu. Cela ne doit pas se faire.
+\xf Koli did not come. That should not be done.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx be
+\ph /be/
+\ps pred
+\gf être (progressif, habituel, perspectif, actuel, accompli)
+\gvf être (progressif, habituel, perspectif, actuel, accompli)
+\ge to be (progressive, habitual, prospective, actual, accomplished)
+\gve to be (progressive, habitual, prospective, actual, accomplished)
+\sm Prédicatif verbal exprimant divers aspects temporels et modaux.
+\ms 1
+\xv Madi be jarajaraxan. Nego be domola.
+\xe Madi tremble. Le poisson se mange.
+\xf Madi is trembling. The fish is being eaten.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx nte
+\ph /nte/
+\ps neg ; pron
+\gf ne...pas (négatif) ; moi (emphatique)
+\gvf ne...pas (négatif) ; moi (emphatique)
+\ge not ; me (emphatic)
+\gve not ; me (emphatic)
+\sm Particule de négation. Pronom personnel emphatique de la première personne du singulier.
+\ms 1
+\xv Kuntigo nte xumaxan. Nte tun be jan.
+\xe Le chef n'est pas en train de parler. Moi j'étais là.
+\xf The chief is not speaking. I was there.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx fo
+\ph /fɔ/
+\ps prep ; part
+\gf jusqu'à ; sauf ; particule de volonté/nécessité
+\gvf jusqu'à ; sauf ; particule de volonté/nécessité
+\ge until ; except ; particle of will/necessity
+\gve until ; except ; particle of will/necessity
+\sm Préposition indiquant une limite temporelle ou spatiale, ou une exception. Peut aussi exprimer une volonté ou une nécessité.
+\ms 1
+\xv X'a ta saxo ma fo wura la. Ite nte fen xote ti fo senekela. Fo n du xa taxa le !
+\xe Du matin jusqu'au soir. Tu n'es rien qu'un simple cultivateur. Il faut que je parte aussi !
+\xf From morning until evening. You are nothing but a simple farmer. I must leave too!
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx kabirin
+\ph /kabirĩn/
+\ps prep ; conj
+\gf depuis
+\gvf depuis
+\ge since
+\gve since
+\sm Préposition ou conjonction indiquant le point de départ temporel d'une action ou d'un état.
+\ms 1
+\xv Kabirin saxo a be wulo to fo fitiro. Kabirin musa nata, moxo m'a je.
+\xe Depuis le matin il est en brousse jusqu'au crépuscule. Depuis que Moussa est venu, personne ne l'a vu.
+\xf Since morning he has been in the bush until dusk. Since Moussa came, no one has seen him.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx nin
+\ph /nĩn/
+\ps n ; dem ; conj
+\gf enfant ; ce/cette ; si (conditionnel)
+\gvf enfant ; ce/cette ; si (conditionnel)
+\ge child ; this ; if (conditional)
+\gve child ; this ; if (conditional)
+\sm Jeune être humain. Démonstratif pour désigner quelque chose de proche. Conjonction pour introduire une condition.
+\ms 1
+\xv Nin musu in (cette femme). Nin n tun x'a lon n me na.
+\xe Cette femme. Si je savais, je ne serais pas venu.
+\xf This woman. If I had known, I would not have come.
+\sy dinndin
+\an 
+\dt 01/Feb/2026
+\lx men
+\ph /mɛ̃n/
+\ps pron
+\gf qui ; que (relatif)
+\gvf qui ; que (relatif)
+\ge who ; which ; that (relative)
+\gve who ; which ; that (relative)
+\sm Pronom relatif introduisant une proposition subordonnée.
+\ms 1
+\xv Doroke men t'e xanna, i xann'e bulo bula wo jifo la.
+\xe Ne mets pas ta main dans la poche d'autrui.
+\xf Do not put your hand in someone else's pocket.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx jon
+\ph /dʒɔ̃n/
+\ps pron
+\gf qui (interrogatif)
+\gvf qui (interrogatif)
+\ge who (interrogative)
+\gve who (interrogative)
+\sm Pronom interrogatif utilisé pour demander l'identité d'une personne.
+\ms 1
+\xv Jon nata ? I xa xaliso di jon ma?
+\xe Qui est venu ? Tu as donné l'argent à qui ?
+\xf Who came? To whom did you give the money?
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx mun
+\ph /mũn/
+\ps pron
+\gf quoi (interrogatif)
+\gvf quoi (interrogatif)
+\ge what (interrogative)
+\gve what (interrogative)
+\sm Pronom interrogatif utilisé pour demander la nature d'une chose.
+\ms 1
+\xv I xa mun fo? Mun b'e la bi?
+\xe Qu'est ce que tu as dit ? Qu'as-tu aujourd'hui ?
+\xf What did you say? What do you have today?
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx di
+\ph /di/
+\ps v ; pron ; adj
+\gf donner ; où (interrogatif) ; bon
+\gvf donner ; où (interrogatif) ; bon
+\ge to give ; where (interrogative) ; good
+\gve to give ; where (interrogative) ; good
+\sm Transférer la possession de quelque chose. Pronom interrogatif de lieu. Adjectif pour qualifier quelque chose de positif.
+\ms 1
+\xv N xa faanu jelu d'i ma? I je bola min (to)? Jan xa di.
+\xe Je te donne combien de femmes ? D'où viens –tu? Il fait bon vivre ici.
+\xf How many women do I give you? Where do you come from? It's good to live here.
+\sy 
+\an jaxu
+\dt 01/Feb/2026
+\lx kujaxu
+\ph /kudʒaxu/
+\ps adv
+\gf trop ; très
+\gvf trop ; très
+\ge too much ; very
+\gve too much ; very
+\sm Adverbe de quantité ou d'intensité, indiquant un degré élevé.
+\ms 1
+\xv Sidi si xuma kujaxu. Nin musu in xa bête kujaxu !
+\xe Sidi parle trop. Cette femme est très belle !
+\xf Sidi talks too much. This woman is very beautiful!
+\sy bete
+\an 
+\dt 01/Feb/2026
+\lx junna
+\ph /dʒunːa/
+\ps adv
+\gf tôt ; vite
+\gvf tôt ; vite
+\ge early ; quickly
+\gve early ; quickly
+\sm Adverbe de temps ou de manière, indiquant une action rapide ou précoce.
+\ms 1
+\xv Jiita man tabilo ke junna. Taxa junna xarandula.
+\xe Djita n'a pas fait la cuisine tôt. Va vite à l'école.
+\xf Djita did not cook early. Go to school quickly.
+\sy 
+\an miimo
+\dt 01/Feb/2026
+\lx xono
+\ph /xɔnɔ/
+\ps prep
+\gf dans ; intérieur
+\gvf dans ; intérieur
+\ge in ; inside
+\gve in ; inside
+\sm Préposition indiquant la position à l'intérieur de quelque chose.
+\ms 1
+\xv A la godo butunta xolonno xono.
+\xe Son bracelet est tombé dans le puits.
+\xf His bracelet fell into the well.
+\sy 
+\an 
+\dt 01/Feb/2026
+
+\lx Laxuma
+\ph /laxuma/
+\ps v
+\gf faire parler
+\gvf faire parler
+\ge to make speak
+\gve to make speak
+\sm Action de provoquer la parole chez quelqu'un.
+\ms 1
+\xv Laxuma (faire parler) la + xuma.
+\xe Laxuma (faire parler) la + xuma.
+\xf Laxuma (to make speak) la + xuma.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Lasigi
+\ph /lasigi/
+\ps v
+\gf faire asseoir
+\gvf faire asseoir
+\ge to make sit
+\gve to make sit
+\sm Action de faire prendre place à quelqu'un en position assise.
+\ms 1
+\xv Lasigi (faire asseoir) la + sigi.
+\xe Lasigi (faire asseoir) la + sigi.
+\xf Lasigi (to make sit) la + sigi.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Labo
+\ph /labɔ/
+\ps v
+\gf faire sortir
+\gvf faire sortir
+\ge to make go out
+\gve to make go out
+\sm Action de faire quitter un lieu à quelqu'un ou quelque chose.
+\ms 1
+\xv Labo (faire sortir) la + bo.
+\xe Labo (faire sortir) la + bo.
+\xf Labo (to make go out) la + bo.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Matara
+\ph /matara/
+\ps v
+\gf supplier
+\gvf supplier
+\ge to beg
+\gve to beg
+\sm Demander avec insistance et humilité.
+\ms 1
+\xv Matara (supplier) ma + tara.
+\xe Matara (supplier) ma + tara.
+\xf Matara (to beg) ma + tara.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Manoxo
+\ph /manɔxɔ/
+\ps v
+\gf se ralir
+\gvf se ralir
+\ge to get dirty
+\gve to get dirty
+\sm Devenir sale, se couvrir de saleté.
+\ms 1
+\xv Manoxo (se ralir) ma + noxo.
+\xe Manoxo (se ralir) ma + noxo.
+\xf Manoxo (to get dirty) ma + noxo.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Mafele
+\ph /mafɛlɛ/
+\ps v
+\gf regarder
+\gvf regarder
+\ge to look at
+\gve to look at
+\sm Diriger son regard vers quelque chose ou quelqu'un.
+\ms 1
+\xv Mafele (regarder) ma + fele.
+\xe Mafele (regarder) ma + fele.
+\xf Mafele (to look at) ma + fele.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Tokutun
+\ph /tɔkutũn/
+\ps v
+\gf découper
+\gvf découper
+\ge to cut up
+\gve to cut up
+\sm Couper en morceaux.
+\ms 1
+\xv Tokutun (découper) to + kutun.
+\xe Tokutun (découper) to + kutun.
+\xf Tokutun (to cut up) to + kutun.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Tobo
+\ph /tɔbɔ/
+\ps v
+\gf récurer
+\gvf récurer
+\ge to scour
+\gve to scour
+\sm Nettoyer en frottant énergiquement.
+\ms 1
+\xv Tobo (recurer) to + bo.
+\xe Tobo (recurer) to + bo.
+\xf Tobo (to scour) to + bo.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Totonbon
+\ph /tɔtɔ̃bɔ̃n/
+\ps v
+\gf trier
+\gvf trier
+\ge to sort
+\gve to sort
+\sm Séparer des éléments selon certains critères.
+\ms 1
+\xv Totonbon (trier) to + tonbon.
+\xe Totonbon (trier) to + tonbon.
+\xf Totonbon (to sort) to + tonbon.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Galluba
+\ph /galːuba/
+\ps n
+\gf grande ville ; gros village
+\gvf grande ville ; gros village
+\ge large town ; big village
+\gve large town ; big village
+\sm Agglomération urbaine ou rurale de grande taille.
+\ms 1
+\xv Galluba (grande ville/gros village).
+\xe Galluba (grande ville/gros village).
+\xf Galluba (large town/big village).
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Fuutuba
+\ph /fuːtuba/
+\ps n
+\gf grand champ
+\gvf grand champ
+\ge large field
+\gve large field
+\sm Étendue de terre cultivée de grande dimension.
+\ms 1
+\xv Fuutuba (grand champ).
+\xe Fuutuba (grand champ).
+\xf Fuutuba (large field).
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Saxandin
+\ph /saxãndĩn/
+\ps n
+\gf petit marché
+\gvf petit marché
+\ge small market
+\gve small market
+\sm Lieu de commerce de petite taille.
+\ms 1
+\xv Saxandin (petit marché).
+\xe Saxandin (petit marché).
+\xf Saxandin (small market).
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Gumandin
+\ph /gumãndĩn/
+\ps n
+\gf petit bâton
+\gvf petit bâton
+\ge small stick
+\gve small stick
+\sm Petite branche ou morceau de bois.
+\ms 1
+\xv Gumandin (petit bâton).
+\xe Gumandin (petit bâton).
+\xf Gumandin (small stick).
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Xaayinga
+\ph /xaːjĩŋga/
+\ps n
+\gf originaire de Kayes
+\gvf originaire de Kayes
+\ge native of Kayes
+\gve native of Kayes
+\sm Personne dont l'origine est la ville de Kayes.
+\ms 1
+\xv Xaayinga (originaire de Kayes).
+\xe Xaayinga (originaire de Kayes).
+\xf Xaayinga (native of Kayes).
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Moxoya
+\ph /mɔxɔja/
+\ps n
+\gf le fait d'être humain
+\gvf le fait d'être humain
+\ge humanity
+\gve humanity
+\sm Caractère, condition d'être humain.
+\ms 1
+\xv Moxoya (le fait d'être humain).
+\xe Moxoya (le fait d'être humain).
+\xf Moxoya (humanity).
+\sy hadamadinya
+\an 
+\dt 01/Feb/2026
+\lx Wuluya
+\ph /wuluja/
+\ps n
+\gf chiennerie
+\gvf chiennerie
+\ge doggishness
+\gve doggishness
+\sm Comportement ou caractère propre aux chiens.
+\ms 1
+\xv Wuluya (chiennerie).
+\xe Wuluya (chiennerie).
+\xf Wuluya (doggishness).
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Mooroya
+\ph /mɔːrɔja/
+\ps n
+\gf chez mooro
+\gvf chez mooro
+\ge at mooro's place
+\gve at mooro's place
+\sm Indique l'appartenance ou la localisation chez une personne nommée Mooro.
+\ms 1
+\xv Mooroya (chez mooro).
+\xe Mooroya (chez mooro).
+\xf Mooroya (at mooro's place).
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Susoxola
+\ph /susɔxɔla/
+\ps n
+\gf chez les Sissoko
+\gvf chez les Sissoko
+\ge at the Sissoko's
+\gve at the Sissoko's
+\sm Indique l'appartenance ou la localisation chez la famille Sissoko.
+\ms 1
+\xv Susoxola (chez les Sissoko).
+\xe Susoxola (chez les Sissoko).
+\xf Susoxola (at the Sissoko's).
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Bitanna
+\ph /bitanːa/
+\ps n
+\gf chez les beaux parents
+\gvf chez les beaux parents
+\ge at the in-laws'
+\gve at the in-laws'
+\sm Indique l'appartenance ou la localisation chez les parents par alliance.
+\ms 1
+\xv Bitanna (chez les beaux parents).
+\xe Bitanna (chez les beaux parents).
+\xf Bitanna (at the in-laws').
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Jonkunda
+\ph /dʒɔ̃kũnda/
+\ps n
+\gf chez les esclaves
+\gvf chez les esclaves
+\ge at the slaves'
+\gve at the slaves'
+\sm Indique l'appartenance ou la localisation chez les esclaves.
+\ms 1
+\xv Jonkunda (chez les esclaves).
+\xe Jonkunda (chez les esclaves).
+\xf Jonkunda (at the slaves').
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Jalikunda
+\ph /dʒalikũnda/
+\ps n
+\gf chez les griots
+\gvf chez les griots
+\ge at the griots'
+\gve at the griots'
+\sm Indique l'appartenance ou la localisation chez les griots (conteurs, musiciens traditionnels).
+\ms 1
+\xv Jalikunda (chez les griots).
+\xe Jalikunda (chez les griots).
+\xf Jalikunda (at the griots').
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Xooxontan
+\ph /xɔːxɔntãn/
+\ps n
+\gf manque de sel
+\gvf manque de sel
+\ge lack of salt
+\gve lack of salt
+\sm Absence ou insuffisance de sel.
+\ms 1
+\xv Xooxontan (manque de sel).
+\xe Xooxontan (manque de sel).
+\xf Xooxontan (lack of salt).
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Sukarantan
+\ph /sukarantãn/
+\ps n
+\gf manque de sucre
+\gvf manque de sucre
+\ge lack of sugar
+\gve lack of sugar
+\sm Absence ou insuffisance de sucre.
+\ms 1
+\xv Sukarantan (manque de sucre).
+\xe Sukarantan (manque de sucre).
+\xf Sukarantan (lack of sugar).
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Musulandin
+\ph /musulãndĩn/
+\ps n
+\gf qui aime la femme
+\gvf qui aime la femme
+\ge who loves women
+\gve who loves women
+\sm Personne ayant de l'affection pour les femmes.
+\ms 1
+\xv Musulandin (qui aime la femme).
+\xe Musulandin (qui aime la femme).
+\xf Musulandin (who loves women).
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Fennandin
+\ph /fɛnːãndĩn/
+\ps n
+\gf matérialiste
+\gvf matérialiste
+\ge materialist
+\gve materialist
+\sm Personne attachée aux biens matériels.
+\ms 1
+\xv Fennandin (matérialiste).
+\xe Fennandin (matérialiste).
+\xf Fennandin (materialist).
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Musulanperen
+\ph /musulãnpɛrɛn/
+\ps n
+\gf épris de femme
+\gvf épris de femme
+\ge smitten with a woman
+\gve smitten with a woman
+\sm Personne fortement amoureuse ou attirée par une femme.
+\ms 1
+\xv Musulanperen (épris de femme).
+\xe Musulanperen (épris de femme).
+\xf Musulanperen (smitten with a woman).
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Dinkunte
+\ph /dĩnkũntɛ/
+\ps n
+\gf qui aime son enfant à l'excès
+\gvf qui aime son enfant à l'excès
+\ge who loves their child excessively
+\gve who loves their child excessively
+\sm Personne qui manifeste un amour démesuré pour son enfant.
+\ms 1
+\xv Dinkunte (qui aime son enfant à l'excès).
+\xe Dinkunte (qui aime son enfant à l'excès).
+\xf Dinkunte (who loves their child excessively).
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Janfante
+\ph /dʒãnfãntɛ/
+\ps n
+\gf traître
+\gvf traître
+\ge traitor
+\gve traitor
+\sm Personne qui trahit la confiance ou la loyauté.
+\ms 1
+\xv Janfante (traître).
+\xe Janfante (traître).
+\xf Janfante (traitor).
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Sabanan
+\ph /sabanãn/
+\ps num
+\gf troisième
+\gvf troisième
+\ge third
+\gve third
+\sm Qui occupe la position numéro trois dans une série.
+\ms 1
+\xv Sabanan (troisième).
+\xe Sabanan (troisième).
+\xf Sabanan (third).
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Wooronan
+\ph /wɔːrɔnãn/
+\ps num
+\gf sixième
+\gvf sixième
+\ge sixth
+\gve sixth
+\sm Qui occupe la position numéro six dans une série.
+\ms 1
+\xv Wooronan (sixième).
+\xe Wooronan (sixième).
+\xf Wooronan (sixth).
+\sy 
+\an 
+\dt 01/Feb/2026
+
+\lx bagi
+\ph /bagi/
+\ps n
+\gf lèpre
+\gvf lèpre
+\ge leprosy
+\gve leprosy
+\sm Maladie infectieuse chronique causée par la bactérie Mycobacterium leprae, affectant principalement la peau, les nerfs périphériques, les voies respiratoires supérieures, les yeux et les testicules.
+\ms 1
+\xv Bagito (lèpreux). Ton modulé bagí (lèpre).
+\xe Bagito (lèpreux). Ton modulé bagí (lèpre).
+\xf Bagito (leprous). Modulated tone bagí (leprosy).
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx faato
+\ph /faːtɔ/
+\ps adj
+\gf fou
+\gvf fou
+\ge mad
+\gve mad
+\sm Qui a perdu la raison, qui est atteint de folie.
+\ms 1
+\xv Faato (fou). Muro be faato bulu.
+\xe Fou. Le fou a un couteau.
+\xf Mad. The madman has a knife.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx xooxo
+\ph /xɔːxɔ/
+\ps n
+\gf sel
+\gvf sel
+\ge salt
+\gve salt
+\sm Substance cristalline blanche, chlorure de sodium, utilisée comme condiment et conservateur.
+\ms 1
+\xv Xooxontan (manque de sel). Xooxo; foono (sel; vomissement).
+\xe Manque de sel. Sel; vomissement.
+\xf Lack of salt. Salt; vomiting.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx tulu
+\ph /tulu/
+\ps n
+\gf huile
+\gvf huile
+\ge oil
+\gve oil
+\sm Substance grasse, liquide à température ambiante, d'origine végétale, animale ou minérale.
+\ms 1
+\xv Tuluma (qui contient de l'huile). Tulo be jiyo kunna.
+\xe Qui contient de l'huile. Il y a de l'huile au-dessus de l'eau.
+\xf Which contains oil. There is oil on top of the water.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx domo
+\ph /dɔmɔ/
+\ps v
+\gf manger
+\gvf manger
+\ge to eat
+\gve to eat
+\sm Ingérer des aliments pour se nourrir.
+\ms 1
+\xv Domoli (fait de manger / repas). Nego be domola.
+\xe Fait de manger / repas. Le poisson se mange.
+\xf Act of eating / meal. The fish is being eaten.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx san
+\ph /sãn/
+\ps v
+\gf acheter
+\gvf acheter
+\ge to buy
+\gve to buy
+\sm Acquérir quelque chose en échange d'argent.
+\ms 1
+\xv Sanni (achat). Koli/tun xa/doroko/san (Koli avait acheté le boubou).
+\xe Achat. Koli avait acheté le boubou.
+\xf Purchase. Koli had bought the boubou.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx xuma
+\ph /xuma/
+\ps v
+\gf parler
+\gvf parler
+\ge to speak
+\gve to speak
+\sm Articuler des mots pour communiquer.
+\ms 1
+\xv Xumabali (qui ne parle pas). N b'a fe xa xuma bee pen bi.
+\xe Qui ne parle pas. Je veux parler à tout le monde aujourd'hui.
+\xf Who does not speak. I want to speak to everyone today.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx sa
+\ph /sa/
+\ps v
+\gf mourir
+\gvf mourir
+\ge to die
+\gve to die
+\sm Cesser de vivre.
+\ms 1
+\xv Sabaxa (le défunt).
+\xe Le défunt.
+\xf The deceased.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx xara
+\ph /xara/
+\ps v
+\gf coudre ; lire ; étudier
+\gvf coudre ; lire ; étudier
+\ge to sew ; to read ; to study
+\gve to sew ; to read ; to study
+\sm Assembler des tissus avec du fil. Déchiffrer un texte. Acquérir des connaissances.
+\ms 1
+\xv Xarata (à coudre). Musa be xaranno la.
+\xe À coudre. Moussa est en train d'étudier.
+\xf To sew. Moussa is studying.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx fita
+\ph /fita/
+\ps v
+\gf balayer
+\gvf balayer
+\ge to sweep
+\gve to sweep
+\sm Nettoyer une surface avec un balai.
+\ms 1
+\xv Fitaran (balai).
+\xe Balai.
+\xf Broom.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx buti
+\ph /buti/
+\ps v
+\gf couvrir
+\gvf couvrir
+\ge to cover
+\gve to cover
+\sm Étendre quelque chose sur une surface pour la protéger ou la cacher.
+\ms 1
+\xv Butiran (couverture).
+\xe Couverture.
+\xf Blanket.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx baara
+\ph /baːra/
+\ps n
+\gf travail
+\gvf travail
+\ge work
+\gve work
+\sm Activité humaine, physique ou intellectuelle, rémunérée ou non, visant à produire, créer ou modifier quelque chose.
+\ms 1
+\xv Baarala (travailleur). Alan xa baaro damuta.
+\xe Travailleur. Commençons le travail.
+\xf Worker. Let's start the work.
+\sy baaro
+\an 
+\dt 01/Feb/2026
+\lx xandi
+\ph /xãndi/
+\ps v
+\gf chauffer
+\gvf chauffer
+\ge to heat
+\gve to heat
+\sm Augmenter la température de quelque chose.
+\ms 1
+\xv Xandiman (chaud).
+\xe Chaud.
+\xf Hot.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx sutu
+\ph /sutu/
+\ps v
+\gf raccourcir
+\gvf raccourcir
+\ge to shorten
+\gve to shorten
+\sm Rendre plus court.
+\ms 1
+\xv Sutuman (court).
+\xe Court.
+\xf Short.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx kumu
+\ph /kumu/
+\ps v
+\gf être acide
+\gvf être acide
+\ge to be sour
+\gve to be sour
+\sm Avoir une saveur aigre ou piquante.
+\ms 1
+\xv Kumunin (acide).
+\xe Acide.
+\xf Sour.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx wule
+\ph /wule/
+\ps v
+\gf rougir
+\gvf rougir
+\ge to redden
+\gve to redden
+\sm Devenir rouge.
+\ms 1
+\xv Wulenin (rouge). Mentenno wuleta boribori.
+\xe Rouge. La tomate est devenue très rouge.
+\xf Red. The tomato turned very red.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx kejaxu
+\ph /kedʒaxu/
+\ps adj
+\gf laid
+\gvf laid
+\ge ugly
+\gve ugly
+\sm Qui est désagréable à voir, qui manque de beauté.
+\ms 1
+\xv Kejaxuya (laideur).
+\xe Laideur.
+\xf Ugliness.
+\sy 
+\an bete
+\dt 01/Feb/2026
+\lx jiron
+\ph /dʒirɔ̃n/
+\ps adj
+\gf profond
+\gvf profond
+\ge deep
+\gve deep
+\sm Qui s'étend loin sous la surface ou à l'intérieur.
+\ms 1
+\xv Jironya (profondeur).
+\xe Profondeur.
+\xf Depth.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx xuliman
+\ph /xulimãn/
+\ps adj
+\gf lourd
+\gvf lourd
+\ge heavy
+\gve heavy
+\sm Qui a un poids élevé.
+\ms 1
+\xv Xulimanba (très lourd).
+\xe Très lourd.
+\xf Very heavy.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx jaxuman
+\ph /dʒaxumãn/
+\ps adj
+\gf méchant
+\gvf méchant
+\ge mean
+\gve mean
+\sm Qui fait du mal, qui est malveillant.
+\ms 1
+\xv Jaxumanba (très méchant). Banaba xa jaxu.
+\xe Très méchant. Banba est méchant.
+\xf Very mean. Banba is mean.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx anin
+\ph /anĩn/
+\ps conj
+\gf et
+\gvf et
+\ge and
+\gve and
+\sm Conjonction de coordination reliant deux mots ou groupes de mots.
+\ms 1
+\xv Tanba nin Funexe anin Umaru taxata fuuto to.
+\xe Tamba, Funeké et Oumar sont partis au champ.
+\xf Tamba, Funeké and Oumar went to the field.
+\sy nin
+\an 
+\dt 01/Feb/2026
+\lx walante
+\ph /walãntɛ/
+\ps conj
+\gf ou
+\gvf ou
+\ge or
+\gve or
+\sm Conjonction de coordination exprimant une alternative.
+\ms 1
+\xv Musa walante Haruna le xa xuma in fo.
+\xe C'est Moussa ou Harouna qui a dit la parole- là.
+\xf It was Moussa or Harouna who said that word.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx bari
+\ph /bari/
+\ps conj
+\gf mais ; cependant
+\gvf mais ; cependant
+\ge but ; however
+\gve but ; however
+\sm Conjonction de coordination exprimant une opposition ou une restriction.
+\ms 1
+\xv Sidi b'afe xa taxama bari xalisi nt' a kun. Bakari xa muso futu bari din nt'a bulu.
+\xe Sidi veut voyager mais il n'a pas d'argent. Bakari s'est marié, cependant il n'a pas d'enfant.
+\xf Sidi wants to travel but he has no money. Bakari got married, however he has no child.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx bawo
+\ph /bawɔ/
+\ps conj
+\gf parce que
+\gvf parce que
+\ge because
+\gve because
+\sm Conjonction de subordination introduisant une cause.
+\ms 1
+\xv Fuseeni man taxa xarandula bi bawo a man kende.
+\xe Fousseny n'a pas été à l'école aujourd'hui parce qu'il est malade.
+\xf Fousseny did not go to school today because he is sick.
+\sy katugala
+\an 
+\dt 01/Feb/2026
+\lx katugala
+\ph /katugala/
+\ps conj
+\gf parce que ; puisque
+\gvf parce que ; puisque
+\ge because ; since
+\gve because ; since
+\sm Conjonction de subordination introduisant une cause ou une raison.
+\ms 1
+\xv N'me taxa no katugala n man kende. Fenda me bo dibo to, katugala a man fati.
+\xe Je ne peux pas partir parce que je suis malade. Fenda ne sort pas dans l'obscurité puisqu'elle a peur.
+\xf I cannot leave because I am sick. Fenda does not go out in the dark since she is afraid.
+\sy bawo
+\an 
+\dt 01/Feb/2026
+\lx falo
+\ph /falɔ/
+\ps n
+\gf âne
+\gvf âne
+\ge donkey
+\gve donkey
+\sm Mammifère domestique de la famille des équidés, connu pour sa force et son endurance.
+\ms 1
+\xv Falo xa julo tege.
+\xe L'âne a coupé la corde.
+\xf The donkey cut the rope.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx julo
+\ph /dʒulɔ/
+\ps n
+\gf corde
+\gvf corde
+\ge rope
+\gve rope
+\sm Assemblage de fils tordus ou tressés, utilisé pour lier, tirer ou suspendre.
+\ms 1
+\xv Falo xa julo tege.
+\xe L'âne a coupé la corde.
+\xf The donkey cut the rope.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx tege
+\ph /tɛgɛ/
+\ps v
+\gf couper
+\gvf couper
+\ge to cut
+\gve to cut
+\sm Diviser quelque chose en deux ou plusieurs parties à l'aide d'un instrument tranchant.
+\ms 1
+\xv Falo xa julo tege. A xa nugo tege muro la.
+\xe L'âne a coupé la corde. Il a coupé les feuilles avec le couteau.
+\xf The donkey cut the rope. He cut the leaves with the knife.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx Xaayi
+\ph /xaːji/
+\ps n.pr
+\gf Kayes (ville)
+\gvf Kayes (ville)
+\ge Kayes (city)
+\gve Kayes (city)
+\sm Ville du Mali, chef-lieu de la région de Kayes.
+\ms 1
+\xv A taxata fo Xaayi. Bintili taxata Xaayi kunun.
+\xe Il est parti jusqu'à Kayes. Bintily est partie à Kayes hier.
+\xf He went as far as Kayes. Bintily went to Kayes yesterday.
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx ba
+\ph /ba/
+\ps part
+\gf particule interrogative
+\gvf particule interrogative
+\ge interrogative particle
+\gve interrogative particle
+\sm Particule placée en fin de phrase pour former une question totale.
+\ms 1
+\xv A nata ba? Alu xa domolo ke ba?
+\xe Est ce qu'il est venu ? Avez vous mangé ?
+\xf Did he come? Did you eat?
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx jonnu
+\ph /dʒɔnːu/
+\ps pron
+\gf qui (pluriel interrogatif)
+\gvf qui (pluriel interrogatif)
+\ge who (plural interrogative)
+\gve who (plural interrogative)
+\sm Pronom interrogatif utilisé pour demander l'identité de plusieurs personnes.
+\ms 1
+\xv Jonnu nata ?
+\xe Quels sont ceux qui sont venus ?
+\xf Who are those who came?
+\sy jon
+\an 
+\dt 01/Feb/2026
+\lx jomannu
+\ph /dʒɔmãnːu/
+\ps pron
+\gf lequel (pluriel interrogatif)
+\gvf lequel (pluriel interrogatif)
+\ge which (plural interrogative)
+\gve which (plural interrogative)
+\sm Pronom interrogatif utilisé pour demander le choix parmi plusieurs éléments.
+\ms 1
+\xv I xa bukke joman san?
+\xe Quel livre as-tu acheté?
+\xf Which book did you buy?
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx jelu
+\ph /dʒɛlu/
+\ps pron
+\gf combien (interrogatif)
+\gvf combien (interrogatif)
+\ge how many (interrogative)
+\gve how many (interrogative)
+\sm Pronom interrogatif utilisé pour demander la quantité.
+\ms 1
+\xv Nin bukke innu to i be jelu fe ? Moxo jelu nata ?
+\xe Parmi ces livres combien veux-tu ? Combien de personnes sont venues ?
+\xf Among these books, how many do you want? How many people came?
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx nadi
+\ph /nadi/
+\ps pron
+\gf comment (interrogatif)
+\gvf comment (interrogatif)
+\ge how (interrogative)
+\gve how (interrogative)
+\sm Pronom interrogatif utilisé pour demander la manière.
+\ms 1
+\xv Alu nata na di ?
+\xe Comment êtes vous venus ?
+\xf How did you come?
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx minto
+\ph /mĩntɔ/
+\ps pron
+\gf d'où (interrogatif)
+\gvf d'où (interrogatif)
+\ge from where (interrogative)
+\gve from where (interrogative)
+\sm Pronom interrogatif utilisé pour demander l'origine ou la provenance.
+\ms 1
+\xv I je bola min (to)?
+\xe D'où viens –tu?
+\xf Where do you come from?
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx kori
+\ph /kɔri/
+\ps pron
+\gf interrogatif (général)
+\gvf interrogatif (général)
+\ge interrogative (general)
+\gve interrogative (general)
+\sm Pronom interrogatif général, souvent utilisé pour des questions rhétoriques ou pour exprimer un doute.
+\ms 1
+\xv Les interrogatifs sont jon, jelu, mun, di, joman, dun, ba, munna, min, minto, kori...
+\xe The interrogatives are jon, jelu, mun, di, joman, dun, ba, munna, min, minto, kori...
+\xf The interrogatives are jon, jelu, mun, di, joman, dun, ba, munna, min, minto, kori...
+\sy 
+\an 
+\dt 01/Feb/2026
+\lx ta
+\ph /ta/
+\ps pron
+\gf possessif (le sien, le leur)
+\gvf possessif (le sien, le leur)
+\ge possessive (his, hers, theirs)
+\gve possessive (his, hers, theirs)
+\sm Pronom possessif indiquant l'appartenance à la troisième personne.
+\ms 1
+\xv Madi ta/talu fele. Nte ta/talu fele.
+\xe Voici celui/ceux de Fuseni. Voici le mien/les miens.
+\xf Here is Fuseni's/theirs. Here is mine/mine (plural).
+\sy 
+\an 
+\dt 01/Feb/2026

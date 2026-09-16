@@ -1,0 +1,59 @@
+# Sebeni batteries-included experiment.
+# `sebeni exp` always trains on packaged beni/data/raw/* and evaluates on
+# beni/data/test.json. data.source is ignored. Edit the knobs below.
+
+project_name: sebeni-exp
+algorithm: grpo          # grpo | dpo | apo
+# working_dir: ./runs/exp-001   # CLI -w wins
+
+model:
+  model_name: HuggingFaceTB/SmolLM2-135M
+  load_in_4bit: true
+  use_peft: true
+  lora_r: 16
+  lora_alpha: 32
+  lora_dropout: 0.1
+
+# data.source is ignored by `sebeni exp`. languages are discovered from raw/*.
+data:
+  default_lang: bam
+  scheme: completion
+
+trainer:
+  learning_rate: 5.0e-6
+  per_device_train_batch_size: 2
+  gradient_accumulation_steps: 8
+  max_steps: 10
+  num_train_epochs: 1.0
+  beta: 0.1
+  num_generations: 4
+  temperature: 0.9
+  warmup_ratio: 0.0
+  weight_decay: 0.0
+  lr_scheduler_type: cosine
+  seed: 42
+  bf16: false
+  gradient_checkpointing: false
+  use_cpu: false
+  report_to: trackio     # trackio | wandb | none
+  # pip install "sebeni[train,wandb]" before report_to: wandb
+
+distillation:
+  enabled: true
+  provider: google       # google | gemini | openai | groq | together
+  model: gemini-2.5-flash
+  tau: 0.5
+  hitl: false
+
+reward:
+  format_weight: 0.2
+  morph_weight: 0.4
+  rule_weight: 0.4
+  lang_weight: 0.2
+
+safety:
+  enabled: true
+
+experiment:
+  kveritas: false        # print KVERITAS_METRIC lines after eval
+  kveritas_seal: false   # if `kveritas` is on PATH, seal {working_dir}/exp/report.pdf

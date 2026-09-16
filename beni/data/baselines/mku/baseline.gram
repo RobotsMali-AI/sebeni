@@ -1,0 +1,115 @@
+# Maninka Morphotactic Patterns
+
+# Macro definitions
+macro   @vow@            [aeiouyáéíóúàèìòùâêîôû]
+macro   @cons@           [bcdefghijklmnɲŋprstwwyz]
+macro   @nasal@          [mnɲŋ]
+macro   @syl@            [^aeiouyáéíóúàèìòù]* (?P<V>[aeiouyáéíóúàèìòù]) (?P=V)? ([^aeiouyáéíóúàèìòù]+ (?= ([^aeiouyáéíóúàèìòù] | $)))?
+
+# Processing instructions
+plan
+for token:
+stage 0 add parallel parse noun_inflection
+stage 0 add parallel parse verb_inflection
+stage 0 apply lookup
+return if parsed
+stage 1 add sequential parse verbal_derivation
+stage 1 add parallel parse nominal_derivation
+stage 1 apply lookup
+return if parsed
+stage 2 add parallel parse reduplication
+stage 2 apply lookup
+return if parsed
+stage 3 add parallel decompose pos_composition
+return if parsed
+stage 4 apply firstmatch parse nonmaninka
+return if parsed
+
+# --- NOUN INFLECTION (Definiteness, Plurality, & Case Markers) ---
+section noun_inflection
+
+# Definite Suffixes (-o, -oo, -ŋo)
+pattern :n: [ {|o}:: ] | :n: [ :n: :mrph:DEF ]
+pattern :n: [ {|oo}:: ] | :n: [ :n: :mrph:DEF.ALT ]
+pattern :n: [ {|ŋo}:: ] | :n: [ :n: :mrph:DEF.NAS ]
+
+# Plural Marker (-lu, -olu, -ilu)
+pattern :n: [ {|lu}:: ] | :n: [ :n: :mrph:PL ]
+pattern :n: [ {|olu}:: ] | :n: [ :n: :mrph:PL.DEF ]
+pattern :n: [ {|ilu}:: ] | :n: [ :n: :mrph:PL.ALT ]
+
+# Locative, Postpositional & Case Enclitics (-to, -ma, -fe, -ya, -la)
+pattern :n: [ {|to}:: ] | :n: [ :n: :mrph:LOC ]
+pattern :n: [ {|ma}:: ] | :n: [ :n: :mrph:ALL ]
+pattern :n: [ {|fe}:: ] | :n: [ :n: :mrph:COM ]
+pattern :n: [ {|ya}:: ] | :n: [ :n: :mrph:POSS ]
+pattern :n: [ {|la}:: ] | :n: [ :n: :mrph:GEN ]
+
+# --- VERBAL INFLECTION (Aspect, Tense, & Mood Markers) ---
+section verb_inflection
+
+# Aspect & Tense Suffixes (-ta, -ta/ -ta, -la, -nan)
+pattern :v: [ {|ta}:: ] | :v: [ :v: :mrph:PFV ]
+pattern :v: [ {|ta}:: ] | :v: [ :v: :mrph:PFV.INTR ]
+pattern :v: [ {|la}:: ] | :v: [ :v: :mrph:IPFV ]
+pattern :v: [ {|nan}:: ] | :v: [ :v: :mrph:PST ]
+
+# Modal & Subjunctive Auxiliaries / Enclitics (-ye, -ma, -kana)
+pattern :v: [ {|ye}:: ] | :v: [ :v: :mrph:PFV.TR ]
+pattern :v: [ {|ma}:: ] | :v: [ :v: :mrph:PFV.NEG ]
+pattern :v: [ {|kana}:: ] | :v: [ :v: :mrph:PROHIB ]
+
+# --- VERBAL DERIVATION (Derivational Extensions & Aspectual Variants) ---
+section verbal_derivation
+
+# Causative, Intransitivizing, and Action Extensions
+pattern :v: [ {|ndi}:: ] | :v: [ :v: :mrph:CAUS ]
+pattern :v: [ {|li}:: ] | :v: [ :v: :mrph:INTR ]
+pattern :v: [ {|yali}:: ] | :v: [ :v: :mrph:INTR.FREQ ]
+pattern :v: [ {|ma}:: ] | :v: [ :v: :mrph:STAT ]
+
+# Extended Complex Derivations
+pattern :v: [ {|li|la}:: ] | :v: [ :v: :mrph:INTR :mrph:IPFV ]
+pattern :v: [ {|ndi|ra}:: ] | :v: [ :v: :mrph:CAUS :mrph:PFV ]
+
+# --- NOMINAL DERIVATION (Agentive, Abstract, Augmentative & Diminutive) ---
+section nominal_derivation
+
+# Nominalizers & Qualifiers
+pattern :n: [ {|la}:: ] | :n: [ :v: :mrph:AG ]
+pattern :n: [ {|baa}:: ] | :n: [ :v: :mrph:AG.HAB ]
+pattern :n: [ {|baa}:: ] | :n: [ :n: :mrph:AUG ]
+pattern :n: [ {|nin}:: ] | :n: [ :n: :mrph:DIM ]
+pattern :n: [ {|ya}:: ] | :n: [ :adj: :mrph:ABSTR ]
+pattern :n: [ {|ya}:: ] | :n: [ :n: :mrph:ABSTR ]
+pattern :n: [ {|balu}:: ] | :adj: [ :v: :mrph:NEG.PRIV ]
+pattern :n: [ {|to}:: ] | :n: [ :n: :mrph:ST ]
+pattern :n: [ {|fen}:: ] | :n: [ :v: :mrph:THING ]
+
+# --- REDUPLICATION ---
+section reduplication
+
+pattern :v: [ {<re>(?P<stem>.+)</re>|<re>(?P=stem)</re>}:: ] | :v: [ :v: :v: ]
+pattern :adj: [ {<re>(?P<stem>.+)</re>|<re>(?P=stem)</re>}:: ] | :adj: [ :adj: :adj: ]
+pattern :v: [ {<re>(?P<stem>.+)</re>|-|<re>(?P=stem)</re>}:: ] | :v: [ :v: :: :v: ]
+pattern :n: [ {<re>(?P<stem>.+)</re>|-|<re>(?P=stem)</re>}:: ] | :n: [ :n: :: :n: ]
+
+# --- POS COMPOSITION (Noun-Noun, Noun-Adj Compounding) ---
+section pos_composition
+
+# Two-word composites
+pattern :n: [ :n: :n: ] | :n: [ :n: :n: ]
+pattern :n: [ :n: :adj: ] | :n: [ :n: :adj: ]
+pattern :n: [ :v: :n: ] | :n: [ :v: :n: ]
+pattern :n: [ :n: :v: ] | :n: [ :n: :v: ]
+
+# Three-word composites
+pattern :n: [ :n: :n: :n: ] | :n: [ :n: :n: :n: ]
+pattern :n: [ :n: :adj: :n: ] | :n: [ :n: :adj: :n: ]
+
+# --- NON-MANINKA FILTER (Loanwords & Foreign Orthography) ---
+section nonmaninka
+
+# Filter forms with non-Maninka orthographic characters or phonotactics
+pattern <re>.*[qvxQVX].*</re>:: | ::EMPR
+pattern <re>.*(?P<v>[aeiouyáéíóúàèìòù])(?!(?P=v))(?=[aeiouyáéíóúàèìòù]).*</re>:: | ::EMPR

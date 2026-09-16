@@ -1,0 +1,49 @@
+# Multilingual GRPO — one language identity per row, shared policy θ
+# Docs: https://seben.robotsmali.org/docs/sampg/
+
+project_name: sebeni-manding-grpo
+algorithm: grpo
+# working_dir: ./runs/manding-grpo-001
+
+model:
+  model_name: HuggingFaceTB/SmolLM2-135M
+  load_in_4bit: true
+  use_peft: true
+  lora_r: 16
+  lora_alpha: 32
+  lora_dropout: 0.1
+
+data:
+  default_lang: bam
+  languages: [bam, mku, dtm]
+  source: null             # jsonl/csv with a lang column, or a list of files
+  scheme: completion
+
+trainer:
+  learning_rate: 5.0e-6
+  per_device_train_batch_size: 2
+  gradient_accumulation_steps: 8
+  max_steps: 10
+  beta: 0.1
+  num_generations: 4
+  temperature: 0.9
+  lr_scheduler_type: cosine
+  seed: 42
+
+distillation:
+  enabled: true
+  provider: google
+  model: gemini-2.5-flash
+  tau: 0.5
+  hitl: false
+
+reward:
+  format_weight: 0.2
+  morph_weight: 0.4
+  rule_weight: 0.4
+  lang_weight: 0.2
+
+safety:
+  enabled: true
+  require_language: true
+  refuse_mixed_language: true

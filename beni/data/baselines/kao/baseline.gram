@@ -1,0 +1,160 @@
+# Kassonke morphotactic patterns
+
+# macro definitions
+macro   @vow@            [aeiou]
+macro   @cons@           [bcdfghjklmnɲŋprstwy]
+macro   @syl@            [^aeiou]*(?P<V>[aeiou])(?P=V)?([^aeiou]+(?=([^aeiou]|$)))?
+
+# processing instructions
+plan
+for token:
+stage 0 add parallel parse noun_inflection
+stage 0 add parallel parse verb_inflection
+stage 0 apply lookup
+return if parsed
+stage 1 add sequential parse verbal_derivation
+stage 1 add parallel parse nominal_derivation
+stage 1 apply lookup
+return if parsed
+stage 2 add parallel parse reduplication
+stage 2 apply lookup
+return if parsed
+stage 3 add parallel decompose pos_composition
+return if parsed
+stage 4 apply firstmatch parse nonkassonke
+return if parsed
+
+# --- NOUN INFLECTION (Definiteness & Plurality) ---
+section noun_inflection
+
+# Plural Suffix (-nu, -lu)
+pattern :n: [ {|nu}:: ] | :n: [ :n: :mrph:PL ]
+pattern :n: [ {|lu}:: ] | :n: [ :n: :mrph:PL ]
+
+# Definite Suffix (-o, -yo, -wo, -no)
+pattern :n: [ {|o}:: ] | :n: [ :n: :mrph:DEF ]
+pattern :n: [ {|yo}:: ] | :n: [ :n: :mrph:DEF ]
+pattern :n: [ {|wo}:: ] | :n: [ :n: :mrph:DEF ]
+pattern :n: [ {|no}:: ] | :n: [ :n: :mrph:DEF ]
+
+# Combined Definite Plural (-olu, -yolu, -wolu, -nolu)
+pattern :n: [ {|olu}:: ] | :n: [ :n: :mrph:DEF :mrph:PL ]
+pattern :n: [ {|yolu}:: ] | :n: [ :n: :mrph:DEF :mrph:PL ]
+pattern :n: [ {|wolu}:: ] | :n: [ :n: :mrph:DEF :mrph:PL ]
+pattern :n: [ {|nolu}:: ] | :n: [ :n: :mrph:DEF :mrph:PL ]
+
+# --- VERBAL INFLECTION (Aspect & Tense Markers) ---
+section verb_inflection
+
+# Infinitival / Base Form (-o)
+pattern :v: [ {|o}:: ] | :v: [ :v: :mrph:INF ]
+
+# Past / Accomplished Aspect (-ta, -nta)
+pattern :v: [ {|ta}:: ] | :v: [ :v: :mrph:PAST ]
+pattern :v: [ {|nta}:: ] | :v: [ :v: :mrph:PAST ]
+
+# Participle / Gerund Suffix (-li)
+pattern :n: [ {|li}:: ] | :n: [ :v: :mrph:NMLZ ]
+
+# --- VERBAL DERIVATION (Derivational Prefixes) ---
+section verbal_derivation
+
+# Causative Prefix (la-)
+pattern :v: [ {la|}:: ] | :v: [ :mrph:CAUS :v: ]
+
+# Medial / Intensive Prefix (ma-)
+pattern :v: [ {ma|}:: ] | :v: [ :mrph:MID.INTNS :v: ]
+
+# Iterative / Repetitive Prefix (to-)
+pattern :v: [ {to|}:: ] | :v: [ :mrph:ITER :v: ]
+
+# --- NOMINAL DERIVATION (Derivational Suffixes) ---
+section nominal_derivation
+
+# Augmentative Suffix (-ba)
+pattern :n: [ {|ba}:: ] | :n: [ :n: :mrph:AUG ]
+
+# Diminutive Suffix (-ndin)
+pattern :n: [ {|ndin}:: ] | :n: [ :n: :mrph:DIM ]
+
+# Gentilic / Inhabitant Suffix (-ŋga, -nka)
+pattern :n: [ {|ŋga}:: ] | :n: [ :n: :mrph:GENT ]
+pattern :n: [ {|nka}:: ] | :n: [ :n: :mrph:GENT ]
+
+# Locative Suffixes (-ya, -la, -nda)
+pattern :n: [ {|xola}:: ] | :n: [ :n: :mrph:LOC ]
+pattern :n: [ {|ya}:: ] | :n: [ :n: :mrph:ABSTR.LOC ]
+pattern :n: [ {|la}:: ] | :n: [ :n: :mrph:LOC.ALT ]
+pattern :n: [ {|nda}:: ] | :n: [ :n: :mrph:LOC.ALT ]
+
+# Privative Suffix (-ntan)
+pattern :n: [ {|ntan}:: ] | :n: [ :n: :mrph:PRIV ]
+
+# Experient / Relational Suffix (-nte, -din)
+pattern :n: [ {|nte}:: ] | :n: [ :n: :mrph:REL ]
+pattern :n: [ {|din}:: ] | :n: [ :n: :mrph:REL.ALT ]
+
+# Agentive / Participant Suffix (-la, -baxa, -to)
+pattern :n: [ {|la}:: ] | :n: [ :v: :mrph:AG ]
+pattern :n: [ {|baxa}:: ] | :n: [ :v: :mrph:PTCP ]
+pattern :n: [ {|to}:: ] | :n: [ :n: :mrph:PARTIC ]
+
+# Qualifying Suffix (-ma, -nin)
+pattern :n: [ {|ma}:: ] | :n: [ :n: :mrph:QUAL ]
+pattern :n: [ {|nin}:: ] | :n: [ :v: :mrph:STAT ]
+
+# Distributive Suffix (-kan)
+pattern :n: [ {|kan}:: ] | :n: [ :n: :mrph:DISTRIB ]
+
+# Instrumental Suffix (-ran)
+pattern :n: [ {|ran}:: ] | :n: [ :v: :mrph:INST ]
+
+# --- REDUPLICATION ---
+section reduplication
+
+# Full Reduplication (Verb, Noun, Adjective)
+pattern :v: [ {<re>(?P<stem>.+)</re>|<re>(?P=stem)</re>}:: ] | :v: [ :v: :v: ]
+pattern :n: [ {<re>(?P<stem>.+)</re>|<re>(?P=stem)</re>}:: ] | :n: [ :n: :n: ]
+pattern :adj: [ {<re>(?P<stem>.+)</re>|<re>(?P=stem)</re>}:: ] | :adj: [ :adj: :adj: ]
+
+# Reduplication with hyphen
+pattern :v: [ {<re>(?P<stem>.+)</re>|-|<re>(?P=stem)</re>}:: ] | :v: [ :v: :: :v: ]
+pattern :n: [ {<re>(?P<stem>.+)</re>|-|<re>(?P=stem)</re>}:: ] | :n: [ :n: :: :n: ]
+pattern :adj: [ {<re>(?P<stem>.+)</re>|-|<re>(?P=stem)</re>}:: ] | :adj: [ :adj: :: :adj: ]
+
+# Distributive Numeral Reduplication
+pattern :num: [ {<re>(?P<stem>.+)</re>|<re>(?P=stem)</re>}:: ] | :num: [ :num: :num: ]
+
+# --- POS COMPOSITION (Compound Nouns) ---
+section pos_composition
+
+# Noun-Noun Compounds
+pattern :n: [ :n: :n: ] | :n: [ :n: :n: ]
+
+# Noun-Adjective Compounds
+pattern :n: [ :n: :adj: ] | :n: [ :n: :adj: ]
+
+# Verb-Noun Compounds
+pattern :n: [ :v: :n: ] | :n: [ :v: :n: ]
+
+# Noun + Verb + Agent
+pattern :n: [ :n: :v: :mrph:AG ] | :n: [ :n: :v: :mrph:AG ]
+
+# Verb + NMLZ + Noun
+pattern :n: [ :v: :mrph:NMLZ :n: ] | :n: [ :v: :mrph:NMLZ :n: ]
+
+# Noun + AUG + Noun
+pattern :n: [ :n: :mrph:AUG :n: ] | :n: [ :n: :mrph:AUG :n: ]
+
+# --- NON-KASSONKE FILTER ---
+section nonkassonke
+
+# Filter out forms containing characters not in the Kassonke alphabet
+pattern <re>.*[ƔƎʐʑʂʈɖɓɗƴqvxzQVXZ].*</re>:: | ::EMPR
+
+# Filter out common loanword markers and orthographic patterns typical of French
+pattern <re>.*(ée?|tion|ment|que|oi|au|eau|ou|ai|ei|ch|th|ph|gn|gu).*</re>:: | ::EMPR
+
+# Forms ending with non-final consonants
+pattern <re>.+[bcdfghjklmnprstwy]$</re>:: | ::EMPR
+

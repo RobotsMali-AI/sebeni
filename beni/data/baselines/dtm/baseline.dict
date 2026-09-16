@@ -1,0 +1,410 @@
+\_sh v3.0 400 MDF 4.0
+\lang dtm
+\name seben-dogoso (dogono)
+\ver 0.0.2
+
+\lx inɛ
+\ph /inɛ/
+\ps n
+\gf personne
+\gvf personne, individu
+\ge person
+\gve person, individual
+\sm Être humain, individu faisant partie d'une communauté.
+\ms 1
+\xv inɛnw maa gɔnrɔn wo sɛ le digɛnɛ.
+\xe Toutes les personnes sont nées libres et égales.
+\xf All persons are born free and equal.
+\dt 19/Aug/2026
+
+\lx ginrun
+\ph /ginrun/
+\ps n
+\gf maison
+\gvf maison, bâtiment, habitation
+\ge house
+\gve house, building, dwelling
+\sm Bâtiment servant d'habitation ou de lieu de réunion.
+\ms 1
+\xv sariyɛ ginrun gɔ nî wɔ.
+\xe Le tribunal est ici.
+\xf The court is here.
+\dt 19/Aug/2026
+
+\lx sariyɛ
+\ph /saɾijɛ/
+\ps n
+\gf loi
+\gvf loi, règle, constitution
+\ge law
+\gve law, rule, constitution
+\sm Règle impérative établie par l'autorité souveraine.
+\ms 1
+\xv sariyɛ diyɛ gɔ baginrun birɛ ginrun.
+\xe La grande loi est la constitution du pays.
+\xf The great law is the constitution of the country.
+\dt 19/Aug/2026
+
+\lx gana kubaŋa
+\ph /gana kubaŋa/
+\ps n
+\gf chef de l'État
+\gvf chef de l'État, président
+\ge head of state
+\gve head of state, president
+\sm Personne qui dirige l'État et représente la nation.
+\ms 1
+\xv gana kubaŋa gɔ peresidan.
+\xe Le chef de l'État est le président.
+\xf The head of state is the president.
+\dt 19/Aug/2026
+
+\lx peresidan
+\ph /peɾesidan/
+\ps n
+\gf président
+\gvf président de la République
+\ge president
+\gve president of the Republic
+\sm Chef de l'État élu au suffrage universel.
+\ms 1
+\xv peresidan lee guwɛrɛnɛma lee sɛ le digɛnɛ.
+\xe Le président et le gouvernement sont élus.
+\xf The president and the government are elected.
+\dt 19/Aug/2026
+
+\lx guwɛrɛnɛma
+\ph /guwɛɾɛnɛma/
+\ps n
+\gf gouvernement
+\gvf gouvernement, exécutif
+\ge government
+\gve government, executive
+\sm Organe exerçant le pouvoir exécutif d'un État.
+\ms 1
+\xv guwɛrɛnɛma sɔɔ gɔ sariyɛ maa.
+\xe Les affaires du gouvernement relèvent de la loi.
+\xf Government matters fall under the law.
+\dt 19/Aug/2026
+
+\lx minisiru
+\ph /minisiɾu/
+\ps n
+\gf ministre
+\gvf ministre, membre du gouvernement
+\ge minister
+\gve minister, member of government
+\sm Membre d'un gouvernement à la tête d'un département.
+\ms 1
+\xv minisirube maa gana kubaŋa nɛ digɛnɛ.
+\xe Les ministres sont nommés par le chef de l'État.
+\xf The ministers are appointed by the head of state.
+\dt 19/Aug/2026
+
+\lx depite
+\ph /depite/
+\ps n
+\gf député
+\gvf député, membre du parlement
+\ge deputy
+\gve deputy, member of parliament
+\sm Élu à l'assemblée nationale pour représenter le peuple.
+\ms 1
+\xv depitebe birɛginrun diyɛ nɛ birɛbirɛwin.
+\xe Les députés votent les lois et le budget.
+\xf The deputies vote on laws and the budget.
+\dt 19/Aug/2026
+
+\lx poroba paŋa
+\ph /poɾoba paŋa/
+\ps n
+\gf démocratie
+\gvf démocratie, régime politique
+\ge democracy
+\gve democracy, political regime
+\sm Système politique dans lequel la souveraineté émane du peuple.
+\ms 1
+\xv poroba paŋa gɔ inɛnw maa taaŋa.
+\xe La démocratie est le droit du peuple.
+\xf Democracy is the right of the people.
+\dt 19/Aug/2026
+
+\lx inɛ jan
+\ph /inɛ dʒan/
+\ps n
+\gf droit de l'homme
+\gvf droits de l'homme, libertés fondamentales
+\ge human right
+\gve human rights, fundamental freedoms
+\sm Prérogatives inaliénables inhérentes à la personne humaine.
+\ms 1
+\xv inɛ jan gɔ sariyɛ maa tɔɔru.
+\xe Les droits de l'homme sont protégés par la loi.
+\xf Human rights are protected by law.
+\dt 19/Aug/2026
+
+\lx kajubu
+\ph /kadʒubu/
+\ps n
+\gf sécurité
+\gvf sécurité, protection, défense
+\ge security
+\gve security, protection, defense
+\sm État de ce qui est protégé contre les dangers.
+\ms 1
+\xv gana kajubu gɔ sɔdaju maa.
+\xe La sécurité nationale repose sur les soldats.
+\xf National security relies on the soldiers.
+\dt 19/Aug/2026
+
+\lx kɛɛrɛ
+\ph /kɛːɾɛ/
+\ps n
+\gf richesse
+\gvf richesse, bien, patrimoine
+\ge wealth
+\gve wealth, property, heritage
+\sm Abondance de biens et de ressources.
+\ms 1
+\xv kɛɛrɛ goonu gɔ inɛnw maa.
+\xe La clôture de la richesse appartient au peuple.
+\xf The enclosure of wealth belongs to the people.
+\dt 19/Aug/2026
+
+\lx baara
+\ph /baːɾa/
+\ps n
+\gf travail
+\gvf travail, labeur, emploi
+\ge work
+\gve work, labor, employment
+\sm Activité productive, action de travailler.
+\ms 1
+\xv baara gɔ inɛ maa taaŋa.
+\xe Le travail est un droit pour la personne.
+\xf Work is a right for the person.
+\dt 19/Aug/2026
+
+\lx jaŋu
+\ph /dʒaŋu/
+\ps n
+\gf savoir
+\gvf savoir, étude, connaissance
+\ge knowledge
+\gve knowledge, study, learning
+\sm Connaissance acquise par l'étude ou l'expérience.
+\ms 1
+\xv jaŋu gɔ deere maa.
+\xe Le savoir vient de l'enseignement.
+\xf Knowledge comes from teaching.
+\dt 19/Aug/2026
+
+\lx jaŋudeerenɛ
+\ph /dʒaŋudeerenɛ/
+\ps n
+\gf enseignant
+\gvf enseignant, professeur, maître
+\ge teacher
+\gve teacher, professor, master
+\sm Personne qui transmet le savoir et l'instruction.
+\ms 1
+\xv jaŋudeerenɛ gɔ deerenw maa deere.
+\xe L'enseignant fait apprendre aux élèves.
+\xf The teacher makes the students learn.
+\dt 19/Aug/2026
+
+\lx deere
+\ph /deːɾe/
+\ps v
+\gf apprendre
+\gvf apprendre, enseigner, instruire
+\ge to learn
+\gve to learn, to teach, to instruct
+\sm Acquérir des connaissances ou les transmettre.
+\ms 1
+\xv wo deere sariyɛ.
+\xe Il apprend la loi.
+\xf He learns the law.
+\dt 19/Aug/2026
+
+\lx kubɛi
+\ph /kubɛi/
+\ps n
+\gf liberté
+\gvf liberté, franchise, indépendance
+\ge freedom
+\gve freedom, liberty, independence
+\sm Droit d'agir sans contrainte, état de celui qui est libre.
+\ms 1
+\xv biyi kubɛi gɔ inɛ maa.
+\xe La liberté de conscience appartient à la personne.
+\xf Freedom of conscience belongs to the person.
+\dt 19/Aug/2026
+
+\lx amagana
+\ph /amagana/
+\ps n
+\gf Dieu
+\gvf Dieu, créateur, être suprême
+\ge God
+\gve God, creator, supreme being
+\sm Être suprême créateur de l'univers.
+\ms 1
+\xv amagana gɔ nî wɔ.
+\xe Dieu est ici.
+\xf God is here.
+\dt 19/Aug/2026
+
+\lx kòyⁿ-gìrⁿí
+\ph /kòjⁿ-gìɾⁿí/
+\ps n.prop
+\gf Koporo-Kénié-Na
+\gvf Koporo-Kénié-Na
+\ge Koporo-Kenie-Na
+\gve Koporo-Kenie-Na
+\sm Nom d'un village Dogon.
+\ms 1
+\xv kòyⁿ-gìrⁿí nɛ.
+\xe à Koporo-Kénié-Na.
+\xf in Koporo-Kenie-Na.
+\dt 19/Aug/2026
+
+\lx yalu dan
+\ph /jalu dan/
+\ps n
+\gf lieu de résidence
+\gvf lieu de résidence, domicile
+\ge place of residence
+\gve place of residence, domicile
+\sm Endroit où une personne habite habituellement.
+\ms 1
+\xv yalu dan gɔ.
+\xe le lieu de résidence.
+\xf the place of residence.
+\dt 19/Aug/2026
+
+\lx politiku
+\ph /politiku/
+\ps n
+\gf politique
+\gvf politique, affaires publiques
+\ge politics
+\gve politics, public affairs
+\sm Art de gouverner un État ou gestion des affaires publiques.
+\ms 1
+\xv politiku sɔɔ.
+\xe affaire politique.
+\xf political matter.
+\dt 19/Aug/2026
+
+\lx Naitege
+\ph /naitege/
+\ps n
+\gf lendemain
+\gvf lendemain, jour suivant
+\ge next day
+\gve next day, following day
+\sm Le jour après aujourd'hui.
+\ms 1
+\xv Naitege le beru arus¥g¥ baube.
+\xe le lendemain le paysan fauche l'herbe.
+\xf the next day the peasant mows the grass.
+\dt 19/Aug/2026
+
+\lx baube
+\ph /baube/
+\ps v
+\gf faucher
+\gvf faucher, couper l'herbe
+\ge mow
+\gve mow, cut grass
+\sm Couper l'herbe avec un outil.
+\ms 1
+\xv beru arus¥g¥ baube.
+\xe le paysan fauche l'herbe.
+\xf the peasant mows the grass.
+\dt 19/Aug/2026
+
+\lx tim¥
+\ph /timɛ/
+\ps n
+\gf bois
+\gvf bois, matière, arbre
+\ge wood
+\gve wood, material, tree
+\sm Matière provenant des arbres, utilisée pour construire ou chauffer.
+\ms 1
+\xv tim¥ gɔ nî wɔ.
+\xe Le bois est ici.
+\xf The wood is here.
+\dt 19/Aug/2026
+
+\lx tii
+\ph /tii/
+\ps num
+\gf un
+\gvf un, premier
+\ge one
+\gve one, first
+\sm Chiffre un utilisé pour le comptage.
+\ms 1
+\xv tii inɛ.
+\xe une personne.
+\xf one person.
+\dt 19/Aug/2026
+
+\lx lɛi
+\ph /lɛi/
+\ps num
+\gf deux
+\gvf deux, deuxième
+\ge two
+\gve two, second
+\sm Chiffre deux utilisé pour le comptage.
+\ms 1
+\xv lɛi inɛnw.
+\xe deux personnes.
+\xf two people.
+\dt 19/Aug/2026
+
+\lx taanu
+\ph /taanu/
+\ps num
+\gf trois
+\gvf trois, troisième
+\ge three
+\gve three, third
+\sm Chiffre trois utilisé pour le comptage.
+\ms 1
+\xv taanu inɛnw.
+\xe trois personnes.
+\xf three people.
+\dt 19/Aug/2026
+
+\lx peju
+\ph /pedʒu/
+\ps n
+\gf mouton
+\gvf mouton, ovin, bélier
+\ge sheep
+\gve sheep, ovine, ram
+\sm Mammifère herbivore domestique élevé pour sa laine et sa viande.
+\ms 1
+\xv wo peju dɛnɛjɛ.
+\xe Il cherche un mouton.
+\xf He is looking for a sheep.
+\dt 19/Aug/2026
+
+\lx ɛnrɛn
+\ph /ɛnɾɛn/
+\ps n
+\gf chèvre
+\gvf chèvre, caprin
+\ge goat
+\gve goat, caprine
+\sm Mammifère herbivore domestique ruminant.
+\ms 1
+\xv ɛnrɛn ma.
+\xe Ma chèvre.
+\xf My goat.
+\dt 19/Aug/2026
