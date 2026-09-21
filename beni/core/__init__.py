@@ -81,10 +81,50 @@ class Sentence:
         return [t.best_morphemes(analysis_idx) for t in self.tokens]
 
 
+def _morpheme_to_dict(morpheme: Morpheme) -> dict:
+    data = {
+        "form": morpheme.form,
+        "ps": list(morpheme.ps or []),
+        "gloss": morpheme.gloss,
+        "morphemes": [
+            _morpheme_to_dict(child) for child in (morpheme.morphemes or [])
+        ],
+    }
+    return data
+
+
+def sentence_to_completion_json(sentence: Sentence) -> dict:
+    """Serialize a DabaX sentence into the policy completion schema."""
+    lang = sentence.language.group_code if sentence.language else sentence.lang
+    return {
+        "text": sentence.text,
+        "lang": lang,
+        "tokens": [
+            {
+                "surface": token.surface,
+                "stage": token.stage,
+                "analyses": [
+                    {
+                        "form": analysis.form,
+                        "ps": list(analysis.ps or []),
+                        "gloss": analysis.gloss,
+                        "morphemes": [
+                            _morpheme_to_dict(m) for m in (analysis.morphemes or [])
+                        ],
+                    }
+                    for analysis in token.analyses
+                ],
+            }
+            for token in sentence.tokens
+        ],
+    }
+
+
 __all__ = [
     "Language",
     "Morpheme",
     "Analysis",
     "Token",
     "Sentence",
+    "sentence_to_completion_json",
 ]

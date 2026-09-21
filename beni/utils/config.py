@@ -5,11 +5,45 @@ Configuration management for Sɛbɛni - SLM Alignment Framework
 import os
 import json
 import shutil
+import logging
 from pathlib import Path
 from dataclasses import dataclass, field
-from typing import List, Optional, Dict, Any, Union
+from typing import List, Optional, Dict, Union
 
 PACKAGE_NAME = "Sɛbɛni v0.1 - SLM Alignment Framework"
+logger = logging.getLogger(__name__)
+
+
+def load_dotenv(paths=None) -> list:
+    """Load simple KEY=VALUE files without overriding the process environment."""
+    candidates = list(paths or [])
+    explicit = os.getenv("SEBENI_ENV")
+    if explicit:
+        candidates.append(Path(explicit).expanduser())
+    loaded = []
+    seen = set()
+    for candidate in candidates:
+        path = Path(candidate).expanduser()
+        if path in seen or not path.is_file():
+            continue
+        seen.add(path)
+        for raw in path.read_text(encoding="utf-8").splitlines():
+            line = raw.strip()
+            if not line or line.startswith("#") or "=" not in line:
+                continue
+            key, value = line.split("=", 1)
+            key = key.strip()
+            if key.startswith("export "):
+                key = key[7:].strip()
+            value = value.strip().strip("\"'")
+            if key:
+                os.environ.setdefault(key, value)
+        loaded.append(path)
+    return loaded
+
+
+# Import-time convenience for library users; YAML loading also checks its own directory/workdir.
+load_dotenv([Path.cwd() / ".env"])
 
 # API Keys
 GOOGLE_API = os.getenv("GOOGLE_API_KEY") or os.getenv("GOOGLE_API")
@@ -244,6 +278,17 @@ def get_language_iso(code: str = 'xyz') -> Dict:
 
 def provider_api_key(provider: str) -> Optional[str]:
     """Environment API key for a distillation provider name."""
+    env_names = {
+        "google": ("GOOGLE_API_KEY", "GOOGLE_API"),
+        "gemini": ("GOOGLE_API_KEY", "GOOGLE_API"),
+        "openai": ("OPENAI_API_KEY",),
+        "groq": ("GROQ_API_KEY",),
+        "together": ("TOGETHER_API_KEY",),
+    }
+    for name in env_names.get(str(provider or "").lower(), ()):
+        value = os.getenv(name)
+        if value:
+            return value
     return PROVIDER_API_KEYS.get(str(provider or "").lower())
 
 

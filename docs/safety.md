@@ -52,6 +52,13 @@ safety:
 τ is taken from `distillation.tau` (default 0.5). KL β is `trainer.beta`
 (or the active DPO/APO `beta`).
 
+U is computed per policy batch as
+\(I(stage_{pred}\ne-1)+\beta\log((\pi_\theta+\epsilon)/
+(\pi_{ref}+\epsilon))\). Morphological and LM tokens are averaged separately.
+The update scale is \(1/(1+\operatorname{relu}(U))\), so negative U never
+amplifies a step. `u_indicator`, `u_kl`, and `uncertainty` are release
+indicators in `safety_snapshot.json`; they never gate G/D promotion.
+
 ## Python
 
 ```python

@@ -59,9 +59,14 @@ def _distiller_for(mc: MasterConfig, group: str):
 
     distiller = Distiller(
         lang_code=group,
-        provider=mc.distillation.provider,
+        backend=mc.distillation.selected_backend,
         model=mc.distillation.model,
         working_dir=mc.distillation.working_dir or mc.working_dir,
+        vertex=mc.distillation.vertex,
+        base_url=mc.distillation.base_url,
+        gguf_path=mc.distillation.gguf_path,
+        n_ctx=mc.distillation.n_ctx,
+        max_input_chars=mc.distillation.max_input_chars,
     )
     distiller.handle_baselines()
     return distiller
@@ -120,7 +125,7 @@ def maybe_kveritas_seal(output: Path) -> None:
 def _evaluate(mc: MasterConfig, records) -> Tuple[Dict, Path]:
     """Score Φ per language; write ``{working_dir}/exp/eval.json`` and a safety snapshot."""
     from beni.core.compute.metrics import MorphologyScorer
-    from beni.core.morphotactic.dabax import DabaX
+    from beni.core.morphotactic.dabax import get_dabax
     from beni.core.safety.governor import SafetyGovernor
 
     grouped = _records_by_language(mc, records)
@@ -130,7 +135,7 @@ def _evaluate(mc: MasterConfig, records) -> Tuple[Dict, Path]:
     weighted_phi = 0.0
     for group, texts in grouped.items():
         distiller = _distiller_for(mc, group)
-        dabax = DabaX(
+        dabax = get_dabax(
             group,
             gram=distiller.gram_path,
             ldict=distiller.dict_path,
@@ -213,6 +218,7 @@ data:
   scheme: completion       # completion | preference | online_group
 
 trainer:
+  framework: torch         # torch | jax
   learning_rate: 5.0e-6
   per_device_train_batch_size: 2
   gradient_accumulation_steps: 8
@@ -242,10 +248,13 @@ trainer:
 
 distillation:
   enabled: true
-  provider: google         # google | gemini | openai | groq | together
+  backend: algorithmic     # algorithmic | gguf | google | openai | groq | together
   model: gemini-2.5-flash
   tau: 0.5
   hitl: false
+
+wordfreq:
+  raw_inputs: null         # defaults to packaged beni/data/raw
 
 reward:
   format_weight: 0.2
@@ -508,25 +517,28 @@ def wordfreq(
     working_dir: Optional[Path] = typer.Option(None, "-w", "--working-dir"),
     lang: Optional[List[str]] = typer.Option(None, "--lang"),
 ):
-    """Count surfaces / lemmas / morphemes / stages per language (DabaX + Distiller)."""
+    """Build DabaX frequency maps from configured raw text inputs."""
     mc = _load_config(config, working_dir)
     mc.apply_cli_overrides(languages=lang)
-    from beni.core.wordfreq import count_texts
+    from beni.core.wordfreq import count_raw_inputs
 
-    records = _records(mc)
-    grouped = _records_by_language(mc, records)
+    raw_inputs = mc.wordfreq.raw_inputs or mc.data.source or (cfg.DATA_DIR / "raw")
+    base = Path(getattr(mc, "_config_file_dir", Path.cwd()))
+    values = raw_inputs if isinstance(raw_inputs, list) else [raw_inputs]
+    raw_inputs = [
+        str(Path(value) if Path(value).is_absolute() else base / str(value))
+        for value in values
+    ]
+    reports = count_raw_inputs(
+        raw_inputs,
+        languages=mc.data.languages,
+        default_lang=mc.data.default_lang or "bam",
+        encoding=mc.data.encoding,
+    )
     root = cfg.get_workdir().exp / "wordfreq"
-    index = {"languages": list(grouped.keys()), "by_language": {}}
+    index = {"languages": list(reports.keys()), "by_language": {}}
     last_path = root
-    for group, texts in grouped.items():
-        distiller = _distiller_for(mc, group)
-        report = count_texts(
-            texts,
-            lang=group,
-            gram=distiller.gram_path,
-            ldict=distiller.dict_path,
-            checkpoint_id=distiller.checkpoint_id(),
-        )
+    for group, report in reports.items():
         path = report.write(root / group)
         last_path = path
         index["by_language"][group] = {
@@ -534,8 +546,9 @@ def wordfreq(
             "n_tokens": report.n_tokens,
             "n_sentences": report.n_sentences,
             "checkpoint_id": report.checkpoint_id,
+            "n_misses": sum(report.misses.values()),
         }
     root.mkdir(parents=True, exist_ok=True)
     summary = root / "wordfreq.json"
     summary.write_text(json.dumps(index, indent=2, ensure_ascii=False), encoding="utf-8")
-    typer.echo(str(summary if grouped else last_path))
+    typer.echo(str(summary if reports else last_path))

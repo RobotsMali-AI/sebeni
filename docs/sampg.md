@@ -21,8 +21,10 @@ still **one** model.
 1. Distill G, D (HITL optional; scratch bootstrap if no packaged baseline)
 2. For each batch: group by language; Φ ← DabaX
 3. If Φ < τ: Distiller proposes \(G_{cand}, D_{cand}\); promote iff Φ′ > Φ
-4. Sample completions; score \(R_{morph}\) / \(R_{format}\) / \(R_{rule}\) / \(R_{lang}\)
-5. Update θ with GRPO (default) or DPO / APO plugin
+4. Serialize the active DabaX parse as ideal JSON \(y^*\)
+5. Sample completions; score text integrity and annotations against \(y^*\)
+6. Compute U and scale the policy update (U is not a reward or Distiller metric)
+7. Update θ with GRPO (default) or DPO / APO plugin
 
 ```mermaid
 flowchart TD
@@ -112,6 +114,8 @@ one JSON object.
 | `apo` | `SebeniApo` | `DPOTrainer` + `apo_zero` / `apo_down` |
 
 DPO/APO pairs: `chosen`/`rejected` or `completions`+`scores`.
+For raw `{text, lang}` rows Sebeni builds `chosen=y*` and a legal corrupted
+JSON negative; it never uses raw text as chosen or an empty rejected value.
 
 ```python
 from beni.core.srl.unified import register_algorithm, SRLTrainer

@@ -97,7 +97,8 @@ Relocatable workdir (later wins): `~/.sebeni` → `SEBENI_HOME` /
 
 ## What Sebeni does *not* do
 
-- Vendor GPL `daba` sources (depend on `daba>=0.9.5` CLI).
+- Vendor GPL `daba` sources (install maslinych/daba from GitHub with
+  `--no-deps` for its CLI modules).
 - Require wxPython (`[gui]` is optional for upstream gparser).
 - Treat G or D as dataset columns.
 - Mix languages **inside** one completion JSON object (`R_lang` is 0).

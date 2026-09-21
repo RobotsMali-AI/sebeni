@@ -39,11 +39,16 @@ class Distiller(object):
     def __init__(
         self,
         lang_code: str,
-        provider: str = "google",
+        provider: Optional[str] = None,
+        backend: Optional[str] = None,
         model: str = "gemma-4-26b-a4b-it",
-        api_key: str = cfg.GOOGLE_API,
+        api_key: Optional[str] = None,
         working_dir: Union[None, str] = None,
         vertex: bool = False,
+        base_url: Optional[str] = None,
+        gguf_path: Optional[str] = None,
+        n_ctx: int = 4096,
+        max_input_chars: int = 8000,
     ):
         """Initialize Distiller for a language/group code.
 
@@ -58,14 +63,34 @@ class Distiller(object):
         self.lang = identity.group_code
         self.language = identity
         self.language_meta = self._valid_language(lang_code)
-        self.provider_name = provider
-        key = api_key or cfg.provider_api_key(provider)
-        extra = {"language": self.lang}
-        if str(provider).lower() in {"google", "gemini"}:
-            extra["vertex"] = vertex
-        self.provider = create_provider(provider, api_key=key, model=model, **extra)
-        if str(provider).lower() in {"google", "gemini"} and hasattr(self.provider, "set_vertex"):
-            self.provider.set_vertex(vertex)
+        self.provider_name = str(backend or provider or "algorithmic").lower()
+        self.max_input_chars = int(max_input_chars)
+        self.provider = None
+        if self.provider_name != "algorithmic":
+            key = api_key or cfg.provider_api_key(self.provider_name)
+            use_vertex = bool(
+                vertex
+                or (
+                    self.provider_name in {"google", "gemini"}
+                    and not key
+                    and (
+                        os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
+                        or os.getenv("GOOGLE_CLOUD_PROJECT")
+                        or os.getenv("GOOGLE_PROJECT_ID")
+                    )
+                )
+            )
+            extra = {
+                "language": self.lang,
+                "base_url": base_url,
+                "gguf_path": gguf_path,
+                "n_ctx": n_ctx,
+            }
+            if self.provider_name in {"google", "gemini"}:
+                extra["vertex"] = use_vertex
+            self.provider = create_provider(
+                self.provider_name, api_key=key, model=model, **extra
+            )
 
         packaged = cfg.resolve_packaged_baseline_dir(self.lang)
         self.lang_baseline = Path(packaged) if packaged else None
@@ -154,10 +179,17 @@ class Distiller(object):
         return "bootstrap" if self.is_scratch() else "delta"
 
     def _load_dabax(self, gram, ldict):
-        from beni.core.morphotactic.dabax import DabaX
+        from beni.core.morphotactic.dabax import get_dabax
 
-        runtime = cfg.get_workdir().runtime
-        return DabaX(self.lang, gram=gram, ldict=ldict, process=True, runtime_dir=runtime)
+        runtime = self.working_root / "runtime"
+        return get_dabax(
+            self.lang,
+            gram=gram,
+            ldict=ldict,
+            process=True,
+            runtime_dir=runtime,
+            working_dir=self.working_root,
+        )
 
     def phi_on_texts(self, texts: Iterable[str], gram=None, ldict=None) -> float:
         """Corpus Φ on ``texts`` with the given (or current) gram/dict."""
@@ -197,13 +229,54 @@ class Distiller(object):
 
         samples = self.default_samples()
         mode = self.prompt_mode()
+        # Never send a complete production dictionary to an LLM. The miss report
+        # and a bounded format sample are sufficient for optional refinement.
+        gram_text = gram_path.read_text(encoding="utf-8") if Path(gram_path).exists() else ""
+        dict_text = dict_path.read_text(encoding="utf-8") if Path(dict_path).exists() else ""
         return DistilSysPrompt(
             language=json.dumps(language_meta, indent=2, ensure_ascii=False),
             samples=samples,
-            current_gram=gram_path.read_text(encoding="utf-8") if Path(gram_path).exists() else "",
-            current_dict=dict_path.read_text(encoding="utf-8") if Path(dict_path).exists() else "",
+            current_gram=gram_text[: self.max_input_chars],
+            current_dict=dict_text[: self.max_input_chars],
             mode=mode,
         ).prompt()
+
+    def collect_misses(self, texts: Iterable[str], gram=None, ldict=None) -> List[str]:
+        """Return unique DabaX stage -1 surfaces in stable encounter order."""
+        dx = self._load_dabax(gram or self.gram_path, ldict or self.dict_path)
+        misses: List[str] = []
+        seen = set()
+        for text in texts:
+            try:
+                sentences = dx.loader(text) or []
+            except Exception as exc:
+                logger.debug("DabaX miss collection failed: %s", exc)
+                continue
+            for sentence in sentences:
+                for token in sentence.tokens:
+                    try:
+                        unknown = int(token.stage) == -1
+                    except (TypeError, ValueError):
+                        unknown = False
+                    surface = str(token.surface or "").strip()
+                    if unknown and surface and surface not in seen:
+                        seen.add(surface)
+                        misses.append(surface)
+        return misses
+
+    @staticmethod
+    def _algorithmic_dict(current: Path, misses: Iterable[str]) -> str:
+        """Append conservative lookup entries for unseen surfaces."""
+        text = current.read_text(encoding="utf-8")
+        existing = set(re.findall(r"(?m)^\\lx\s+(.+?)\s*$", text))
+        blocks = []
+        for surface in misses:
+            if surface in existing or "\n" in surface or "\r" in surface:
+                continue
+            blocks.append(f"\\lx {surface}\n\\ps x\n\\ge auto:{surface}")
+        if not blocks:
+            return text
+        return text.rstrip() + "\n\n" + "\n\n".join(blocks) + "\n"
 
     def _as_output(self, response: Any):
         from beni.core.morphotactic.distil import DistilOutput
@@ -220,15 +293,18 @@ class Distiller(object):
                 )
         return None
 
-    def propose(self, texts: Union[str, List[str]], indicator: bool = False) -> Optional[DistillProposal]:
+    def propose(
+        self,
+        texts: Union[str, List[str]],
+        indicator: bool = False,
+        current_phi: Optional[float] = None,
+    ) -> Optional[DistillProposal]:
         """Produce candidate G, D and score Φ vs Φ′ without writing."""
         from beni.core.morphotactic.distil import DistilUserPrompt
 
         if isinstance(texts, list):
-            text = "\n".join(texts)
             batch = texts
         else:
-            text = texts
             batch = [texts]
         self.handle_baselines()
         state = self.__get_latest_ckpt()
@@ -237,34 +313,71 @@ class Distiller(object):
         first_create = self.is_first_create()
         bootstrap = self.is_scratch()
 
-        sys_prompt = self.get_sys_instruction(
-            language_meta=self.language_meta, gram_path=self.gram_path, dict_path=self.dict_path
-        )
-        cap = getattr(getattr(self.provider, "capability", None), "value", None)
-        if not getattr(self.provider, "cache", None) and cap in {"both", "cache"}:
-            self.provider.create_cache(contents=sys_prompt)
-
-        prompt = DistilUserPrompt(text, self.gram_delta, self.dict_delta).prompt()
-        response = self.provider.generate(prompt=prompt, sys_instruct=sys_prompt, indicator=indicator)
-        output = self._as_output(response)
-        if output is None:
-            logger.warning("Distiller: empty provider response")
-            return None
-
-        gram_delta = output.sebeni_gram or ""
-        dict_delta = output.sebeni_dict or ""
         current_gram = Path(self.gram_path)
         current_dict = Path(self.dict_path)
+        misses = self.collect_misses(batch, current_gram, current_dict)
+        if not misses:
+            logger.info("Distiller: no DabaX misses to update")
+            return None
 
-        if bootstrap or self.prompt_mode() == "bootstrap":
-            adjusted_gram = gram_delta if gram_delta.strip() else current_gram.read_text(encoding="utf-8")
-            adjusted_dict = dict_delta if dict_delta.strip() else current_dict.read_text(encoding="utf-8")
+        if self.provider_name == "algorithmic":
+            adjusted_gram = current_gram.read_text(encoding="utf-8")
+            adjusted_dict = self._algorithmic_dict(current_dict, misses)
         else:
-            adjusted_gram = self.apply_gram_deltas(current_gram, gram_delta) if gram_delta else current_gram.read_text(encoding="utf-8")
-            adjusted_dict = self.apply_dict_deltas(current_dict, dict_delta) if dict_delta else current_dict.read_text(encoding="utf-8")
+            miss_report = "\n".join(f"- {surface}" for surface in misses)
+            sys_prompt = self.get_sys_instruction(
+                language_meta=self.language_meta,
+                gram_path=self.gram_path,
+                dict_path=self.dict_path,
+            )
+            cap = getattr(getattr(self.provider, "capability", None), "value", None)
+            if not getattr(self.provider, "cache", None) and cap in {"both", "cache"}:
+                self.provider.create_cache(contents=sys_prompt)
+            prompt = DistilUserPrompt(
+                f"DabaX miss report for {self.lang}:\n{miss_report}",
+                self.gram_delta,
+                self.dict_delta,
+            ).prompt()
+            response = self.provider.generate(
+                prompt=prompt, sys_instruct=sys_prompt, indicator=indicator
+            )
+            output = self._as_output(response)
+            if output is None:
+                logger.warning("Distiller: empty provider response")
+                return None
+            gram_delta = output.sebeni_gram or ""
+            dict_delta = output.sebeni_dict or ""
+            if bootstrap or self.prompt_mode() == "bootstrap":
+                adjusted_gram = (
+                    gram_delta
+                    if gram_delta.strip()
+                    else current_gram.read_text(encoding="utf-8")
+                )
+                adjusted_dict = (
+                    dict_delta
+                    if dict_delta.strip()
+                    else self._algorithmic_dict(current_dict, misses)
+                )
+            else:
+                adjusted_gram = (
+                    self.apply_gram_deltas(current_gram, gram_delta)
+                    if gram_delta
+                    else current_gram.read_text(encoding="utf-8")
+                )
+                adjusted_dict = (
+                    self.apply_dict_deltas(current_dict, dict_delta)
+                    if dict_delta
+                    else self._algorithmic_dict(current_dict, misses)
+                )
 
-        phi = self.phi_on_texts(batch, gram=current_gram, ldict=current_dict)
+        phi = (
+            float(current_phi)
+            if current_phi is not None
+            else self.phi_on_texts(batch, gram=current_gram, ldict=current_dict)
+        )
+
         temp_gram = temp_dict = None
+
         try:
             with tempfile.NamedTemporaryFile(delete=False, suffix=".gram", mode="w", encoding="utf-8") as gf:
                 gf.write(adjusted_gram)
@@ -353,7 +466,6 @@ class Distiller(object):
         state = {'gram': None, 'dict': None}
 
         highest = 0
-        latest_path = ""
 
         suffixes = ['.gram', '.dict']
         baseline = "baseline"
@@ -427,10 +539,12 @@ class Distiller(object):
 
     def apply_deltas(self, text, distilled_output, current_gram, current_dict):
         """ Apply the deltas to the current grammar (Path) and dictionary (Path). """
+        from beni.core.morphotactic.dabax import DabaX, get_dabax
+
         gram_delta = distilled_output.sebeni_gram
         dict_delta = distilled_output.sebeni_dict
         # Initial Morphology State
-        dx = DabaX(self.lang, gram=current_gram, ldict=current_dict) # Initial State
+        dx = get_dabax(self.lang, gram=current_gram, ldict=current_dict, process=True)
         sent = dx.loader(text) 
         ms = MorphologyScorer()
 

@@ -1,5 +1,4 @@
 # Prehook and Training Callbacks
-import torch
 import torch.nn.functional as F
 from typing import List, Dict, Any, Callable, Optional
 from transformers import TrainerCallback
@@ -10,6 +9,23 @@ try:
     import trackio
 except ImportError:
     trackio = None
+
+
+def log_trackio(metrics: dict, step=None) -> None:
+    """Write numeric metrics to the current Trackio run (``trackio.log``)."""
+    if trackio is None:
+        return
+    payload = {
+        key: value
+        for key, value in (metrics or {}).items()
+        if isinstance(value, (int, float)) and not isinstance(value, bool)
+    }
+    if not payload:
+        return
+    try:
+        trackio.log(payload, step=step)
+    except Exception:
+        pass
 
 
 class BatchMetadata:
@@ -104,14 +120,16 @@ class SelfAwareCallback(TrainerCallback):
     batches are split by group code; each language has its own ``{G, D}``.
     """
 
-    def __init__(self, config, governor=None, distiller=None):
+    def __init__(self, config, governor=None, distiller=None, on_promote=None):
         super().__init__()
         self.config = config
         self.governor = governor
         self.distiller = distiller
+        self.on_promote = on_promote
         self._distillers = {}
         self.tau = float(getattr(config.distillation, "tau", 0.5))
         self.last_decision = None
+        self._last_batch_key = None
 
     def _distiller_for(self, lang: Optional[str]):
         from beni.core.morphotactic.distil.distillation import Distiller
@@ -130,21 +148,30 @@ class SelfAwareCallback(TrainerCallback):
                 return injected
         distiller = Distiller(
             lang_code=group,
-            provider=self.config.distillation.provider,
+            backend=self.config.distillation.selected_backend,
             model=self.config.distillation.model,
             working_dir=self.config.distillation.working_dir or self.config.working_dir,
+            vertex=self.config.distillation.vertex,
+            base_url=self.config.distillation.base_url,
+            gguf_path=self.config.distillation.gguf_path,
+            n_ctx=self.config.distillation.n_ctx,
+            max_input_chars=self.config.distillation.max_input_chars,
         )
         self._distillers[group] = distiller
         return distiller
 
-    def on_train_batch_begin(self, args, state, control, **kwargs):
+    def process_inputs(self, inputs, step=None):
+        """Run the per-batch SAMPG check from TRL's compute-loss path."""
         if not getattr(self.config.distillation, "enabled", True):
-            return control
-        inputs = kwargs.get("inputs")
+            return
         default_lang = self.config.data.default_lang or "bam"
         pairs = batch_text_langs(inputs, default_lang=default_lang)
         if not pairs:
-            return control
+            return
+        key = (step, tuple(pairs))
+        if key == self._last_batch_key:
+            return
+        self._last_batch_key = key
         from beni.core.safety.governor import SafetyGovernor
 
         governor = self.governor or SafetyGovernor()
@@ -155,25 +182,37 @@ class SelfAwareCallback(TrainerCallback):
             self.tau,
             default_lang=default_lang,
         )
+        if isinstance(inputs, dict) and any(
+            decision.allowed for decision in self.last_decision.values()
+        ):
+            from beni.core.morphotactic.dabax import clear_dabax_cache
+            from beni.data.datasets import build_dabax_reference
+
+            for group, decision in self.last_decision.items():
+                if decision.allowed:
+                    clear_dabax_cache(group)
+            inputs["reference"] = [
+                build_dabax_reference(text, lang) for text, lang in pairs
+            ]
+            if self.on_promote is not None:
+                self.on_promote(self.last_decision)
+        return self.last_decision
+
+    def on_train_batch_begin(self, args, state, control, **kwargs):
+        self.process_inputs(kwargs.get("inputs"), step=getattr(state, "global_step", None))
         return control
 
 
 class TrackioMetricsCallback(TrainerCallback):
-    """Callback to log Hugging Face Trainer metrics and GRPO reward stats to Trackio."""
+    """Log Sebeni extras (U, reward totals) into the Trainer Trackio run."""
     def __init__(self, reward_manager=None):
         super().__init__()
         self.reward_manager = reward_manager
 
     def on_log(self, args, state, control, logs=None, **kwargs):
-        if logs is not None and trackio is not None:
-            for key, value in logs.items():
-                if isinstance(value, (int, float)):
-                    try:
-                        trackio.log_metric(key, value)
-                    except Exception:
-                        pass
-            if self.reward_manager and getattr(self.reward_manager, "total_reward", 0.0) > 0:
-                try:
-                    trackio.log_metric("reward", self.reward_manager.total_reward)
-                except Exception:
-                    pass
+        extra = {}
+        if self.reward_manager is not None:
+            total = getattr(self.reward_manager, "total_reward", 0.0) or 0.0
+            if total:
+                extra["sebeni/reward"] = float(total)
+        log_trackio(extra, step=getattr(state, "global_step", None))

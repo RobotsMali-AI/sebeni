@@ -1,12 +1,9 @@
 import pytest
-import os
-import sys
-from typing import List, Dict, Any
+from typing import List
 from unittest.mock import MagicMock, patch, ANY
 
 from beni.core.srl import (
-    MasterConfig, ModelConfig, DataConfig, GRPOTrainerConfig,
-    DistillationConfig, RewardConfig, SRLGrpoPrompt, SRLTrainer
+    MasterConfig, RewardConfig
 )
 from beni.core.compute.rewards import RewardManager
 from beni.core.srl.grpo.grpo import SebeniGrpo
@@ -25,7 +22,7 @@ class TestGRPOConfigs:
         assert config.project_name == "GRPO-Morphology-Advanced"
         assert config.model.model_name == "HuggingFaceTB/SmolLM2-135M"
         assert config.distillation.enabled is True
-        assert config.distillation.provider == "google"
+        assert config.distillation.selected_backend == "algorithmic"
         assert config.reward.format_weight == 0.2
         assert config.reward.morph_weight == 0.4
         assert config.reward.rule_weight == 0.4
@@ -51,6 +48,150 @@ class TestGRPOConfigs:
         assert SRLTrainer is not SebeniGrpo
         trainer = SRLTrainer()
         assert isinstance(trainer.plugin, SebeniGrpo)
+
+
+class TestTrlConfigKwargs:
+    """Filter Sebeni trainer dicts to the installed TRL constructor."""
+
+    def test_drops_unknown_grpo_fields(self):
+        from beni.core.srl.config import GRPOTrainerConfig, trl_config_kwargs
+
+        class FakeGRPO:
+            def __init__(self, max_completion_length=1, warmup_steps=0, beta=0.1):
+                pass
+
+        out = trl_config_kwargs(FakeGRPO, GRPOTrainerConfig().to_dict())
+        assert "max_prompt_length" not in out
+        assert "warmup_ratio" not in out
+        assert out["max_completion_length"] == 1024
+        assert out["warmup_steps"] == 0
+        assert out["beta"] == 0.1
+
+    def test_keeps_legacy_grpo_fields(self):
+        from beni.core.srl.config import GRPOTrainerConfig, trl_config_kwargs
+
+        class FakeGRPO:
+            def __init__(
+                self,
+                max_prompt_length=1,
+                warmup_ratio=0.0,
+                max_completion_length=1,
+            ):
+                pass
+
+        out = trl_config_kwargs(FakeGRPO, GRPOTrainerConfig().to_dict())
+        assert out["max_prompt_length"] == 1024
+        assert out["warmup_ratio"] == 0.0
+        assert out["max_completion_length"] == 1024
+
+    def test_dpo_aliases_prompt_length_when_needed(self):
+        from beni.core.srl.config import trl_config_kwargs
+
+        class FakeDPO:
+            def __init__(self, max_length=1, beta=0.1):
+                pass
+
+        out = trl_config_kwargs(
+            FakeDPO,
+            {"max_prompt_length": 512, "beta": 0.2},
+            aliases={"max_prompt_length": "max_length"},
+        )
+        assert out == {"max_length": 512, "beta": 0.2}
+
+    def test_dpo_keeps_explicit_max_length(self):
+        from beni.core.srl.config import DPOTrainerConfig, trl_config_kwargs
+
+        class FakeDPO:
+            def __init__(self, max_length=1, beta=0.1):
+                pass
+
+        out = trl_config_kwargs(
+            FakeDPO,
+            DPOTrainerConfig().to_dict(),
+            aliases={"max_prompt_length": "max_length"},
+        )
+        assert "max_prompt_length" not in out
+        assert out["max_length"] == 2048
+
+    def test_trackio_keeps_report_to_and_sets_project(self):
+        from beni.core.srl.config import trl_config_kwargs
+
+        class FakeGRPO:
+            def __init__(self, report_to="trackio", project="huggingface", run_name=None):
+                pass
+
+        out = trl_config_kwargs(
+            FakeGRPO, {"report_to": "trackio"}, project_name="sebeni-bam"
+        )
+        assert out["report_to"] == "trackio"
+        assert out["project"] == "sebeni-bam"
+        assert out["run_name"].startswith("run-")
+
+    def test_trackio_project_dropped_when_unsupported(self):
+        from beni.core.srl.config import trl_config_kwargs
+
+        class FakeGRPO:
+            def __init__(self, report_to="trackio"):
+                pass
+
+        out = trl_config_kwargs(
+            FakeGRPO, {"report_to": "trackio"}, project_name="sebeni-bam"
+        )
+        assert out["report_to"] == "trackio"
+        assert "project" not in out
+        assert "run_name" not in out
+
+    def test_installed_grpo_config_accepts_filtered_kwargs(self):
+        trl = pytest.importorskip("trl")
+        from beni.core.srl.config import GRPOTrainerConfig, trl_config_kwargs
+
+        payload = trl_config_kwargs(
+            trl.GRPOConfig,
+            GRPOTrainerConfig(
+                use_cpu=True,
+                max_steps=1,
+                report_to="none",
+                output_dir="/tmp/sebeni-trl-kwargs",
+            ).to_dict(),
+        )
+        args = trl.GRPOConfig(**payload)
+        assert args.max_completion_length == 1024
+        assert "max_prompt_length" not in payload or hasattr(args, "max_prompt_length")
+        default = trl_config_kwargs(
+            trl.GRPOConfig,
+            GRPOTrainerConfig().to_dict(),
+            project_name="sebeni-bam",
+        )
+        assert default.get("report_to") == "trackio"
+        assert default.get("project") == "sebeni-bam"
+        assert str(default.get("run_name") or "").startswith("run-")
+
+
+class TestLogTrackio:
+    def test_log_trackio_calls_trackio_log(self):
+        from beni.core.srl.grpo import callbacks as cb
+
+        fake = MagicMock()
+        with patch.object(cb, "trackio", fake):
+            cb.log_trackio({"loss": 1.5, "ok": True, "note": "x"}, step=3)
+        fake.log.assert_called_once_with({"loss": 1.5}, step=3)
+
+    def test_log_trackio_skips_when_uninstalled(self):
+        from beni.core.srl.grpo import callbacks as cb
+
+        with patch.object(cb, "trackio", None):
+            cb.log_trackio({"loss": 1.0})
+
+    def test_metrics_callback_logs_sebeni_reward(self):
+        from beni.core.srl.grpo.callbacks import TrackioMetricsCallback
+
+        rm = MagicMock()
+        rm.total_reward = 0.8
+        state = MagicMock()
+        state.global_step = 2
+        with patch("beni.core.srl.grpo.callbacks.log_trackio") as log_fn:
+            TrackioMetricsCallback(reward_manager=rm).on_log(None, state, None)
+        log_fn.assert_called_once_with({"sebeni/reward": 0.8}, step=2)
 
 
 class TestRewardManager:
@@ -178,9 +319,14 @@ class TestSebeniGrpoPipeline:
 
         mock_distiller_cls.assert_called_once_with(
             lang_code="bam",
-            provider="google",
+            backend="google",
             model="gemini-2.5-flash",
-            working_dir=None
+            working_dir=None,
+            vertex=False,
+            base_url=None,
+            gguf_path=None,
+            n_ctx=4096,
+            max_input_chars=8000,
         )
         mock_distiller_instance.run_batch_distillation.assert_called_once_with([
             "aw ka ne labato.", "kàlanko jamanaw"
@@ -220,6 +366,7 @@ class TestGRPOTrainingModel:
         mock_tokenizer = MagicMock()
         mock_tokenizer.pad_token = None
         mock_tokenizer.eos_token = "<eos>"
+        mock_tokenizer.chat_template = None
 
         mock_model_from_pretrained.return_value = mock_base_model
         mock_tok_from_pretrained.return_value = mock_tokenizer
@@ -236,6 +383,70 @@ class TestGRPOTrainingModel:
         mock_get_peft.assert_called_once_with(mock_base_model, ANY)
         assert pipeline.model == mock_peft_model
         assert pipeline.tokenizer == mock_tokenizer
+
+    @patch("beni.core.srl.plugin.get_peft_model")
+    @patch("beni.core.srl.plugin.AutoTokenizer.from_pretrained")
+    @patch("beni.core.srl.plugin.AutoModelForCausalLM.from_pretrained")
+    def test_load_models_skips_4bit_without_bitsandbytes(
+        self, mock_model_from_pretrained, mock_tok_from_pretrained, mock_get_peft
+    ):
+        mock_tok_from_pretrained.return_value = MagicMock(
+            pad_token=None, eos_token="<eos>", chat_template=None
+        )
+        mock_model_from_pretrained.return_value = MagicMock()
+        mock_get_peft.return_value = MagicMock()
+        pipeline = SebeniGrpo(model_name="HuggingFaceTB/SmolLM2-135M")
+        pipeline.config.model.use_peft = True
+        pipeline.config.model.load_in_4bit = True
+        pipeline.config.trainer.use_cpu = False
+        with patch("beni.core.srl.plugin.torch.cuda.is_available", return_value=False):
+            pipeline.load_models()
+        kwargs = mock_model_from_pretrained.call_args.kwargs
+        assert kwargs.get("quantization_config") is None
+        assert kwargs.get("device_map") == "cpu"
+
+    @patch("beni.core.srl.plugin.get_peft_model")
+    @patch("beni.core.srl.plugin.AutoTokenizer.from_pretrained")
+    @patch("beni.core.srl.plugin.AutoModelForCausalLM.from_pretrained")
+    def test_load_models_sets_chat_template_when_missing(
+        self, mock_model_from_pretrained, mock_tok_from_pretrained, mock_get_peft
+    ):
+        from beni.core.srl.plugin import CHATML_CHAT_TEMPLATE
+
+        tokenizer = MagicMock()
+        tokenizer.pad_token = None
+        tokenizer.eos_token = "<eos>"
+        tokenizer.chat_template = None
+        mock_tok_from_pretrained.return_value = tokenizer
+        mock_model_from_pretrained.return_value = MagicMock()
+        mock_get_peft.return_value = MagicMock()
+        pipeline = SebeniGrpo(model_name="HuggingFaceTB/SmolLM2-135M")
+        pipeline.config.model.use_peft = False
+        pipeline.config.model.load_in_4bit = False
+        pipeline.config.trainer.use_cpu = True
+        pipeline.load_models()
+        assert pipeline.tokenizer.chat_template == CHATML_CHAT_TEMPLATE
+
+    @patch("beni.core.srl.plugin.get_peft_model")
+    @patch("beni.core.srl.plugin.AutoTokenizer.from_pretrained")
+    @patch("beni.core.srl.plugin.AutoModelForCausalLM.from_pretrained")
+    def test_load_models_keeps_existing_chat_template(
+        self, mock_model_from_pretrained, mock_tok_from_pretrained, mock_get_peft
+    ):
+        tokenizer = MagicMock()
+        tokenizer.pad_token = "<pad>"
+        tokenizer.eos_token = "<eos>"
+        tokenizer.chat_template = "{% for message in messages %}{{ message['content'] }}{% endfor %}"
+        mock_tok_from_pretrained.return_value = tokenizer
+        mock_model_from_pretrained.return_value = MagicMock()
+        mock_get_peft.return_value = MagicMock()
+        pipeline = SebeniGrpo(model_name="HuggingFaceTB/SmolLM2-135M-Instruct")
+        pipeline.config.model.use_peft = False
+        pipeline.config.model.load_in_4bit = False
+        pipeline.config.trainer.use_cpu = True
+        pipeline.load_models()
+        assert pipeline.tokenizer.chat_template.startswith("{% for message in messages %}")
+        assert "<|im_start|>" not in pipeline.tokenizer.chat_template
 
     @patch("beni.core.srl.plugin.write_model_card")
     @patch("beni.core.srl.grpo.grpo.GRPOConfig")

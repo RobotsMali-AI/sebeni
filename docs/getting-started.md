@@ -13,12 +13,13 @@ Python ≥ 3.10. Primary install is GitHub (not an editable checkout):
 
 ```bash
 pip install "sebeni[train,distil] @ git+https://github.com/mlsftwrs/sebeni.git"
+pip install "daba @ git+https://github.com/maslinych/daba.git" --no-deps
 sebeni --help
 ```
 
 | Extra | What |
 | --- | --- |
-| (default) | CLI, YAML, DabaX, metrics, safety, `daba>=0.9.5` |
+| (default) | CLI, YAML, DabaX runtime dependencies, metrics, safety |
 | `[train]` | torch, transformers, trl, peft, datasets, accelerate, trackio |
 | `[wandb]` | wandb (for `trainer.report_to: wandb`) |
 | `[distil]` | google-genai, openai, groq, together |
@@ -27,11 +28,19 @@ sebeni --help
 | `[gui]` | wxPython — **not** required |
 
 Parser credit: [maslinych/daba](https://github.com/maslinych/daba) (GPLv2+).
-The default extra does **not** pull wxPython.
+Install it from GitHub with `--no-deps`; DabaX does **not** require wxPython.
+Sebeni already pins the CLI runtime (`setuptools>=65,<81` / `pkg_resources`,
+`funcparserlib`, `intervaltree`, `pytrie`, `attrdict3`, `regex`).
 
-From a clone, `pip install -e ".[train,distil,dev]"` still works.
+From a clone:
 
-Keys (as needed): `GOOGLE_API_KEY`, `OPENAI_API_KEY`, `GROQ_API_KEY`,
+```bash
+pip install -e ".[train,distil,dev]"
+pip install "daba @ git+https://github.com/maslinych/daba.git" --no-deps
+```
+
+The default algorithmic Distiller needs no key. Optional LLM backends read
+`.env`, Google ADC, `GOOGLE_API_KEY`, `OPENAI_API_KEY`, `GROQ_API_KEY`,
 `TOGETHER_API_KEY`, `HF_TOKEN`. Distiller keys are required when
 `distillation.enabled: true` (the default). Skip Distiller with
 `--no` on HITL flags plus `distillation.enabled: false`, or `sebeni train`

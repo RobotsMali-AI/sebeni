@@ -1,10 +1,10 @@
 import time
 import json
-import mimetypes
+import os
 from rich.console import Console
 from pydantic import ValidationError
 from google import genai
-from typing import Optional, Dict, Union, Any
+from typing import Dict, Union, Any
 from beni.utils import config as cfg
 from beni.core.morphotactic.distil.providers import base
 
@@ -18,8 +18,17 @@ class GoogleProvider(base.BaseProvider):
             TTL=cfg.CACHE_TTL, vertex=False, project_id: str=cfg.GOOGLE_PROJECT_ID, region: str=cfg.GOOGLE_LOCATION):
 
         super().__init__(api_key, model)
-        self.project_id = project_id
-        self.region = region
+        self.project_id = (
+            project_id
+            or os.getenv("GOOGLE_CLOUD_PROJECT")
+            or os.getenv("GOOGLE_PROJECT_ID")
+        )
+        self.region = (
+            region
+            or os.getenv("GOOGLE_CLOUD_LOCATION")
+            or os.getenv("GOOGLE_LOCATION")
+            or "us-central1"
+        )
         self.vertex = vertex
         
         self.temperature = temperature
@@ -33,8 +42,15 @@ class GoogleProvider(base.BaseProvider):
 
     def initialize(self):
         """ Initialize Google Gemini client. """
-        if not self.api_key:
-            raise ValueError("Google API key required")
+        if not self.vertex and not self.api_key:
+            raise ValueError(
+                "Google authentication missing. Set GOOGLE_API_KEY, configure ADC "
+                "with vertex: true, or use distillation.backend: algorithmic."
+            )
+        if self.vertex and not self.project_id:
+            raise ValueError(
+                "Vertex/ADC requires GOOGLE_CLOUD_PROJECT or GOOGLE_PROJECT_ID."
+            )
         client = self.__vertex_client() if self.vertex else self.__api_client()
         return client
 
@@ -122,20 +138,14 @@ class GoogleProvider(base.BaseProvider):
         """ Generate JSON response from Google Gemini. """
 
         data: DistilOutput = None
-        try:
-            config = genai.types.GenerateContentConfig(
-                temperature=self.temperature, cached_content=self.cache.name,
-                response_mime_type="application/json",
-                response_schema=DistilOutput.model_json_schema()
-            )
-        except genai.errors.ClientError as e:
-            print(f"Cached expired or invalid. Recreating cache and retrying...")
-            self.cache = self.__get_cache(contents=sys_instruct)
-            config = genai.types.GenerateContentConfig(
-                temperature=self.temperature, cached_content=self.cache.name,
-                response_mime_type="application/json",
-                response_schema=DistilOutput.model_json_schema()
-            )
+        config_kwargs = {
+            "temperature": self.temperature,
+            "response_mime_type": "application/json",
+            "response_schema": DistilOutput.model_json_schema(),
+        }
+        if self.cache is not None:
+            config_kwargs["cached_content"] = self.cache.name
+        config = genai.types.GenerateContentConfig(**config_kwargs)
 
         if(indicator):
             console = Console()

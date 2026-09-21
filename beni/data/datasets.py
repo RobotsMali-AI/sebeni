@@ -1,14 +1,14 @@
 # Dataset loader for Sebeni Alignment
 
 import csv
+import copy
 import glob
 import json
 import re
-from dataclasses import dataclass
 from pathlib import Path
-from typing import Any, Dict, Iterable, Iterator, List, Optional, Sequence, Union
+from typing import Any, Dict, Iterator, List, Optional, Sequence, Union
 from beni.core.srl.config import DataConfig
-from beni.core import Sentence, Morpheme, Token, Analysis
+from beni.core import Sentence
 from beni.utils import config as cfg
 
 try:
@@ -26,6 +26,41 @@ except ImportError:
 _TEXT_ALIASES = ("text", "sentence", "content", "raw_text", "utt", "question", "doc")
 _LANG_ALIASES = ("lang", "language", "lang_id", "lang_code", "lang_tag", "locale")
 _FILE_EXTS = {"txt", "text", "json", "jsonl", "ndjson", "csv", "tsv"}
+
+
+def build_dabax_reference(text: str, lang: str) -> dict:
+    """Build ideal completion JSON from the active DabaX checkpoint."""
+    from beni.core import sentence_to_completion_json
+    from beni.core.language import Language
+    from beni.core.morphotactic.dabax import get_dabax
+
+    group = Language.from_code(lang or "bam").group_code
+    try:
+        sentences = get_dabax(group, process=True).loader(text) or []
+    except Exception:
+        return {}
+    if not sentences:
+        return {}
+    return sentence_to_completion_json(sentences[0])
+
+
+def corrupt_completion(reference: dict) -> dict:
+    """Create a legal but morphologically wrong negative completion."""
+    rejected = copy.deepcopy(reference)
+    tokens = rejected.get("tokens") or []
+    for token in tokens:
+        try:
+            if int(token.get("stage", -1)) == -1:
+                token["stage"] = 1
+                return rejected
+        except (TypeError, ValueError):
+            continue
+    if tokens:
+        tokens[0]["stage"] = -1 if str(tokens[0].get("stage")) != "-1" else 1
+        tokens[0]["analyses"] = []
+    else:
+        rejected["lang"] = "und"
+    return rejected
 
 
 def _split_paragraphs(blob: Any) -> List[str]:
@@ -192,9 +227,12 @@ class SebeniDataLoader:
 
     def _load_hf(self, name: str, lang: Optional[str], text_key: Optional[str], lang_key: Optional[str], split: Optional[str], config_name: Optional[str]) -> None:
         kwargs = {"split": split or self.config.hf_split}
-        if config_name: kwargs["name"] = config_name
-        if self.config.hf_streaming: kwargs["streaming"] = True
-        if self.config.hf_kwargs: kwargs.update(self.config.hf_kwargs)
+        if config_name:
+            kwargs["name"] = config_name
+        if self.config.hf_streaming:
+            kwargs["streaming"] = True
+        if self.config.hf_kwargs:
+            kwargs.update(self.config.hf_kwargs)
         
         ds = load_dataset(name, **kwargs)
         if hasattr(ds, "column_names"):
@@ -314,6 +352,9 @@ class SebeniDataLoader:
                 lang = getattr(item, "lang", self.config.default_lang)
                 reference = {}
 
+            if not reference and text:
+                reference = build_dabax_reference(text, lang or self.config.default_lang or "bam")
+
             messages = [
                 {"role": "system", "content": prompt},
                 {"role": "user", "content": text}
@@ -365,18 +406,33 @@ def rank_group_to_preference(
             chosen, rejected = completions[best_i], completions[worst_i]
         if chosen is None:
             ref = item.get("reference")
-            chosen = ref if isinstance(ref, str) else user
+            if not ref:
+                ref = build_dabax_reference(user, lang)
+            chosen = ref
         if rejected is None:
-            rejected = ""
+            if isinstance(chosen, str):
+                try:
+                    chosen_obj = json.loads(chosen)
+                except (TypeError, json.JSONDecodeError):
+                    chosen_obj = {}
+            else:
+                chosen_obj = chosen or {}
+            rejected = corrupt_completion(chosen_obj)
         if isinstance(chosen, dict):
             chosen = json.dumps(chosen, ensure_ascii=False)
         if isinstance(rejected, dict):
             rejected = json.dumps(rejected, ensure_ascii=False)
-        rows["prompt"].append(user)
+        rows["prompt"].append(
+            [
+                {"role": "system", "content": system},
+                {"role": "user", "content": user},
+            ]
+            if scheme_prompt
+            else user
+        )
         rows["chosen"].append(str(chosen))
         rows["rejected"].append(str(rejected))
         rows["language"].append(lang)
-        _ = system  # reserved for chat-template DPO later
     return Dataset.from_dict(rows)
 
 

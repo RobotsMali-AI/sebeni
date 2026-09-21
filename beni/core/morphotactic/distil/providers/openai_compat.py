@@ -6,7 +6,7 @@ import json
 import os
 import urllib.error
 import urllib.request
-from typing import Any, Dict, Optional
+from typing import Any, Optional
 
 from beni.core.morphotactic.distil.providers.base import BaseProvider, ProviderCapability
 from beni.utils import config as cfg
@@ -47,6 +47,10 @@ class OpenAICompatibleProvider(BaseProvider):
 
     def __init__(self, api_key: Optional[str] = None, model: str = "gpt-4o", **kwargs: Any):
         key = api_key or os.getenv(self.env_key) or cfg.provider_api_key(self.env_key.split("_")[0].lower())
+        configured_url = kwargs.get("base_url")
+        if configured_url:
+            self.base_url = str(configured_url)
+            key = key or "local"
         super().__init__(key or "", model)
         self.language = kwargs.get("language")
         self.temperature = float(kwargs.get("temperature", cfg.TEMPERATURE))

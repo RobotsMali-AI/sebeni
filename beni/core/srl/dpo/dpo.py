@@ -6,6 +6,7 @@ from typing import Any, Dict, List, Optional, Union
 
 from datasets import Dataset
 
+from beni.core.srl.config import trl_config_kwargs
 from beni.core.srl.plugin import AlignmentPlugin
 from beni.core.srl.grpo.callbacks import SelfAwareCallback, TrackioMetricsCallback
 from beni.data.datasets import rank_group_to_preference
@@ -29,6 +30,14 @@ class SebeniDpo(AlignmentPlugin):
             records, scheme_prompt=True, languages=self.config.languages()
         )
 
+    def _refresh_pairs_after_promote(self, _decisions=None) -> None:
+        """Rebuild y*/corrupted pairs against the newly promoted checkpoint."""
+        if not getattr(self, "_preference_records", None):
+            return
+        refreshed = self._preference_dataset(self._preference_records)
+        if self.trainer is not None:
+            self.trainer.train_dataset = refreshed
+
     def train(
         self,
         data,
@@ -38,19 +47,35 @@ class SebeniDpo(AlignmentPlugin):
     ):
         from trl import DPOConfig, DPOTrainer
 
-        dataset = self._preference_dataset(data)
+        self._preference_records = (
+            [data[i] for i in range(len(data))] if isinstance(data, Dataset) else data
+        )
+        dataset = self._preference_dataset(self._preference_records)
         if self.model is None:
             self.load_models()
 
         project_name = project_name or self.config.project_name
-        args = DPOConfig(**self.config.dpo.to_dict())
+        args = DPOConfig(
+            **trl_config_kwargs(
+                DPOConfig,
+                self.config.dpo.to_dict(),
+                aliases={"max_prompt_length": "max_length"},
+                project_name=project_name,
+            )
+        )
         callbacks = [TrackioMetricsCallback(reward_manager=self.reward_manager)]
         if extra_callbacks:
             callbacks.extend(extra_callbacks)
         if self.config.distillation.enabled and not any(
             isinstance(cb, SelfAwareCallback) for cb in callbacks
         ):
-            callbacks.append(SelfAwareCallback(self.config, governor=self.governor))
+            callbacks.append(
+                SelfAwareCallback(
+                    self.config,
+                    governor=self.governor,
+                    on_promote=self._refresh_pairs_after_promote,
+                )
+            )
 
         self.trainer = DPOTrainer(
             model=self.model,

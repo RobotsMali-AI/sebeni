@@ -3,13 +3,15 @@
 from __future__ import annotations
 
 import json
+import glob
 from collections import Counter
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Dict, Iterable, List, Optional, Union
+from typing import Dict, Iterable, List, Optional, Union, Sequence
 
 from beni.core.language import Language
-from beni.core.morphotactic.dabax import DabaX
+from beni.core.morphotactic.dabax import get_dabax
+from beni.core.morphotactic.dabax import resolve_baseline_files
 from beni.utils import config as cfg
 
 
@@ -23,6 +25,7 @@ class WordfreqReport:
     lemmas: Dict[str, int] = field(default_factory=dict)
     morphemes: Dict[str, int] = field(default_factory=dict)
     stages: Dict[str, int] = field(default_factory=dict)
+    misses: Dict[str, int] = field(default_factory=dict)
     n_tokens: int = 0
     n_sentences: int = 0
 
@@ -36,6 +39,7 @@ class WordfreqReport:
             "lemmas": self.lemmas,
             "morphemes": self.morphemes,
             "stages": self.stages,
+            "misses": self.misses,
         }
 
     def write(self, directory: Union[str, Path]) -> Path:
@@ -48,6 +52,7 @@ class WordfreqReport:
             ("lemmas.tsv", self.lemmas),
             ("morphemes.tsv", self.morphemes),
             ("stages.tsv", self.stages),
+            ("misses.tsv", self.misses),
         ):
             lines = ["form\tcount"]
             for form, count in sorted(table.items(), key=lambda kv: (-kv[1], kv[0])):
@@ -85,11 +90,18 @@ def count_texts(
         Recorded in the report (e.g. ``baseline_v3``).
     """
     group = Language.from_code(lang).group_code
-    dabax = DabaX(group, gram=gram, ldict=ldict, process=True, runtime_dir=cfg.get_workdir().runtime)
+    dabax = get_dabax(
+        group,
+        gram=gram,
+        ldict=ldict,
+        process=True,
+        runtime_dir=cfg.get_workdir().runtime,
+    )
     surfaces: Counter = Counter()
     lemmas: Counter = Counter()
     morphemes: Counter = Counter()
     stages: Counter = Counter()
+    misses: Counter = Counter()
     n_sent = 0
     n_tok = 0
 
@@ -106,6 +118,11 @@ def count_texts(
                 n_tok += 1
                 surfaces[tok.surface] += 1
                 stages[str(tok.stage)] += 1
+                try:
+                    if int(tok.stage) == -1:
+                        misses[tok.surface] += 1
+                except (TypeError, ValueError):
+                    pass
                 if tok.analyses:
                     lemmas[tok.analyses[0].form] += 1
                     for morph in tok.analyses[0].morphemes or []:
@@ -122,6 +139,80 @@ def count_texts(
         lemmas=dict(lemmas),
         morphemes=dict(morphemes),
         stages=dict(stages),
+        misses=dict(misses),
         n_tokens=n_tok,
         n_sentences=n_sent,
     )
+
+
+def _raw_paths(raw_inputs: Union[str, Path, Sequence[Union[str, Path]]]) -> List[Path]:
+    inputs = [raw_inputs] if isinstance(raw_inputs, (str, Path)) else list(raw_inputs)
+    paths: List[Path] = []
+    for value in inputs:
+        text = str(value)
+        if any(char in text for char in "*?["):
+            paths.extend(Path(path) for path in sorted(glob.glob(text, recursive=True)))
+            continue
+        path = Path(value)
+        if path.is_dir():
+            paths.extend(
+                sorted(
+                    item
+                    for item in path.rglob("*")
+                    if item.is_file() and item.suffix.lower() in {".txt", ".text"}
+                )
+            )
+        elif path.is_file():
+            paths.append(path)
+    return paths
+
+
+def _raw_texts(blob: str) -> List[str]:
+    normalized = blob.replace("\r\n", "\n").strip()
+    if not normalized:
+        return []
+    chunks = normalized.split("\n\n") if "\n\n" in normalized else normalized.splitlines()
+    return [chunk.strip() for chunk in chunks if chunk.strip()]
+
+
+def count_raw_inputs(
+    raw_inputs: Union[str, Path, Sequence[Union[str, Path]]],
+    *,
+    languages: Optional[Sequence[str]] = None,
+    default_lang: str = "bam",
+    encoding: str = "utf-8-sig",
+) -> Dict[str, WordfreqReport]:
+    """Build per-language DabaX frequency maps from raw text files."""
+    allowed = set(Language.group_codes(languages)) if languages else None
+    grouped: Dict[str, List[str]] = {}
+    paths = _raw_paths(raw_inputs)
+    for path in paths:
+        stem_known = bool(
+            cfg.get_language_metadata(path.stem) or cfg.get_language_iso(path.stem)
+        )
+        stem_group = (
+            Language.from_code(path.stem).group_code
+            if stem_known
+            else Language.from_code(default_lang).group_code
+        )
+        if allowed and len(allowed) == 1:
+            group = next(iter(allowed))
+        elif allowed and stem_group not in allowed:
+            continue
+        else:
+            group = stem_group or Language.from_code(default_lang).group_code
+        grouped.setdefault(group, []).extend(
+            _raw_texts(path.read_text(encoding=encoding))
+        )
+
+    reports = {}
+    for group, texts in grouped.items():
+        gram, ldict, checkpoint_id = resolve_baseline_files(group)
+        reports[group] = count_texts(
+            texts,
+            lang=group,
+            gram=gram,
+            ldict=ldict,
+            checkpoint_id=checkpoint_id,
+        )
+    return reports

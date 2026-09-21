@@ -34,7 +34,8 @@ flowchart TD
 use Distiller **scratch bootstrap**. The packaged raw split is about 36MB
 (mostly `bam.txt`) so `sebeni exp` works after a GitHub install.
 
-Custom `data.source` still applies to `sebeni train` / `eval` / `wordfreq`.
+Custom `data.source` applies to `sebeni train` / `eval`. Wordfreq uses
+`wordfreq.raw_inputs` (with `data.source` as a compatibility fallback).
 Only `exp` pins the packaged splits.
 
 ## YAML knobs
@@ -90,8 +91,8 @@ The Go binary is **not** vendored.
 
 ## Distiller keys
 
-Same as `sebeni train`: set `GOOGLE_API_KEY` (default provider) or another
-provider key. To skip Distiller, set `distillation.enabled: false` in the YAML.
+Same as `sebeni train`: the default algorithmic Distiller needs no key.
+Optional Google refinement accepts ADC or `GOOGLE_API_KEY`.
 
 ## Next
 

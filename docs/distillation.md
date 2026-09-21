@@ -46,35 +46,44 @@ Promoted files are versioned `baseline_vN` under
 ## CLI
 
 ```bash
-export GOOGLE_API_KEY=...   # or OPENAI_API_KEY / GROQ_API_KEY / TOGETHER_API_KEY
 sebeni distill -c config.yaml
 sebeni distill -c config.yaml --lang bam --lang mku --hitl
 ```
 
-Use `distill` when you want G, D without a policy step.
+The default `algorithmic` backend needs no API key. Use `distill` when you want
+G, D without a policy step.
 
-## Providers
-
-`google` / `gemini` (default), `openai`, `groq`, `together`. YAML:
+## Backends and authentication
 
 ```yaml
 distillation:
   enabled: true
-  provider: google          # google | gemini | openai | groq | together
-  model: gemini-2.5-flash
+  backend: algorithmic      # algorithmic | gguf | google | openai | groq | together
+  model: gemini-2.5-flash   # LLM backends only
   tau: 0.5
   hitl: false
-  auto_update_baselines: true
-  batch_size: 10
+  vertex: false
+  gguf_path: null
+  n_ctx: 4096
 ```
 
-Keys stay in the environment. Cache/upload is Google-only; other providers use
-`ProviderCapability.NONE`.
+- `algorithmic` builds a DabaX stage −1 miss list and adds conservative `\lx`
+  entries. This is the train/exp default.
+- `google` accepts `GOOGLE_API_KEY`, or ADC/Vertex with `vertex: true` and
+  `GOOGLE_CLOUD_PROJECT`.
+- `.env` is loaded from the config directory, workdir, or `SEBENI_ENV`;
+  existing process variables win.
+- OpenAI-compatible backends accept `base_url` for Ollama/vLLM.
+- `gguf` requires `sebeni[gguf]`. Its limited context and lack of hosted
+  caching/optimization can reduce quality and throughput.
+
+LLM prompts contain a miss report and bounded format context, never the full
+production dictionary.
 
 ## Scratch bootstrap
 
-No packaged `beni/data/baselines/{lang}/` → Distiller writes stubs under the
-workdir and uses **bootstrap** prompts (full G, D — not `[ADD]`/`[REPLACE]`).
+No packaged `beni/data/baselines/{lang}/` → Distiller writes lookup-only stubs
+under the workdir. Algorithmic bootstrap adds missing surfaces as lemmas.
 
 | Promote | Gate |
 | --- | --- |
@@ -89,13 +98,16 @@ is not a TTY (CI).
 Wraps CLI `daba.mparser` (`DictLoader`, `GrammarLoader`, `Tokenizer`,
 `Processor`). No wxPython / `gparser` / `gdisamb` on the default install.
 Upstream credit: [maslinych/daba](https://github.com/maslinych/daba) (GPLv2+).
+Install it with
+`pip install "daba @ git+https://github.com/maslinych/daba.git" --no-deps`.
+Sebeni pins `setuptools` (`pkg_resources`) and the other CLI runtime libraries.
 Do not vendor GPL sources into this MIT tree.
 
 ```python
 from beni.core.morphotactic.distil.distillation import Distiller
 from beni.core.morphotactic.dabax import DabaX
 
-d = Distiller(lang_code="bam", provider="google", working_dir="./runs/bam")
+d = Distiller(lang_code="bam", backend="algorithmic", working_dir="./runs/bam")
 d.handle_baselines()
 phi = d.phi_on_texts(["Aw ka kɛnɛ wa?"])
 

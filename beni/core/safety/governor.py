@@ -41,6 +41,9 @@ class SafetySnapshot:
     mcs: Optional[float] = None
     format_validity: Optional[float] = None
     r_lang: Optional[float] = None
+    u_indicator: Optional[float] = None
+    u_kl: Optional[float] = None
+    uncertainty: Optional[float] = None
     algorithm: Optional[str] = None
     language: Optional[str] = None
     group_code: Optional[str] = None
@@ -189,9 +192,14 @@ class SafetyGovernor:
             ref_logps = batch_meta.get("ref_logps")
             if model_logps is None or ref_logps is None:
                 return 1.0
-            u = _mean_log_ratio(model_logps, ref_logps, self.spec.kl_beta)
+            indicator = _mean_stage_indicator(batch_meta.get("predicted_stages"))
+            u_kl = _mean_log_ratio(model_logps, ref_logps, self.spec.kl_beta)
+            u = indicator + u_kl
+            batch_meta["u_indicator"] = indicator
+            batch_meta["u_kl"] = u_kl
+            batch_meta["uncertainty"] = u
         try:
-            return 1.0 / (1.0 + abs(float(u)))
+            return 1.0 / (1.0 + max(float(u), 0.0))
         except (TypeError, ValueError):
             return 1.0
 
@@ -237,3 +245,18 @@ def _mean_log_ratio(model_logps, ref_logps, beta: float) -> float:
         return beta * float((m - r).mean())
     except Exception:
         return 0.0
+
+
+def _mean_stage_indicator(predicted_stages) -> float:
+    """Mean I(stage != -1) over morphological tokens, separate from LM tokens."""
+    if predicted_stages is None:
+        return 0.0
+    flat = []
+    for stages in predicted_stages:
+        values = stages if isinstance(stages, (list, tuple)) else [stages]
+        for stage in values:
+            try:
+                flat.append(1.0 if int(stage) != -1 else 0.0)
+            except (TypeError, ValueError):
+                flat.append(1.0)
+    return sum(flat) / len(flat) if flat else 0.0

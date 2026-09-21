@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sebeni"
-version = "0.1.0"
+version = "0.1.1"
 description = "Self-aware morphotactic pattern generation toolkit for extremely low-resource languages"
 readme = "README.md"
 license = { text = "MIT" }
@@ -24,7 +24,16 @@ dependencies = [
     "jinja2>=3.1",
     "numpy>=1.23",
     "pydantic>=2.0",
-    "daba>=0.9.5",
+    # Runtime dependencies of maslinych/daba's headless parser. Install Daba
+    # itself from GitHub with --no-deps so its wxPython GUI dependency is skipped.
+    # setuptools provides pkg_resources (mparser.py). Pin below 81: 82+
+    # removed the module; 81 emits a deprecation warning but still imports.
+    "setuptools>=65,<81",
+    "funcparserlib",
+    "intervaltree",
+    "pytrie",
+    "attrdict3",
+    "regex",
 ]
 
 [project.optional-dependencies]
@@ -45,6 +54,15 @@ distil = [
     "openai",
     "groq",
     "together",
+]
+gguf = [
+    "llama-cpp-python",
+]
+jax = [
+    "jax",
+    "flax",
+    "optax",
+    "orbax-checkpoint",
 ]
 docs = [
     "mkdocs-material>=9.5",

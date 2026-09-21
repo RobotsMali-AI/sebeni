@@ -31,7 +31,7 @@ apo:
 
 distillation:
   enabled: true
-  provider: google
+  backend: algorithmic
   tau: 0.5
 
 safety:

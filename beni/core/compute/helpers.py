@@ -29,8 +29,10 @@ def _traceback_ld_ops(ld: np.ndarray, ref: List[str], hyp: List[str]) -> Tuple[i
     while i > 0 or j > 0:
 
         if(i == 0 or j == 0):
-            if(i == 0): i_m += 1
-            else: d_m += 1
+            if(i == 0):
+                i_m += 1
+            else:
+                d_m += 1
             break
 
         cost = 0 if ref[i-1] == hyp[j-1] else 1
@@ -65,10 +67,14 @@ def stage_to_phi(stage: Union[int, str], empr: float= 0.5, eps: float= 1e-8) -> 
         except (ValueError, TypeError):
             return 1.0
 
-    if stage < 0: return 0.0
-    elif stage < 6: return 1.0
-    elif stage == 6: return empr
-    else: return eps
+    if stage < 0:
+        return 0.0
+    elif stage < 6:
+        return 1.0
+    elif stage == 6:
+        return empr
+    else:
+        return eps
 
 def recognized_word(stage: Union[int, str]) -> bool:
     """ Check if a word is recognized by the dictionary """

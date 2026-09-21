@@ -37,9 +37,9 @@ class MorphologyScorer:
         Score Structure:
             - stage < 0 : 0.0 Non-Language tokens
             - 0 <= stage < 6: 1.0  (analyzed)
-            - stage == 6 or stage == 4: empr (Empirical / Emprunt/borrowing foreign token)
+            - stage == 6: empr (Empirical / Emprunt/borrowing foreign token)
             - stage > 6: eps (fallback value)
-            - stage == str(object): 0.8 (tokenizer, g.disamb etc are )
+            - non-numeric parser labels: 1.0
         """
         from beni.core.compute.helpers import stage_to_phi
         tokens = sentence.tokens if isinstance(sentence, Sentence) else sentence
@@ -99,11 +99,16 @@ class MorphologyScorer:
         TODO: NAIVE & Requires review
         """
         if agg == 'micro':
-            refs = []
-            hyps = []
-            for rt, ht in zip(ref_sentence.tokens, hyp_sentence.tokens):
-                refs.extend(rt.best_morphemes())
-                hyps.extend(ht.best_morphemes())
+            refs = [
+                form
+                for token in ref_sentence.tokens
+                for form in token.best_morphemes()
+            ]
+            hyps = [
+                form
+                for token in hyp_sentence.tokens
+                for form in token.best_morphemes()
+            ]
             return self.mer(refs, hyps)
 
 
@@ -132,7 +137,7 @@ class MorphologyScorer:
             1 for pt, rt in zip(pred_tokens, ref_tokens)
             if str(pt.stage) == str(rt.stage))
 
-        return correct / len(ref_tokens)
+        return correct / max(len(ref_tokens), len(pred_tokens))
 
     def mcs_corpus(self, 
                    predicted: List[Sentence], 
@@ -188,7 +193,10 @@ class MorphologyScorer:
         """
         Compute sentence uncertainty weighted cost error U(w_i, o_i).
          
-        U = (1/|T|) * Σ I(Stage_pred(w) ≠ Stage_ref(w)) + β * log((π_θ + ε) / (π_θ_ref + ε))
+        U = mean I(Stage_pred != -1) + beta * mean log((pi_theta + eps) / (pi_ref + eps))
+
+        Morphological-analysis tokens and LM/BPE tokens are averaged separately;
+        they are not positionally aligned.
          
         Parameters
         ----------
@@ -204,11 +212,12 @@ class MorphologyScorer:
         float
             Sentence uncertainty weighted cost error score
         """
-        from beni.core.compute.helpers import recognized_word
-        indicators = [1.0 if recognized_word(token.stage) else 0.0 for token in sentence.tokens]
+        indicators = [1.0 if token.has_valid_stage else 0.0 for token in sentence.tokens]
         log_ratios = [(model_prob + self.eps) / (ref_prob + self.eps) for model_prob, ref_prob in zip(model_probs, ref_probs)]
         log_ratios = [np.log(lr) for lr in log_ratios]
-        return np.mean(indicators) + self.beta * np.mean(log_ratios)
+        indicator_mean = float(np.mean(indicators)) if indicators else 0.0
+        ratio_mean = float(np.mean(log_ratios)) if log_ratios else 0.0
+        return indicator_mean + self.beta * ratio_mean
 
     def evaluate(self, 
                  predicted: Union[Sentence, List[Token]], 

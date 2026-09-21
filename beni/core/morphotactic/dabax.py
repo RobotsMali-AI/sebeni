@@ -1,9 +1,9 @@
 import re
 import warnings
-import numpy as np
 import xml.etree.ElementTree as ET
+from importlib import metadata
 from pathlib import Path
-from typing import Optional, Union, Any, List, Tuple
+from typing import Dict, Optional, Union, List, Tuple
 from xml.dom import minidom
 from beni.utils import config as cfg
 from beni.core.language import Language
@@ -11,6 +11,64 @@ from beni.core.language import Language
 warnings.filterwarnings("ignore", category=FutureWarning)
 
 BASELINES = cfg.DATA_DIR / "baselines"
+_DABA_GIT = 'pip install "daba @ git+https://github.com/maslinych/daba.git" --no-deps'
+_DABA_RUNTIME = "pip install setuptools funcparserlib intervaltree pytrie attrdict3 regex"
+
+
+def resolve_baseline_files(lang: str, working_dir=None):
+    """Resolve latest paired workdir baseline, then packaged baseline."""
+    group = Language.from_code(lang or "bam").group_code
+    root = Path(working_dir) if working_dir else cfg.get_workdir().root
+    directory = root / "data" / "baselines" / group
+
+    def version(path):
+        match = re.search(r"_v(\d+)$", path.stem)
+        return int(match.group(1)) if match else -1
+
+    grams = sorted(directory.glob("baseline_v*.gram"), key=version)
+    dicts = sorted(directory.glob("baseline_v*.dict"), key=version)
+    if grams and dicts and version(grams[-1]) == version(dicts[-1]):
+        return grams[-1], dicts[-1], grams[-1].stem
+    gram = directory / "baseline.gram"
+    ldict = directory / "baseline.dict"
+    if gram.exists() and ldict.exists():
+        return gram, ldict, gram.stem
+    packaged = cfg.resolve_packaged_baseline_dir(group)
+    if packaged:
+        return packaged / "baseline.gram", packaged / "baseline.dict", "packaged"
+    return gram, ldict, "none"
+
+
+def _daba_package_dir() -> Optional[Path]:
+    try:
+        import daba as installed_daba
+    except ImportError:
+        return None
+    module_file = getattr(installed_daba, "__file__", None)
+    return Path(module_file).parent if module_file else None
+
+
+def _wrong_pypi_daba() -> bool:
+    try:
+        package_metadata = metadata.metadata("daba")
+        identity = " ".join(
+            str(package_metadata.get(field, ""))
+            for field in ("Summary", "Home-page", "Author")
+        ).lower()
+        if "klivolks" in identity or "mongo" in identity:
+            return True
+    except metadata.PackageNotFoundError:
+        pass
+    package_dir = _daba_package_dir()
+    return bool(package_dir and (package_dir / "Mongo.py").is_file())
+
+
+def _maslinych_parser_present() -> bool:
+    package_dir = _daba_package_dir()
+    return bool(
+        package_dir
+        and ((package_dir / "mparser.py").is_file() or (package_dir / "mparser").is_dir())
+    )
 
 
 def _daba_modules():
@@ -18,11 +76,29 @@ def _daba_modules():
     try:
         from daba import mparser, ntgloss
     except ImportError as exc:
+        if _wrong_pypi_daba():
+            raise ImportError(
+                "The installed PyPI package 'daba' is the unrelated Klivolks "
+                "Mongo helper and does not provide daba.mparser. Replace it with "
+                "the morphological parser:\n"
+                "  pip uninstall -y daba\n"
+                f"  {_DABA_GIT}\n"
+                "Sebeni uses only the headless CLI modules; wxPython is not required."
+            ) from exc
+        if _maslinych_parser_present():
+            missing = getattr(exc, "name", None) or str(exc)
+            raise ImportError(
+                "maslinych/daba is installed, but a CLI runtime dependency is "
+                f"missing ({missing}). Install the headless extras Sebeni pins:\n"
+                f"  {_DABA_RUNTIME}\n"
+                "wxPython is not required. Do not pip install PyPI 'daba'."
+            ) from exc
         raise ImportError(
-            "daba is required for DabaX. Install the CLI parser (no wxPython on "
-            "the default extra): pip install 'daba>=0.9.5'. Upstream: "
-            "https://github.com/maslinych/daba (GPLv2+). The mlsftwrs CLI-only "
-            "fork is the intended sebeni dependency."
+            "maslinych/daba is required for DabaX. Install its headless CLI "
+            "modules with:\n"
+            f"  {_DABA_GIT}\n"
+            "wxPython is not required. Upstream is GPLv2+: "
+            "https://github.com/maslinych/daba"
         ) from exc
     return mparser, ntgloss
 
@@ -56,14 +132,14 @@ class DabaX(object):
         self.runtime_dir.mkdir(parents=True, exist_ok=True)
 
         packaged = cfg.resolve_packaged_baseline_dir(self.lang)
-        wd_base = cfg.get_workdir().baselines / self.lang
         if process:
-            baseline_dir = wd_base if wd_base.exists() else (packaged or wd_base)
+            resolved_gram, resolved_dict, _ = resolve_baseline_files(self.lang)
+            self.gramf = gram if gram else resolved_gram
+            self.dictf = ldict if ldict else resolved_dict
         else:
             baseline_dir = packaged or (BASELINES / self.lang)
-
-        self.gramf = gram if gram else Path(baseline_dir) / self.__GRAM_BASELINE
-        self.dictf = ldict if ldict else Path(baseline_dir) / self.__DICT_BASELINE
+            self.gramf = gram if gram else Path(baseline_dir) / self.__GRAM_BASELINE
+            self.dictf = ldict if ldict else Path(baseline_dir) / self.__DICT_BASELINE
         self.dl, self.gr, self.tokenizer = self.setup_parser()
 
     def setup_parser(self, runtime_dir: Optional[Union[str, Path]] = None):
@@ -224,9 +300,11 @@ class DabaX(object):
         raw = self.extract_morphology(text)
 
         def _parse_ps(ps):
-            if ps is None: return []
-            if isinstance(ps, str): return [ps]
-            return list(ps)[0] if list(ps) else ""  # FIXME: yield single PS element.
+            if ps is None:
+                return []
+            if isinstance(ps, str):
+                return [ps]
+            return list(ps)
 
         def _build_morpheme(md):
             nested = None
@@ -282,3 +360,55 @@ class DabaX(object):
 
     def __str__(self):
         return f"{__name__} - {self.lang} \n - {self.tokenizer} \n - {self.dictf} \n - {self.gramf}"
+
+
+_DABAX_CACHE: Dict[tuple, "DabaX"] = {}
+
+
+def _dabax_cache_key(group: str, gram, ldict, runtime) -> tuple:
+    def _norm(path):
+        return str(Path(path)) if path is not None else None
+
+    return (group, _norm(gram), _norm(ldict), _norm(runtime))
+
+
+def get_dabax(
+    lang,
+    gram=None,
+    ldict=None,
+    *,
+    process: bool = True,
+    runtime_dir: Optional[Union[str, Path]] = None,
+    working_dir=None,
+) -> "DabaX":
+    """Return a DabaX that already loaded this language's current G and D.
+
+    Parse many strings with ``.loader(text)``. A new instance is built only when
+    the group, grammar path, dictionary path, or runtime directory changes
+    (Distiller promote, Φ vs Φ′).
+    """
+    group = Language.from_code(lang or "bam").group_code
+    runtime = Path(runtime_dir) if runtime_dir else cfg.get_workdir().runtime
+    if gram is None or ldict is None:
+        resolved_gram, resolved_dict, _ = resolve_baseline_files(group, working_dir)
+        gram = gram or resolved_gram
+        ldict = ldict or resolved_dict
+    key = _dabax_cache_key(group, gram, ldict, runtime)
+    cached = _DABAX_CACHE.get(key)
+    if cached is not None:
+        return cached
+    instance = DabaX(
+        group, gram=gram, ldict=ldict, process=process, runtime_dir=runtime
+    )
+    _DABAX_CACHE[key] = instance
+    return instance
+
+
+def clear_dabax_cache(lang: Optional[str] = None) -> None:
+    """Drop cached parsers. Pass ``lang`` to invalidate one group after promote."""
+    if lang is None:
+        _DABAX_CACHE.clear()
+        return
+    group = Language.from_code(lang).group_code
+    for key in [item for item in _DABAX_CACHE if item[0] == group]:
+        _DABAX_CACHE.pop(key, None)

@@ -7,7 +7,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from beni.core import Sentence, Token
+from beni.core import Analysis, Morpheme, Sentence, Token, sentence_to_completion_json
 from beni.core.compute.metrics import MorphologyScorer
 from beni.core.compute.rewards import RewardManager
 from beni.core.language import Language
@@ -169,6 +169,159 @@ class TestMER:
         assert scorer.mer_sentence(ref, hyp) == 0.0
 
 
+class TestAdjustedPipeline:
+    def test_sentence_to_completion_json(self):
+        sentence = Sentence(
+            text="aw",
+            lang="bam",
+            tokens=[
+                Token(
+                    surface="aw",
+                    stage=1,
+                    analyses=[
+                        Analysis(
+                            form="áw",
+                            ps=["prn"],
+                            morphemes=[Morpheme(form="áw", ps=["prn"])],
+                        )
+                    ],
+                )
+            ],
+        )
+        payload = sentence_to_completion_json(sentence)
+        assert payload["lang"] == "bam"
+        assert payload["tokens"][0]["analyses"][0]["morphemes"][0]["form"] == "áw"
+
+    def test_algorithmic_distiller_adds_misses_without_provider(self, tmp_path):
+        with patch.object(
+            Distiller, "_valid_language", return_value={"language": "Z", "group_code": "zzz"}
+        ):
+            distiller = Distiller(
+                lang_code="zzz", backend="algorithmic", working_dir=tmp_path
+            )
+        assert distiller.provider is None
+        with patch.object(distiller, "collect_misses", return_value=["foo"]), patch.object(
+            distiller, "files_parseable", return_value=True
+        ), patch.object(distiller, "phi_on_texts", return_value=1.0):
+            proposal = distiller.propose(["foo"], current_phi=0.0)
+        assert proposal is not None
+        assert "\\lx foo" in proposal.dict_text
+        assert proposal.phi_prime == 1.0
+
+    def test_algorithmic_scratch_phi_improves(self, tmp_path):
+        pytest.importorskip("daba.mparser")
+        with patch.object(
+            Distiller, "_valid_language", return_value={"language": "Z", "group_code": "zzz"}
+        ), patch(
+            "beni.core.morphotactic.distil.distillation.cfg.resolve_packaged_baseline_dir",
+            return_value=None,
+        ):
+            distiller = Distiller(
+                lang_code="zzz", backend="algorithmic", working_dir=tmp_path
+            )
+            distiller.handle_baselines()
+            phi = distiller.phi_on_texts(["foobarqux"])
+            proposal = distiller.propose(["foobarqux"], current_phi=phi)
+        assert proposal is not None
+        assert proposal.parseable
+        assert proposal.phi_prime > phi
+
+    def test_morph_reward_compares_gold_annotation(self):
+        reference = {
+            "text": "aw",
+            "lang": "bam",
+            "tokens": [
+                {
+                    "surface": "aw",
+                    "stage": 1,
+                    "analyses": [
+                        {
+                            "form": "áw",
+                            "ps": ["prn"],
+                            "gloss": "",
+                            "morphemes": [{"form": "áw", "ps": ["prn"]}],
+                        }
+                    ],
+                }
+            ],
+        }
+        rm = RewardManager()
+        score = rm.reward_morph(
+            [__import__("json").dumps(reference)],
+            language=["bam"],
+            reference=[reference],
+            prompts=[{}],
+        )
+        assert score == pytest.approx([rm.config.morph_weight])
+
+    def test_reward_format_accepts_conversational_completions(self):
+        from beni.core.compute.rewards import RewardManager
+
+        blob = '{"lang": "bam", "tokens": []}'
+        rm = RewardManager()
+        conversational = [[{"role": "assistant", "content": blob}]]
+        assert rm.completion_text(conversational[0]) == blob
+        scores = rm.reward_format(conversational, language=["bam"])
+        assert scores == [rm.config.format_weight]
+        assert rm.extract_json(conversational[0])["lang"] == "bam"
+
+    def test_preference_fallback_uses_gold_and_nonempty_negative(self):
+        from beni.data.datasets import rank_group_to_preference
+
+        reference = {
+            "text": "aw",
+            "lang": "bam",
+            "tokens": [{"surface": "aw", "stage": 1, "analyses": []}],
+        }
+        dataset = rank_group_to_preference(
+            [{"text": "aw", "lang": "bam", "reference": reference}]
+        )
+        assert dataset[0]["chosen"] != "aw"
+        assert dataset[0]["rejected"]
+        assert dataset[0]["chosen"] != dataset[0]["rejected"]
+
+    def test_uncertainty_uses_stage_indicator_and_never_amplifies(self):
+        from beni.core.srl.jax import jax_uncertainty_scale
+
+        scale, values = jax_uncertainty_scale(
+            [[1, -1]], model_logps=[-1.0], ref_logps=[-2.0], beta=0.1
+        )
+        assert values["u_indicator"] == 0.5
+        assert values["u_kl"] == pytest.approx(0.1)
+        assert scale == pytest.approx(1.0 / 1.6)
+
+        scale, _ = jax_uncertainty_scale(
+            [], model_logps=[-3.0], ref_logps=[-1.0], beta=1.0
+        )
+        assert scale == 1.0
+
+    def test_safety_governor_uses_full_uncertainty(self):
+        gov = SafetyGovernor(SafetySpec(kl_beta=0.1))
+        meta = {
+            "predicted_stages": [[1, -1]],
+            "model_logps": [-1.0],
+            "ref_logps": [-2.0],
+        }
+        assert gov._uncertainty_scale(meta) == pytest.approx(1.0 / 1.6)
+        assert meta["u_indicator"] == 0.5
+
+    def test_jax_selection_and_clear_torch_fallback(self, capsys):
+        from beni.core.srl.jax import JaxPolicyPlugin
+        from beni.core.srl.grpo.grpo import SebeniGrpo
+        from beni.core.srl.unified import SRLTrainer
+
+        config = MasterConfig()
+        config.trainer.framework = "jax"
+        driver = SRLTrainer(config)
+        assert isinstance(driver.plugin, JaxPolicyPlugin)
+
+        with patch.object(SebeniGrpo, "load_models", return_value=MagicMock()):
+            with pytest.warns(RuntimeWarning, match="Continuing with PyTorch/TRL"):
+                driver.plugin._fallback_to_torch(RuntimeError("no flax_model.msgpack"))
+        assert config.trainer.framework == "torch"
+        assert "Flax weights" in capsys.readouterr().out
+
+
 class TestRLang:
     def test_matching_lang(self):
         rm = RewardManager(reward_config=RewardConfig(lang_weight=0.2))
@@ -266,9 +419,9 @@ class TestScratchBootstrap:
 
 class TestProviderRegistry:
     def test_known_providers(self):
-        from beni.core.morphotactic.distil.providers import PROVIDER_REGISTRY, create_provider
+        from beni.core.morphotactic.distil.providers import PROVIDER_REGISTRY
 
-        for name in ("google", "gemini", "openai", "groq", "together"):
+        for name in ("google", "gemini", "openai", "groq", "together", "gguf"):
             assert name in PROVIDER_REGISTRY
         with patch(
             "beni.core.morphotactic.distil.providers.openai_compat.OpenAICompatibleProvider.__init__",
@@ -284,6 +437,37 @@ class TestProviderRegistry:
 
         with pytest.raises(ValueError):
             create_provider("nope")
+
+    def test_google_vertex_allows_adc_without_api_key(self):
+        pytest.importorskip("google.genai")
+        with patch(
+            "beni.core.morphotactic.distil.providers.google.genai.Client"
+        ) as client:
+            from beni.core.morphotactic.distil.providers.google import GoogleProvider
+
+            provider = GoogleProvider(
+                api_key=None, vertex=True, project_id="test-project", language="bam"
+            )
+        assert provider.cache is None
+        client.assert_called_with(
+            vertexai=True, project="test-project", location=cfg.GOOGLE_LOCATION
+        )
+
+    def test_gguf_selection_warns_about_context(self):
+        from beni.core.morphotactic.distil.providers.gguf import GGUFProvider
+
+        with patch.object(GGUFProvider, "initialize", return_value=MagicMock()):
+            with pytest.warns(RuntimeWarning, match="context"):
+                GGUFProvider(gguf_path="/tmp/model.gguf", n_ctx=2048)
+
+    def test_dotenv_does_not_override_process_env(self, tmp_path, monkeypatch):
+        dotenv = tmp_path / ".env"
+        dotenv.write_text("SEBENI_TEST_KEY=file\nNEW_TEST_KEY=value\n", encoding="utf-8")
+        monkeypatch.setenv("SEBENI_TEST_KEY", "process")
+        monkeypatch.delenv("NEW_TEST_KEY", raising=False)
+        cfg.load_dotenv([dotenv])
+        assert __import__("os").environ["SEBENI_TEST_KEY"] == "process"
+        assert __import__("os").environ["NEW_TEST_KEY"] == "value"
 
 
 class TestAlgorithmDispatch:
@@ -351,6 +535,105 @@ class TestCLI:
 
 
 class TestHeadlessDabaX:
+    def test_wrong_pypi_daba_has_actionable_error(self):
+        from beni.core.morphotactic.dabax import _daba_modules
+
+        package_metadata = {
+            "Summary": "daba by Klivolks",
+            "Home-page": "https://github.com/klivolks/DaBa",
+            "Author": "Vishnu Prakash",
+        }
+        real_import = __import__
+
+        def import_without_mparser(name, *args, **kwargs):
+            if name == "daba":
+                raise ImportError("cannot import name 'mparser' from 'daba'")
+            return real_import(name, *args, **kwargs)
+
+        with patch("builtins.__import__", side_effect=import_without_mparser), patch(
+            "beni.core.morphotactic.dabax.metadata.metadata",
+            return_value=package_metadata,
+        ):
+            with pytest.raises(ImportError) as raised:
+                _daba_modules()
+
+        message = str(raised.value)
+        assert "unrelated Klivolks Mongo helper" in message
+        assert "pip uninstall -y daba" in message
+        assert "github.com/maslinych/daba.git" in message
+        assert "--no-deps" in message
+        assert "wxPython is not required" in message
+        assert "daba>=0.9.5" not in message
+
+    def test_missing_runtime_dep_has_actionable_error(self):
+        from beni.core.morphotactic.dabax import _daba_modules
+
+        real_import = __import__
+
+        def import_without_pkg_resources(name, *args, **kwargs):
+            if name == "daba" or name.startswith("daba."):
+                missing = ModuleNotFoundError("No module named 'pkg_resources'")
+                missing.name = "pkg_resources"
+                raise missing
+            return real_import(name, *args, **kwargs)
+
+        with patch("builtins.__import__", side_effect=import_without_pkg_resources), patch(
+            "beni.core.morphotactic.dabax._wrong_pypi_daba", return_value=False
+        ), patch(
+            "beni.core.morphotactic.dabax._maslinych_parser_present", return_value=True
+        ):
+            with pytest.raises(ImportError) as raised:
+                _daba_modules()
+
+        message = str(raised.value)
+        assert "CLI runtime dependency is missing" in message
+        assert "pkg_resources" in message
+        assert "pip install setuptools" in message
+        assert "daba>=0.9.5" not in message
+        assert "pip uninstall -y daba" not in message
+
+    def test_get_dabax_reuses_instance_for_same_checkpoint(self, tmp_path):
+        from beni.core.morphotactic import dabax as dabax_mod
+
+        dabax_mod.clear_dabax_cache()
+        gram = tmp_path / "baseline.gram"
+        ldict = tmp_path / "baseline.dict"
+        gram.write_text("x\n", encoding="utf-8")
+        ldict.write_text("y\n", encoding="utf-8")
+        runtime = tmp_path / "runtime"
+        fake = MagicMock()
+        with patch.object(dabax_mod, "DabaX", return_value=fake) as ctor:
+            first = dabax_mod.get_dabax(
+                "bam", gram=gram, ldict=ldict, runtime_dir=runtime
+            )
+            second = dabax_mod.get_dabax(
+                "bam", gram=gram, ldict=ldict, runtime_dir=runtime
+            )
+            assert first is second is fake
+            assert ctor.call_count == 1
+            other = tmp_path / "other.dict"
+            other.write_text("z\n", encoding="utf-8")
+            third = dabax_mod.get_dabax(
+                "bam", gram=gram, ldict=other, runtime_dir=runtime
+            )
+            assert third is fake
+            assert ctor.call_count == 2
+        dabax_mod.clear_dabax_cache()
+
+    def test_build_dabax_reference_reuses_parser(self):
+        from beni.core.morphotactic import dabax as dabax_mod
+        from beni.data.datasets import build_dabax_reference
+
+        dabax_mod.clear_dabax_cache()
+        parser = MagicMock()
+        parser.loader.return_value = []
+        with patch.object(dabax_mod, "get_dabax", return_value=parser) as getter:
+            build_dabax_reference("aw ka", "bam")
+            build_dabax_reference("n be taa", "bam")
+            assert getter.call_count == 2
+            assert parser.loader.call_count == 2
+        dabax_mod.clear_dabax_cache()
+
     def test_loader_without_wx(self, tmp_path):
         pytest.importorskip("daba.mparser")
         from beni.core.morphotactic.dabax import DabaX
@@ -435,6 +718,58 @@ class TestPackagedSplits:
         texts = {r["text"] for r in recs}
         assert "i ni ce" in texts
         assert "aw ka" in texts
+
+
+class TestWordfreqRawPipeline:
+    def test_config_language_processes_raw_text(self, tmp_path):
+        from beni.core.wordfreq import WordfreqReport, count_raw_inputs
+
+        raw = tmp_path / "corpus.txt"
+        raw.write_text("aw ka\nsecond line\n", encoding="utf-8")
+
+        def fake_count(texts, lang, gram=None, ldict=None, checkpoint_id=None):
+            values = list(texts)
+            return WordfreqReport(
+                language=lang,
+                checkpoint_id=checkpoint_id,
+                surfaces={values[0]: 1},
+                n_sentences=len(values),
+            )
+
+        with patch(
+            "beni.core.wordfreq.resolve_baseline_files",
+            return_value=(Path("g"), Path("d"), "packaged"),
+        ), patch("beni.core.wordfreq.count_texts", side_effect=fake_count):
+            reports = count_raw_inputs(raw, languages=["bam"], default_lang="bam")
+        assert set(reports) == {"bam"}
+        assert reports["bam"].n_sentences == 2
+
+    def test_cli_wordfreq_needs_no_llm_key(self, tmp_path, monkeypatch):
+        from typer.testing import CliRunner
+        from beni.cli.main import app
+
+        raw = tmp_path / "bam.txt"
+        raw.write_text("a\n", encoding="utf-8")
+        config = tmp_path / "config.yaml"
+        config.write_text(
+            "\n".join(
+                [
+                    f"working_dir: {tmp_path / 'run'}",
+                    "data:",
+                    "  default_lang: bam",
+                    "  languages: [bam]",
+                    "wordfreq:",
+                    f"  raw_inputs: {raw}",
+                    "distillation:",
+                    "  backend: algorithmic",
+                ]
+            ),
+            encoding="utf-8",
+        )
+        monkeypatch.delenv("GOOGLE_API_KEY", raising=False)
+        result = CliRunner().invoke(app, ["wordfreq", "-c", str(config)])
+        assert result.exit_code == 0, result.output
+        assert (tmp_path / "run" / "exp" / "wordfreq" / "bam" / "wordfreq.json").exists()
 
 
 class TestExperimentConfig:

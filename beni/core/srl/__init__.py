@@ -7,9 +7,11 @@ from beni.core.srl.config import (
     APOTrainerConfig,
     DistillationConfig,
     RewardConfig,
+    WordfreqConfig,
     SafetyConfig,
     MasterConfig,
     SRLGrpoPrompt,
+    trl_config_kwargs,
 )
 from beni.core.srl.unified import SRLTrainer, get_algorithm, register_algorithm
 
@@ -34,6 +36,7 @@ __all__ = [
     "APOTrainerConfig",
     "DistillationConfig",
     "RewardConfig",
+    "WordfreqConfig",
     "SafetyConfig",
     "MasterConfig",
     "SRLGrpoPrompt",
@@ -41,4 +44,5 @@ __all__ = [
     "SRLTrainer",
     "get_algorithm",
     "register_algorithm",
+    "trl_config_kwargs",
 ]

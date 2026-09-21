@@ -17,6 +17,7 @@ policy θ is updated (GRPO by default, DPO/APO as policy-update plugins).
 
 ```bash
 pip install "sebeni[train,distil] @ git+https://github.com/mlsftwrs/sebeni.git"
+pip install "daba @ git+https://github.com/maslinych/daba.git" --no-deps
 sebeni --help
 ```
 
@@ -30,21 +31,30 @@ Python ≥ 3.10. The default extra does **not** install wxPython.
 
 ```bash
 pip install "sebeni[train,distil] @ git+https://github.com/mlsftwrs/sebeni.git"
+pip install "daba @ git+https://github.com/maslinych/daba.git" --no-deps
 ```
 
-From a clone: `pip install -e ".[train,distil,dev]"`.
+From a clone, install Sebeni and then the same headless Daba parser:
+
+```bash
+pip install -e ".[train,distil,dev]"
+pip install "daba @ git+https://github.com/maslinych/daba.git" --no-deps
+```
 
 | Extra | Contents |
 | --- | --- |
-| (default) | CLI, YAML, DabaX, metrics, safety, `daba>=0.9.5` |
+| (default) | CLI, YAML, DabaX runtime dependencies, metrics, safety |
 | `[train]` | torch, transformers, trl, peft, datasets, accelerate, trackio |
 | `[wandb]` | wandb (`trainer.report_to: wandb`) |
 | `[distil]` | google-genai, openai, groq, together |
+| `[gguf]` | llama-cpp-python for local Distiller refinement |
+| `[jax]` | JAX, Flax, Optax, Orbax policy updates |
 | `[docs]` | MkDocs Material + mkdocstrings |
 | `[dev]` | pytest, ruff |
 | `[gui]` | wxPython (upstream Daba gparser only; not required) |
 
-Set a Distiller key as needed: `GOOGLE_API_KEY`, `OPENAI_API_KEY`, `GROQ_API_KEY`,
+The default algorithmic Distiller needs no key. Optional LLM refinement accepts
+`.env`, Google ADC, `GOOGLE_API_KEY`, `OPENAI_API_KEY`, `GROQ_API_KEY`,
 or `TOGETHER_API_KEY`. Hub push uses `HF_TOKEN` or `huggingface-cli login`.
 
 ## Quick start
@@ -164,7 +174,9 @@ Push checklist and org transfer: [Hub](https://seben.robotsmali.org/docs/hub/).
 
 DabaX uses CLI `daba.mparser` only (`DictLoader`, `GrammarLoader`, `Tokenizer`,
 `Processor`). Parser credit: [maslinych/daba](https://github.com/maslinych/daba)
-(GPLv2+). Do not vendor GPL sources into this MIT tree. A CLI-only fork under
+(GPLv2+). Install it from GitHub with `--no-deps` to avoid its optional GUI
+stack; Sebeni already pins `setuptools` (`pkg_resources`) and the other CLI
+runtime libraries. Do not vendor GPL sources into this MIT tree. A CLI-only fork under
 [mlsftwrs](https://github.com/mlsftwrs) is the intended long-term pin.
 
 ## Tests

@@ -179,7 +179,7 @@ def maybe_distill_batch(
         logger.info("SAMPG: Φ=%.4f ≥ τ=%.4f; skip Distiller", phi, tau)
         return PromoteDecision(False, "phi_above_tau", phi, phi, True, False)
 
-    proposal = distiller.propose(texts)
+    proposal = distiller.propose(texts, current_phi=phi)
     if proposal is None:
         return PromoteDecision(False, "no_proposal", phi, phi, False, distiller.is_first_create())
 

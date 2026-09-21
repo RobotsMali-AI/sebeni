@@ -20,6 +20,7 @@ data:
   scheme: completion
 
 trainer:
+  framework: torch       # torch | jax (falls back clearly if Flax weights are absent)
   learning_rate: 5.0e-6
   per_device_train_batch_size: 2
   gradient_accumulation_steps: 8
@@ -40,10 +41,13 @@ trainer:
 
 distillation:
   enabled: true
-  provider: google       # google | gemini | openai | groq | together
+  backend: algorithmic   # algorithmic | gguf | google | openai | groq | together
   model: gemini-2.5-flash
   tau: 0.5
   hitl: false
+
+wordfreq:
+  raw_inputs: null       # defaults to packaged beni/data/raw
 
 reward:
   format_weight: 0.2

@@ -34,12 +34,21 @@ runs by epoch count.
 
 ## `trainer:` (GRPO / TRL `GRPOConfig`)
 
+`framework: torch` (default) uses TRL. `framework: jax` uses Flax/Optax for
+GRPO, DPO, or APO when Flax weights exist. If the selected repository has no
+Flax weights, Sebeni explains the failed probe and continues with torch/TRL;
+set `model.flax_model_name` to pin a separate Flax checkpoint.
+Unknown TRL constructor names are dropped at train time so the same YAML
+works on TRL 0.x (`max_prompt_length`, `warmup_ratio`) and TRL 1.x
+(`max_completion_length`, `warmup_steps`). DPO maps `max_prompt_length`
+onto `max_length` when the installed TRL no longer has the prompt field.
+
 | Key | Default | CLI |
 | --- | --- | --- |
 | `learning_rate` | `5e-6` | `--lr` |
 | `per_device_train_batch_size` | `2` | `--batch-size` |
 | `gradient_accumulation_steps` | `8` | `--grad-accum` |
-| `max_prompt_length` | `1024` | `--max-prompt-length` |
+| `max_prompt_length` | `1024` | `--max-prompt-length` (ignored on TRL 1.x GRPO; kept for 0.x / DPO mapping) |
 | `max_completion_length` | `1024` | `--max-completion-length` |
 | `max_steps` | `10` | `--max-steps` |
 | `num_train_epochs` | `1.0` | `--epochs` |
@@ -53,7 +62,7 @@ runs by epoch count.
 | `temperature` | `0.9` | `--temperature` |
 | `top_p` | `1.0` | (YAML) |
 | `top_k` | `50` | (YAML) |
-| `warmup_ratio` | `0.0` | `--warmup-ratio` |
+| `warmup_ratio` | `0.0` | `--warmup-ratio` (ignored on TRL 1.x; use `warmup_steps`) |
 | `warmup_steps` | `0` | `--warmup-steps` |
 | `weight_decay` | `0.0` | `--weight-decay` |
 | `lr_scheduler_type` | `cosine` | `--lr-scheduler` |
@@ -64,7 +73,7 @@ runs by epoch count.
 | `gradient_checkpointing` | `false` | `--grad-checkpoint` |
 | `dataloader_num_workers` | `0` | (YAML) |
 | `use_cpu` | `false` | `--use-cpu` / `--no-use-cpu` |
-| `report_to` | `trackio` | (YAML) |
+| `report_to` | `trackio` | (YAML; passed through to TRL with `project=<project_name>` so Trainer logs into that Trackio project, not `huggingface`.) |
 | `push_to_hub` | `false` | (YAML) |
 | `hub_model_id` | `null` | (YAML) |
 
@@ -90,5 +99,5 @@ See [Experiments](experiments.md).
 
 ## What the CLI does *not* replace
 
-Reward weights, SafetyGovernor gates, Distiller `provider` / `model` / `tau`,
+Reward weights, SafetyGovernor gates, Distiller `backend` / `model` / `tau`,
 and Hub tokens stay in YAML (or the environment for API keys).

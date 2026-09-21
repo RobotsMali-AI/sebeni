@@ -77,7 +77,9 @@ runs by epoch count.
 Env keys: `SEBENI_HOME`, `SEBENI_WORKING_DIR`, `GOOGLE_API_KEY`, `OPENAI_API_KEY`,
 `GROQ_API_KEY`, `TOGETHER_API_KEY`, `HF_TOKEN`.
 
-Extras: `[train]`, `[wandb]`, `[distil]`, `[docs]`, `[dev]`. Parser (`daba>=0.9.5`) is default;
+Extras: `[train]`, `[wandb]`, `[distil]`, `[docs]`, `[dev]`. Install the
+headless parser separately with
+`pip install "daba @ git+https://github.com/maslinych/daba.git" --no-deps`;
 `[gui]` is wxPython for upstream gparser only.
 
 ## Python equivalent of `sebeni train`

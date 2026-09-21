@@ -29,7 +29,7 @@ Data (`data/bam.jsonl`):
 ```
 
 ```bash
-export GOOGLE_API_KEY=...
+# No API key is needed for the default algorithmic Distiller.
 sebeni init --lang bam -w ./runs/bam-grpo
 # edit config: data.source, model.model_name, trainer.max_steps
 sebeni train -c ./runs/bam-grpo/config.yaml \
@@ -56,7 +56,7 @@ trainer:
   num_generations: 4
   max_steps: 50
 distillation:
-  provider: google
+  backend: algorithmic
   tau: 0.5
 ```
 
@@ -125,7 +125,8 @@ Records may be `{text, lang, chosen, rejected}` or
 
 ## 6. Eval / wordfreq without training
 
-Point `data.source` at a held-out split and run eval / wordfreq without a
+Point `data.source` at a held-out split for eval. Set `wordfreq.raw_inputs` for
+the raw-text frequency pipeline and run without a
 policy step:
 
 ```bash

@@ -22,6 +22,7 @@ from beni.core.srl.grpo.callbacks import (
     PreUpdateHookManager,
     distillation_hook,
     format_gradient_mask_hook,
+    log_trackio,
 )
 from beni.data.datasets import SebeniDataLoader as DL
 
@@ -29,6 +30,39 @@ try:
     import trackio
 except ImportError:
     trackio = None
+
+# ChatML fallback when the hub tokenizer has no chat_template (e.g. base SmolLM2).
+CHATML_CHAT_TEMPLATE = (
+    "{% for message in messages %}"
+    "{{'<|im_start|>' + message['role'] + '\\n' + message['content'] + '<|im_end|>\\n'}}"
+    "{% endfor %}"
+    "{% if add_generation_prompt %}{{'<|im_start|>assistant\\n'}}{% endif %}"
+)
+
+
+def _ensure_chat_template(tokenizer):
+    """Set ChatML if ``tokenizer.chat_template`` is missing so TRL can format prompts."""
+    template = getattr(tokenizer, "chat_template", None)
+    if template:
+        return tokenizer
+    tokenizer.chat_template = CHATML_CHAT_TEMPLATE
+    return tokenizer
+
+
+def _bitsandbytes_usable() -> bool:
+    if not torch.cuda.is_available():
+        return False
+    try:
+        from transformers.utils.import_utils import is_bitsandbytes_available
+
+        return bool(is_bitsandbytes_available())
+    except Exception:
+        try:
+            import bitsandbytes  # noqa: F401
+
+            return True
+        except ImportError:
+            return False
 
 
 class AlignmentPlugin:
@@ -72,10 +106,14 @@ class AlignmentPlugin:
             kl_beta=self.config.trainer.beta,
         )
         self.governor = SafetyGovernor(spec)
-        self.reward_manager = RewardManager(reward_config=self.config.reward)
+        self.reward_manager = RewardManager(
+            reward_config=self.config.reward,
+            working_dir=self.config.working_dir,
+        )
         self.hook_manager = PreUpdateHookManager(model=None)
         self.data_loader = DL(config=self.config.data)
         self._last_logps = {"model_logps": None, "ref_logps": None, "kl": None}
+        self._last_uncertainty = {}
 
     def register_reward(self, name: str, reward_fn: Callable, weight: float = 1.0) -> None:
         """Register a user-defined custom reward function into the framework."""
@@ -105,11 +143,18 @@ class AlignmentPlugin:
             or getattr(self.config.dpo, "use_cpu", False)
             or getattr(self.config.apo, "use_cpu", False)
         )
-        if use_cpu:
+        if use_cpu or not torch.cuda.is_available():
             device_map = "cpu"
 
         bnb_config = None
-        use_4bit = self.config.model.load_in_4bit and not use_cpu
+        use_4bit = self.config.model.load_in_4bit and device_map != "cpu"
+        if use_4bit and not _bitsandbytes_usable():
+            print(
+                "load_in_4bit requested but bitsandbytes/CUDA is unavailable; "
+                "loading full precision. Install bitsandbytes, or set "
+                "model.load_in_4bit: false and trainer.use_cpu: true."
+            )
+            use_4bit = False
         if use_4bit:
             bnb_config = BitsAndBytesConfig(
                 load_in_4bit=True,
@@ -137,6 +182,7 @@ class AlignmentPlugin:
             })
         if self.tokenizer.pad_token is None:
             self.tokenizer.pad_token = self.tokenizer.eos_token
+        _ensure_chat_template(self.tokenizer)
 
         if self.config.model.use_peft:
             self.model = self.apply_lora(self.model)
@@ -188,44 +234,98 @@ class AlignmentPlugin:
 
         if hasattr(trainer, "compute_loss"):
             original_loss = trainer.compute_loss
+            callbacks = getattr(
+                getattr(trainer, "callback_handler", None), "callbacks", []
+            )
 
             def capturing_loss(model, inputs, *args, **kwargs):
                 if isinstance(inputs, dict):
-                    self._last_logps["model_logps"] = (
-                        inputs.get("old_per_token_logps")
-                        or inputs.get("sampling_per_token_logps")
-                        or inputs.get("per_token_logps")
-                    )
-                    self._last_logps["ref_logps"] = inputs.get("ref_per_token_logps")
-                return original_loss(model, inputs, *args, **kwargs)
+                    for callback in callbacks:
+                        process = getattr(callback, "process_inputs", None)
+                        if callable(process):
+                            process(
+                                inputs,
+                                step=getattr(
+                                    getattr(trainer, "state", None),
+                                    "global_step",
+                                    None,
+                                ),
+                            )
+                result = original_loss(model, inputs, *args, **kwargs)
+                if isinstance(inputs, dict):
+                    for key in (
+                        "old_per_token_logps",
+                        "sampling_per_token_logps",
+                        "per_token_logps",
+                    ):
+                        value = inputs.get(key)
+                        if value is not None:
+                            self._last_logps["model_logps"] = value
+                            break
+                    ref_value = inputs.get("ref_per_token_logps")
+                    if ref_value is not None:
+                        self._last_logps["ref_logps"] = ref_value
+                return result
 
             trainer.compute_loss = capturing_loss
 
-        optimizer = getattr(trainer, "optimizer", None)
-        if optimizer is None:
-            return
-        original_step = optimizer.step
+        def install_step_hook(optimizer):
+            if optimizer is None or getattr(optimizer, "_sebeni_hooked", False):
+                return
+            original_step = optimizer.step
 
-        def hooked_step(*args, **kwargs):
-            logs = {}
-            if getattr(trainer, "state", None) is not None and trainer.state.log_history:
-                logs = trainer.state.log_history[-1]
-            kl = logs.get("kl") or logs.get("objective/kl") or logs.get("train/kl")
-            batch_meta = {
-                "format_scores": list(self.reward_manager.format_scores),
-                "model_logps": self._last_logps.get("model_logps"),
-                "ref_logps": self._last_logps.get("ref_logps"),
-                "kl": kl,
-                "governor": self.governor,
-            }
-            allowed = self.governor.apply_pre_update(self.hook_manager.model, batch_meta)
-            batch_meta["_governor_applied"] = True
-            batch_meta["_governor_allowed"] = allowed
-            self.hook_manager(batch_meta)
-            self.reward_manager.clear()
-            return original_step(*args, **kwargs)
+            def hooked_step(*args, **kwargs):
+                logs = {}
+                if (
+                    getattr(trainer, "state", None) is not None
+                    and trainer.state.log_history
+                ):
+                    logs = trainer.state.log_history[-1]
+                kl = logs.get("kl") or logs.get("objective/kl") or logs.get("train/kl")
+                batch_meta = {
+                    "format_scores": list(self.reward_manager.format_scores),
+                    "model_logps": self._last_logps.get("model_logps"),
+                    "ref_logps": self._last_logps.get("ref_logps"),
+                    "predicted_stages": list(self.reward_manager.predicted_stages),
+                    "kl": kl,
+                    "governor": self.governor,
+                }
+                allowed = self.governor.apply_pre_update(
+                    self.hook_manager.model, batch_meta
+                )
+                self._last_uncertainty = {
+                    key: batch_meta[key]
+                    for key in ("u_indicator", "u_kl", "uncertainty")
+                    if key in batch_meta
+                }
+                log_trackio(
+                    {
+                        key: batch_meta[key]
+                        for key in ("u_indicator", "u_kl", "uncertainty")
+                        if key in batch_meta
+                    }
+                )
+                batch_meta["_governor_applied"] = True
+                batch_meta["_governor_allowed"] = allowed
+                self.hook_manager(batch_meta)
+                self.reward_manager.clear()
+                return original_step(*args, **kwargs)
 
-        optimizer.step = hooked_step
+            optimizer.step = hooked_step
+            optimizer._sebeni_hooked = True
+
+        install_step_hook(getattr(trainer, "optimizer", None))
+        if getattr(trainer, "optimizer", None) is None and hasattr(
+            trainer, "create_optimizer"
+        ):
+            original_create_optimizer = trainer.create_optimizer
+
+            def create_optimizer_with_hooks(*args, **kwargs):
+                result = original_create_optimizer(*args, **kwargs)
+                install_step_hook(getattr(trainer, "optimizer", None))
+                return result
+
+            trainer.create_optimizer = create_optimizer_with_hooks
 
     def _report_to(self) -> str:
         if self.config.algorithm == "dpo":
@@ -240,8 +340,14 @@ class AlignmentPlugin:
             value = value[0] if value else ""
         return str(value or "").strip().lower()
 
+    def _trainer_owns_trackio(self) -> bool:
+        """Hugging Face TrackioCallback inits/finishes when report_to is trackio."""
+        return getattr(self, "trainer", None) is not None and self._report_to() == "trackio"
+
     def _init_trackio(self, project_name: str) -> None:
         if self._report_to() != "trackio" or trackio is None:
+            return
+        if self._trainer_owns_trackio():
             return
         try:
             trackio.init(
@@ -250,7 +356,7 @@ class AlignmentPlugin:
                 config={
                     "model": self.config.model.model_name,
                     "algorithm": self.config.algorithm,
-                    "distillation_provider": self.config.distillation.provider,
+                    "distillation_backend": self.config.distillation.selected_backend,
                     "distillation_model": self.config.distillation.model,
                     "working_dir": self.config.working_dir,
                 },
@@ -259,7 +365,7 @@ class AlignmentPlugin:
             print(f"Trackio init skipped: {exc}")
 
     def _finish_trackio(self) -> None:
-        if trackio is None:
+        if trackio is None or self._trainer_owns_trackio():
             return
         try:
             trackio.finish()
@@ -273,6 +379,8 @@ class AlignmentPlugin:
         nested["languages"] = langs
         extra.setdefault("language", ",".join(langs) if isinstance(langs, (list, tuple)) else langs)
         extra.setdefault("group_code", extra["language"])
+        for key, value in self._last_uncertainty.items():
+            extra.setdefault(key, value)
         extra["extra"] = nested
         snapshot = self.governor.record_snapshot(
             tau=self.config.distillation.tau,

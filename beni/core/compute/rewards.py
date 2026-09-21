@@ -1,11 +1,11 @@
 import re
 import json
+import math
+from pathlib import Path
 from typing import List, Dict, Any, Optional, Callable, Tuple
-from beni.core.compute.helpers import recognized_word
 from beni.core.compute.metrics import MorphologyScorer
 from beni.core.compute import Sentence, Token, Analysis, Morpheme
 from beni.core.morphotactic import dabax
-from beni.core.morphotactic.distil import distillation
 from beni.core.srl.config import RewardConfig
 from beni.utils import config as cfg
 
@@ -22,9 +22,15 @@ class RewardManager:
     flows into compute_rewards / the reward functions without any extra plumbing.
     """
 
-    def __init__(self, reward_config: Optional[RewardConfig] = None, scorer: Optional[MorphologyScorer] = None):
+    def __init__(
+        self,
+        reward_config: Optional[RewardConfig] = None,
+        scorer: Optional[MorphologyScorer] = None,
+        working_dir: Optional[str] = None,
+    ):
         self.config = reward_config or RewardConfig()
         self.scorer = scorer or MorphologyScorer()
+        self.working_dir = Path(working_dir) if working_dir else cfg.get_workdir().root
         self.format_scores: List[float] = []
         self.total_reward: float = 0.0
         self.predicted_stages: List[List[Any]] = []
@@ -83,14 +89,64 @@ class RewardManager:
                 ))
             tokens.append(Token(
                 surface=t_data.get("surface", ""),
-                stage=t_data.get("stage", -2),
+                stage=t_data.get("stage", -1),
                 analyses=analyses,
             ))
-        return Sentence(text=text, tokens=tokens)
+        return Sentence(
+            text=text or json_data.get("text", ""),
+            lang=json_data.get("lang", "bam"),
+            tokens=tokens,
+        )
+
+    def _dabax(self, lang: str):
+        return dabax.get_dabax(
+            lang,
+            process=True,
+            runtime_dir=self.working_dir / "runtime",
+            working_dir=self.working_dir,
+        )
 
     @staticmethod
-    def extract_json(text: str) -> dict:
-        text = text.strip()
+    def _lemma_overlap(predicted: Sentence, reference: Sentence) -> float:
+        if not reference.tokens:
+            return 0.0
+        matches = 0
+        for pred, ref in zip(predicted.tokens, reference.tokens):
+            pred_form = pred.analyses[0].form if pred.analyses else ""
+            ref_form = ref.analyses[0].form if ref.analyses else ""
+            matches += int(bool(ref_form) and pred_form == ref_form)
+        return matches / max(len(reference.tokens), len(predicted.tokens))
+
+    @staticmethod
+    def completion_text(completion: Any) -> str:
+        """Unwrap TRL conversational completions to the assistant string.
+
+        GRPO 1.x passes ``[[{"role": "assistant", "content": "..."}]]`` when the
+        dataset prompt is a chat. Older TRL passed the decoded string.
+        """
+        if completion is None:
+            return ""
+        if isinstance(completion, str):
+            return completion
+        if isinstance(completion, dict):
+            return str(completion.get("content") or completion.get("text") or "")
+        if isinstance(completion, (list, tuple)):
+            if not completion:
+                return ""
+            for item in reversed(completion):
+                if isinstance(item, dict) and str(item.get("role", "")).lower() == "assistant":
+                    return str(item.get("content") or "")
+            last = completion[-1]
+            if isinstance(last, dict):
+                return str(last.get("content") or last.get("text") or "")
+            if isinstance(last, str):
+                return last
+            return RewardManager.completion_text(last)
+        return str(completion)
+
+    @staticmethod
+    def extract_json(text: Any) -> dict:
+        text = RewardManager.completion_text(text).strip()
         try:
             return json.loads(text)
         except json.JSONDecodeError:
@@ -132,38 +188,28 @@ class RewardManager:
 
     def reward_morph(self, 
         completions: List[str], 
-        language: Optional[List[str]] = None, **kwargs) -> List[float]:
-        """R_morph: Ratio of Stage 1 words over (Stage 1 + Stage >=4) words."""
+        language: Optional[List[str]] = None,
+        reference=None,
+        prompts=None,
+        **kwargs,
+    ) -> List[float]:
+        """R_morph: annotation quality against DabaX ideal JSON y*."""
 
         scores = []
-        langs = language or [""] * len(completions)
-        
-        for sent, lang in zip(self.completions_to_sentences(completions), langs):
-            tokens = sent.tokens
-            if not tokens:
+        predicted = self.completions_to_sentences(completions)
+        references = self._parse_references(prompts or [{}] * len(completions), reference)
+        for sent, ref_sent in zip(predicted, references):
+            if not sent.tokens or not ref_sent.tokens:
                 scores.append(0.0)
                 continue
-
-            group = cfg.get_group_code(lang) if lang else lang
-            distil = distillation.Distiller(lang_code=group)
-            daba_x = dabax.DabaX(
-                lang=group, gram=distil.gram_path, ldict=distil.dict_path)
-            
-            stages = []
-
-            for tok in tokens:
-                parsed_sents = daba_x.loader(tok.surface)
-                parsed = parsed_sents[0] if parsed_sents else None
-                if parsed and parsed.tokens:
-                    stages.append(1 if parsed.tokens[0].has_valid_stage else 0)
-                else:
-                    stages.append(0)
-
-            ratio = sum(stages) / len(stages)
-
-            score = self.config.morph_weight * ratio
+            mcs = self.scorer.mcs(sent, ref_sent)
+            mer = self.scorer.mer_sentence(ref_sent, sent, agg="micro")
+            mer_quality = 0.0 if not math.isfinite(mer) else 1.0 - min(max(mer, 0.0), 1.0)
+            lemma = self._lemma_overlap(sent, ref_sent)
+            score = self.config.morph_weight * ((mcs + mer_quality + lemma) / 3.0)
             scores.append(score)
             self.total_reward += score
+            self.predicted_stages.append([t.stage for t in sent.tokens])
 
         return scores
 
@@ -178,19 +224,17 @@ class RewardManager:
 
         scores = []
         for i, (pred_sent, ref_sent, lang) in enumerate(zip(predicted, reference_sentences, langs)):
-            group = cfg.get_group_code(lang) if lang else lang
-            distil = distillation.Distiller(lang_code=group)
-            daba_x = dabax.DabaX(lang=group, gram=distil.gram_path, ldict=distil.dict_path)
-
-            pred_loaded = daba_x.loader(pred_sent.text) if pred_sent.text else []
-            ref_loaded = daba_x.loader(ref_sent.text) if ref_sent.text else []
+            try:
+                daba_x = self._dabax(lang)
+                pred_loaded = daba_x.loader(pred_sent.text) if pred_sent.text else []
+            except Exception:
+                pred_loaded = []
             pred_sent = pred_loaded[0] if pred_loaded else pred_sent
-            ref_sent = ref_loaded[0] if ref_loaded else ref_sent
 
             phi_score = self.scorer.phi(pred_sent)
-            mcs_score = self.scorer.mcs(pred_sent, ref_sent)
+            lexical_score = self._lemma_overlap(pred_sent, ref_sent)
 
-            score = self.config.rule_weight * 0.5 * (phi_score + mcs_score)
+            score = self.config.rule_weight * 0.5 * (phi_score + lexical_score)
             scores.append(score)
 
             self.total_reward += score
@@ -211,7 +255,9 @@ class RewardManager:
                     parsed = RewardManager.extract_json(ref)
                     if parsed:
                         reference_sentences.append(
-                            RewardManager.parse_json_to_sentence(parsed, ref))
+                            RewardManager.parse_json_to_sentence(
+                                parsed, parsed.get("text", "")
+                            ))
                     else:
                         reference_sentences.append(Sentence(text="", tokens=[]))
                 else:
@@ -258,12 +304,21 @@ class RewardManager:
 
         return scores
 
-    def compute_rewards(self, completions: List[str], prompts: List[Dict[str, Any]],
-                        languages: Optional[List[str]] = None) -> Dict[str, List[float]]:
+    def compute_rewards(
+        self,
+        completions: List[str],
+        prompts: List[Dict[str, Any]],
+        languages: Optional[List[str]] = None,
+        reference=None,
+    ) -> Dict[str, List[float]]:
         """Compute all rewards for a batch of completions."""
         format_scores = self.reward_format(completions, language=languages)
-        morph_scores = self.reward_morph(completions, language=languages)
-        rule_scores = self.reward_rule(completions, prompts=prompts, language=languages)
+        morph_scores = self.reward_morph(
+            completions, language=languages, reference=reference, prompts=prompts
+        )
+        rule_scores = self.reward_rule(
+            completions, prompts=prompts, language=languages, reference=reference
+        )
         lang_scores = self.reward_lang(completions, language=languages) if getattr(
             self.config, "enable_lang_reward", False) else [0.0] * len(completions)
 

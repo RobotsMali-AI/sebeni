@@ -15,4 +15,5 @@ run/
 *.junk
 *.junk.txt
 site/
-
+review.md
+.env

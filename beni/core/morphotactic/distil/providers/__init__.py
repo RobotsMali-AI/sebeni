@@ -8,6 +8,7 @@ PROVIDER_REGISTRY = {
     "openai": "beni.core.morphotactic.distil.providers.openai_compat:OpenAIProvider",
     "groq": "beni.core.morphotactic.distil.providers.openai_compat:GroqProvider",
     "together": "beni.core.morphotactic.distil.providers.openai_compat:TogetherProvider",
+    "gguf": "beni.core.morphotactic.distil.providers.gguf:GGUFProvider",
 }
 
 
@@ -24,7 +25,7 @@ def create_provider(name: str, api_key: str = None, model: str = None, **kw) -> 
     Parameters
     ----------
     name : str
-        ``google`` / ``gemini`` / ``openai`` / ``groq`` / ``together``.
+        ``google`` / ``gemini`` / ``openai`` / ``groq`` / ``together`` / ``gguf``.
     api_key : str, optional
         Falls back to the provider's environment variable.
     model : str, optional

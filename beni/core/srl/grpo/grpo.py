@@ -5,7 +5,7 @@ from trl import GRPOConfig, GRPOTrainer
 
 from beni.core.srl.config import (
     MasterConfig, ModelConfig, DataConfig, GRPOTrainerConfig,
-    DistillationConfig, RewardConfig
+    DistillationConfig, RewardConfig, trl_config_kwargs
 )
 from beni.core.srl.plugin import AlignmentPlugin
 from beni.core.morphotactic.distil.distillation import Distiller
@@ -66,9 +66,14 @@ class SebeniGrpo(AlignmentPlugin):
             try:
                 distiller = Distiller(
                     lang_code=group_code,
-                    provider=self.config.distillation.provider,
+                    backend=self.config.distillation.selected_backend,
                     model=self.config.distillation.model,
-                    working_dir=self.config.distillation.working_dir
+                    working_dir=self.config.distillation.working_dir,
+                    vertex=self.config.distillation.vertex,
+                    base_url=self.config.distillation.base_url,
+                    gguf_path=self.config.distillation.gguf_path,
+                    n_ctx=self.config.distillation.n_ctx,
+                    max_input_chars=self.config.distillation.max_input_chars,
                 )
                 if self.config.distillation.hitl:
                     distiller.handle_baselines()
@@ -134,7 +139,13 @@ class SebeniGrpo(AlignmentPlugin):
             self.load_models()
 
         project_name = project_name or self.config.project_name
-        grpo_args = GRPOConfig(**self.config.trainer.to_dict())
+        grpo_args = GRPOConfig(
+            **trl_config_kwargs(
+                GRPOConfig,
+                self.config.trainer.to_dict(),
+                project_name=project_name,
+            )
+        )
         reward_funcs = self.reward_manager.get_reward_functions()
 
         callbacks = [TrackioMetricsCallback(reward_manager=self.reward_manager)]

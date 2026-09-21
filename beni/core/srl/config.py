@@ -1,10 +1,63 @@
 from __future__ import annotations
 
+import datetime
+import inspect
 from dataclasses import dataclass, field, fields, is_dataclass
 from pathlib import Path
-from typing import Optional, Iterable, Dict, Any, List, Union
+from typing import Optional, Iterable, Dict, Any, List, Union, Type
 
 from beni.utils import config as cfg
+
+
+def trl_config_kwargs(
+    config_cls: Type,
+    data: Dict[str, Any],
+    aliases: Optional[Dict[str, str]] = None,
+    project_name: Optional[str] = None,
+    run_name: Optional[str] = None,
+) -> Dict[str, Any]:
+    """Keep only constructor kwargs accepted by the installed TRL config class.
+
+    Sebeni YAML still exposes 0.x names such as ``max_prompt_length`` and
+    ``warmup_ratio``. TRL 1.x dropped those on ``GRPOConfig`` / ``DPOConfig``.
+    ``aliases`` maps a dropped Sebeni name onto a still-valid TRL field when
+    that field is not already set (DPO ``max_prompt_length`` → ``max_length``).
+    When ``report_to`` is ``trackio``, ``project`` is set to ``project_name``
+    so Hugging Face's TrackioCallback logs into that project instead of the
+    default ``huggingface``.
+    """
+    params = inspect.signature(config_cls.__init__).parameters
+    allowed = set()
+    var_keyword = False
+    for name, param in params.items():
+        if name == "self":
+            continue
+        if param.kind == inspect.Parameter.VAR_KEYWORD:
+            var_keyword = True
+            continue
+        if param.kind == inspect.Parameter.VAR_POSITIONAL:
+            continue
+        allowed.add(name)
+    out = dict(data)
+    for src, dest in (aliases or {}).items():
+        if src not in out:
+            continue
+        if src not in allowed and dest in allowed:
+            out.setdefault(dest, out[src])
+        if src not in allowed:
+            out.pop(src, None)
+    if var_keyword:
+        out = dict(out)
+    else:
+        out = {key: value for key, value in out.items() if key in allowed}
+    if str(out.get("report_to") or "").strip().lower() == "trackio" and project_name:
+        if var_keyword or "project" in allowed:
+            out["project"] = project_name
+        if run_name is None:
+            run_name = f"run-{datetime.datetime.now().strftime('%Y%m%d-%H%M%S')}"
+        if run_name and (var_keyword or "run_name" in allowed):
+            out["run_name"] = run_name
+    return out
 
 
 def _overlay_dataclass(instance, data: Dict[str, Any]):
@@ -31,6 +84,7 @@ class ModelConfig:
     """Configuration for the base model, reference model, and LoRA/Quantization."""
     model_name: str = "HuggingFaceTB/SmolLM2-135M"
     ref_model_name: Optional[str] = None
+    flax_model_name: Optional[str] = None
     
     # Quantization (BitsAndBytes)
     load_in_4bit: bool = True
@@ -149,6 +203,7 @@ class GRPOTrainerConfig:
 
     # Hardware / Device
     use_cpu: bool = False
+    framework: str = "torch"  # torch | jax
 
     def to_dict(self) -> dict:
         """Export to dictionary for easy unpacking into GRPOConfig."""
@@ -313,13 +368,34 @@ class APOTrainerConfig:
 class DistillationConfig:
     """Configuration for morphotactic batch distillation using Distiller."""
     enabled: bool = True
-    provider: str = "google"
+    backend: str = "algorithmic"
+    provider: Optional[str] = None  # deprecated alias for backend
     model: str = "gemini-2.5-flash"
     working_dir: Optional[str] = None
     batch_size: int = 10
     auto_update_baselines: bool = True
     tau: float = 0.5
     hitl: bool = False
+    vertex: bool = False
+    base_url: Optional[str] = None
+    gguf_path: Optional[str] = None
+    n_ctx: int = 4096
+    max_input_chars: int = 8000
+
+    def __post_init__(self) -> None:
+        if self.provider:
+            self.backend = self.provider
+
+    @property
+    def selected_backend(self) -> str:
+        return str(self.provider or self.backend or "algorithmic").lower()
+
+
+@dataclass
+class WordfreqConfig:
+    """Raw text inputs for the DabaX frequency-map pipeline."""
+
+    raw_inputs: Optional[Union[str, List[str]]] = None
 
 
 @dataclass
@@ -393,6 +469,7 @@ class MasterConfig:
     reward: RewardConfig = field(default_factory=RewardConfig)
     safety: SafetyConfig = field(default_factory=SafetyConfig)
     experiment: ExperimentConfig = field(default_factory=ExperimentConfig)
+    wordfreq: WordfreqConfig = field(default_factory=WordfreqConfig)
 
     def apply_workdir(self, cli_path: Optional[Union[str, Path]] = None) -> Path:
         """Resolve and activate working_dir; rewrite default output/runtime paths."""
@@ -544,6 +621,7 @@ class MasterConfig:
     ) -> MasterConfig:
         """Load YAML/JSON into MasterConfig and activate working_dir."""
         path = Path(path)
+        cfg.load_dotenv([Path.cwd() / ".env", path.parent / ".env"])
         text = path.read_text(encoding="utf-8")
         if path.suffix.lower() in {".json"}:
             import json
@@ -554,6 +632,7 @@ class MasterConfig:
         config = cls.from_dict(data)
         config._config_file_dir = str(path.parent.resolve())
         config.apply_workdir(cli_path=working_dir)
+        cfg.load_dotenv([Path(config.working_dir) / ".env"])
         return config
 
 

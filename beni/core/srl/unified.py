@@ -102,7 +102,12 @@ class SRLTrainer:
             kl_beta=self.config.trainer.beta,
         )
         self.governor = SafetyGovernor(spec)
-        plugin_cls = get_algorithm(self.config.algorithm)
+        if str(getattr(self.config.trainer, "framework", "torch")).lower() == "jax":
+            from beni.core.srl.jax import JaxPolicyPlugin
+
+            plugin_cls = JaxPolicyPlugin
+        else:
+            plugin_cls = get_algorithm(self.config.algorithm)
         self.plugin = plugin_cls(self.config)
         self.plugin.governor = self.governor
 
@@ -136,9 +141,14 @@ class SRLTrainer:
                 continue
             distiller = Distiller(
                 lang_code=group,
-                provider=self.config.distillation.provider,
+                backend=self.config.distillation.selected_backend,
                 model=self.config.distillation.model,
                 working_dir=self.config.distillation.working_dir or self.config.working_dir,
+                vertex=self.config.distillation.vertex,
+                base_url=self.config.distillation.base_url,
+                gguf_path=self.config.distillation.gguf_path,
+                n_ctx=self.config.distillation.n_ctx,
+                max_input_chars=self.config.distillation.max_input_chars,
             )
             distiller.handle_baselines()
             proposal = distiller.propose(texts)

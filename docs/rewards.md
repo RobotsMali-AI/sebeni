@@ -24,15 +24,21 @@ IGT. \(N_m\) is the reference morpheme count. Lower is better.
 equals Daba's stage (self-awareness: no fake stage=1). Unaware hallucination is
 claiming a valid stage for a token Daba marks −1.
 
-**U** — \(I(\text{valid stage}) + \beta \log(\pi_\theta / \pi_{ref})\)
-(reward distrust; scales the gradient coefficient).
+**U** — \(I(\text{stage}_{pred}\ne-1) +
+\beta \log((\pi_\theta+\epsilon)/(\pi_{ref}+\epsilon))\). The stage indicator
+is averaged over morphological JSON tokens; the log ratio is averaged over LM
+completion tokens. They are not positionally zipped.
+
+U is reward distrust, not a fifth reward and not a replacement for Φ. Torch
+and JAX scale the update by \(1/(1+\operatorname{relu}(U))\). Evaluation logs
+`u_indicator`, `u_kl`, and `uncertainty`.
 
 ## Rewards
 
 | Term | Weight | Meaning |
 | --- | --- | --- |
-| \(R_{morph}\) | 0.4 | Mean Daba `Score(w)` via DabaX on JSON tokens; stage −1 heavily penalized |
-| \(R_{rule}\) | 0.4 | FST / Select-Mark / valence vs **G** and **D**; weighted Φ+MCS vs reference when present |
+| \(R_{morph}\) | 0.4 | Annotation quality vs DabaX \(y^*\): MCS, clipped MER quality, and lemma overlap |
+| \(R_{rule}\) | 0.4 | Text Φ under active **G**, **D**, plus lexical/POS agreement with \(y^*\) |
 | \(R_{format}\) | 0.2 | Valid **JSON** object with a `tokens` list |
 | \(R_{lang}\) | 0.2 | JSON `lang` matches **that row**'s group |
 
