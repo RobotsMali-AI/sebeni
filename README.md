@@ -83,7 +83,10 @@ sebeni wordfreq -c ./runs/manding-001/config.yaml
 `init` writes `config.yaml` plus `data/`, `models/`, `runs/`, `exp/`, `runtime/`.
 Repeat `--lang` (or `bam,mku`) for multilingual runs. Trainer / LoRA knobs are
 YAML keys under `model:` / `trainer:` / `dpo:` / `apo:` and CLI flags on
-`sebeni train` (`--lr`, `--batch-size`, `--lora-r`, `--beta`, …). Full tables:
+`sebeni train` (`--lr`, `--batch-size`, `--lora-r`, `--beta`, …). Metrics go to
+Trackio by default (`report_to: trackio`, project = `project_name`).
+`trainer.framework: jax` (with `[jax]`) runs Flax/Optax policy updates and falls
+back to torch/TRL with a warning when Flax weights are missing. Full tables:
 [Hyperparameters](https://seben.robotsmali.org/docs/hyperparams/).
 
 Examples: [`configs/exp.yaml`](configs/exp.yaml),
