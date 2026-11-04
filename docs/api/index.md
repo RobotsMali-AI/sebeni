@@ -8,7 +8,7 @@ Browse from [https://seben.robotsmali.org/docs/api/](https://seben.robotsmali.or
 
 | Page | Symbols |
 | --- | --- |
-| [SRL](srl.md) | `MasterConfig`, `SRLTrainer`, `register_algorithm`, SAMPG helpers |
+| [SRL](srl.md) | `MasterConfig`, `SRLTrainer`, `register_algorithm`, SAMPG helpers, `AlignmentPlugin`, callbacks, `JaxPolicyPlugin` |
 | [Safety](safety.md) | `SafetySpec`, `SafetyGovernor`, `PromoteDecision`, `SafetySnapshot` |
 | [Compute](compute.md) | `MorphologyScorer`, `RewardManager` |
 | [CLI](cli.md) | `sebeni` commands + `default_config_yaml` |
