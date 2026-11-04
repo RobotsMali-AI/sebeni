@@ -10,8 +10,9 @@ sebeni exp -c configs/exp.yaml -w ./runs/exp-001
 # alias: sebeni experiment
 ```
 
-If `-c` is omitted, Sebeni loads the packaged `exp.yaml`. `data.source` is
-**ignored**.
+If `-c` is omitted, Sebeni loads `configs/exp.yaml` from a source checkout
+when present, else the packaged `beni/data/exp.yaml`. `data.source` and
+`data.languages` are **ignored**; languages are discovered from the raw files.
 
 ```mermaid
 flowchart TD
@@ -42,11 +43,18 @@ Only `exp` pins the packaged splits.
 
 Edit [`configs/exp.yaml`](https://github.com/mlsftwrs/sebeni/blob/main/configs/exp.yaml):
 
-- `model.model_name` (and LoRA / 4-bit)
+- `model.model_name` (and LoRA / 4-bit; `model.flax_model_name` for JAX)
 - `algorithm: grpo | dpo | apo`
-- `trainer.*` (`lr`, `max_steps`, `batch_size`, `num_generations`, …)
-- `trainer.report_to: trackio | wandb | none` (default `trackio`)
-- Distiller `provider` / `model` / `tau` / `enabled`
+- `trainer.*` (`learning_rate`, `max_steps`, `per_device_train_batch_size`,
+  `num_generations`, …; `dpo.*` / `apo.*` for those algorithms)
+- `trainer.framework: torch | jax` (JAX needs the `[jax]` extra and Flax
+  weights; otherwise it warns and falls back to torch)
+- `trainer.report_to: trackio | wandb | none` (default `trackio`; `dpo.report_to`
+  / `apo.report_to` when `algorithm` is `dpo` / `apo`). Trackio logs into a
+  project named after `project_name` (`sebeni-exp` in the shipped YAML).
+- `distillation.backend` (`algorithmic` default, `gguf`, `google`, `openai`,
+  `groq`, `together`) / `model` / `tau` / `enabled`
+- `wordfreq.raw_inputs` (only used by `sebeni wordfreq`)
 
 ```yaml
 experiment:
@@ -92,7 +100,9 @@ The Go binary is **not** vendored.
 ## Distiller keys
 
 Same as `sebeni train`: the default algorithmic Distiller needs no key.
-Optional Google refinement accepts ADC or `GOOGLE_API_KEY`.
+Optional Google refinement accepts ADC or `GOOGLE_API_KEY`; `openai` / `groq`
+/ `together` read their `*_API_KEY`; `gguf` needs `distillation.gguf_path`
+and the `[gguf]` extra.
 
 ## Next
 

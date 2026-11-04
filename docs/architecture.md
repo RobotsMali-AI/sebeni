@@ -9,14 +9,18 @@ Public URL: [https://seben.robotsmali.org/docs](https://seben.robotsmali.org/doc
 ## Three product phases
 
 1. **Distill resources** — lexical references (`\va` / `\ve` variants) become
-   a SIL Toolbox **grammar G** and **dictionary D**. Frontier LLMs synthesize
-   Daba pattern files; HITL (`--hitl`) validates Select-Mark
+   a SIL Toolbox **grammar G** and **dictionary D**. Frontier API LLMs or a
+   local GGUF model synthesize Daba pattern files (the default `algorithmic`
+   backend only extends D); HITL (`--hitl`) validates Select-Mark
    `pattern select_gloss | mark_gloss` and compounding such as `:n: [ :v: :n: ]`.
 2. **Refine G/D while training** — Daba is a **dynamic checkpoint**. If Φ on a
    training batch is below τ, Distiller proposes \(G_{cand}, D_{cand}\)
    and Sebeni promotes only when Φ′ > Φ.
 3. **Update θ** — GRPO (default) samples a group of completions and
    scores them with Daba. DPO / APO are drop-in **policy-update plugins**.
+   SafetyGovernor masks format-invalid batches and scales gradients by the
+   uncertainty U before each optimizer step. The backend is PyTorch/TRL by
+   default, or JAX/Flax with `trainer.framework: jax`.
 
 ```mermaid
 flowchart TD
@@ -51,7 +55,7 @@ flowchart LR
 ```mermaid
 flowchart TD
   Promote["Promote G, D"] --> G1["Φ′ > Φ / parseable first-create"]
-  Policy["Policy step"] --> G2["Valid JSON tokens; R_lang; U / KL"]
+  Policy["Policy step"] --> G2["Valid JSON (format mask); U scale; KL bound"]
   Hub["Hub push"] --> G3["Model card + safety_snapshot.json"]
 ```
 
@@ -65,6 +69,8 @@ flowchart TD
 | \(\Phi_ℓ\) | Mean token stage score of \(B_ℓ\) given \(G_ℓ, D_ℓ\) |
 | \(\tau\) | Default **0.5** |
 | \(\theta\) | **One** shared policy, even when \(T\) is multilingual |
+| \(y^*\) | Ideal completion JSON serialized from the active DabaX parse |
+| \(U\) | Uncertainty-weighted cost error; scales gradients, not a reward |
 | Distiller | Proposes G, D (not `distillation_hook`, which is KL scaling) |
 
 ## Package layout
@@ -72,17 +78,23 @@ flowchart TD
 ```
 beni/
   cli/main.py              sebeni init|train|distill|eval|exp|wordfreq|generate|push
-  core/srl/                SAMPG + GRPO/DPO/APO plugins
+  core/__init__.py         Sentence / Token / Analysis / Morpheme, y* JSON serializer
+  core/srl/                SAMPG driver (unified.py, algorithm1.py), config.py
+    plugin.py              AlignmentPlugin: load / hooks / card / push
+    grpo/ dpo/ apo/        TRL policy-update plugins + callbacks
+    jax/                   optional JAX/Flax policy update (framework: jax)
   core/safety/             SafetyGovernor gates
-  core/compute/            Φ, MER, MCS, U, RewardManager
-  core/morphotactic/       Distiller, DabaX (CLI daba.mparser)
+  core/compute/            Φ, MER, MCS, U (UWEC), RewardManager
+  core/morphotactic/       Distiller (algorithmic | gguf | API providers), DabaX (CLI daba.mparser)
   core/language.py         ISO → group_code (mku, mey, kao, spp)
   core/hub/                model cards
   core/wordfreq/           surface / lemma / morpheme / stage counts
-  data/baselines/{lang}/   packaged G, D (Maninka files may live under mlq/)
+  data/datasets.py         SebeniDataLoader, y* references, preference pairs
+  data/baselines/{lang}/   packaged G, D (Maninka under mku/; mlq/ alias still resolves)
   data/raw/                packaged train texts for sebeni exp
   data/test.json           packaged eval texts for sebeni exp
-  utils/                   workdir, prompts, language metadata
+  data/exp.yaml            packaged sebeni exp config
+  utils/                   workdir, Distiller prompts, language metadata
 ```
 
 Relocatable workdir (later wins): `~/.sebeni` → `SEBENI_HOME` /

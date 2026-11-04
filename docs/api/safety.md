@@ -27,6 +27,7 @@ assert d.allowed
       members:
         - allow_promote
         - allow_policy_update
+        - apply_pre_update
         - allow_hub_push
         - record_snapshot
         - write_snapshot

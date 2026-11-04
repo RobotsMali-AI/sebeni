@@ -23,6 +23,8 @@ sebeni --help
 | `[train]` | torch, transformers, trl, peft, datasets, accelerate, trackio |
 | `[wandb]` | wandb (for `trainer.report_to: wandb`) |
 | `[distil]` | google-genai, openai, groq, together |
+| `[gguf]` | llama-cpp-python for local Distiller refinement (`distillation.backend: gguf`) |
+| `[jax]` | JAX, Flax, Optax, Orbax for `trainer.framework: jax` policy updates |
 | `[docs]` | MkDocs Material + mkdocstrings |
 | `[dev]` | pytest, ruff |
 | `[gui]` | wxPython — **not** required |
@@ -39,12 +41,12 @@ pip install -e ".[train,distil,dev]"
 pip install "daba @ git+https://github.com/maslinych/daba.git" --no-deps
 ```
 
-The default algorithmic Distiller needs no key. Optional LLM backends read
-`.env`, Google ADC, `GOOGLE_API_KEY`, `OPENAI_API_KEY`, `GROQ_API_KEY`,
-`TOGETHER_API_KEY`, `HF_TOKEN`. Distiller keys are required when
-`distillation.enabled: true` (the default). Skip Distiller with
-`--no` on HITL flags plus `distillation.enabled: false`, or `sebeni train`
-after a prior `sebeni distill`.
+The default algorithmic Distiller (`distillation.backend: algorithmic`) needs
+no key. Optional LLM backends read `.env`, Google ADC, `GOOGLE_API_KEY`,
+`OPENAI_API_KEY`, `GROQ_API_KEY`, `TOGETHER_API_KEY`; a key is needed only
+when you select that backend. `backend: gguf` runs a local model from
+`distillation.gguf_path` (install `[gguf]`). Hub push uses `HF_TOKEN`. Skip the
+Distiller entirely with `distillation.enabled: false`.
 
 ## Minimal dataset
 
@@ -107,5 +109,5 @@ promote: parseable files. Later: Φ′ > Φ. Maninka group is **mku**.
 | --- | --- |
 | `{working_dir}/data/baselines/{lang}/` | `baseline.gram` / `.dict`, `baseline_vN` |
 | `{working_dir}/models/` | Policy, tokenizer, Hub `README.md`, `safety_snapshot.json` |
-| `{working_dir}/exp/` | `eval.json`, wordfreq |
+| `{working_dir}/exp/` | `eval.json`, `wordfreq/` |
 | `{working_dir}/runtime/` | Headless mparser |
