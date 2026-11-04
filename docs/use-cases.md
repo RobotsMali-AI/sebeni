@@ -89,7 +89,9 @@ alias resolution — prefer `mku`).
 ## 4. Language with no packaged grammar (scratch bootstrap)
 
 For a code with no `beni/data/baselines/{lang}/`, Distiller writes Daba
-stubs and uses **bootstrap** prompts (full G, D — not `[ADD]`/`[REPLACE]`).
+stubs. With an LLM backend (`distillation.backend: gguf | google | openai |
+…`) it uses **bootstrap** prompts (full G, D — not `[ADD]`/`[REPLACE]`); the
+default `algorithmic` backend only appends `\lx` entries to the stub D.
 First promote is “are the files parseable?”; later `baseline_vN` requires
 Φ′ > Φ.
 
@@ -97,7 +99,7 @@ First promote is “are the files parseable?”; later `baseline_vN` requires
 sebeni init --lang zzz -w ./runs/scratch-zzz
 # data.source: a small jsonl with lang: zzz
 sebeni train -c ./runs/scratch-zzz/config.yaml --hitl
-# TTY: review G, D
+# TTY: review G, D (y/N)
 # CI / non-TTY: HITL is skipped automatically
 ```
 
@@ -222,3 +224,26 @@ trainer.train([
     {"text": "i ni ce", "lang": "mku"},
 ])
 ```
+
+## 12. JAX / Flax policy update
+
+Same SAMPG rewards, U scaling, Trackio logging, model card and
+`safety_snapshot.json`; only the policy-update backend changes.
+
+```bash
+pip install "sebeni[train,jax]"
+```
+
+```yaml
+algorithm: grpo          # dpo / apo also supported
+model:
+  model_name: HuggingFaceTB/SmolLM2-135M
+  flax_model_name: null  # set to a repo that ships Flax weights
+trainer:
+  framework: jax
+```
+
+If Flax weights cannot be loaded, Sebeni warns and continues on the
+PyTorch/TRL plugin. The JAX loop has no per-batch Φ / Distiller
+(`SelfAwareCallback`) and no LoRA; the initial distill still runs. See
+[SAMPG](sampg.md#jax-backend).
