@@ -35,7 +35,10 @@ Hub: [huggingface.co/mlsftwrs](https://huggingface.co/mlsftwrs).
 
 Completions are JSON objects with a `tokens` list. Maninka group code is
 **mku** (not `mlq`). GRPO / DPO / APO are **policy-update plugins**; Φ and
-Distiller stay the same.
+Distiller stay the same. They run on PyTorch/TRL by default, or on JAX/Flax
+with `trainer.framework: jax` (the `[jax]` extra; falls back to PyTorch if
+Flax weights cannot be loaded). Training metrics are logged to Trackio by
+default (`report_to: trackio`).
 
 ## Read next
 
