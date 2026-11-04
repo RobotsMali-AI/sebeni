@@ -1,15 +1,28 @@
 # Hub model cards
 
-Every `save_model` / `push_to_hub` writes `README.md` into `output_dir` before
-upload (`beni.core.hub.model_card`). `push_to_hub` refuses to run if the card or
-`safety_snapshot.json` is missing.
+Every `save_model` writes `README.md` (the model card,
+`beni.core.hub.model_card.write_model_card`) and `safety_snapshot.json` into
+`output_dir`. `push_to_hub` writes them first if either is missing, then asks
+SafetyGovernor; with `safety.require_model_card` / `require_safety_snapshot`
+(both default on) the push is refused if they are still absent.
 
-The card includes HF YAML frontmatter, intended use (ELRL morphological
-generation — not a chatbot), training recipe (algorithm, rewards, gates that
-fired), eval table (Phi, MER, MCS, format, R_lang), languages/groups (MKU not MLQ),
-baseline **grammar/dictionary** checkpoint id, hyperparameter snapshot, and links to
-[seben.robotsmali.org](https://seben.robotsmali.org) and
-[seben.robotsmali.org/docs](https://seben.robotsmali.org/docs).
+The card is rendered from `beni/core/hub/templates/model_card.md.j2` and
+includes HF YAML frontmatter (`language` list, `base_model`,
+`library_name: transformers`, tags, `license: mit`), intended use (ELRL
+morphological generation — not a chatbot), limitations, training recipe
+(algorithm, base model, languages/groups (MKU not MLQ), τ, last Φ, baseline
+**grammar/dictionary** checkpoint id, reward weights, safety gates that fired),
+a YAML snapshot of the full config, an eval table (Phi, MER, MCS, format
+validity, R_lang), and links to [seben.robotsmali.org](https://seben.robotsmali.org)
+and the package docs ([mlsftwrs.github.io/sebeni](https://mlsftwrs.github.io/sebeni/)).
+
+```python
+from beni.core.hub import write_model_card
+from beni.core.srl.config import MasterConfig
+
+mc = MasterConfig.from_yaml("config.yaml")
+write_model_card(mc.trainer.output_dir, config=mc)  # -> output_dir/README.md
+```
 
 Trained policies are Hub model repos. **Source code** stays on GitHub
 ([mlsftwrs/sebeni](https://github.com/mlsftwrs/sebeni)).
@@ -21,8 +34,11 @@ huggingface-cli login
 sebeni push -c config.yaml --repo-id mlsftwrs/sebeni-manding-grpo
 ```
 
-YAML: `trainer.hub_model_id`, `push_to_hub`, `hub_private_repo`. Token via
-`HF_TOKEN` or `huggingface-cli login` (write access on org `mlsftwrs`).
+`--repo-id` defaults to `trainer.hub_model_id`; `hub_private_repo` and
+`hub_token` are passed through. Token via `trainer.hub_token`, `HF_TOKEN`, or
+`huggingface-cli login` (write access on org `mlsftwrs`). With
+`trainer.push_to_hub: true`, GRPO training pushes automatically after saving
+(DPO reads the same keys from the `dpo:` section).
 
 ```yaml
 trainer:
@@ -32,8 +48,8 @@ trainer:
   # hub_token: null        # prefer HF_TOKEN / huggingface-cli login
 ```
 
-`sebeni push` refuses to run if `README.md` (card) or `safety_snapshot.json`
-is missing.
+`sebeni push` regenerates `README.md` (card) and `safety_snapshot.json` if
+they are missing and refuses to upload if SafetyGovernor still cannot find them.
 
 ## Transfer into Hugging Face org `mlsftwrs`
 
